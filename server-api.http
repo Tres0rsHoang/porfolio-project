@@ -1,0 +1,3 @@
+@hostname = http://localhost:7110
+
+GET {{hostname}}
