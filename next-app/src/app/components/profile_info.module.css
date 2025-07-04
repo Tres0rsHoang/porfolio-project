@@ -1,0 +1,18 @@
+.profilePicContainer {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.profilePic {
+    width: auto;
+    height: 100%;
+    object-fit: fill;
+    border: var(--foreground) 2px solid;
+    border-radius: var(--border-radius);
+}
+.profileInfo {
+    width: 50%;
+    margin-left: 30px;
+}
+

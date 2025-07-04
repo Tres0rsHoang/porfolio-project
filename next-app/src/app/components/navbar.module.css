@@ -1,0 +1,17 @@
+.navItem {
+    width: 130px;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: var(--highlight);
+    font-weight: bold;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border: var(--foreground) 3px solid;
+    cursor: pointer;
+    margin-left: -3px;
+}
+
+.navItem:first-child {
+    margin-left: 0;
+}
+
