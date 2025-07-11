@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  output        = "../generated/prisma"
+  binaryTargets = ["linux-musl-arm64-openssl-3.0.x", "darwin-arm64"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Project {
+  id                 Int                  @id @default(autoincrement())
+  name               String               @unique
+  title              String
+  feature            Boolean              @default(false)
+  startAt            DateTime
+  endAt              DateTime?
+  createAt           DateTime             @default(now())
+  updateAt           DateTime             @updatedAt
+  FrameworkOnProject FrameworkOnProject[]
+}
+
+model Framework {
+  id                  Int                   @id @default(autoincrement())
+  name                String                @unique
+  createAt            DateTime              @default(now())
+  updateAt            DateTime              @updatedAt
+  FrameworkOnProject  FrameworkOnProject[]
+  LanguageOnFramework LanguageOnFramework[]
+}
+
+model Language {
+  id                  Int                   @id @default(autoincrement())
+  displayString       String                @unique()
+  createAt            DateTime              @default(now())
+  updateAt            DateTime              @updatedAt
+  LanguageOnFramework LanguageOnFramework[]
+}
+
+model LanguageOnFramework {
+  Language    Language? @relation(fields: [languageId], references: [id])
+  languageId  Int
+  framework   Framework @relation(fields: [frameworkId], references: [id])
+  frameworkId Int
+
+  @@id([frameworkId, languageId])
+}
+
+model FrameworkOnProject {
+  project     Project   @relation(fields: [projectId], references: [id])
+  projectId   Int
+  framework   Framework @relation(fields: [frameworkId], references: [id])
+  frameworkId Int
+
+  @@id([projectId, frameworkId])
+}
