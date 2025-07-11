@@ -1,3 +1,78 @@
-@hostname = http://localhost:7110
+@hostname = http://localhost:7110/api
 
 GET {{hostname}}
+###
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "CloudOCS App",
+  "title": "CloudOCS - Omnichannel Cloud Sales",
+  "framework": ["Flutter", "PHP", "Firebase", "SocketIO", "ExpressJS"],
+  "startAt": "2023-06-01",
+  "endAt": "2023-08-01"
+}
+
+###
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "Ticket App",
+  "title": "CloudGo Zalo Mini App",
+  "framework": ["Zalo Mini App - React", "PHP"],
+  "startAt": "2023-08-01",
+  "endAt": "2023-12-01"
+}
+
+###
+
+PATCH {{hostname}}/project/1
+
+{
+  "endAt": "2023-12-01"
+}
+
+
+###
+
+GET {{hostname}}/project
+
+###
+
+POST {{hostname}}/language
+Content-Type: application/json
+
+{
+  "displayStrings": ["C/C++", "Python", "Html/CSS", "Javascript", "Typescript", "PHP", "Dart", "Lua", "Shellscript", "Java", "C#", "Docker", "Prisma", "Google Services"]
+}
+
+###
+
+GET {{hostname}}/language
+
+###
+
+DELETE {{hostname}}/language/17
+
+###
+
+GET {{hostname}}/framework
+
+###
+
+POST {{hostname}}/framework
+Content-Type: application/json
+
+{
+  "frameworks": [
+    {
+      "name": "Zalo Mini App - React",
+      "languages": "Typescript"
+    }
+  ]
+}
+
+###
