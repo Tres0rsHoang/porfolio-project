@@ -1,7 +1,13 @@
 @hostname = http://localhost:7110/api
 
 GET {{hostname}}
-###
+
+### 
+
+GET {{hostname}}/project/feature
+
+
+### OCS APP ###
 
 POST {{hostname}}/project
 Content-Type: application/json
@@ -9,12 +15,20 @@ Content-Type: application/json
 {
   "name": "CloudOCS App",
   "title": "CloudOCS - Omnichannel Cloud Sales",
-  "framework": ["Flutter", "PHP", "Firebase", "SocketIO", "ExpressJS"],
+  "feature": true,
+  "projectType": "Mobile",
+  "framework": [
+    "Flutter",
+    "PHP",
+    "Firebase",
+    "SocketIO",
+    "ExpressJS"
+  ],
   "startAt": "2023-06-01",
   "endAt": "2023-08-01"
 }
 
-###
+### ZALO MINI APP ###
 
 POST {{hostname}}/project
 Content-Type: application/json
@@ -22,17 +36,140 @@ Content-Type: application/json
 {
   "name": "Ticket App",
   "title": "CloudGo Zalo Mini App",
-  "framework": ["Zalo Mini App - React", "PHP"],
+  "feature": true,
+  "projectType": "Mobile",
+  "framework": [
+    "Zalo Mini App - React",
+    "PHP"
+  ],
   "startAt": "2023-08-01",
   "endAt": "2023-12-01"
 }
 
-###
+### CLOUDWORK APP ###
 
-PATCH {{hostname}}/project/1
+POST {{hostname}}/project
+Content-Type: application/json
 
 {
-  "endAt": "2023-12-01"
+  "name": "CloudWork App",
+  "title": "CloudWork - Work Management App",
+  "feature": true,
+  "projectType": "Mobile",
+  "framework": [
+    "Flutter",
+    "PHP"
+  ],
+  "startAt": "2023-11-01",
+  "endAt": "2024-04-01"
+}
+
+### CLOUDSALES APP ###
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "CloudSales App",
+  "title": "CloudSales - Sales Management App, Omnichannel chatting",
+  "feature": true,
+  "projectType": "Mobile",
+  "framework": [
+    "Flutter",
+    "PHP",
+    "SocketIO",
+    "FacebookAPI",
+    "ZaloAPI",
+    "Firebase"
+  ],
+  "startAt": "2024-04-01",
+  "endAt": "2024-08-01"
+}
+
+### THERACPP GAME ###
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "TheraCPP Game",
+  "title": "TheraCPP - C/C++ Learning Game",
+  "feature": true,
+  "projectType": "Game",
+  "framework": [
+    "Unity",
+    "NestJs"
+  ],
+  "startAt": "2024-01-01",
+  "endAt": "2024-08-01"
+}
+
+### Request Module ### 
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "CloudGo CRM - Module Request",
+  "title": "Module request for CRM",
+  "feature": true,
+  "projectType": "Web",
+  "framework": [
+    "PHP",
+    "jQuery",
+    "Smarty"
+  ],
+  "startAt": "2024-07-01",
+  "endAt": "2024-12-01"
+}
+
+### CLOUDGO SUPER APP ###
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "CloudGo App",
+  "title": "Super app as the foundation for all other mini apps",
+  "feature": true,
+  "projectType": "Mobile",
+  "framework": [
+    "Flutter",
+    "PHP",
+    "Firebase"
+  ],
+  "startAt": "2023-11-01",
+  "endAt": "2024-08-01"
+}
+
+### SOCIALCHAHUB ###
+
+POST {{hostname}}/project
+Content-Type: application/json
+
+{
+  "name": "Social Chat Hub",
+  "title": "Social Chat Hub - Storage, transfer, format messages thourgh CRM's systems",
+  "feature": true,
+  "projectType": "System",
+  "framework": [
+    "ExpressJS",
+    "PHP",
+    "FacebookAPI",
+    "ZaloAPI",
+    "Smarty",
+    "RabitMQ"
+  ],
+  "startAt": "2024-06-01",
+  "endAt": "2024-09-01"
+}
+
+###
+
+PATCH {{hostname}}/project/3
+
+{
+  "feature": true
 }
 
 
@@ -46,7 +183,25 @@ POST {{hostname}}/language
 Content-Type: application/json
 
 {
-  "displayStrings": ["C/C++", "Python", "Html/CSS", "Javascript", "Typescript", "PHP", "Dart", "Lua", "Shellscript", "Java", "C#", "Docker", "Prisma", "Google Services"]
+  "displayStrings": [
+    "C/C++",
+    "Python",
+    "Html/CSS",
+    "Javascript",
+    "Typescript",
+    "PHP",
+    "Dart",
+    "Lua",
+    "Shellscript",
+    "Java",
+    "C#",
+    "Docker",
+    "Prisma",
+    "Google Services",
+    "Facebook Services",
+    "Zalo Services",
+    "Redis Services"
+  ]
 }
 
 ###
@@ -71,8 +226,45 @@ Content-Type: application/json
     {
       "name": "Zalo Mini App - React",
       "languages": "Typescript"
+    },
+    {
+      "name": "FacebookAPI",
+      "languages": "Facebook Services"
+    },
+    {
+      "name": "ZaloAPI",
+      "languages": "Zalo Services"
+    },
+    {
+      "name": "Smarty",
+      "languages": "Html/CSS"
+    },
+    {
+      "name": "jQuery",
+      "languages": "Javascript"
+    },
+    {
+      "name": "RabitMQ",
+      "languages": "Redis Services"
+    },
+    {
+      "name": "Unity",
+      "languages": "C#"
     }
   ]
+}
+
+### 
+
+GET {{hostname}}/project-type
+
+###
+
+POST {{hostname}}/project-type
+Content-Type: application/json
+
+{
+  "name": ["Mobile", "Web", "System", "Admin", "Default", "Game"]
 }
 
 ###

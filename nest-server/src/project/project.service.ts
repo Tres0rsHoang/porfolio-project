@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  ConflictException,
-  Injectable,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { Framework, Prisma, Project } from 'generated/prisma';
 import { DatabaseService } from 'src/database/database.service';
 import { CreateProjectDto, UpdateProjectDto } from './dto/project.dto';
@@ -19,11 +15,14 @@ export class ProjectService {
         },
       });
 
-    if (isProjectExist != null)
-      throw new ConflictException('Project name exist');
+    if (isProjectExist != null) {
+      const updatedData = await this.updateProject(isProjectExist.id, project);
+      return updatedData;
+    }
 
     const frameworkEntity: Framework[] = [];
     const frameworks: string[] = project.framework;
+    const projectType: string = project.projectType;
 
     for (const entity of frameworks) {
       const isExist: Framework | null =
@@ -39,6 +38,17 @@ export class ProjectService {
       frameworkEntity.push(isExist);
     }
 
+    const isExistProjectType =
+      await this.databaseService.projectType.findUnique({
+        where: {
+          name: projectType,
+        },
+      });
+
+    if (isExistProjectType == null) {
+      throw new BadRequestException('Invalid project type');
+    }
+
     return this.databaseService.project.create({
       data: {
         name: project.name,
@@ -51,6 +61,17 @@ export class ProjectService {
             framework: { connect: { id: entity.id } },
           })),
         },
+        TypeOnProject: {
+          create: [{ type: { connect: { id: isExistProjectType.id } } }],
+        },
+      },
+      include: {
+        FrameworkOnProject: {
+          include: { framework: true },
+        },
+        TypeOnProject: {
+          include: { type: true },
+        },
       },
     });
   }
@@ -60,7 +81,9 @@ export class ProjectService {
 
     if (newData.framework != null) {
       const frameworks = newData.framework;
+      const projectType = newData.projectType;
       delete newData.framework;
+      delete newData.projectType;
       const frameworkEntity: Framework[] = [];
 
       for (const framework of frameworks) {
@@ -77,6 +100,16 @@ export class ProjectService {
         frameworkEntity.push(isExist);
       }
 
+      const isExistProjectType =
+        await this.databaseService.projectType.findUnique({
+          where: {
+            name: projectType,
+          },
+        });
+      if (isExistProjectType == null) {
+        throw new BadRequestException('Invalid project type');
+      }
+
       formattedData = {
         ...newData,
         FrameworkOnProject: {
@@ -84,6 +117,10 @@ export class ProjectService {
           create: frameworkEntity.map((entity) => ({
             framework: { connect: { id: entity.id } },
           })),
+        },
+        TypeOnProject: {
+          deleteMany: {},
+          create: [{ type: { connect: { id: isExistProjectType.id } } }],
         },
       };
     }
@@ -93,15 +130,91 @@ export class ProjectService {
         id,
       },
       data: formattedData,
+      include: {
+        FrameworkOnProject: {
+          include: { framework: true },
+        },
+        TypeOnProject: {
+          include: { type: true },
+        },
+      },
     });
   }
 
   async getFeatureProject() {
-    return this.databaseService.project.findMany({
+    const rawValues = await this.databaseService.project.findMany({
       where: {
         feature: true,
       },
+      select: {
+        id: true,
+        name: true,
+        title: true,
+        FrameworkOnProject: {
+          select: {
+            framework: {
+              select: {
+                name: true,
+                LanguageOnFramework: {
+                  select: {
+                    Language: {
+                      select: {
+                        displayString: true,
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+        TypeOnProject: {
+          select: {
+            type: {
+              select: {
+                name: true,
+              },
+            },
+          },
+        },
+      },
     });
+
+    const removeAttr = <T, K extends keyof T>(obj: T, key: K): Omit<T, K> => {
+      const { [key]: _, ...rest } = obj;
+      void _;
+      return rest;
+    };
+
+    const result = rawValues.map((value) => {
+      const frameworks = value.FrameworkOnProject.map(
+        (fop) => fop.framework.name,
+      );
+
+      const languages: string[] = [];
+
+      value.FrameworkOnProject.map((fop) => {
+        fop.framework.LanguageOnFramework.map((language) => {
+          const languageString: string | undefined =
+            language.Language?.displayString;
+          if (languageString == undefined || languages.includes(languageString))
+            return;
+          languages.push(languageString);
+        });
+      });
+
+      const projectType = value.TypeOnProject[0].type.name;
+      const newValue = removeAttr(value, 'TypeOnProject');
+
+      return {
+        ...removeAttr(newValue, 'FrameworkOnProject'),
+        projectType,
+        frameworks,
+        languages,
+      };
+    });
+
+    return result;
   }
 
   async findAll() {

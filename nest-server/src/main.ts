@@ -14,8 +14,12 @@ async function bootstrap() {
     }),
   );
 
-  app.enableCors();
+  app.enableCors({
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    credentials: true,
+  });
   app.setGlobalPrefix('api');
-  await app.listen(process.env.SERVER_PORT ?? 3000);
+  await app.listen(process.env.SERVER_PORT ?? 7110);
 }
 bootstrap().catch((err) => console.log(err));

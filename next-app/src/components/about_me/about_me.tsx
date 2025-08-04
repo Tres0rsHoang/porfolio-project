@@ -2,8 +2,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./about_me.module.css";
-import Education from "./education";
-import OnWorking from "./on_working";
+import Education from "../education";
+import OnWorking from "../on_working";
 
 type ExpandItems = {
   educationExpanded: boolean;
