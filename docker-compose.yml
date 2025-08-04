@@ -7,7 +7,7 @@ services:
       target: ${NODE_ENV}
       dockerfile: ./dockerfile
     ports:
-      - "${APP_PORT}:${APP_PORT}"
+      - "${APP_PORT}:3000"
     volumes:
       - ./next-app/src:/app/src
       - ./next-app/package.json:/app/package.json
@@ -40,7 +40,7 @@ services:
       target: ${NODE_ENV}
       dockerfile: ./server.dockerfile
     ports:
-      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "${SERVER_PORT}:7110"
     volumes:
       - ./nest-server/src:/server/src
       - ./nest-server/package.json:/server/package.json

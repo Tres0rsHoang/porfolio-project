@@ -25,6 +25,7 @@ model Project {
   createAt           DateTime             @default(now())
   updateAt           DateTime             @updatedAt
   FrameworkOnProject FrameworkOnProject[]
+  TypeOnProject      TypeOnProject[]
 }
 
 model Framework {
@@ -42,6 +43,23 @@ model Language {
   createAt            DateTime              @default(now())
   updateAt            DateTime              @updatedAt
   LanguageOnFramework LanguageOnFramework[]
+}
+
+model ProjectType {
+  id            Int             @id @default(autoincrement())
+  name          String          @unique
+  createAt      DateTime        @default(now())
+  updateAt      DateTime        @updatedAt
+  TypeOnProject TypeOnProject[]
+}
+
+model TypeOnProject {
+  type          ProjectType @relation(fields: [projectTypeId], references: [id])
+  projectTypeId Int
+  project       Project     @relation(fields: [projectId], references: [id])
+  projectId     Int
+
+  @@id([projectTypeId, projectId])
 }
 
 model LanguageOnFramework {

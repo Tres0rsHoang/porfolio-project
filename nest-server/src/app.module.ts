@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { LanguageModule } from './language/language.module';
+import { ProjectTypeModule } from './project-type/project-type.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { LanguageModule } from './language/language.module';
       },
     ]),
     LanguageModule,
+    ProjectTypeModule,
   ],
   controllers: [AppController],
   providers: [

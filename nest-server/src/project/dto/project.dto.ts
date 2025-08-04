@@ -19,6 +19,9 @@ export class CreateProjectDto {
   @IsNotEmpty()
   title: string;
 
+  @IsString()
+  projectType: string;
+
   @IsOptional()
   @IsBoolean()
   feature?: boolean;
