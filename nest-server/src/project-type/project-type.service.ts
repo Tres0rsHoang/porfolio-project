@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProjectTypeDto } from './dto/create-project-type.dto';
 import { UpdateProjectTypeDto } from './dto/update-project-type.dto';
 import { DatabaseService } from 'src/database/database.service';
-import { ProjectType } from 'generated/prisma';
+import { ProjectType } from '@prisma/client';
 
 @Injectable()
 export class ProjectTypeService {

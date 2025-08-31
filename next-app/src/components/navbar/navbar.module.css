@@ -1,17 +1,22 @@
 .navItem {
-    width: 130px;
-    text-align: center;
-    padding: 15px;
-    font-size: 1.2rem;
-    background-color: var(--highlight);
-    font-weight: bold;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    border: var(--foreground) 3px solid;
-    cursor: pointer;
-    margin-left: -3px;
+  width: 130px;
+  text-align: center;
+  padding: 15px;
+  font-size: 1.2rem;
+  background-color: var(--highlight);
+  font-weight: bold;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border: var(--foreground) 3px solid;
+  cursor: pointer;
+  margin-left: -3px;
+  margin-top: 1rem;
 }
 
 .navItem:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
+.navItem:hover {
+  margin-top: 0.5rem;
+  background-color: var(--highlight-button)
+}

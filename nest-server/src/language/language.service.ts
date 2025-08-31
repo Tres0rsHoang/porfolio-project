@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateLanguageDto } from './dto/create-language.dto';
 import { UpdateLanguageDto } from './dto/update-language.dto';
 import { DatabaseService } from 'src/database/database.service';
-import { Language } from 'generated/prisma';
+import { Language } from '@prisma/client';
 
 @Injectable()
 export class LanguageService {
@@ -41,6 +41,7 @@ export class LanguageService {
   }
 
   update(id: number, updateLanguageDto: UpdateLanguageDto) {
+    void updateLanguageDto;
     return `This action updates a #${id} language`;
   }
 

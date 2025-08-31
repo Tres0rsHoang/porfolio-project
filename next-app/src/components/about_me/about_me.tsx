@@ -1,9 +1,11 @@
 "use client";
+
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./about_me.module.css";
 import Education from "../education";
 import OnWorking from "../on_working";
+import { scrollToSection } from "@/helpers/scroll_to_section";
 
 type ExpandItems = {
   educationExpanded: boolean;
@@ -33,7 +35,10 @@ function AboutMe() {
   return (
     <div className="relative">
       <div className={styles.aboutMeContainer}>
-        <button className="absolute top-[-1.2rem] px-5 rounded-xl right-50 bg-(--highlight-button) border-solid border-[3px]">
+        <button
+          onClick={() => scrollToSection("comment")}
+          className="absolute top-[-1.2rem] px-5 rounded-xl right-50 bg-(--highlight-button) border-solid border-[3px]"
+        >
           <div className="text-3xl">Go to Comment →</div>
         </button>
         <h2>About Me</h2>

@@ -1,0 +1,9 @@
+.detailButton {
+  border: var(--foreground) solid 2px;
+  border-radius: 8px;
+  padding-inline: 15px;
+}
+
+.genderField {
+  padding-inline-start: 15px;
+}

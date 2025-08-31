@@ -1,0 +1,20 @@
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 50;
+  transform: translate(-50%, -50%);
+  border: solid black 3px;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  min-width: 500px;
+  background-color: var(--semi-highlight)
+}
+
+.dialogBackground {
+  position: fixed;
+  inset: 0;
+  background-color: var(--loading-background);
+  z-index: 40;
+}

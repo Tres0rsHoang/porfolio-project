@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { CreateFrameworkDto, UpdateFrameworkDto } from './dto/framework.dto';
-import { Framework, Language } from 'generated/prisma';
+import { Framework, Language } from '@prisma/client';
 
 @Injectable()
 export class FrameworkService {

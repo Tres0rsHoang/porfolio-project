@@ -1,6 +1,5 @@
 services:
   nextjs-app:
-    image: nextjs-app
     container_name: nextjs-app
     build:
       context: .
@@ -17,7 +16,6 @@ services:
       - .env
     networks:
       - portfolio-network
-
   database:
     image: postgres:15
     container_name: database
@@ -27,14 +25,14 @@ services:
     ports:
       - "${DATABASE_PORT}:${DATABASE_PORT}"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ../postgres_data:/var/lib/postgresql/data
     command: ["postgres", "-p", "${DATABASE_PORT}"]
     networks:
       - portfolio-network
-
   nestjs-server:
-    image: nestjs-server
     container_name: nestjs-server
+    depends_on:
+      - database
     build:
       context: .
       target: ${NODE_ENV}
@@ -50,11 +48,8 @@ services:
       - .env
     networks:
       - portfolio-network
-
 volumes:
   postgres_data:
-
 networks:
   portfolio-network:
     driver: bridge
-

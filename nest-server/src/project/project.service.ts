@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
-import { Framework, Prisma, Project } from 'generated/prisma';
-import { DatabaseService } from 'src/database/database.service';
+import { Framework, Prisma, Project } from '@prisma/client';
 import { CreateProjectDto, UpdateProjectDto } from './dto/project.dto';
+import { DatabaseService } from 'src/database/database.service';
 
 @Injectable()
 export class ProjectService {
@@ -32,8 +32,9 @@ export class ProjectService {
           },
         });
 
-      if (isExist == null)
+      if (isExist == null) {
         throw new BadRequestException(`Invalid framework name ${entity}`);
+      }
 
       frameworkEntity.push(isExist);
     }
