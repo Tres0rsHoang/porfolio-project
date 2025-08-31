@@ -6,10 +6,14 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { CreateProjectDto, UpdateProjectDto } from './dto/project.dto';
+import { Roles, RolesGuard } from 'src/auth/roles.guard';
+import { JwtAuthGuard } from 'src/auth/jwt.guard';
+import { Role } from 'src/auth/entity/role.entity';
 
 @Controller('project')
 export class ProjectController {
@@ -25,12 +29,16 @@ export class ProjectController {
     return this.projectService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
   @Post()
   importNewProject(@Body(ValidationPipe) project: CreateProjectDto) {
     return this.projectService.importNewProject(project);
   }
 
   @Patch(':id')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(Role.ADMIN)
   updateProject(
     @Param('id', ParseIntPipe) id: number,
     @Body(ValidationPipe) project: UpdateProjectDto,

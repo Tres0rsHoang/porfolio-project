@@ -9,6 +9,14 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { APP_GUARD } from '@nestjs/core';
 import { LanguageModule } from './language/language.module';
 import { ProjectTypeModule } from './project-type/project-type.module';
+import { CommentModule } from './comment/comment.module';
+import { AuthService } from './auth/auth.service';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
+import { UserModule } from './user/user.module';
+import { SeedModule } from './seed/seed.module';
+import EventsGateway from './socket/events.gateway';
 
 @Module({
   imports: [
@@ -26,14 +34,21 @@ import { ProjectTypeModule } from './project-type/project-type.module';
     ]),
     LanguageModule,
     ProjectTypeModule,
+    CommentModule,
+    AuthModule,
+    JwtModule,
+    UserModule,
+    SeedModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [
     AppService,
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
     },
+    AuthService,
+    EventsGateway,
   ],
 })
 export class AppModule {}

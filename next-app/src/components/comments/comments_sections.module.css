@@ -2,11 +2,12 @@
   border: var(--foreground) 3px solid;
   border-radius: var(--border-radius);
   border-top-right-radius: 0;
-  background-color: var(--orange);
+  background-color: #EDC11B;
   margin-right: -3px;
   margin-top: 30px;
   padding: 10px 30px;
   position: relative;
+  overflow: hidden;
 }
 
 .commentBox {
@@ -15,6 +16,12 @@
   padding: 20px 30px;
   border-radius: 10px;
   max-width: 600px;
+  min-width: 370px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   border-width: 3px;
+}
+
+.addComment {
+  background-color: var(--highlight-button);
+  border: solid var(--foreground) 2px;
 }

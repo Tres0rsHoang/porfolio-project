@@ -6,7 +6,6 @@
 
 generator client {
   provider      = "prisma-client-js"
-  output        = "../generated/prisma"
   binaryTargets = ["linux-musl-arm64-openssl-3.0.x", "darwin-arm64"]
 }
 
@@ -45,6 +44,28 @@ model Language {
   LanguageOnFramework LanguageOnFramework[]
 }
 
+model User {
+  id         Int          @id @default(autoincrement())
+  name       String
+  company    String?
+  gender     Boolean      @default(true)
+  Comment    Comment[]
+  Auth       Auth[]
+  RoleOnUser RoleOnUser[]
+}
+
+model Comment {
+  id               Int       @id @default(autoincrement())
+  content          String
+  user             User      @relation(fields: [userId], references: [id])
+  userId           Int
+  parrentComment   Comment?  @relation("CommentReplies", fields: [parrentCommentId], references: [id])
+  parrentCommentId Int?
+  replies          Comment[] @relation("CommentReplies")
+  createAt         DateTime  @default(now())
+  updateAt         DateTime  @updatedAt
+}
+
 model ProjectType {
   id            Int             @id @default(autoincrement())
   name          String          @unique
@@ -78,4 +99,28 @@ model FrameworkOnProject {
   frameworkId Int
 
   @@id([projectId, frameworkId])
+}
+
+model Role {
+  id         Int          @id @default(autoincrement())
+  title      String?      @unique
+  roleOnUser RoleOnUser[]
+}
+
+model Auth {
+  user         User    @relation(fields: [userId], references: [id])
+  userId       Int     @id
+  username     String  @unique
+  hashPassword String
+  email        String  @unique
+  refreshToken String?
+}
+
+model RoleOnUser {
+  role   Role @relation(fields: [roleId], references: [id])
+  roleId Int
+  user   User @relation(fields: [userId], references: [id])
+  userId Int
+
+  @@id([roleId, userId])
 }

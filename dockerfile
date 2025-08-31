@@ -14,7 +14,6 @@ COPY --from=dependencies /app/node_modules ./node_modules
 ENV NEXT_TELEMETRY_DISABLE=1
 RUN npm run build
 
-
 # DEV
 FROM base AS development
 WORKDIR /app

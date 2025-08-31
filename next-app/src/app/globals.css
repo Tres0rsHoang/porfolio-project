@@ -13,6 +13,9 @@
   --pink: #ef9a9a;
   --red: #e94e3c;
   --orange: #FFD180;
+  --blue: #4979BB;
+  --gray: #7D7259;
+  --loading-background: rgba(0, 0, 0, 0.5);
 }
 
 ::-webkit-scrollbar {
@@ -37,8 +40,14 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  background-image: url("/images/BackgroundImage.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background: var(--background); */
+  /* color: var(--foreground); */
 }
 
 h1 {
@@ -68,6 +77,28 @@ p {
 
 button {
   cursor: pointer;
+  border-radius: 8px;
+  border: var(--foreground) solid 2px;
+  padding-inline: 15px;
+}
+
+input {
+  border-radius: 8px;
+  border: solid black 2px;
+  font-size: 1.8rem;
+  padding-inline: 1rem;
+}
+
+textarea {
+  border-radius: 8px;
+  border: solid black 2px;
+  font-size: 1.8rem;
+  padding-inline: 1rem;
+}
+
+label {
+  font-size: 1.8rem;
+  color: var(--gray);
 }
 
 .homepage {
@@ -86,7 +117,7 @@ button {
   border: var(--foreground) 3px solid;
   border-left: none;
   border-bottom: none;
-  border-radius: 0 var(--border-radius) 0;
+  border-radius: 0 var(--border-radius) 0 0;
   box-sizing: border-box;
   background: linear-gradient(to left,
       var(--background),
@@ -126,21 +157,37 @@ button {
   height: 100%;
 }
 
-.dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  z-index: 50;
-  transform: translate(-50%, -50%);
-  border-radius: 0.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  padding: 2rem;
-  min-width: 300px;
+.loading-dots div {
+  opacity: 0;
+  animation: dot-blink 1.5s infinite;
 }
 
-.dialog-background {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 40;
+.loading-dots div:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loading-dots div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loading-dots div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes dot-blink {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

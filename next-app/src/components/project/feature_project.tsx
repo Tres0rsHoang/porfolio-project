@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import styles from "./project.module.css";
@@ -18,6 +18,8 @@ import {
 } from "@/models/project.model";
 import ProjectFrame from "./project_frame";
 import { getRandomColor } from "@/helpers/utils";
+import { DialogFrame } from "../dialog/dialog_frame";
+import EmptyComment from "../comments/empty_comment";
 
 const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
   const renderLabel = ({ percent }: PieSectorData) => {
@@ -123,102 +125,97 @@ function PercentLanguage({ projects }: PercentProps) {
   return <DataPieChart data={data} title="Language"></DataPieChart>;
 }
 
-export default function Project() {
-  const [showDialog, setShowDialog] = useState(false);
+export default function FeatureProject() {
   const [projects, setProjects] = useState<ProjectInfo[]>([]);
+  const isFetchDataRef = useRef<boolean>(false);
 
   useEffect(() => {
     const fetchProject = async () => {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/project/feature`,
-      );
-      const resBody = await res.json();
+      isFetchDataRef.current = true;
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/project/feature`,
+        );
+        const resBody = await res.json();
+        if (!Array.isArray(resBody)) {
+          throw new Error("Invalid project/feature responsive");
+        }
+        const formatedProject: ProjectInfo[] = resBody.map(
+          (value: {
+            name: string;
+            title: string;
+            frameworks: string[];
+            languages: string[];
+            projectType: string;
+          }) => {
+            const frameworks: Framework[] = [];
+            const languages: Language[] = [];
+            value.frameworks.map((framework: string) => {
+              const fw: Framework | undefined = mapStringToFramework(framework);
+              if (fw) frameworks.push(fw);
+            });
+            value.languages.map((language: string) => {
+              const lang: Language | undefined = mapStringToLanguage(language);
+              if (lang) languages.push(lang);
+            });
 
-      if (!Array.isArray(resBody)) return;
-
-      const formatedProject: ProjectInfo[] = resBody.map(
-        (value: {
-          name: string;
-          title: string;
-          frameworks: string[];
-          languages: string[];
-          projectType: string;
-        }) => {
-          const frameworks: Framework[] = [];
-          const languages: Language[] = [];
-
-          value.frameworks.map((framework: string) => {
-            const fw: Framework | undefined = mapStringToFramework(framework);
-            if (fw) frameworks.push(fw);
-          });
-
-          value.languages.map((language: string) => {
-            const lang: Language | undefined = mapStringToLanguage(language);
-            if (lang) languages.push(lang);
-          });
-
-          const projectInfo: ProjectInfo = {
-            projectName: value.name,
-            techstack: frameworks,
-            language: languages,
-            projectType:
-              mapStringToProjectType(value.projectType) ?? ProjectType.Default,
-          };
-          return projectInfo;
-        },
-      );
-      setProjects(formatedProject);
+            const projectInfo: ProjectInfo = {
+              projectName: value.name,
+              techstack: frameworks,
+              language: languages,
+              projectType:
+                mapStringToProjectType(value.projectType) ??
+                ProjectType.Default,
+            };
+            return projectInfo;
+          },
+        );
+        setProjects(formatedProject);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        isFetchDataRef.current = false;
+      }
     };
-
-    fetchProject();
-  });
+    if (!isFetchDataRef.current) fetchProject();
+  }, []);
 
   return (
     <div className={styles.projectContainer}>
       <div className="flex justify-between items-center">
         <h2>Feature Project</h2>
-        <button
-          className={`${styles.summarize} px-4 rounded-lg`}
-          onClick={() => setShowDialog(true)}
+        <DialogFrame
+          title="Summarize"
+          toggleItem={
+            <button className={`${styles.summarize} px-4 rounded-lg`}>
+              <h3>Summarize</h3>
+            </button>
+          }
         >
-          <h3>Summarize</h3>
-        </button>
-      </div>
-      <Marquee speed={50} gradient={false} pauseOnHover>
-        {projects.map((project, i) => {
-          return (
-            <ProjectFrame
-              key={i}
-              projectName={project.projectName}
-              techstack={project.techstack}
-              language={project.language}
-              projectType={project.projectType}
-            />
-          );
-        })}
-      </Marquee>
-      {showDialog && (
-        <div>
-          <div
-            className="dialog-background"
-            onClick={() => setShowDialog(false)}
-          />
-          <div className="dialog bg-(--semi-highlight)">
-            <div className="flex flex-row justify-between">
-              <h2 className="text-xl font-bold mb-4">Summarize</h2>
-              <button
-                className={`bg-(--red) px-3 rounded-lg border-solid border-[2px] h-10 w-10`}
-                onClick={() => setShowDialog(false)}
-              >
-                X
-              </button>
-            </div>
-            <div className="flex flex-row justify-around items-center">
-              <PercentFramework projects={projects} />
-              <PercentLanguage projects={projects} />
-            </div>
+          <div className="flex flex-row justify-around items-center">
+            <PercentFramework projects={projects} />
+            <PercentLanguage projects={projects} />
           </div>
+        </DialogFrame>
+      </div>
+      {projects.length == 0 ? (
+        <div className="mb-4">
+          <EmptyComment />
         </div>
+      ) : (
+        <Marquee speed={50} gradient={false} pauseOnHover>
+          {projects.map((project, i) => {
+            return (
+              <ProjectFrame
+                key={i}
+                projectName={project.projectName}
+                techstack={project.techstack}
+                language={project.language}
+                projectType={project.projectType}
+              />
+            );
+          })}
+        </Marquee>
       )}
     </div>
   );
