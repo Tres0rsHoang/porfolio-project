@@ -1,0 +1,40 @@
+name: Test Project
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  deploy-server:
+    name: Build Drawler Nest Server
+    runs-on: ubuntu-latest
+    container:
+      image: node:20
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: 20
+      - name: Install package nest-server
+        working-directory: ./drawler-nestjs-server
+        run: npm install
+      - name: Update prisma
+        working-directory: ./drawler-nestjs-server
+        run: npx prisma generate
+      - name: Build nest-server
+        working-directory: ./drawler-nestjs-server
+        run: npm run build
+  deploy-app:
+    name: Build Drawler Nest App
+    runs-on: ubuntu-latest
+    container:
+      image: node:20
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          node-version: 20
+      - name: Install package react-app
+        working-directory: ./drawler-reactjs-app
+        run: npm install
+      - name: Build react-app
+        working-directory: ./drawler-reactjs-app
+        run: npm run build
+

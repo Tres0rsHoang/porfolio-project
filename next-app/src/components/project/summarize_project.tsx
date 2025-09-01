@@ -1,11 +1,5 @@
 import { getRandomColor } from "@/helpers/utils";
-import {
-  ChartData,
-  ChartProps,
-  Framework,
-  Language,
-  PercentProps,
-} from "@/models/project.model";
+import { ChartData, ChartProps, PercentProps } from "@/models/project.model";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { PieSectorData } from "recharts/types/polar/Pie";
 
@@ -53,62 +47,54 @@ export const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
 };
 
 export function PercentFramework({ projects }: PercentProps) {
-  const percentArray: Array<number> = [];
-  const data: Array<ChartData> = [];
-
-  const frameworkArray = Object.values(Framework).filter(
-    (value) => typeof value === "string",
-  );
-
-  for (let i = 0; i < frameworkArray.length - 1; i++) {
-    percentArray[i] = 0;
-  }
+  const chartData: ChartData[] = [];
 
   for (const project of projects) {
     for (const framework of project.techstack) {
-      const index = frameworkArray.indexOf(framework);
-      percentArray[index] += 1;
+      let exist = false;
+      for (const index in chartData) {
+        const name = chartData[index].name;
+        if (name == framework) {
+          chartData[index].value += 1;
+          exist = true;
+          break;
+        }
+      }
+      if (!exist) {
+        chartData.push({
+          name: framework,
+          value: 1,
+          color: getRandomColor(),
+        });
+      }
     }
   }
-
-  for (let i = 0; i < frameworkArray.length - 1; i++) {
-    if (percentArray[i] == 0) continue;
-    data.push({
-      name: frameworkArray[i],
-      value: percentArray[i],
-      color: getRandomColor(),
-    });
-  }
-
-  return <DataPieChart data={data} title="Framework" />;
+  return <DataPieChart data={chartData} title="Framework" />;
 }
 
 export function PercentLanguage({ projects }: PercentProps) {
-  const percentArray: Array<number> = [];
-  const data: Array<ChartData> = [];
-  const languageArray = Object.values(Language).filter(
-    (value) => typeof value === "string",
-  );
-
-  for (let i = 0; i < languageArray.length - 1; i++) {
-    percentArray[i] = 0;
-  }
+  const chartData: ChartData[] = [];
 
   for (const project of projects) {
-    for (const lang of project.language) {
-      const index = languageArray.indexOf(lang);
-      percentArray[index] += 1;
+    for (const language of project.language) {
+      let exist = false;
+      for (const index in chartData) {
+        const name = chartData[index].name;
+        if (name == language) {
+          chartData[index].value += 1;
+          exist = true;
+          break;
+        }
+      }
+      if (!exist) {
+        chartData.push({
+          name: language,
+          value: 1,
+          color: getRandomColor(),
+        });
+      }
     }
   }
 
-  for (let i = 0; i < languageArray.length - 1; i++) {
-    if (percentArray[i] == 0) continue;
-    data.push({
-      name: languageArray[i],
-      value: percentArray[i],
-      color: getRandomColor(),
-    });
-  }
-
-  return <DataPieChart data={data} title="Language"></DataPieChart>;
+  return <DataPieChart data={chartData} title="Language"></DataPieChart>;
 }
