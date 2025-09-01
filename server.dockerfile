@@ -5,7 +5,7 @@ COPY ./.env ./
 
 FROM base AS dependencies
 WORKDIR /server
-RUN apk update && apk upgrade && npm install
+RUN npm install
 
 FROM base AS builder
 WORKDIR /server
