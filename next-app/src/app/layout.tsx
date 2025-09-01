@@ -1,3 +1,5 @@
+"use client";
+
 import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
@@ -7,6 +9,7 @@ import NavBar from "@/components/navbar/navbar";
 import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
+import { Suspense } from "react";
 
 // const simpsonFont = localFont({
 //   src: "../../public/fonts/Simpsonfont.ttf",
@@ -48,27 +51,29 @@ export default function RootLayout({
         className={`${baloo2.className} antialiased`}
         suppressHydrationWarning={true}
       >
-        <QueryProvider>
-          <div className="homepage">
-            <main className="relative w-full h-dvh justify-center items-center flex flex-col">
-              <NavBar />
-              <LoginInfo />
-              <div className="content-container">{children}</div>
+        <Suspense fallback={<p>Loading...</p>}>
+          <QueryProvider>
+            <div className="homepage">
+              <main className="relative w-full h-dvh justify-center items-center flex flex-col">
+                <NavBar />
+                <LoginInfo />
+                <div className="content-container">{children}</div>
 
-              <div className="w-full bg-(--blue) border-black border-t-2 px-2">
-                <footer className="flex flex-row justify-end items-center">
-                  <Image
-                    src="/images/WordPressLogo.png"
-                    alt="wordpress"
-                    width={25}
-                    height={25}
-                  ></Image>
-                  <p>Proudly powered by… me. Who needs WordPress?</p>
-                </footer>
-              </div>
-            </main>
-          </div>
-        </QueryProvider>
+                <div className="w-full bg-(--blue) border-black border-t-2 px-2">
+                  <footer className="flex flex-row justify-end items-center">
+                    <Image
+                      src="/images/WordPressLogo.png"
+                      alt="wordpress"
+                      width={25}
+                      height={25}
+                    ></Image>
+                    <p>Proudly powered by… me. Who needs WordPress?</p>
+                  </footer>
+                </div>
+              </main>
+            </div>
+          </QueryProvider>
+        </Suspense>
         <NotificaionProvider />
       </body>
     </html>
