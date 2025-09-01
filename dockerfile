@@ -11,8 +11,7 @@ FROM base AS builder
 ENV NEXT_TELEMETRY_DISABLE=1
 WORKDIR /app
 COPY ./next-app ./
-RUN apk update && apk upgrade 
-RUN npm ci --only=production && npm cache clean --force
+COPY --from=dependencies /app/node_modules ./node_modules
 RUN npm run build
 
 # DEV
