@@ -8,9 +8,8 @@ export class FrameworkService {
   constructor(private readonly databaseService: DatabaseService) {}
 
   async create(createFrameworkDto: CreateFrameworkDto) {
-    const languages: string[] = createFrameworkDto.languages.split(', ');
+    const languages: string[] = createFrameworkDto.languages;
     const languagesEntity: Language[] = [];
-
     const frameworkExist: Framework | null =
       await this.databaseService.framework.findFirst({
         where: {

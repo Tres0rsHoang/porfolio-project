@@ -11,7 +11,6 @@ const ProjectFrame: React.FC<ProjectInfo> = ({
   projectType = ProjectType.Default,
 }) => {
   let techstackLine = "";
-
   techstack.map((element, i) => {
     techstackLine += element;
     if (i != techstack.length - 1) techstackLine += " • ";

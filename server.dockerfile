@@ -14,7 +14,7 @@ COPY ./nest-server ./
 RUN npm run build
 RUN npm ci --only=production && npm cache clean --force
 RUN npx prisma generate
-RUN npx prism db seed
+RUN npm run seed
 
 FROM base AS development
 WORKDIR /server

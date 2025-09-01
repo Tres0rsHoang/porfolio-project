@@ -6,6 +6,7 @@ import styles from "./about_me.module.css";
 import Education from "../education";
 import OnWorking from "../on_working";
 import { scrollToSection } from "@/helpers/scroll_to_section";
+import { AnimatePresence, motion } from "framer-motion";
 
 type ExpandItems = {
   educationExpanded: boolean;
@@ -35,12 +36,18 @@ function AboutMe() {
   return (
     <div className="relative">
       <div className={styles.aboutMeContainer}>
-        <button
-          onClick={() => scrollToSection("comment")}
-          className="absolute top-[-1.2rem] px-5 rounded-xl right-50 bg-(--highlight-button) border-solid border-[3px]"
-        >
-          <div className="text-3xl">Go to Comment →</div>
-        </button>
+        <AnimatePresence>
+          <motion.button
+            onClick={() => scrollToSection("comment")}
+            animate={{
+              rotate: [2, -2, 2],
+            }}
+            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[-1.2rem] px-5 rounded-xl right-50 bg-(--highlight-button) border-solid border-[3px]"
+          >
+            <div className="text-3xl">Go to Comment →</div>
+          </motion.button>
+        </AnimatePresence>
         <h2>About Me</h2>
         <div className="flex flex-row justify-between">
           <div className="relative w-52 h-52">
