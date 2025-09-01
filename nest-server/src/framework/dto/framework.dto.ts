@@ -10,9 +10,8 @@ export class CreateFrameworkDto {
   @IsNotEmpty()
   name: string;
 
-  @IsString()
   @IsNotEmpty()
-  languages: string;
+  languages: string[];
 }
 
 export class UpdateFrameworkDto extends PartialType(CreateFrameworkDto) {}

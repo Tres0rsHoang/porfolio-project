@@ -77,7 +77,7 @@ export function mapStringToProjectType(value: string): ProjectType | undefined {
 
 export type ProjectInfo = {
   projectName: string;
-  techstack: Array<Framework>;
-  language: Array<Language>;
+  techstack: Array<string>;
+  language: Array<string>;
   projectType?: ProjectType;
 };
