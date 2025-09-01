@@ -9,13 +9,13 @@ RUN apk update && apk upgrade && npm install
 
 FROM base AS builder
 WORKDIR /server
-COPY --from=dependencies /server/node_modules ./node_modules
 COPY ./nest-server ./
 
-RUN npm run build
+RUN apk update && apk upgrade
 RUN npm ci --only=production && npm cache clean --force
 RUN npx prisma generate
 RUN npm run seed
+RUN npm run build
 
 FROM base AS development
 WORKDIR /server

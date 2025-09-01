@@ -8,10 +8,11 @@ WORKDIR /app
 RUN apk update && apk upgrade && npm install
 
 FROM base AS builder
+ENV NEXT_TELEMETRY_DISABLE=1
 WORKDIR /app
 COPY ./next-app ./
-COPY --from=dependencies /app/node_modules ./node_modules
-ENV NEXT_TELEMETRY_DISABLE=1
+RUN apk update && apk upgrade 
+RUN npm ci --only=production && npm cache clean --force
 RUN npm run build
 
 # DEV
@@ -19,7 +20,6 @@ FROM base AS development
 WORKDIR /app
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY ./next-app ./
-
 CMD ["npm", "run", "dev"]
 
 # PRODUCTION 
