@@ -5,7 +5,7 @@ COPY ./.env ./
 
 FROM base AS dependencies
 WORKDIR /app
-RUN apk update && apk upgrade && npm install
+RUN npm install --legacy-peer-deps
 
 FROM base AS builder
 ENV NEXT_TELEMETRY_DISABLE=1
@@ -25,12 +25,11 @@ CMD ["npm", "run", "dev"]
 FROM base AS production
 WORKDIR /app
 
-ENV NEXT_TELEMETRY_DISABLE=1 HOSTNAME=0.0.0.0
-
-COPY --from=builder /app/public ./public
-RUN mkdir .next
+ENV NEXT_TELEMETRY_DISABLE=1 
+ENV HOSTNAME=0.0.0.0
 
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
+COPY --from=builder /app/public ./public
 
 CMD ["node", "server.js"]
