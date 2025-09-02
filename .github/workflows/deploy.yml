@@ -4,16 +4,26 @@ on:
     branches:
       - master
 jobs:
+  build-and-push-nestjs-server:
+    name: Build Images and push to docker hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
   deploy:
     name: Deploy server and app into host
-    if: ${{ always() }}
     runs-on: self-hosted
     steps:
       - name: Fetch latest code
         working-directory: /home/baohoang/Project/porfolio-project
         run: |
-          git fetch origin main
-          git reset --hard origin/main
+          git fetch origin master
+          git reset --hard origin/master
       - name: Build images and start new images in docker-compose
         working-directory: /home/baohoang/Project/porfolio-project
         run: docker compose up -d --build
