@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import AnimateSection from "@/components/animate_section";
 import ContactSection from "@/components/contact/contact_section";
 import CommentSection from "@/components/comments/comments_section";
+import { Loading } from "@/components/loading/loading_full";
 
 export default function Home() {
   const [root, setRoot] = useState<Element | undefined>(undefined);
@@ -20,7 +21,7 @@ export default function Home() {
   return (
     <AnimatePresence>
       <div className="profile-info">
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading isShow={true} />}>
           <AnimateSection root={root} id="profile">
             <ProfileInfo />
           </AnimateSection>
