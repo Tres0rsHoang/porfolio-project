@@ -10,7 +10,7 @@ import { Server, Socket } from 'socket.io';
 
 @WebSocketGateway({
   cors: {
-    origin: '*',
+    origin: `${process.env.PUBLIC_APP_URL}`,
   },
 })
 export default class EventsGateway
