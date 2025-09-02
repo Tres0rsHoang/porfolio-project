@@ -1,4 +1,6 @@
 "use client";
+
+import React from "react";
 import * as THREE from "three";
 import { useRef, useState } from "react";
 import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
@@ -14,8 +16,8 @@ import {
   useSphericalJoint,
 } from "@react-three/rapier";
 import { Vector } from "three/examples/jsm/physics/RapierPhysics.js";
-import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 
+import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 export default function InteractiveBadge() {
