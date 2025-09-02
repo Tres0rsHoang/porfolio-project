@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense, useEffect } from "react";
 import * as THREE from "three";
 import { useRef, useState } from "react";
 import { Canvas, extend, useThree, useFrame } from "@react-three/fiber";
@@ -18,14 +18,44 @@ import {
 import { Vector } from "three/examples/jsm/physics/RapierPhysics.js";
 
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
+import { Html, Text } from "@react-three/drei";
+import { Loading } from "./loading/loading_full";
 extend({ MeshLineGeometry, MeshLineMaterial });
 
+function Loader() {
+  return (
+    <Html
+      center
+      className="w-dvw h-dvh flex flex-col justify-center items-center"
+    >
+      <Loading isShow={true} />
+    </Html>
+  );
+}
 export default function InteractiveBadge() {
   return (
-    <Canvas camera={{ position: [0, 0, 13], fov: 25 }}>
-      <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-        <Band />
-      </Physics>
+    <Canvas className="touch-none" camera={{ position: [0, 0, 13], fov: 25 }}>
+      <Suspense fallback={<Loader />}>
+        <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+          <Band />
+        </Physics>
+        <Text
+          maxWidth={2} // giới hạn chiều ngang → tự wrap
+          lineHeight={1.2} // khoảng cách giữa các dòng
+          letterSpacing={0.05} // khoảng cách chữ
+          textAlign="center"
+          anchorX="center"
+          anchorY="middle"
+          color="white"
+          strokeColor="black"
+          strokeWidth={0.01}
+          position={[0, 0, 0]}
+          fontSize={0.5}
+          font="/fonts/Simpsonfont.ttf"
+        >
+          Please visit website on desktop for more
+        </Text>
+      </Suspense>
     </Canvas>
   );
 }
@@ -81,7 +111,6 @@ function Band() {
       [0, 1, 0],
     ],
   );
-
   useFrame((state, delta) => {
     void delta;
     if (dragged) {
@@ -123,6 +152,19 @@ function Band() {
   strapTexture.wrapS = THREE.RepeatWrapping;
   strapTexture.wrapT = THREE.RepeatWrapping;
   strapTexture.needsUpdate = true;
+
+  useEffect(() => {
+    const handleMouseUp = () => {
+      drag(null); // hoặc set dragged = null
+    };
+    window.addEventListener("mouseup", handleMouseUp);
+    window.addEventListener("touchend", handleMouseUp); // cho mobile
+
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("touchend", handleMouseUp);
+    };
+  }, []);
 
   return (
     <>
