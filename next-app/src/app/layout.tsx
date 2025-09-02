@@ -9,7 +9,10 @@ import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
 import Head from "next/head";
 import InteractiveBadge from "@/components/information_card";
-import { getAllImagesFromPublicFolder } from "@/helpers/getPublicImages";
+import {
+  getAllFontsFromPublicFolder,
+  getAllImagesFromPublicFolder,
+} from "@/helpers/getPublicImages";
 import DataPreloadProvider from "@/components/data_preload_provider";
 
 // const simpsonFont = localFont({
@@ -48,6 +51,7 @@ export default function RootLayout({
   images: string[];
 }>) {
   const images: string[] = getAllImagesFromPublicFolder();
+  const fonts: string[] = getAllFontsFromPublicFolder();
 
   return (
     <html lang="en">
@@ -65,7 +69,7 @@ export default function RootLayout({
           overflow: "hidden",
         }}
       >
-        <DataPreloadProvider images={images}>
+        <DataPreloadProvider images={images} fonts={fonts}>
           <QueryProvider>
             <div className="relative w-dvw h-dvh overflow-hidden">
               <div className="homepage">
