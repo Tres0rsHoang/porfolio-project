@@ -12,8 +12,8 @@ jobs:
       - name: Fetch latest code
         working-directory: /home/baohoang/Project/porfolio-project
         run: |
-          git fetch origin main
-          git reset --hard origin/main
+          git fetch origin master
+          git reset --hard origin/master
       - name: Build images and start new images in docker-compose
         working-directory: /home/baohoang/Project/porfolio-project
         run: docker compose up -d --build
