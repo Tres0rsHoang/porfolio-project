@@ -2,7 +2,7 @@ name: Test Project
 on:
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   deploy-server:
     name: Build Drawler Nest Server
@@ -14,13 +14,13 @@ jobs:
         with:
           node-version: 20
       - name: Install package nest-server
-        working-directory: ./drawler-nestjs-server
+        working-directory: ./nest-server
         run: npm install
       - name: Update prisma
-        working-directory: ./drawler-nestjs-server
+        working-directory: ./nest-server
         run: npx prisma generate
       - name: Build nest-server
-        working-directory: ./drawler-nestjs-server
+        working-directory: ./nest-server
         run: npm run build
   deploy-app:
     name: Build Drawler Nest App
@@ -32,9 +32,8 @@ jobs:
         with:
           node-version: 20
       - name: Install package react-app
-        working-directory: ./drawler-reactjs-app
+        working-directory: ./next-app
         run: npm install
       - name: Build react-app
-        working-directory: ./drawler-reactjs-app
+        working-directory: ./next-app
         run: npm run build
-

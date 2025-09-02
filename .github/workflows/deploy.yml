@@ -2,7 +2,7 @@ name: Deploy Project
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy:
     name: Deploy server and app into host
@@ -10,11 +10,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - name: Pull new code from server
-        working-directory: /home/baohoang/Drawler-App/drawler_BE_app
+        working-directory: /home/baohoang/Project/porfolio-project
         run: git fetch && git pull
       - name: Deploy using SSH
-        working-directory: /home/baohoang/Drawler-App/drawler_BE_app
+        working-directory: /home/baohoang/Project/porfolio-project
         run: docker compose down --rmi all && docker compose up -d
       - name: Update database
-        working-directory: /home/baohoang/Drawler-App/drawler_BE_app/drawler-nestjs-server
-        run: yarn db:dev:restart
+        working-directory: /home/baohoang/Project/porfolio-project/nest-server
+        run: npm run docker:prisma:migrate

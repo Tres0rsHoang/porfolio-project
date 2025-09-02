@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prisma:dev:deploy": "prisma migrate deploy && prisma generate",
+    "docker:prisma:migrate": "docker compose exec -it nestjs-server sh -c 'npm run prisma:dev:deploy'",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
