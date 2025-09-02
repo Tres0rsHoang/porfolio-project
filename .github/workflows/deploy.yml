@@ -7,11 +7,11 @@ jobs:
   build-and-push-nestjs-server:
     name: Build nestJs image and push to docker hub
     runs-on: ubuntu-latest
-    env:
-      NODE_ENV: production
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Create .env file
+        run: echo "${{ secrets.APP_ENV }}" > .env
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      - name: Create .env file
+        run: echo "${{ secrets.APP_ENV }}" > .env
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
