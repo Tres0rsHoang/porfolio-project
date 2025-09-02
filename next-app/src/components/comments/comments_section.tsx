@@ -47,7 +47,6 @@ export const formatRawComment = (value: RawComment) => {
 
 export default function CommentSection() {
   const queryClient = useQueryClient();
-
   const {
     data: comments,
     fetchNextPage,
@@ -217,7 +216,7 @@ export default function CommentSection() {
           )}
         </div>
         <div id="comment-list" className="h-96 w-full overflow-y-auto">
-          {!comments || comments.pages.length == 0 ? (
+          {!comments || comments.pages[0].comments.length == 0 ? (
             <div className="mt-4">
               <EmptyComment />
             </div>
