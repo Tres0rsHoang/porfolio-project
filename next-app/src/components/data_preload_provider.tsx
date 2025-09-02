@@ -17,15 +17,29 @@ export default function DataPreloadProvider({ children, images }: Props) {
     ensureToken();
   }, [ensureToken]);
 
+  const preloadImage = (src: string, retries = 3): Promise<void> => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const attempt = (remain: number) => {
+        img.src = src + (src.includes("?") ? "&" : "?") + "t=" + Date.now(); // bust cache
+        img.onload = () => resolve();
+        img.onerror = () => {
+          if (remain > 0) {
+            attempt(remain - 1);
+          } else {
+            reject(new Error(`Failed to load image: ${src}`));
+          }
+        };
+      };
+      attempt(retries);
+    });
+  };
+
   useEffect(() => {
-    const promises = images.map(
-      (src) =>
-        new Promise<void>((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = () => resolve();
-          img.onerror = () => resolve();
-        }),
+    const promises = images.map((src) =>
+      preloadImage(src, 3).catch((err) => {
+        console.error(err);
+      }),
     );
     Promise.all(promises).then(() => setLoading(false));
   }, [images]);
