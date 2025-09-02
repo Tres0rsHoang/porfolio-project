@@ -3,11 +3,11 @@
 import AboutMe from "../components/about_me/about_me";
 import ProfileInfo from "../components/profile_info/profile_info";
 import FeatureProject from "../components/project/feature_project";
-import CommentSection from "@/components/comments/comments_section";
-import ContactSection from "@/components/contact/contact_section";
 import { Suspense, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import AnimateSection from "@/components/animate_section";
+import ContactSection from "@/components/contact/contact_section";
+import CommentSection from "@/components/comments/comments_section";
 
 export default function Home() {
   const [root, setRoot] = useState<Element | undefined>(undefined);

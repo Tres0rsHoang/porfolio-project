@@ -77,8 +77,9 @@ export default function RootLayout({
                 </div>
               </main>
             </div>
-            <div className="namecard absolute h-dvh w-dvw top-0 -left-5">
+            <div className="namecard absolute h-dvh w-dvw top-0 -left-5 overflow-hidden">
               <InteractiveBadge />
+              <h3>Please turn back when using bigger screen</h3>
             </div>
           </div>
         </QueryProvider>
