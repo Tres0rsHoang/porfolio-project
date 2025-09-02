@@ -9,10 +9,11 @@ jobs:
     if: ${{ always() }}
     runs-on: self-hosted
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          path: /home/baohoang/Project/porfolio-project
+      - name: Fetch latest code
+        working-directory: /home/baohoang/Project/porfolio-project
+        run: |
+          git fetch origin main
+          git reset --hard origin/main
       - name: Build images and start new images in docker-compose
         working-directory: /home/baohoang/Project/porfolio-project
         run: docker compose up -d --build
