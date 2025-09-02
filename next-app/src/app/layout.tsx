@@ -56,9 +56,12 @@ export default function RootLayout({
       <body
         className={`${baloo2.className} antialiased`}
         suppressHydrationWarning={true}
+        style={{
+          overflow: "hidden",
+        }}
       >
         <QueryProvider>
-          <div className="relative w-dvw h-dvh">
+          <div className="relative w-dvw h-dvh overflow-hidden">
             <div className="homepage">
               <main className="relative w-full h-dvh justify-center items-center flex flex-col">
                 <NavBar />
@@ -77,11 +80,12 @@ export default function RootLayout({
                 </div>
               </main>
             </div>
-            <div className="namecard absolute h-dvh w-dvw top-0 -left-5">
-              <InteractiveBadge />
-            </div>
           </div>
         </QueryProvider>
+
+        <div className="namecard absolute h-dvh w-dvw top-0 left-0">
+          <InteractiveBadge />
+        </div>
         <NotificaionProvider />
       </body>
     </html>
