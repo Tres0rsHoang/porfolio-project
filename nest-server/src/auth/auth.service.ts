@@ -184,8 +184,6 @@ export class AuthService {
         },
       });
 
-      console.log(refreshToken);
-
       if (!auth) {
         throw new Error('Invalid refresh token');
       }
@@ -380,6 +378,7 @@ export class AuthService {
     linkToUserId: number,
     linkToUserRoles: Role[],
   ) {
+    if (userId == linkToUserId) return { message: 'Complete' };
     const authInfo: Auth | null = await this.databaseService.auth.findFirst({
       where: {
         userId: userId,

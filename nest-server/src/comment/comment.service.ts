@@ -25,10 +25,11 @@ export class CommentService {
     userName: string;
     content: string;
   }) {
+    const formatedContent = props.content.trimEnd().trimStart();
     const newComment = await this.databaseService.comment.create({
       data: {
         userId: props.userId,
-        content: props.content,
+        content: formatedContent,
       },
       include: {
         user: {
@@ -41,6 +42,7 @@ export class CommentService {
         },
       },
     });
+
     this.eventsGateway.emitMessage({
       event: 'newNotificaion',
       data: `${props.userName} have just drop a new comment`,
@@ -156,12 +158,13 @@ export class CommentService {
   }
 
   async editContent(commentId: number, content: string) {
+    const formatedContent = content.trimEnd().trimStart();
     const newComment = await this.databaseService.comment.update({
       where: {
         id: commentId,
       },
       data: {
-        content: content,
+        content: formatedContent,
       },
       include: {
         user: {
