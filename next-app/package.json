@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.3.0",
+    "@react-three/rapier": "^2.1.0",
     "@tanstack/react-query": "^5.85.5",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
+    "meshline": "^3.3.1",
     "nanoid": "^5.1.5",
     "next": "15.3.4",
     "react": "^19.0.0",
@@ -20,6 +23,7 @@
     "react-hook-form": "^7.62.0",
     "recharts": "^3.0.2",
     "socket.io-client": "^4.8.1",
+    "three": "^0.179.1",
     "zustand": "^5.0.7"
   },
   "devDependencies": {
@@ -28,6 +32,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.179.0",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4",

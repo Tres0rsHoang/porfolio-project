@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   deploy-server:
-    name: Build Drawler Nest Server
+    name: Build Nest Server
     runs-on: ubuntu-latest
     container:
       image: node:20
@@ -23,7 +23,7 @@ jobs:
         working-directory: ./nest-server
         run: npm run build
   deploy-app:
-    name: Build Drawler Nest App
+    name: Build Next App
     runs-on: ubuntu-latest
     container:
       image: node:20
