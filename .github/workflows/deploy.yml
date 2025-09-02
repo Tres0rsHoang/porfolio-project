@@ -42,6 +42,9 @@ jobs:
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/portforlio-nextjs-app:latest
   deploy:
     name: Deploy server and app into host
+    needs:
+      - build-and-push-nestjs-server
+      - build-and-push-nextjs-app
     runs-on: self-hosted
     steps:
       - name: Fetch latest code
@@ -49,9 +52,16 @@ jobs:
         run: |
           git fetch origin master
           git reset --hard origin/master
-      - name: Build images and start new images in docker-compose
+      - name: Update .env file
         working-directory: /home/baohoang/Project/porfolio-project
-        run: docker compose up -d --build
+        run: |
+          rm -f .env
+          echo "${{ secrets.APP_ENV }}" > .env
+      - name: Pull images and start new images in docker-compose
+        working-directory: /home/baohoang/Project/porfolio-project
+        run: |
+          docker compose pull
+          docker compose up -d
       - name: Migrate database
         working-directory: /home/baohoang/Project/porfolio-project/nest-server
         run: npm run docker:prisma:migrate
