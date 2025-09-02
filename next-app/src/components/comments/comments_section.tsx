@@ -4,25 +4,21 @@ import styles from "./comments_sections.module.css";
 import { Comment } from "@/models/comment.model";
 import { CommentFrame } from "./comment_frame";
 import EmptyComment from "./empty_comment";
-import { Paging } from "@/models/paging.model";
 import { DialogFrame } from "../dialog/dialog_frame";
 import AnonymousNewCommentForm from "./anonymous_new_comment.form";
-import { NotificationType, useNotication } from "@/store/notification.store";
 import { useAuthStore } from "@/store/auth.store";
 import { Role, User } from "@/models/user.model";
 import { LoadingDonuts } from "../loading/loading_more";
-import { Loading } from "../loading/loading_full";
 import { useUserStore } from "@/store/user.store";
 import { useSocket } from "@/store/socket.store";
 import RegisterForm, { RegisterFormData } from "../login_info/register.form";
 import { NewCommentForm } from "./new_comment.form";
+import useFetchComments, { PageComment } from "@/hooks/useFetchComments";
+import { useQueryClient } from "@tanstack/react-query";
+import useSendNewComment, { NewComment } from "@/hooks/useSendNewComment";
+import { AnimatePresence } from "framer-motion";
 
-export interface NewComment {
-  user: User;
-  content: string;
-}
-
-interface RawComment {
+export interface RawComment {
   user: {
     id: number;
     name: string;
@@ -34,14 +30,31 @@ interface RawComment {
   content: string;
 }
 
-export default function CommentSection() {
-  const [comments, setComments] = useState<Array<Comment>>([]);
-  const [page, setPage] = useState<number>(1);
-  const [hasMore, setHasMore] = useState<boolean>(true);
-  const [newCommentData, setNewCommentData] = useState<NewComment | null>(null);
+export const formatRawComment = (value: RawComment) => {
+  const commentInfo: Comment = {
+    id: +value.id,
+    content: value.content,
+    createdDate: new Date(value.createAt),
+    user: {
+      id: value.user.id,
+      name: value.user.name,
+      company: value.user.company,
+      gender: value.user.gender,
+    },
+  };
+  return commentInfo;
+};
 
-  const [isLoadingMore, setLoadingMore] = useState<boolean>(false);
-  const [isLoading, setLoading] = useState<boolean>(true);
+export default function CommentSection() {
+  const queryClient = useQueryClient();
+
+  const {
+    data: comments,
+    fetchNextPage,
+    isFetching,
+    hasNextPage,
+  } = useFetchComments();
+  const sendNewCommentQuery = useSendNewComment();
 
   const [showNewUserCommentDialog, setShowNewUserCommentDialog] =
     useState<boolean>(false);
@@ -50,38 +63,40 @@ export default function CommentSection() {
   const [showNewCommentDialog, setShowNewCommentDialog] =
     useState<boolean>(false);
 
-  const isSubmittingRef = useRef<boolean>(false);
-  const isFetchCommentRef = useRef<boolean>(false);
   const loadMoreRef = useRef<HTMLDivElement>(null);
 
   const { accessToken } = useAuthStore();
-  const { addNotification } = useNotication();
-  const { user, setUser, setCommented } = useUserStore();
+  const { user, setUser } = useUserStore();
   const { connect, disconnect, socket } = useSocket();
-
-  const formatRawComment = (value: RawComment) => {
-    const commentInfo: Comment = {
-      id: +value.id,
-      content: value.content,
-      createdDate: new Date(value.createAt),
-      user: {
-        id: value.user.id,
-        name: value.user.name,
-        company: value.user.company,
-        gender: value.user.gender,
-      },
-    };
-    return commentInfo;
-  };
+  const newComment = useRef<NewComment | null>(null);
 
   const addNewCommentToState = useCallback(
     (newComment: Comment) => {
-      for (const comment of comments) {
-        if (comment.id == newComment.id) return;
+      for (const page of comments?.pages ?? []) {
+        for (const comment of page.comments) {
+          if (comment.id == newComment.id) return;
+        }
       }
-      setComments((pre) => [newComment, ...pre]);
+      queryClient.setQueryData<{ pages: PageComment[] }>(
+        ["comments"],
+        (oldData) => {
+          if (!oldData) {
+            return { pages: [{ comments: [newComment], nextPage: 2 }] };
+          }
+          return {
+            ...oldData,
+            pages: [
+              {
+                ...oldData.pages[0],
+                comments: [newComment, ...oldData.pages[0].comments],
+              },
+              ...oldData.pages.slice(0),
+            ],
+          };
+        },
+      );
     },
-    [comments],
+    [comments?.pages, queryClient],
   );
 
   const handleNewComment = () => {
@@ -91,7 +106,7 @@ export default function CommentSection() {
 
   const onNewUserSubmitComment = (data: NewComment) => {
     setShowNewUserDialog(true);
-    setNewCommentData(data);
+    newComment.current = data;
   };
 
   const scrollToTop = () => {
@@ -104,57 +119,16 @@ export default function CommentSection() {
     }
   };
 
-  const sendNewComment = async (userId?: number): Promise<boolean> => {
-    if (!newCommentData || isSubmittingRef.current) return false;
-
-    isSubmittingRef.current = true;
-    try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SERVER_URL}/api/comment`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            userId: userId,
-            name: newCommentData?.user.name,
-            company: newCommentData?.user.company,
-            content: newCommentData?.content,
-            gender: newCommentData?.user.gender,
-          }),
+  const handleCreateAccountRequest = async (accept: boolean) => {
+    if (!newComment.current) return;
+    if (!accept) {
+      sendNewCommentQuery.mutate({
+        newComment: newComment.current,
+        onSuccess: () => {
+          scrollToTop();
         },
-      );
-
-      if (res.status === 201) {
-        setCommented(true);
-        const resData = await res.json();
-        const currentUser: User = {
-          name: resData.user.name,
-          company: resData.user.company,
-          gender: resData.user.gender,
-          id: resData.user.id,
-          role: Role.USER,
-        };
-        setUser(currentUser);
-      }
-      return res.status === 201;
-    } finally {
-      isSubmittingRef.current = false;
-    }
-  };
-
-  const handleCreateAccountRequest = async (value: boolean) => {
-    if (!value) {
-      const sendResult = await sendNewComment();
-      if (sendResult) {
-        addNotification(
-          "Thank for a new comment. <3 <3",
-          NotificationType.SUCCESS,
-        );
-      }
+      });
       setShowNewUserCommentDialog(false);
-      scrollToTop();
     } else {
       setShowRegisterDialog(true);
     }
@@ -167,76 +141,66 @@ export default function CommentSection() {
       const comment: Comment = formatRawComment(value);
       addNewCommentToState(comment);
     });
+
     socket?.on("updatedComment", (value) => {
       if (!value["updatedComment"]) return;
+
       const updatedComments: RawComment[] = value[
         "updatedComment"
       ] as RawComment[];
 
-      const updatedCommentsState = comments;
-      for (const rawComment of updatedComments) {
-        const existIndex: number | null = comments.findIndex(
-          (value) => value.id == +rawComment.id,
-        );
-        if (existIndex == -1) continue;
-        updatedCommentsState[existIndex] = formatRawComment(rawComment);
-      }
-      setComments(updatedCommentsState);
-    });
-    socket?.on("deletedComment", (commentId) => {
-      setComments((pre) => pre.filter((value) => value.id != commentId));
+      queryClient.setQueryData<{ pages: PageComment[] }>(
+        ["comments"],
+        (oldData) => {
+          const updateData = oldData;
+          for (const rawComment of updatedComments) {
+            for (const page of updateData?.pages ?? []) {
+              for (const index in page.comments) {
+                if (page.comments[index].id == rawComment.id) {
+                  page.comments[index] = formatRawComment(rawComment);
+                  break;
+                }
+              }
+            }
+          }
+          return updateData;
+        },
+      );
     });
 
+    socket?.on("deletedComment", (commentId) => {
+      if (!commentId) return;
+      queryClient.setQueryData<{ pages: PageComment[] }>(
+        ["comments"],
+        (oldData) => {
+          const updateData = oldData;
+          for (const page of updateData?.pages ?? []) {
+            page.comments = page.comments.filter(
+              (value) => value.id != commentId,
+            );
+          }
+          return updateData;
+        },
+      );
+    });
     return () => {
       disconnect();
     };
-  }, [connect, disconnect, socket, addNewCommentToState, comments]);
+  }, [connect, disconnect, socket, addNewCommentToState, queryClient]);
 
   useEffect(() => {
-    const fetchComment = async () => {
-      setLoadingMore(true);
-      isFetchCommentRef.current = true;
-      try {
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/comment?page=${page}`,
-        );
-        const resBody = await res.json();
-        const data = resBody.data;
-        const paging: Paging = resBody.paging as Paging;
-        if (!paging || page >= paging.totalPage) {
-          setHasMore(false);
-        }
-        if (!Array.isArray(data)) {
-          throw new Error("Invalid /api/comment responsive");
-        }
-        const formatedComments: Comment[] = data.map((value) => {
-          return formatRawComment(value);
-        });
-        setComments((prev) => [...prev, ...formatedComments]);
-      } catch (err) {
-        console.log(err);
-      } finally {
-        isFetchCommentRef.current = false;
-        setLoadingMore(false);
-        setLoading(false);
-      }
-    };
-    if (!isFetchCommentRef.current && hasMore) fetchComment();
-  }, [page, hasMore]);
-
-  useEffect(() => {
-    if (!loadMoreRef.current || !hasMore) return;
+    if (!loadMoreRef.current || !hasNextPage) return;
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isLoadingMore) {
-          setPage((prev) => prev + 1);
+        if (entries[0].isIntersecting && !isFetching) {
+          fetchNextPage();
         }
       },
       { threshold: 1 },
     );
     observer.observe(loadMoreRef.current);
     return () => observer.disconnect();
-  }, [isLoadingMore, hasMore]);
+  }, [fetchNextPage, hasNextPage, isFetching]);
 
   return (
     <Fragment>
@@ -253,32 +217,35 @@ export default function CommentSection() {
           )}
         </div>
         <div id="comment-list" className="h-96 w-full overflow-y-auto">
-          {comments.length != 0 || isLoadingMore ? (
-            comments.map((comment, i) => {
-              return (
-                <CommentFrame
-                  comment={comment}
-                  key={i}
-                  isRight={comment.parentId != undefined}
-                  isOwner={
-                    user != null &&
-                    comment.user.id != null &&
-                    comment.user.id == user.id
-                  }
-                />
-              );
-            })
-          ) : (
+          {!comments || comments.pages.length == 0 ? (
             <div className="mt-4">
               <EmptyComment />
             </div>
+          ) : (
+            <AnimatePresence>
+              {comments.pages.map((page, pageIndex) => (
+                <Fragment key={pageIndex}>
+                  {page.comments.map((comment, index) => (
+                    <CommentFrame
+                      comment={comment}
+                      key={index}
+                      isRight={comment.parentId != undefined}
+                      isOwner={
+                        user != null &&
+                        comment.user.id != null &&
+                        comment.user.id == user.id
+                      }
+                    />
+                  ))}
+                </Fragment>
+              ))}
+            </AnimatePresence>
           )}
           <div className="flex flex-row justify-center items-center">
-            <LoadingDonuts isShow={isLoadingMore} />
+            <LoadingDonuts isShow={isFetching} />
           </div>
           <div ref={loadMoreRef}></div>
         </div>
-        <Loading isShow={isLoading}></Loading>
       </div>
       <DialogFrame
         title="New Comment"
@@ -325,9 +292,9 @@ export default function CommentSection() {
         }}
       >
         <RegisterForm
-          name={newCommentData?.user.name}
-          company={newCommentData?.user.company}
-          gender={newCommentData?.user.gender}
+          name={newComment.current?.user.name}
+          company={newComment.current?.user.company}
+          gender={newComment.current?.user.gender}
           closeDialog={() => setShowRegisterDialog(false)}
           onRegisterSuccess={async (data: RegisterFormData, userId: number) => {
             const currentUser: User = {
@@ -340,20 +307,16 @@ export default function CommentSection() {
             setUser(currentUser);
             setShowNewCommentDialog(false);
             setShowNewUserCommentDialog(false);
-            if (!user) return;
-            const newComment: NewComment = {
+            newComment.current = {
+              content: newComment.current?.content ?? "",
               user: currentUser,
-              content: newCommentData?.content ?? "",
             };
-            setNewCommentData(newComment);
-            const sendResult = await sendNewComment(userId);
-            if (sendResult) {
-              addNotification(
-                "Thank for a new comment. <3 <3",
-                NotificationType.SUCCESS,
-              );
-            }
-            scrollToTop();
+            sendNewCommentQuery.mutate({
+              newComment: newComment.current,
+              onSuccess: () => {
+                scrollToTop();
+              },
+            });
           }}
         />
       </DialogFrame>
@@ -364,21 +327,13 @@ export default function CommentSection() {
       >
         <NewCommentForm
           onSubmit={async (content: string) => {
-            setShowNewCommentDialog(false);
             if (!user) return;
-            const newComment: NewComment = {
+            newComment.current = {
               user: user,
               content: content,
             };
-            setNewCommentData(newComment);
-            const sendResult = await sendNewComment();
-            if (sendResult) {
-              addNotification(
-                "Thank for a new comment. <3 <3",
-                NotificationType.SUCCESS,
-              );
-            }
             scrollToTop();
+            setShowNewCommentDialog(false);
           }}
         />
       </DialogFrame>

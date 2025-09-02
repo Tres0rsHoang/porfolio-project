@@ -144,6 +144,12 @@ export default function RegisterForm(props: RegisterFormProps) {
         placeholder="Username"
         register={registerRegister}
         error={registerErrors.username}
+        validate={(value, formValues) => {
+          void formValues;
+          if (value.includes(" "))
+            return "Don't push whitespace in your username";
+          return true;
+        }}
       ></InputField>
       <InputField<RegisterFormData>
         name="password"

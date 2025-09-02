@@ -116,44 +116,42 @@ export const CommentFrame = ({
   if (isRight) {
     return (
       <div className="relative pb-5 pr-16 flex flex-row justify-end">
-        <AnimatePresence>
-          <motion.div
-            key="comment-box"
-            initial={{
-              opacity: 0,
-              y: 80,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: -80,
-            }}
-            transition={{
-              duration: 1,
-            }}
-            className={`${styles.commentBox}`}
-          >
-            <div className="text-end whitespace-pre-line">
-              <ContentSection />
-            </div>
-            <h3>{comment.user.name}</h3>
-            {comment.user.company && (
-              <h4 className="text-start">{comment.user.company}</h4>
-            )}
-            <div className="text-start pr-7">{formattedDate}</div>
-            <div className="absolute -bottom-[28px] right-16">
-              <Image
-                alt="right-tail"
-                src="/images/RightCommentTail.png"
-                width={32}
-                height={32}
-              />
-            </div>
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key="comment-box"
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            y: 80,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className={`${styles.commentBox}`}
+        >
+          <div className="text-end whitespace-pre-line">
+            <ContentSection />
+          </div>
+          <h3>{comment.user.name}</h3>
+          {comment.user.company && (
+            <h4 className="text-start">{comment.user.company}</h4>
+          )}
+          <div className="text-start pr-7">{formattedDate}</div>
+          <div className="absolute -bottom-[28px] right-16">
+            <Image
+              alt="right-tail"
+              src="/images/RightCommentTail.png"
+              width={32}
+              height={32}
+            />
+          </div>
+        </motion.div>
         <div className="absolute -bottom-10 right-0">
           <Avatar
             name={comment.user.name}
@@ -168,88 +166,86 @@ export const CommentFrame = ({
   return (
     <Fragment>
       <div className="relative pb-5 pl-16 flex flex-row justify-start">
-        <AnimatePresence>
-          <motion.div
-            key="comment-box"
-            initial={{
-              opacity: 0,
-              y: 80,
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              y: -80,
-            }}
-            transition={{
-              duration: 1,
-            }}
-            className={`${styles.commentBox}`}
-          >
-            <div className="text-start whitespace-pre-line">
-              <ContentSection />
-            </div>
-            <h3 className="text-end">{comment.user.name}</h3>
-            {comment.user.company && (
-              <h4 className="text-end">{comment.user.company}</h4>
-            )}
-            <div className="text-end pl-7">{formattedDate}</div>
-            <div className="absolute -bottom-[28px] left-16">
-              <Image
-                alt="right-tail"
-                src="/images/RightCommentTail.png"
-                width={32}
-                height={32}
-                className="scale-x-[-1]"
-              />
-            </div>
-          </motion.div>
-          {((isOwner && accessToken != null) || user?.role == Role.ADMIN) && (
-            <div className="flex flex-row justify-center items-center">
-              <motion.button
-                onClick={() => setShowEditComment(true)}
-                className="flex flex-row ml-10 w-10"
-                style={{
-                  opacity: "40%",
-                  border: "none",
-                  padding: "0",
-                }}
-                whileHover={{
-                  opacity: "100%",
-                }}
-              >
-                <Image
-                  src="/images/PenIcon.png"
-                  alt="pen"
-                  width={30}
-                  height={30}
-                />
-              </motion.button>
-              <motion.button
-                onClick={() => setShowDeleteComment(true)}
-                className="flex flex-row ml-5 w-10"
-                style={{
-                  opacity: "40%",
-                  borderRadius: "100px",
-                  border: "none",
-                  padding: "0",
-                }}
-                whileHover={{
-                  opacity: "100%",
-                }}
-              >
-                <Image
-                  src="/images/TrashCanIcon.png"
-                  alt="pen"
-                  width={30}
-                  height={30}
-                />
-              </motion.button>
-            </div>
+        <motion.div
+          key="comment-box"
+          initial={{
+            opacity: 0,
+            y: 80,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          exit={{
+            opacity: 0,
+            y: 80,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className={`${styles.commentBox}`}
+        >
+          <div className="text-start whitespace-pre-line">
+            <ContentSection />
+          </div>
+          <h3 className="text-end">{comment.user.name}</h3>
+          {comment.user.company && (
+            <h4 className="text-end">{comment.user.company}</h4>
           )}
-        </AnimatePresence>
+          <div className="text-end pl-7">{formattedDate}</div>
+          <div className="absolute -bottom-[28px] left-16">
+            <Image
+              alt="right-tail"
+              src="/images/RightCommentTail.png"
+              width={32}
+              height={32}
+              className="scale-x-[-1]"
+            />
+          </div>
+        </motion.div>
+        {((isOwner && accessToken != null) || user?.role == Role.ADMIN) && (
+          <div className="flex flex-row justify-center items-center">
+            <motion.button
+              onClick={() => setShowEditComment(true)}
+              className="flex flex-row ml-10 w-10"
+              style={{
+                opacity: "40%",
+                border: "none",
+                padding: "0",
+              }}
+              whileHover={{
+                opacity: "100%",
+              }}
+            >
+              <Image
+                src="/images/PenIcon.png"
+                alt="pen"
+                width={30}
+                height={30}
+              />
+            </motion.button>
+            <motion.button
+              onClick={() => setShowDeleteComment(true)}
+              className="flex flex-row ml-5 w-10"
+              style={{
+                opacity: "40%",
+                borderRadius: "100px",
+                border: "none",
+                padding: "0",
+              }}
+              whileHover={{
+                opacity: "100%",
+              }}
+            >
+              <Image
+                src="/images/TrashCanIcon.png"
+                alt="pen"
+                width={30}
+                height={30}
+              />
+            </motion.button>
+          </div>
+        )}
         <div className="absolute -bottom-10 left-0">
           <Avatar
             name={comment.user.name}

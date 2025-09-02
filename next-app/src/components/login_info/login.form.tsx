@@ -36,6 +36,7 @@ export default function LoginForm(props: LoginProps) {
     setValue: setLoginValue,
     formState: { errors: loginErrors },
   } = useForm<LoginFormData>();
+
   const { addNotification } = useNotication();
   const [isShowRegisterForm, setShowRegisterForm] = useState<boolean>(false);
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
@@ -228,7 +229,6 @@ export default function LoginForm(props: LoginProps) {
           </h4>
         </button>
       </div>
-
       <DialogFrame
         title="Register"
         isOpen={isShowRegisterForm}
