@@ -3,8 +3,8 @@ import { InputField } from "../form/input.field";
 import SelectionField from "../form/selection.field";
 import { TextAreaField } from "../form/text_area.field";
 import { Fragment } from "react";
-import { NewComment } from "./comments_section";
 import { User } from "@/models/user.model";
+import { NewComment } from "@/hooks/useSendNewComment";
 
 interface NewCommentData {
   name: string;
