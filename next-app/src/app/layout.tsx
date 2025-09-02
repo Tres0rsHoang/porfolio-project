@@ -7,6 +7,7 @@ import NavBar from "@/components/navbar/navbar";
 import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
+import Head from "next/head";
 
 // const simpsonFont = localFont({
 //   src: "../../public/fonts/Simpsonfont.ttf",
@@ -44,6 +45,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+        <meta property="og:title" content="Bao Hoang Portfolio" />
+        <meta property="og:description" content="Bao Hoang Portfolio Website" />
+        <meta property="og:image" content="/images/ProfilePicSimpson.png" />
+        <meta property="og:url" content="/images/ProfilePicSimpson.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Head>
       <body
         className={`${baloo2.className} antialiased`}
         suppressHydrationWarning={true}
