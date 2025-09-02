@@ -8,6 +8,7 @@ import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
 import Head from "next/head";
+import InteractiveBadge from "@/components/information_card";
 
 // const simpsonFont = localFont({
 //   src: "../../public/fonts/Simpsonfont.ttf",
@@ -57,24 +58,28 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <QueryProvider>
-          <div className="homepage">
-            <main className="relative w-full h-dvh justify-center items-center flex flex-col">
-              <NavBar />
-              <LoginInfo />
-              <div className="content-container">{children}</div>
-
-              <div className="w-full bg-(--blue) border-black border-t-2 px-2">
-                <footer className="flex flex-row justify-end items-center">
-                  <Image
-                    src="/images/WordPressLogo.png"
-                    alt="wordpress"
-                    width={25}
-                    height={25}
-                  ></Image>
-                  <p>Proudly powered by… me. Who needs WordPress?</p>
-                </footer>
-              </div>
-            </main>
+          <div className="relative w-dvw h-dvh">
+            <div className="homepage">
+              <main className="relative w-full h-dvh justify-center items-center flex flex-col">
+                <NavBar />
+                <LoginInfo />
+                <div className="content-container">{children}</div>
+                <div className="w-full bg-(--blue) border-black border-t-2 px-2">
+                  <footer className="flex flex-row justify-end items-center">
+                    <Image
+                      src="/images/WordPressLogo.png"
+                      alt="wordpress"
+                      width={25}
+                      height={25}
+                    ></Image>
+                    <p>Proudly powered by… me. Who needs WordPress?</p>
+                  </footer>
+                </div>
+              </main>
+            </div>
+            <div className="namecard absolute h-dvh w-dvw top-0 -left-5">
+              <InteractiveBadge />
+            </div>
           </div>
         </QueryProvider>
         <NotificaionProvider />
