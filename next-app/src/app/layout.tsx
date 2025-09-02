@@ -9,6 +9,8 @@ import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
 import Head from "next/head";
 import InteractiveBadge from "@/components/information_card";
+import { getAllImagesFromPublicFolder } from "@/helpers/getPublicImages";
+import DataPreloadProvider from "@/components/data_preload_provider";
 
 // const simpsonFont = localFont({
 //   src: "../../public/fonts/Simpsonfont.ttf",
@@ -43,7 +45,10 @@ export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
+  images: string[];
 }>) {
+  const images: string[] = getAllImagesFromPublicFolder();
+
   return (
     <html lang="en">
       <Head>
@@ -60,33 +65,34 @@ export default function RootLayout({
           overflow: "hidden",
         }}
       >
-        <QueryProvider>
-          <div className="relative w-dvw h-dvh overflow-hidden">
-            <div className="homepage">
-              <main className="relative w-full h-dvh justify-center items-center flex flex-col">
-                <NavBar />
-                <LoginInfo />
-                <div className="content-container">{children}</div>
-                <div className="w-full bg-(--blue) border-black border-t-2 px-2">
-                  <footer className="flex flex-row justify-end items-center">
-                    <Image
-                      src="/images/WordPressLogo.png"
-                      alt="wordpress"
-                      width={25}
-                      height={25}
-                    ></Image>
-                    <p>Proudly powered by… me. Who needs WordPress?</p>
-                  </footer>
-                </div>
-              </main>
+        <DataPreloadProvider images={images}>
+          <QueryProvider>
+            <div className="relative w-dvw h-dvh overflow-hidden">
+              <div className="homepage">
+                <main className="relative w-full h-dvh justify-center items-center flex flex-col">
+                  <NavBar />
+                  <LoginInfo />
+                  <div className="content-container">{children}</div>
+                  <div className="w-full bg-(--blue) border-black border-t-2 px-2">
+                    <footer className="flex flex-row justify-end items-center">
+                      <Image
+                        src="/images/WordPressLogo.png"
+                        alt="wordpress"
+                        width={25}
+                        height={25}
+                      ></Image>
+                      <p>Proudly powered by… me. Who needs WordPress?</p>
+                    </footer>
+                  </div>
+                </main>
+              </div>
             </div>
+          </QueryProvider>
+          <div className="namecard absolute h-dvh w-dvw top-0 left-0">
+            <InteractiveBadge />
           </div>
-        </QueryProvider>
-
-        <div className="namecard absolute h-dvh w-dvw top-0 left-0">
-          <InteractiveBadge />
-        </div>
-        <NotificaionProvider />
+          <NotificaionProvider />
+        </DataPreloadProvider>
       </body>
     </html>
   );

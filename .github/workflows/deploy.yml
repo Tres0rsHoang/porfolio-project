@@ -9,12 +9,15 @@ jobs:
     if: ${{ always() }}
     runs-on: self-hosted
     steps:
-      - name: Pull new code from server
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          path: /home/baohoang/Project/porfolio-project
+      - name: Build images and start new images in docker-compose
         working-directory: /home/baohoang/Project/porfolio-project
-        run: git fetch && git pull
-      - name: Deploy using SSH
-        working-directory: /home/baohoang/Project/porfolio-project
-        run: docker compose down --rmi all && docker compose up -d
-      - name: Update database
+        run: docker compose up -d --build
+      - name: Migrate database
         working-directory: /home/baohoang/Project/porfolio-project/nest-server
         run: npm run docker:prisma:migrate
+      - name: Clean up old images (optional)
+        run: docker image prune -f

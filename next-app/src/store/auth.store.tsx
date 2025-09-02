@@ -17,6 +17,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     const { accessToken, isRefreshing } = get();
     if (accessToken || isRefreshing) return;
     set({ isRefreshing: true });
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/refresh`,
