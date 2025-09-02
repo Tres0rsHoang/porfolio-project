@@ -3,7 +3,7 @@ import { Comment } from "@/models/comment.model";
 import styles from "./comments_sections.module.css";
 import Image from "next/image";
 import Avatar from "../avatars/avatar";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Fragment, useState } from "react";
 import { useUserStore } from "@/store/user.store";
 import { useAuthStore } from "@/store/auth.store";
