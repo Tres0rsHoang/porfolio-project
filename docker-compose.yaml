@@ -16,6 +16,11 @@ services:
       - .env
     networks:
       - portfolio-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${APP_PORT}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   database:
     image: postgres:15
     container_name: database
@@ -48,6 +53,11 @@ services:
       - .env
     networks:
       - portfolio-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT}/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 volumes:
   postgres_data:
 networks:

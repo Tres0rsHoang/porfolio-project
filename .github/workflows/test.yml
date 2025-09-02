@@ -34,6 +34,6 @@ jobs:
       - name: Install package react-app
         working-directory: ./next-app
         run: npm install
-      - name: Build react-app
+      - name: Build next-app
         working-directory: ./next-app
         run: npm run build
