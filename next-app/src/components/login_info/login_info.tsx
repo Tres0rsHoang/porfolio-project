@@ -5,19 +5,15 @@ import styles from "./login_info.module.css";
 import { DialogFrame } from "../dialog/dialog_frame";
 import { useAuthStore } from "@/store/auth.store";
 import LoginForm from "./login.form";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { useLogout } from "@/hooks/useLogout";
 import { LoadingButton } from "../loading/loading_button";
 
 export default function LoginInfo() {
   const { commented } = useUserStore();
-  const { accessToken, ensureToken } = useAuthStore();
+  const { accessToken } = useAuthStore();
   const { mutate: logout, isPending } = useLogout();
   const [isShowLogin, setShowLogin] = useState<boolean>(false);
-
-  useEffect(() => {
-    ensureToken();
-  }, [ensureToken]);
 
   return (
     <Fragment>
