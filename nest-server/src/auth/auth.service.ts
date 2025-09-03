@@ -259,6 +259,7 @@ export class AuthService {
     });
 
     const tokens: GoogleLogin = (await tokenRes.json()) as GoogleLogin;
+    console.log(tokens);
 
     const userRes = await fetch(
       'https://www.googleapis.com/oauth2/v2/userinfo',
