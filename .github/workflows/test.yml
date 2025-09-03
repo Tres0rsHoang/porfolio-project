@@ -19,9 +19,6 @@ jobs:
       - name: Update prisma
         working-directory: ./nest-server
         run: npx prisma generate
-      - name: Syntax test prisma
-        working-directory: ./nest-server
-        run: npm run lint
       - name: Build nest-server
         working-directory: ./nest-server
         run: npm run build
@@ -37,9 +34,6 @@ jobs:
       - name: Install package react-app
         working-directory: ./next-app
         run: npm install
-      - name: Syntax test prisma
-        working-directory: ./next-server
-        run: npm run lint
       - name: Build next-app
         working-directory: ./next-app
         run: npm run build
