@@ -19,6 +19,7 @@ export const NewCommentForm = (props: NewCommentFormProps) => {
 
   const onFormSubmit = async (data: NewCommentFormData) => {
     if (props.onSubmit) props.onSubmit(data.content);
+
     authFetch("/comment/auth", {
       method: "POST",
       body: JSON.stringify({

@@ -40,9 +40,9 @@ export default function InteractiveBadge() {
           <Band />
         </Physics>
         <Text
-          maxWidth={2} // giới hạn chiều ngang → tự wrap
-          lineHeight={1.2} // khoảng cách giữa các dòng
-          letterSpacing={0.05} // khoảng cách chữ
+          maxWidth={2}
+          lineHeight={1.2}
+          letterSpacing={0.05}
           textAlign="center"
           anchorX="center"
           anchorY="middle"
