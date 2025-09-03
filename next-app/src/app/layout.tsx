@@ -8,12 +8,13 @@ import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
 import Head from "next/head";
-import InteractiveBadge from "@/components/information_card";
+import InteractiveBadge from "@/components/interactive_badge";
 import {
   getAllFontsFromPublicFolder,
   getAllImagesFromPublicFolder,
 } from "@/helpers/getPublicImages";
 import DataPreloadProvider from "@/components/data_preload_provider";
+import FloadingComments from "@/components/floading_comments/floading_comments";
 
 // const simpsonFont = localFont({
 //   src: "../../public/fonts/Simpsonfont.ttf",
@@ -67,6 +68,8 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         style={{
           overflow: "hidden",
+          height: "100vh",
+          width: "100vw",
         }}
       >
         <DataPreloadProvider images={images} fonts={fonts}>
@@ -91,10 +94,11 @@ export default function RootLayout({
                 </main>
               </div>
             </div>
+            <div className="namecard absolute h-dvh w-dvw top-0 left-0">
+              <FloadingComments />
+              <InteractiveBadge />
+            </div>
           </QueryProvider>
-          <div className="namecard absolute h-dvh w-dvw top-0 left-0">
-            <InteractiveBadge />
-          </div>
           <NotificaionProvider />
         </DataPreloadProvider>
       </body>
