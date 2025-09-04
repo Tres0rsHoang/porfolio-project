@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { Loading } from "./loading/loading_full";
 import { useAuthStore } from "@/store/auth.store";
+import "@/helpers/i18n.ts";
 
 type Props = {
   children: React.ReactNode;

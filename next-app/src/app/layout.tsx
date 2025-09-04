@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 import { NotificaionProvider } from "@/providers/notification.provider";
@@ -16,25 +15,6 @@ import {
 import DataPreloadProvider from "@/components/data_preload_provider";
 import FloadingComments from "@/components/floading_comments/floading_comments";
 
-// const simpsonFont = localFont({
-//   src: "../../public/fonts/Simpsonfont.ttf",
-// });
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-//
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-//
-// const comicNeue = localFont({
-//   src: "../../public/fonts/ComicNeue-Bold.ttf",
-//   weight: "700",
-//   variable: "--font-comic-neue",
-// });
-
 const baloo2 = localFont({
   src: "../../public/fonts/Baloo2-SemiBold.ttf",
 });
@@ -47,15 +27,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
-  images: string[];
+  params: { locale: string };
 }>) {
   const images: string[] = getAllImagesFromPublicFolder();
   const fonts: string[] = getAllFontsFromPublicFolder();
 
   return (
-    <html lang="en">
+    <html lang={params.locale}>
       <Head>
         <meta property="og:title" content="Bao Hoang Portfolio" />
         <meta property="og:description" content="Bao Hoang Portfolio Website" />
