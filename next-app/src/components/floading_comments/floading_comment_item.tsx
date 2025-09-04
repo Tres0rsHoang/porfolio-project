@@ -73,7 +73,7 @@ export const FloadingCommentItem = (props: ItemProps) => {
     <motion.div
       className="absolute"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      animate={{ opacity: 0.5 }}
       transition={{ duration: 3 }}
     >
       <motion.div

@@ -9,6 +9,8 @@ import AnimateSection from "@/components/animate_section";
 import ContactSection from "@/components/contact/contact_section";
 import CommentSection from "@/components/comments/comments_section";
 import { Loading } from "@/components/loading/loading_full";
+import { I18nextProvider } from "react-i18next";
+import i18n from "@/helpers/i18n";
 
 export default function Home() {
   const [root, setRoot] = useState<Element | undefined>(undefined);
@@ -19,26 +21,28 @@ export default function Home() {
   }, []);
 
   return (
-    <AnimatePresence>
-      <div className="profile-info">
-        <Suspense fallback={<Loading isShow={true} />}>
-          <AnimateSection root={root} id="profile">
-            <ProfileInfo />
+    <I18nextProvider i18n={i18n}>
+      <AnimatePresence>
+        <div className="profile-info">
+          <Suspense fallback={<Loading isShow={true} />}>
+            <AnimateSection root={root} id="profile">
+              <ProfileInfo />
+            </AnimateSection>
+          </Suspense>
+          <AnimateSection root={root} id="about">
+            <AboutMe />
           </AnimateSection>
-        </Suspense>
-        <AnimateSection root={root} id="about">
-          <AboutMe />
-        </AnimateSection>
-        <AnimateSection root={root} id="project">
-          <FeatureProject />
-        </AnimateSection>
-        <AnimateSection root={root} id="contact">
-          <ContactSection />
-        </AnimateSection>
-        <AnimateSection root={root} id="comment">
-          <CommentSection />
-        </AnimateSection>
-      </div>
-    </AnimatePresence>
+          <AnimateSection root={root} id="project">
+            <FeatureProject />
+          </AnimateSection>
+          <AnimateSection root={root} id="contact">
+            <ContactSection />
+          </AnimateSection>
+          <AnimateSection root={root} id="comment">
+            <CommentSection />
+          </AnimateSection>
+        </div>
+      </AnimatePresence>
+    </I18nextProvider>
   );
 }
