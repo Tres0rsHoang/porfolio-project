@@ -49,7 +49,7 @@ export default function InteractiveBadge() {
           color="white"
           strokeColor="black"
           strokeWidth={0.01}
-          position={[0, 0, 0]}
+          position={[0, 0, 0.1]}
           fontSize={0.5}
           font="/fonts/Simpsonfont.ttf"
         >

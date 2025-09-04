@@ -17,6 +17,7 @@ import useFetchComments, { PageComment } from "@/hooks/useFetchComments";
 import { useQueryClient } from "@tanstack/react-query";
 import useSendNewComment, { NewComment } from "@/hooks/useSendNewComment";
 import { AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export interface RawComment {
   user: {
@@ -63,11 +64,11 @@ export default function CommentSection() {
     useState<boolean>(false);
 
   const loadMoreRef = useRef<HTMLDivElement>(null);
-
   const { accessToken } = useAuthStore();
   const { user, setUser } = useUserStore();
   const { connect, disconnect, socket } = useSocket();
   const newComment = useRef<NewComment | null>(null);
+  const { t } = useTranslation("home");
 
   const addNewCommentToState = useCallback(
     (newComment: Comment) => {
@@ -97,17 +98,14 @@ export default function CommentSection() {
     },
     [comments?.pages, queryClient],
   );
-
   const handleNewComment = () => {
     if (accessToken == null) setShowNewUserCommentDialog(true);
     else setShowNewCommentDialog(true);
   };
-
   const onNewUserSubmitComment = (data: NewComment) => {
     setShowNewUserDialog(true);
     newComment.current = data;
   };
-
   const scrollToTop = () => {
     const container = document.querySelector("#comment-list");
     if (container) {
@@ -117,7 +115,6 @@ export default function CommentSection() {
       });
     }
   };
-
   const handleCreateAccountRequest = async (accept: boolean) => {
     if (!newComment.current) return;
     if (!accept) {
@@ -133,7 +130,6 @@ export default function CommentSection() {
     }
     setShowNewUserDialog(false);
   };
-
   useEffect(() => {
     connect();
     socket?.on("newComment", (value) => {
@@ -186,7 +182,6 @@ export default function CommentSection() {
       disconnect();
     };
   }, [connect, disconnect, socket, addNewCommentToState, queryClient]);
-
   useEffect(() => {
     if (!loadMoreRef.current || !hasNextPage) return;
     const observer = new IntersectionObserver(
@@ -211,7 +206,7 @@ export default function CommentSection() {
               onClick={handleNewComment}
               className={`${styles.addComment} px-4 rounded-lg`}
             >
-              <h3>New comment</h3>
+              <h3>{t("new_comment")}</h3>
             </button>
           )}
         </div>
@@ -247,7 +242,7 @@ export default function CommentSection() {
         </div>
       </div>
       <DialogFrame
-        title="New Comment"
+        title={t("new_comment")}
         isOpen={showNewUserCommentDialog}
         onClose={() => setShowNewUserCommentDialog(false)}
       >
@@ -257,32 +252,28 @@ export default function CommentSection() {
         />
       </DialogFrame>
       <DialogFrame
-        title="Wanna create an account?"
+        title={t("create_account")}
         isOpen={showNewUserDialog}
         onClose={() => setShowNewUserDialog(false)}
       >
-        <h3>
-          Do you want to sign up and get updates (new posts, replies, LeetCode
-          goodies) while also editing, replying, or nuking your comments—kinda
-          like cleaning up Homer’s donut mess?
-        </h3>
+        <h3>{t("create_account_description")}</h3>
         <div className="flex flex-row justify-end">
           <button
             onClick={() => handleCreateAccountRequest(true)}
             className="bg-(--highlight) mr-2 w-20"
           >
-            <p>Yes</p>
+            <p>{t("yes")}</p>
           </button>
           <button
             onClick={() => handleCreateAccountRequest(false)}
             className="bg-(--semi-highlight) w-20"
           >
-            <p>No</p>
+            <p>{t("no")}</p>
           </button>
         </div>
       </DialogFrame>
       <DialogFrame
-        title="Register"
+        title={t("Register")}
         isOpen={showRegisterDialog}
         onClose={() => setShowRegisterDialog(false)}
         style={{
@@ -321,7 +312,7 @@ export default function CommentSection() {
       </DialogFrame>
       <DialogFrame
         isOpen={showNewCommentDialog}
-        title="New Comment"
+        title={t("new_comment")}
         onClose={() => setShowNewCommentDialog(false)}
       >
         <NewCommentForm
