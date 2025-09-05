@@ -59,7 +59,7 @@ services:
     networks:
       - portfolio-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT}/"]
+      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT}"]
       interval: 10s
       timeout: 5s
       retries: 5

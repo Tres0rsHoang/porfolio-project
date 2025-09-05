@@ -25,3 +25,9 @@
   background-color: var(--highlight-button);
   border: solid var(--foreground) 2px;
 }
+
+@media (max-width: 1230px) {
+  .addComment {
+    padding: 1rem
+  }
+}
