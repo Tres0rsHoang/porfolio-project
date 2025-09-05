@@ -13,7 +13,12 @@ import {
   getAllImagesFromPublicFolder,
 } from "@/helpers/getPublicImages";
 import DataPreloadProvider from "@/components/data_preload_provider";
-import FloadingComments from "@/components/floading_comments/floading_comments";
+import LanguageSelection from "@/components/language/language_selection";
+import dynamic from "next/dynamic";
+import { Loading } from "@/components/loading/loading_full";
+import FloadingComments, {
+  LazyFloadingComments,
+} from "@/components/floading_comments/floading_comments";
 
 const baloo2 = localFont({
   src: "../../public/fonts/Baloo2-SemiBold.ttf",
@@ -23,27 +28,30 @@ export const metadata: Metadata = {
   title: "Hoang Quoc Bao Profile",
   description:
     "This is the profile page of Hoang Quoc Bao, a software engineer.",
+  openGraph: {
+    title: "Bao Hoang Portfolio",
+    description: "Bao Hoang Portfolio Website",
+    images: ["/images/ProfilePicSimpson.png"],
+    url: "https://www.yoursite.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bao Hoang Portfolio",
+    description: "Bao Hoang Portfolio Website",
+    images: ["/images/ProfilePicSimpson.png"],
+  },
 };
 
 export default function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
 }>) {
   const images: string[] = getAllImagesFromPublicFolder();
   const fonts: string[] = getAllFontsFromPublicFolder();
 
   return (
-    <html lang={params.locale}>
-      <Head>
-        <meta property="og:title" content="Bao Hoang Portfolio" />
-        <meta property="og:description" content="Bao Hoang Portfolio Website" />
-        <meta property="og:image" content="/images/ProfilePicSimpson.png" />
-        <meta property="og:url" content="/images/ProfilePicSimpson.png" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+    <html lang="en">
       <body
         className={`${baloo2.className} antialiased`}
         suppressHydrationWarning={true}
@@ -76,9 +84,10 @@ export default function RootLayout({
               </div>
             </div>
             <div className="namecard absolute h-dvh w-dvw top-0 left-0">
-              <FloadingComments />
+              <LazyFloadingComments />
               <InteractiveBadge />
             </div>
+            <LanguageSelection />
           </QueryProvider>
           <NotificaionProvider />
         </DataPreloadProvider>

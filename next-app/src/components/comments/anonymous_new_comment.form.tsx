@@ -5,6 +5,7 @@ import { TextAreaField } from "../form/text_area.field";
 import { Fragment } from "react";
 import { User } from "@/models/user.model";
 import { NewComment } from "@/hooks/useSendNewComment";
+import { useTranslation } from "react-i18next";
 
 interface NewCommentData {
   name: string;
@@ -32,6 +33,7 @@ export default function AnonymousNewCommentForm(
       gender: props.user != null && !props.user.gender ? "female" : "male",
     },
   });
+  const { t } = useTranslation("common");
 
   const onFormSubmit = (data: NewCommentData) => {
     props.onSubmit({
@@ -47,49 +49,49 @@ export default function AnonymousNewCommentForm(
   return (
     <Fragment>
       <form onSubmit={handleSubmit(onFormSubmit)}>
-        <h3>Your information</h3>
+        <h3>{t("Your information")}</h3>
         <InputField<NewCommentData>
           name="name"
-          placeholder="Your name"
+          placeholder={t("Your name")}
           register={register}
-          required="Name is required"
+          required={t("Name is required")}
           error={errors.name}
           autoFocus={true}
         ></InputField>
         <InputField<NewCommentData>
           name="company"
-          placeholder="Your company (optional)"
+          placeholder={t("Your company (optional)")}
           register={register}
           error={errors.company}
         ></InputField>
         <SelectionField<NewCommentData>
           name="gender"
-          label="Gender"
+          label={t("Gender")}
           register={register}
-          className="flex flex-row justify-between mt-2"
+          className="flex flex-row space-x-5 mt-2"
           options={[
             {
-              label: "Male",
+              label: t("Male"),
               value: "male",
             },
             {
-              label: "Female",
+              label: t("Female"),
               value: "female",
             },
           ]}
         ></SelectionField>
-        <h3>Comment</h3>
+        <h3>{t("Comment")}</h3>
         <TextAreaField<NewCommentData>
           name="content"
           register={register}
-          placeholder="New comment"
+          placeholder={t("New comment")}
           className="w-[600px] h-[300px]"
-          required="Comment is required"
+          required={t("Comment is required")}
           error={errors.content}
         ></TextAreaField>
         <div className="w-full flex justify-end mt-2">
           <button type="submit" className="bg-(--highlight-button)">
-            <p>Send</p>
+            <p>{t("Send")}</p>
           </button>
         </div>
       </form>

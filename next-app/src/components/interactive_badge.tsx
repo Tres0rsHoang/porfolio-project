@@ -20,6 +20,8 @@ import { Vector } from "three/examples/jsm/physics/RapierPhysics.js";
 import { MeshLineGeometry, MeshLineMaterial } from "meshline";
 import { Html, Text } from "@react-three/drei";
 import { Loading } from "./loading/loading_full";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import i18n from "@/helpers/i18n";
 extend({ MeshLineGeometry, MeshLineMaterial });
 
 function Loader() {
@@ -33,30 +35,37 @@ function Loader() {
   );
 }
 export default function InteractiveBadge() {
+  const { t, i18n: currentLangState } = useTranslation("common");
   return (
-    <Canvas className="touch-none" camera={{ position: [0, 0, 13], fov: 25 }}>
-      <Suspense fallback={<Loader />}>
-        <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
-          <Band />
-        </Physics>
-        <Text
-          maxWidth={2}
-          lineHeight={1.2}
-          letterSpacing={0.05}
-          textAlign="center"
-          anchorX="center"
-          anchorY="middle"
-          color="white"
-          strokeColor="black"
-          strokeWidth={0.01}
-          position={[0, 0, 0.1]}
-          fontSize={0.5}
-          font="/fonts/Simpsonfont.ttf"
-        >
-          Please visit website on desktop for more
-        </Text>
-      </Suspense>
-    </Canvas>
+    <I18nextProvider i18n={i18n}>
+      <Canvas className="touch-none" camera={{ position: [0, 0, 13], fov: 25 }}>
+        <Suspense fallback={<Loader />}>
+          <Physics interpolate gravity={[0, -40, 0]} timeStep={1 / 60}>
+            <Band />
+          </Physics>
+          <Text
+            maxWidth={2}
+            lineHeight={1.2}
+            letterSpacing={0.05}
+            textAlign="center"
+            anchorX="center"
+            anchorY="middle"
+            color="white"
+            strokeColor="black"
+            strokeWidth={0.01}
+            position={[0, 0, 0.1]}
+            fontSize={0.5}
+            font={
+              currentLangState.language == "en"
+                ? "/fonts/Simpsonfont.ttf"
+                : "/fonts/Baloo2-SemiBold.ttf"
+            }
+          >
+            {t("desktop_required")}
+          </Text>
+        </Suspense>
+      </Canvas>
+    </I18nextProvider>
   );
 }
 

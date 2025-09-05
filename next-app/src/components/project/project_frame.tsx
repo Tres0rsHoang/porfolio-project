@@ -4,6 +4,7 @@ import styles from "../project/project.module.css";
 import React from "react";
 import { ProjectInfo, ProjectType } from "@/models/project.model";
 import { getProjectTypeImagePath } from "@/helpers/utils";
+import { useTranslation } from "react-i18next";
 
 const ProjectFrame: React.FC<ProjectInfo> = ({
   projectName,
@@ -11,6 +12,7 @@ const ProjectFrame: React.FC<ProjectInfo> = ({
   projectType = ProjectType.Default,
 }) => {
   let techstackLine = "";
+  const { t } = useTranslation("home");
   techstack.map((element, i) => {
     techstackLine += element;
     if (i != techstack.length - 1) techstackLine += " • ";
@@ -43,9 +45,9 @@ const ProjectFrame: React.FC<ProjectInfo> = ({
           <p className={`${styles.techstackLine}`}>{techstackLine}</p>
         </div>
       </div>
-      <div className="absolute bottom-4 left-7">
+      <div className="absolute bottom-4 left-[23px]">
         <button className={`rounded-lg px-2 ${styles.detailButton}`}>
-          <p>More Detail</p>
+          <p>{t("more_detail")}</p>
         </button>
       </div>
     </div>
