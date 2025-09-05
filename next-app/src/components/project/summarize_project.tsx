@@ -1,9 +1,10 @@
 import { getRandomColor } from "@/helpers/utils";
 import { ChartData, ChartProps, PercentProps } from "@/models/project.model";
+import { useTranslation } from "react-i18next";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
 import { PieSectorData } from "recharts/types/polar/Pie";
 
-export const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
+const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
   const renderLabel = ({ percent }: PieSectorData) => {
     if (percent == null) return "";
     return `${(percent * 100).toFixed(0)}%`;
@@ -48,6 +49,7 @@ export const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
 
 export function PercentFramework({ projects }: PercentProps) {
   const chartData: ChartData[] = [];
+  const { t } = useTranslation("home");
 
   for (const project of projects) {
     for (const framework of project.techstack) {
@@ -69,11 +71,12 @@ export function PercentFramework({ projects }: PercentProps) {
       }
     }
   }
-  return <DataPieChart data={chartData} title="Framework" />;
+  return <DataPieChart data={chartData} title={t("used_frameworks")} />;
 }
 
 export function PercentLanguage({ projects }: PercentProps) {
   const chartData: ChartData[] = [];
+  const { t } = useTranslation("home");
 
   for (const project of projects) {
     for (const language of project.language) {
@@ -96,5 +99,7 @@ export function PercentLanguage({ projects }: PercentProps) {
     }
   }
 
-  return <DataPieChart data={chartData} title="Language"></DataPieChart>;
+  return (
+    <DataPieChart data={chartData} title={t("used_languages")}></DataPieChart>
+  );
 }

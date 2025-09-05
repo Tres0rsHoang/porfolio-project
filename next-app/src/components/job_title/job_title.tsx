@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./job_title.module.css";
+import { useTranslation } from "react-i18next";
 
 const texts = [
   "A Fullstack Engineer",
@@ -10,15 +11,17 @@ const texts = [
   "A Digital Craftsman",
   "A System Dreamer",
 ];
+
 function JobTitle() {
   const [textIndex, setTextIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingSpeed, setTypingSpeed] = useState(100);
+  const { t } = useTranslation("home");
 
   useEffect(() => {
-    const fullText = texts[textIndex];
-    const delayTime = 1000; //1 second to show the text
+    const fullText = t(texts[textIndex]);
+    const delayTime = 1000;
 
     if (isDeleting) {
       setTimeout(() => {
@@ -40,7 +43,7 @@ function JobTitle() {
         setTextIndex((prev) => (prev + 1) % texts.length);
       }, 500);
     }
-  }, [typingSpeed, displayText, isDeleting, textIndex]);
+  }, [typingSpeed, displayText, isDeleting, textIndex, t]);
 
   return (
     <h2>
