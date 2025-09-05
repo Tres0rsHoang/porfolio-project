@@ -49,9 +49,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Install GitHub CLI
         run: sudo apt-get install gh -y
-      - name: Merge pull request
-        uses: peter-evans/merge-pull-request@v3
+      - name: Auto-merge pull requests
+        uses: peter-evans/auto-merge@v3
         with:
           token: ${{ secrets.GH_PAT }}
-          pull-request: ${{ github.event.pull_request.number }}
           merge-method: squash
