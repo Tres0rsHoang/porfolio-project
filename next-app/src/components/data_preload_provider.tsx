@@ -89,8 +89,6 @@ export default function DataPreloadProvider({
     Promise.all(promises).then(() => setFontLoading(false));
   }, [fonts]);
 
-  useEffect(() => {});
-
   return imageLoading || accessTokenRefreshing || fontLoading ? (
     <div className="fixed inset-0 flex items-center justify-center bg-(--background) text-white z-50">
       <Loading isShow={true} />
