@@ -42,15 +42,16 @@ jobs:
     needs:
       - test-build-server
       - test-build-app
-    # if: github.base_ref == 'master' && github.head_ref == 'dev'
+    if: github.base_ref == 'master' && github.head_ref == 'develop'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install GitHub CLI
         run: sudo apt-get install gh -y
-      - name: Auto merge PR
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr merge ${{ github.event.pull_request.number }} --merge --admin
+      - name: Merge pull request
+        uses: peter-evans/merge-pull-request@v3
+        with:
+          token: ${{ secrets.GH_PAT }}
+          pull-request: ${{ github.event.pull_request.number }}
+          merge-method: squash
