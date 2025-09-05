@@ -7,13 +7,15 @@ import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
 import InteractiveBadge from "@/components/interactive_badge";
-import {
-  getAllFontsFromPublicFolder,
-  getAllImagesFromPublicFolder,
-} from "@/helpers/getPublicImages";
+// import {
+//   getAllFontsFromPublicFolder,
+//   getAllImagesFromPublicFolder,
+// } from "@/helpers/getPublicImages";
 import DataPreloadProvider from "@/components/data_preload_provider";
 import LanguageSelection from "@/components/language/language_selection";
 import { LazyFloadingComments } from "@/components/floading_comments/floading_comments";
+import WordpressFooterText from "@/components/footer/worldpress_footer_text";
+import AddCommentButton from "@/components/comments/add_comment_button";
 
 const baloo2 = localFont({
   src: "../../public/fonts/Baloo2-SemiBold.ttf",
@@ -42,8 +44,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const images: string[] = getAllImagesFromPublicFolder();
-  const fonts: string[] = getAllFontsFromPublicFolder();
+  // const images: string[] = getAllImagesFromPublicFolder();
+  // const fonts: string[] = getAllFontsFromPublicFolder();
 
   return (
     <html lang="en">
@@ -52,11 +54,9 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         style={{
           overflow: "hidden",
-          height: "100vh",
-          width: "100vw",
         }}
       >
-        <DataPreloadProvider images={images} fonts={fonts}>
+        <DataPreloadProvider images={[]} fonts={[]}>
           <QueryProvider>
             <div className="relative w-dvw h-dvh overflow-hidden">
               <div className="homepage">
@@ -72,15 +72,18 @@ export default function RootLayout({
                         width={25}
                         height={25}
                       ></Image>
-                      <p>Proudly powered by… me. Who needs WordPress?</p>
+                      <WordpressFooterText />
                     </footer>
                   </div>
                 </main>
               </div>
             </div>
-            <div className="namecard absolute h-dvh w-dvw top-0 left-0">
+            <div className="namecard absolute h-full w-full top-0 left-0">
               <LazyFloadingComments />
               <InteractiveBadge />
+              <div className="absolute bottom-5 right-5">
+                <AddCommentButton />
+              </div>
             </div>
             <LanguageSelection />
           </QueryProvider>

@@ -1,6 +1,7 @@
 "use client";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { Comment } from "@/models/comment.model";
+import { useUserStore } from "@/store/user.store";
 import { motion, Point } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -10,6 +11,7 @@ interface ItemProps {
 
 export const FloadingCommentItem = (props: ItemProps) => {
   const { width, height } = useWindowSize();
+  const { user } = useUserStore();
   const [nextPosition, setNextPosition] = useState<Point | null>(null);
   const defaultTime = 10;
   const itemRef = useRef<HTMLDivElement>(null);
@@ -73,7 +75,7 @@ export const FloadingCommentItem = (props: ItemProps) => {
     <motion.div
       className="absolute"
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.5 }}
+      animate={{ opacity: props.comment.user.id == user?.id ? 1 : 0.3 }}
       transition={{ duration: 3 }}
     >
       <motion.div
