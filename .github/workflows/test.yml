@@ -38,6 +38,7 @@ jobs:
         working-directory: ./next-app
         run: npm run build
   auto-merge-into-master:
+    name: Auto merge into master branch
     needs:
       - test-build-server
       - test-build-app
