@@ -6,7 +6,6 @@ import NavBar from "@/components/navbar/navbar";
 import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
-import Head from "next/head";
 import InteractiveBadge from "@/components/interactive_badge";
 import {
   getAllFontsFromPublicFolder,
@@ -14,11 +13,7 @@ import {
 } from "@/helpers/getPublicImages";
 import DataPreloadProvider from "@/components/data_preload_provider";
 import LanguageSelection from "@/components/language/language_selection";
-import dynamic from "next/dynamic";
-import { Loading } from "@/components/loading/loading_full";
-import FloadingComments, {
-  LazyFloadingComments,
-} from "@/components/floading_comments/floading_comments";
+import { LazyFloadingComments } from "@/components/floading_comments/floading_comments";
 
 const baloo2 = localFont({
   src: "../../public/fonts/Baloo2-SemiBold.ttf",

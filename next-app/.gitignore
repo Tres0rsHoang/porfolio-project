@@ -4,6 +4,7 @@ out/
 
 # Node modules
 node_modules/
+public/images/.DS_Store
 
 # Environment variables
 .env.local
