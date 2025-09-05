@@ -1,1 +1,25 @@
-{}
+{
+  "copied": "Đã copy {{content}} vào clipboard của bạn",
+  "copy_failed": "Xảy ra lỗi khi copy và clipboard của bạn",
+  "Your name": "Tên của bạn",
+  "Your company (optional)": "Tên công ty của bạn (Không bắt buộc)",
+  "Male": "Nam",
+  "Female": "Nữ",
+  "New comment": "Bình luận mới",
+  "Send": "Gửi",
+  "Your information": "Thông tin của bạn",
+  "Comment": "Bình luận",
+  "Gender": "Giới tính",
+  "Name is required": "Cần phải có tên",
+  "Comment is required": "Cần phải có nội dung",
+  "Yes": "Có",
+  "No": "Không",
+  "Home": "Trang chủ",
+  "About": "Thông tin",
+  "Projects": "Dự án",
+  "Resume": "Hồ sơ",
+  "Contacts": "Liên hệ",
+  "My Code": "Code",
+  "You": "Bạn",
+  "desktop_required": "Ghé thăm lại trên máy tính để có thêm nhiều thông tin hơn"
+}

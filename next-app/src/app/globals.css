@@ -14,8 +14,15 @@
   --red: #e94e3c;
   --orange: #FFD180;
   --blue: #4979BB;
+  --yellow: #FED90F;
   --gray: #7D7259;
   --loading-background: rgba(0, 0, 0, 0.5);
+  --default-1: #2F2F2F;
+  --default-2: #444444;
+  --default-3: #4CAF50;
+  --highlight-2: #009FE3;
+  --highlight-3: #E63946;
+  --highlight-4: #F77F00;
 }
 
 ::-webkit-scrollbar {
@@ -69,6 +76,11 @@ h3 {
 }
 
 h4 {
+  font-size: 1.28rem;
+  font-weight: bold;
+}
+
+h5 {
   font-size: 1rem;
   font-weight: bold;
 }
@@ -102,6 +114,11 @@ textarea {
 label {
   font-size: 1.8rem;
   color: var(--gray);
+}
+
+a {
+  color: var(--default-2);
+  text-decoration: underline;
 }
 
 

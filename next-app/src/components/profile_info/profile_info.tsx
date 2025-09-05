@@ -10,6 +10,7 @@ import { scrollToSection } from "@/helpers/scroll_to_section";
 import { useEffect } from "react";
 import { Role, User } from "@/models/user.model";
 import { authFetch } from "@/helpers/api";
+import { useTranslation } from "react-i18next";
 
 function ProfileInfo() {
   const params = useSearchParams();
@@ -18,6 +19,7 @@ function ProfileInfo() {
   const { setUser } = useUserStore();
   const { addNotification } = useNotication();
   const router = useRouter();
+  const { t } = useTranslation("home");
 
   useEffect(() => {
     if (section) scrollToSection(section);
@@ -72,22 +74,19 @@ function ProfileInfo() {
   }, [setToken, setUser, addNotification, router, params]);
 
   return (
-    <div className="relative flex col-e">
+    <div className="relative flex flex-row">
       <div className={styles.profilePicContainer}>
         <Image
           fill={true}
           src="/images/ProfilePic.jpg"
-          alt="Profile Picture"
+          alt="ProfilePicture"
           className={styles.profilePic}
         />
       </div>
       <div className={styles.profileInfo}>
-        <h1 className="">Hello, I&apos;m Bao</h1>
+        <h1 className="">{t("welcoming")}</h1>
         <JobTitle />
-        <h3>
-          with a passion for knowledge and creativity, like Homer searching for
-          a donut.
-        </h3>
+        <h3 className="mr-44">{t("profile_description")}</h3>
       </div>
       <Image
         width={300}

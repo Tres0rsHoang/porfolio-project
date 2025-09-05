@@ -6,19 +6,21 @@ import { DialogFrame } from "../dialog/dialog_frame";
 import EmptyComment from "../comments/empty_comment";
 import { PercentFramework, PercentLanguage } from "./summarize_project";
 import useFeatureProject from "@/hooks/useFeatureProject";
+import { useTranslation } from "react-i18next";
 
 export default function FeatureProject() {
   const { data: projects } = useFeatureProject();
+  const { t } = useTranslation("home");
 
   return (
     <div className={styles.projectContainer}>
       <div className="flex justify-between items-center">
-        <h2>Feature Project</h2>
+        <h2>{t("feature_project")}</h2>
         <DialogFrame
-          title="Summarize"
+          title={t("summarize")}
           toggleItem={
             <button className={`${styles.summarize} px-4 rounded-lg`}>
-              <h3>Summarize</h3>
+              <h3>{t("summarize")}</h3>
             </button>
           }
         >

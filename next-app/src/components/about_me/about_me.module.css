@@ -8,6 +8,7 @@
   padding: 10px 30px;
   position: relative;
 }
+
 .moreAboutMeContent {
   background-color: var(--highlight-background);
   max-height: 0;
@@ -18,7 +19,7 @@
 }
 
 .moreAboutMeContent.expanded {
-  max-height: 2000px;
+  max-height: 2100px;
   padding: 10px 30px;
 }
 
@@ -29,6 +30,7 @@
   margin-right: 10px;
   margin-left: -20px;
 }
+
 .toggleButtonContainer {
   display: flex;
   flex-direction: row;
@@ -36,6 +38,7 @@
   justify-content: end;
   margin-right: 2.2rem;
 }
+
 .toggleButtonContainer.isExpanded {
   margin-top: 0px;
 }

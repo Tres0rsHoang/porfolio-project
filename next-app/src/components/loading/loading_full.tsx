@@ -2,10 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 interface LoadingProps {
-  isShow: boolean;
+  isShow?: boolean;
 }
 
-export const Loading = ({ isShow = false }: LoadingProps) => {
+export const Loading = ({ isShow = true }: LoadingProps) => {
   if (!isShow) return;
   return (
     <AnimatePresence>

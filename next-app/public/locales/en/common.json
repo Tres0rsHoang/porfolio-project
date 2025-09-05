@@ -1,1 +1,25 @@
-{}
+{
+  "copied": "Copied {{content}} into your clipboard",
+  "copy_failed": "Got error when copy into your clipboard",
+  "Your name": "Your name",
+  "Your company (optional)": "Your company (optional)",
+  "Male": "Male",
+  "Female": "Female",
+  "New comment": "New comment",
+  "Send": "Send",
+  "Your information": "Your information",
+  "Comment": "Comment",
+  "Gender": "Gender",
+  "Name is required": "Name is required",
+  "Comment is required": "Comment is required",
+  "Yes": "Yes",
+  "No": "No",
+  "Home": "Home",
+  "About": "About",
+  "Projects": "Projects",
+  "Resume": "Resume",
+  "Contacts": "Contacts",
+  "My Code": "My Code",
+  "You": "You",
+  "desktop_required": "Please visit website on desktop for more"
+}

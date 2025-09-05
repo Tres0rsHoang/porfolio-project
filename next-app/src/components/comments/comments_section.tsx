@@ -68,7 +68,7 @@ export default function CommentSection() {
   const { user, setUser } = useUserStore();
   const { connect, disconnect, socket } = useSocket();
   const newComment = useRef<NewComment | null>(null);
-  const { t } = useTranslation("home");
+  const { t } = useTranslation(["home", "common"]);
 
   const addNewCommentToState = useCallback(
     (newComment: Comment) => {
@@ -200,7 +200,7 @@ export default function CommentSection() {
     <Fragment>
       <div className={styles.commentSectionContainer}>
         <div className="flex justify-between items-center">
-          <h2>What people say about me...</h2>
+          <h2>{t("comments_title")}</h2>
           {user?.role !== Role.ADMIN && (
             <button
               onClick={handleNewComment}
