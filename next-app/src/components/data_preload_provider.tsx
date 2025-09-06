@@ -4,6 +4,7 @@ import { Fragment, useEffect, useState } from "react";
 import { Loading } from "./loading/loading_full";
 import { useAuthStore } from "@/store/auth.store";
 import "@/helpers/i18n.ts";
+import i18n from "@/helpers/i18n";
 
 type Props = {
   children: React.ReactNode;
@@ -23,6 +24,15 @@ export default function DataPreloadProvider({
   useEffect(() => {
     ensureToken();
   }, [ensureToken]);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      const interval = setInterval(() => {
+        i18n.reloadResources(i18n.language);
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, []);
 
   const preloadImage = (src: string, retries = 3): Promise<void> => {
     return new Promise((resolve, reject) => {
