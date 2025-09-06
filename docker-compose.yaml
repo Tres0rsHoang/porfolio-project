@@ -20,7 +20,7 @@ services:
     networks:
       - portfolio-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${APP_PORT}"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -37,6 +37,11 @@ services:
     command: ["postgres", "-p", "${DATABASE_PORT}"]
     networks:
       - portfolio-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $POSTGRES_USER -p $DATABASE_PORT"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
   nestjs-server:
     image: hoanquocbao/portforlio-nestjs-server
     container_name: nestjs-server
@@ -59,7 +64,7 @@ services:
     networks:
       - portfolio-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT}"]
+      test: ["CMD", "curl", "-f", "http://localhost:7110/api"]
       interval: 10s
       timeout: 5s
       retries: 5

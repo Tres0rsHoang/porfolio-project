@@ -3,11 +3,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import styles from "./about_me.module.css";
-import Education from "../education";
-import OnWorking from "../on_working";
+import Education from "./education";
 import { scrollToSection } from "@/helpers/scroll_to_section";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+// import Career from "./career";
+import OnWorking from "../on_working";
 
 type ExpandItems = {
   educationExpanded: boolean;
@@ -19,22 +20,19 @@ function AboutMe() {
     educationExpanded: false,
     workExperienceExpanded: false,
   });
-
   const toggleEducationExpand = () => {
     setExpandItems((prev) => ({
       educationExpanded: !prev.educationExpanded,
       workExperienceExpanded: false,
     }));
   };
-
   const toggleWorkingExperinceExpand = () => {
     setExpandItems((prev) => ({
       workExperienceExpanded: !prev.workExperienceExpanded,
       educationExpanded: false,
     }));
   };
-
-  const { t } = useTranslation("home");
+  const { t } = useTranslation(["home", "common"]);
 
   return (
     <div className="relative">
@@ -85,6 +83,7 @@ function AboutMe() {
           expandItems.workExperienceExpanded ? styles.expanded : ""
         } flex flex-row justify-around items-start`}
       >
+        {/* <Career /> */}
         <OnWorking />
       </div>
       <div

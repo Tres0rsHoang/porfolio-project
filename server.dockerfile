@@ -2,6 +2,7 @@ FROM node:22-alpine AS base
 WORKDIR /server
 COPY ./nest-server/package* ./
 COPY ./.env ./
+RUN apk add --no-cache curl
 
 FROM base AS dependencies
 WORKDIR /server

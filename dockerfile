@@ -2,6 +2,8 @@ FROM node:22-slim AS base
 WORKDIR /app
 COPY ./next-app/package* ./
 COPY ./.env ./
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+  && rm -rf /var/lib/apt/lists/*
 
 FROM base AS dependencies
 WORKDIR /app
