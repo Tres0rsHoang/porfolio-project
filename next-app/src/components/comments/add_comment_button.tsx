@@ -107,7 +107,7 @@ export default function AddCommentButton() {
         </div>
       </DialogFrame>
       <DialogFrame
-        title={t("Register")}
+        title={t("register")}
         isOpen={showRegisterDialog}
         onClose={() => setShowRegisterDialog(false)}
         style={{

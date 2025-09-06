@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../components/about_me/about_me.module.css";
+import styles from "./about_me.module.css";
 import { useTranslation } from "react-i18next";
 
 export default function Education() {

@@ -10,12 +10,16 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
+    // debug: process.env.NODE_ENV === "development",
     fallbackLng: "en",
     supportedLngs: ["en", "vi"],
     backend: {
       loadPath: "/locales/{{lng}}/{{ns}}.json",
-      expirationTime: 7 * 24 * 60 * 60 * 1000,
       defaultVersion: "v1.0",
+      expirationTime:
+        process.env.NODE_ENV === "development" ? 0 : 7 * 24 * 60 * 60 * 1000,
+      queryStringParams:
+        process.env.NODE_ENV === "development" ? { v: Date.now() } : {},
     },
     ns: ["common", "home"],
     defaultNS: "common",
