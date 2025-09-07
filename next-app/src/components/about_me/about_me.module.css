@@ -10,17 +10,9 @@
 }
 
 .moreAboutMeContent {
-  background-color: var(--highlight-background);
-  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
   padding: 0 30px;
   margin: 0 30px;
-}
-
-.moreAboutMeContent.expanded {
-  max-height: 10000vh;
-  padding: 10px 30px;
 }
 
 .verticalTimeText {
@@ -63,4 +55,9 @@
 
 .toggleButton:hover {
   height: 80px;
+}
+
+.jobDetail {
+  color: var(--highlight-2);
+  font-size: 1.2rem;
 }
