@@ -7,8 +7,8 @@ import Education from "./education";
 import { scrollToSection } from "@/helpers/scroll_to_section";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-// import Career from "./career";
-import OnWorking from "../on_working";
+import ExpandDetail from "./expand_detail";
+import Career from "./career";
 
 type ExpandItems = {
   educationExpanded: boolean;
@@ -71,21 +71,12 @@ function AboutMe() {
           </div>
         </div>
       </div>
-      <div
-        className={`${styles.moreAboutMeContent} ${
-          expandItems.educationExpanded ? styles.expanded : ""
-        } flex flex-row justify-around items-start`}
-      >
+      <ExpandDetail isExpand={expandItems.educationExpanded}>
         <Education />
-      </div>
-      <div
-        className={`${styles.moreAboutMeContent} ${
-          expandItems.workExperienceExpanded ? styles.expanded : ""
-        } flex flex-row justify-around items-start`}
-      >
-        {/* <Career /> */}
-        <OnWorking />
-      </div>
+      </ExpandDetail>
+      <ExpandDetail isExpand={expandItems.workExperienceExpanded}>
+        <Career />
+      </ExpandDetail>
       <div
         className={`${styles.toggleButtonContainer} ${
           Object.values(expandItems).some((value) => value === true)
