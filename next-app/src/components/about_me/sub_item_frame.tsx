@@ -8,6 +8,7 @@ import ExpandDetail from "./expand_detail";
 interface SubItemFrameProps {
   title: string;
   titleImagePath: string;
+  imageBackground?: string;
   subtitle?: React.ReactNode;
   shortDescription: string[];
   period: string;
@@ -45,7 +46,9 @@ export const SubItemFrame = (props: SubItemFrameProps) => {
             <div
               className={`flex-row justify-between flex items-center ${props.background ?? "bg-(--highlight)"} p-2 pl-5 rounded-3xl rounded-l-none border-3 border-solid border-black`}
             >
-              <div className="object-fill overflow-hidden rounded-2xl mr-5 bg-(--highlight-4)">
+              <div
+                className={`object-fill overflow-hidden rounded-2xl mr-5 ${props.imageBackground}`}
+              >
                 <Image
                   src={props.titleImagePath}
                   alt={props.titleImagePath}
