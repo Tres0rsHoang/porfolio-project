@@ -90,7 +90,7 @@ export const CommentFrame = ({
           {expandContent ? comment.content : comment.content.slice(0, 100)}
           {comment.content.length > 100 && (
             <span>
-              ...
+              {!expandContent ? <span>...</span> : <span> </span>}
               <button
                 style={{
                   border: "none",
