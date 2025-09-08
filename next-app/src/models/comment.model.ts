@@ -6,4 +6,5 @@ export type Comment = {
   content: string;
   user: User;
   parentId?: number;
+  pending?: boolean;
 };

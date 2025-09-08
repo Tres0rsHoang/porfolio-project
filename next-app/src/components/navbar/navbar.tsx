@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter } from "next/navigation";
 import styles from "./navbar.module.css";
 import { AnimatePresence, motion } from "framer-motion";
@@ -41,7 +42,12 @@ function NavBar() {
         router.push("/?section=contact");
       },
     },
-    { label: "My Code" },
+    {
+      label: "My Code",
+      onClick: () => {
+        router.push("/code");
+      },
+    },
     { label: "Resume" },
   ]);
 

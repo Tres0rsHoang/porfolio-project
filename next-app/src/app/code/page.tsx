@@ -2,7 +2,7 @@
 import OnWorking from "@/components/on_working";
 import { useTranslation } from "react-i18next";
 
-export default function Project() {
+export default function Code() {
   const { t } = useTranslation("common");
   return (
     <div>
