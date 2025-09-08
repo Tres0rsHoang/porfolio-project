@@ -61,7 +61,7 @@ async function sendNewCommentAuth(content: string) {
   return rawComment;
 }
 
-const addComment = ({
+export const addRawCommentToState = ({
   oldData,
   data,
 }: {
@@ -95,7 +95,7 @@ export function useSendNewComment() {
     queryClient.setQueryData<{ pages: PageComment[] }>(
       ["comments"],
       (oldData) => {
-        return addComment({ oldData: oldData, data: data });
+        return addRawCommentToState({ oldData: oldData, data: data });
       },
     );
   };
@@ -119,7 +119,7 @@ export function useSendAuthNewComment() {
     queryClient.setQueryData<{ pages: PageComment[] }>(
       ["comments"],
       (oldData) => {
-        return addComment({ oldData: oldData, data: data });
+        return addRawCommentToState({ oldData: oldData, data: data });
       },
     );
   };
