@@ -55,9 +55,9 @@ export const metadata: Metadata = {
       "Code, coffee, and cartoons fuel this portfolio. Take a look & leave a friendly comment—it makes my day! ☕💻",
     images: [
       {
-        url: `${siteUrl}/images/ProfilePicSimpson.png`,
-        width: 1023,
-        height: 1023,
+        url: `${siteUrl}/images/Thumbnail.jpg`,
+        width: 1200,
+        height: 630,
         alt: "ProfilePic",
       },
     ],
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: "Bao Hoang Portfolio",
     description:
       "Code, coffee, and cartoons fuel this portfolio. Take a look & leave a friendly comment—it makes my day! ☕💻",
-    images: [`${siteUrl}/images/ProfilePicSimpson.png`],
+    images: [`${siteUrl}/images/Thumbnail.jpg`],
   },
   alternates: {
     canonical: siteUrl,
