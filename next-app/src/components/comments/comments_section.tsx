@@ -117,22 +117,20 @@ export default function CommentSection() {
             </div>
           ) : (
             <AnimatePresence>
-              {comments.pages.map((page, pageIndex) => (
-                <Fragment key={pageIndex}>
-                  {page.comments.map((comment, index) => (
-                    <CommentFrame
-                      comment={comment}
-                      key={index}
-                      isRight={comment.parentId != undefined}
-                      isOwner={
-                        user != null &&
-                        comment.user.id != null &&
-                        comment.user.id == user.id
-                      }
-                    />
-                  ))}
-                </Fragment>
-              ))}
+              {(comments.pages.flatMap((page) => page.comments) ?? []).map(
+                (comment) => (
+                  <CommentFrame
+                    comment={comment}
+                    key={comment.id}
+                    isRight={comment.parentId != undefined}
+                    isOwner={
+                      user != null &&
+                      comment.user.id != null &&
+                      comment.user.id == user.id
+                    }
+                  />
+                ),
+              )}
             </AnimatePresence>
           )}
           <div className="flex flex-row justify-center items-center">
