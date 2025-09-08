@@ -5,6 +5,7 @@ import { Loading } from "./loading/loading_full";
 import { useAuthStore } from "@/store/auth.store";
 import "@/helpers/i18n.ts";
 import i18n from "@/helpers/i18n";
+import useFetchComments from "@/hooks/useFetchComments";
 
 type Props = {
   children: React.ReactNode;
@@ -20,6 +21,18 @@ export default function DataPreloadProvider({
   const [imageLoading, setImageLoading] = useState(true);
   const [fontLoading, setFontLoading] = useState(true);
   const { isRefreshing: accessTokenRefreshing, ensureToken } = useAuthStore();
+  const [loading, setLoading] = useState(true);
+  const { data: comments } = useFetchComments();
+
+  useEffect(() => {
+    setLoading(
+      imageLoading ||
+        accessTokenRefreshing ||
+        fontLoading ||
+        comments == undefined ||
+        typeof window == "undefined",
+    );
+  }, [accessTokenRefreshing, imageLoading, fontLoading, comments]);
 
   useEffect(() => {
     ensureToken();
@@ -99,7 +112,7 @@ export default function DataPreloadProvider({
     Promise.all(promises).then(() => setFontLoading(false));
   }, [fonts]);
 
-  return imageLoading || accessTokenRefreshing || fontLoading ? (
+  return loading ? (
     <div className="fixed inset-0 flex items-center justify-center bg-(--background) text-white z-50">
       <Loading isShow={true} />
     </div>

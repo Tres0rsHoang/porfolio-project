@@ -34,7 +34,7 @@ export const NewCommentForm = (props: NewCommentFormProps) => {
         name="content"
         register={register}
         placeholder={t("New comment")}
-        className="w-[600px] h-[300px]"
+        className="lg:w-[600px] h-[300px]"
         required={t("Comment is required")}
         error={errors.content}
       ></TextAreaField>
