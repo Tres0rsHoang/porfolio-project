@@ -61,7 +61,7 @@ export const DialogFrame: React.FC<DialogProps> = (props: DialogProps) => {
   const dialogContent = (
     <AnimatePresence>
       {showDialog && (
-        <div>
+        <Fragment>
           <div className={styles.dialogBackground} onClick={closeDialog} />
           <motion.div
             key="dialog"
@@ -83,7 +83,7 @@ export const DialogFrame: React.FC<DialogProps> = (props: DialogProps) => {
             </div>
             {props.children}
           </motion.div>
-        </div>
+        </Fragment>
       )}
     </AnimatePresence>
   );

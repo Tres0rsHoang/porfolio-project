@@ -13,6 +13,7 @@ export const FloadingCommentItem = (props: ItemProps) => {
   const { width, height } = useWindowSize();
   const { user } = useUserStore();
   const [nextPosition, setNextPosition] = useState<Point | null>(null);
+
   const defaultTime = 10;
   const itemRef = useRef<HTMLDivElement>(null);
 
@@ -30,6 +31,7 @@ export const FloadingCommentItem = (props: ItemProps) => {
     const lightness = 30 + (Math.abs(hash) % 30);
     return hslToHex(hue, saturation, lightness);
   };
+
   function hslToHex(h: number, s: number, l: number): string {
     s /= 100;
     l /= 100;
@@ -47,29 +49,28 @@ export const FloadingCommentItem = (props: ItemProps) => {
 
   useEffect(() => {
     function changeMovingPosition() {
-      let boundingPoint: Point = {
-        x: 0,
-        y: 0,
+      if (!itemRef.current) return;
+
+      const rect = itemRef.current.getBoundingClientRect();
+      const boundingPoint: Point = {
+        x: rect.width,
+        y: rect.height,
       };
-      if (itemRef.current != null) {
-        const rect = itemRef.current.getBoundingClientRect();
-        boundingPoint = {
-          x: rect.width,
-          y: rect.height,
-        };
-      }
       setNextPosition({
         x: randomNumber({ min: 0, max: (width ?? 0) - boundingPoint.x }),
         y: randomNumber({ min: 0, max: (height ?? 0) - boundingPoint.y }),
       });
     }
+
+    changeMovingPosition();
     const interval = setInterval(changeMovingPosition, defaultTime * 1000);
+
     return () => {
       clearInterval(interval);
     };
   }, [height, setNextPosition, width]);
 
-  if (nextPosition == null) return <></>;
+  if (!width || !height) return <></>;
 
   return (
     <motion.div
@@ -82,8 +83,8 @@ export const FloadingCommentItem = (props: ItemProps) => {
         ref={itemRef}
         className="text-3xl border-black border-2 max-w-xs min-w-xs rounded-lg px-2 bg-(--semi-highlight)"
         initial={{
-          x: randomNumber({ min: 0, max: width ?? 0 - 100 }),
-          y: randomNumber({ min: 0, max: height ?? 0 - 50 }),
+          x: randomNumber({ min: 0, max: width - 320 }),
+          y: randomNumber({ min: 0, max: height - 220 }),
         }}
         animate={{
           x: nextPosition?.x,
