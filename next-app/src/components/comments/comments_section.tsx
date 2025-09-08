@@ -16,6 +16,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import AddCommentButton from "./add_comment_button";
+import { Comment } from "@/models/comment.model";
+import { addRawCommentToState } from "@/hooks/useSendNewComment";
 
 export default function CommentSection() {
   const queryClient = useQueryClient();
@@ -56,7 +58,21 @@ export default function CommentSection() {
   useEffect(() => {
     connect();
     socket?.on("newComment", (value: RawComment) => {
-      updateComment([value]);
+      const allComments: Array<Comment> =
+        comments?.pages.flatMap((page) => page.comments) ?? [];
+      const exist = allComments.find(
+        (comment: Comment) => comment.id == value.id,
+      );
+      if (exist) {
+        updateComment([value]);
+      } else {
+        queryClient.setQueryData<{ pages: PageComment[] }>(
+          ["comments"],
+          (oldData) => {
+            return addRawCommentToState({ oldData: oldData, data: value });
+          },
+        );
+      }
     });
 
     socket?.on("updatedComment", (value) => {
