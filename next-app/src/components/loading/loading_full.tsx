@@ -23,8 +23,10 @@ export const Loading = ({ isShow = true }: LoadingProps) => {
           <Image
             src="/images/donut.png"
             alt="donut_loading"
-            width={200}
-            height={200}
+            width={150}
+            height={150}
+            style={{ width: "auto", height: "auto" }}
+            priority
           />
         </motion.div>
       </div>

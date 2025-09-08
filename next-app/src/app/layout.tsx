@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { NotificaionProvider } from "@/providers/notification.provider";
@@ -17,22 +17,72 @@ const baloo2 = localFont({
   src: "../../public/fonts/Baloo2-SemiBold.ttf",
 });
 
+const siteUrl = process.env.PUBLIC_APP_URL ?? "https://www.baohomeserver.uk";
+
 export const metadata: Metadata = {
-  title: "Hoang Quoc Bao Profile",
+  title: "Bao Hoang Profile",
   description:
-    "This is the profile page of Hoang Quoc Bao, a software engineer.",
+    "I build apps, not donuts 🍩. Peek into my portfolio and leave a cute comment—I’d love to hear from you!",
+  keywords: [
+    "Hoang Quoc Bao",
+    "Software Engineer",
+    "Portfolio",
+    "Web Developer",
+    "React",
+    "Next.js",
+  ],
+  authors: [{ name: "Hoang Quoc Bao", url: siteUrl }],
+  generator: "Next.js",
+  metadataBase: new URL(siteUrl),
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
+    type: "website",
     title: "Bao Hoang Portfolio",
-    description: "Bao Hoang Portfolio Website",
-    images: ["/images/ProfilePicSimpson.png"],
-    url: "https://www.yoursite.com",
+    locale: "en",
+    url: siteUrl,
+    siteName: "Bao Hoang Portfolio",
+    description:
+      "Code, coffee, and cartoons fuel this portfolio. Take a look & leave a friendly comment—it makes my day! ☕💻",
+    images: [
+      {
+        url: `${siteUrl}/images/ProfilePicSimpson.png`,
+        width: 1023,
+        height: 1023,
+        alt: "ProfilePic",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Bao Hoang Portfolio",
-    description: "Bao Hoang Portfolio Website",
-    images: ["/images/ProfilePicSimpson.png"],
+    description:
+      "Code, coffee, and cartoons fuel this portfolio. Take a look & leave a friendly comment—it makes my day! ☕💻",
+    images: [`${siteUrl}/images/ProfilePicSimpson.png`],
   },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      "en-US": `${siteUrl}`,
+      "vi-VN": `${siteUrl}`,
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
@@ -45,6 +95,26 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Hoang Quoc Bao",
+              url: siteUrl,
+              sameAs: [
+                "https://www.linkedin.com/in/hoangquocbao/",
+                "https://github.com/Tres0rsHoang",
+                "https://leetcode.com/u/baokyo002/",
+                "https://facebook.com/Tres0rs/",
+              ],
+              jobTitle: "Software Engineer",
+            }),
+          }}
+        />
+      </head>
       <body
         className={`${baloo2.className} antialiased`}
         suppressHydrationWarning={true}
