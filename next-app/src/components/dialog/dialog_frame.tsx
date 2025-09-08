@@ -12,7 +12,7 @@ import styles from "./dialog_frame.module.css";
 
 interface DialogProps {
   title: string;
-
+  closeOnBackgroundClick?: boolean;
   children?: React.ReactNode;
   toggleItem?: React.ReactNode;
   isOpen?: boolean;
@@ -20,7 +20,10 @@ interface DialogProps {
   style?: CSSProperties;
 }
 
-export const DialogFrame: React.FC<DialogProps> = (props: DialogProps) => {
+export const DialogFrame: React.FC<DialogProps> = ({
+  closeOnBackgroundClick = true,
+  ...props
+}: DialogProps) => {
   const [showDialog, setShowDialog] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -62,7 +65,10 @@ export const DialogFrame: React.FC<DialogProps> = (props: DialogProps) => {
     <AnimatePresence>
       {showDialog && (
         <Fragment>
-          <div className={styles.dialogBackground} onClick={closeDialog} />
+          <div
+            className={styles.dialogBackground}
+            onClick={closeOnBackgroundClick ? closeDialog : () => {}}
+          />
           <motion.div
             key="dialog"
             className={`${styles.dialog}`}

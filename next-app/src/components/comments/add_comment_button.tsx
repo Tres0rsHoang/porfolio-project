@@ -107,6 +107,7 @@ export default function AddCommentButton() {
       <DialogFrame
         title={t("new_comment")}
         isOpen={showNewUserCommentDialog}
+        closeOnBackgroundClick={width && width < 1230 ? false : true}
         onClose={() => setShowNewUserCommentDialog(false)}
       >
         <AnonymousNewCommentForm
@@ -180,6 +181,7 @@ export default function AddCommentButton() {
       <DialogFrame
         isOpen={showNewCommentDialog}
         title={t("new_comment")}
+        closeOnBackgroundClick={width && width < 1230 ? false : true}
         onClose={() => setShowNewCommentDialog(false)}
       >
         <NewCommentForm
