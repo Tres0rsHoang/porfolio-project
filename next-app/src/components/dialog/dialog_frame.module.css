@@ -9,7 +9,9 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
   padding: 2rem;
   min-width: 500px;
-  background-color: var(--semi-highlight)
+  background-color: var(--semi-highlight);
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 .dialogBackground {
@@ -17,4 +19,27 @@
   inset: 0;
   background-color: var(--loading-background);
   z-index: 40;
+}
+
+@media (max-width: 1230px) {
+  .dialog {
+    min-width: 90%;
+    max-width: 90%;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    input {
+      font-size: 1.5rem;
+    }
+
+    textarea {
+      font-size: 1.5rem;
+    }
+
+    label {
+      font-size: 1.5rem;
+    }
+  }
 }

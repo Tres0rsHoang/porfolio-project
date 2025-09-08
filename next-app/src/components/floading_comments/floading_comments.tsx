@@ -19,7 +19,7 @@ export default function FloadingComments() {
   const { data: comments } = useFetchComments();
   return (
     <AnimatePresence>
-      <div className="absolute h-dvh w-dvw">
+      <div className="absolute h-dvh w-dvw overflow-hidden">
         {comments?.pages.map((page, pageIndex) => (
           <Fragment key={pageIndex}>
             {page.comments.map((comment, index) => (

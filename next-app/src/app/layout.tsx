@@ -7,10 +7,6 @@ import LoginInfo from "@/components/login_info/login_info";
 import Image from "next/image";
 import QueryProvider from "@/providers/query.provider";
 import InteractiveBadge from "@/components/interactive_badge";
-// import {
-//   getAllFontsFromPublicFolder,
-//   getAllImagesFromPublicFolder,
-// } from "@/helpers/getPublicImages";
 import DataPreloadProvider from "@/components/data_preload_provider";
 import LanguageSelection from "@/components/language/language_selection";
 import { LazyFloadingComments } from "@/components/floading_comments/floading_comments";
@@ -56,8 +52,8 @@ export default function RootLayout({
           overflow: "hidden",
         }}
       >
-        <DataPreloadProvider images={[]} fonts={[]}>
-          <QueryProvider>
+        <QueryProvider>
+          <DataPreloadProvider images={[]} fonts={[]}>
             <div className="relative w-dvw h-dvh overflow-hidden">
               <div className="homepage">
                 <main className="relative w-full h-dvh justify-center items-center flex flex-col">
@@ -86,9 +82,9 @@ export default function RootLayout({
               </div>
             </div>
             <LanguageSelection />
-          </QueryProvider>
-          <NotificaionProvider />
-        </DataPreloadProvider>
+            <NotificaionProvider />
+          </DataPreloadProvider>
+        </QueryProvider>
       </body>
     </html>
   );

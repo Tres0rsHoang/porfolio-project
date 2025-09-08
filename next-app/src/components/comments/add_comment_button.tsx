@@ -11,8 +11,8 @@ import { NewCommentForm } from "./new_comment.form";
 import { Role, User } from "@/models/user.model";
 import { useUserStore } from "@/store/user.store";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { ClipboardPenLine } from "lucide-react";
 import { NewComment, useSendNewComment } from "@/hooks/useSendNewComment";
+import Image from "next/image";
 
 export default function AddCommentButton() {
   const { t } = useTranslation("home");
@@ -37,8 +37,22 @@ export default function AddCommentButton() {
   };
 
   const onNewUserSubmitComment = (data: NewComment) => {
-    setShowNewUserDialog(true);
     newComment.current = data;
+    if (width && width < 1230) {
+      sendNewCommentQuery.mutate(
+        {
+          newComment: newComment.current,
+        },
+        {
+          onSuccess: () => {
+            scrollToTop();
+          },
+        },
+      );
+      setShowNewUserCommentDialog(false);
+    } else {
+      setShowNewUserDialog(true);
+    }
   };
 
   const scrollToTop = () => {
@@ -80,7 +94,12 @@ export default function AddCommentButton() {
         className={`${styles.addComment} px-4 rounded-lg`}
       >
         {width && width < 1230 ? (
-          <ClipboardPenLine />
+          <Image
+            src="/images/ChatIcon.png"
+            alt="chatIcon"
+            width={25}
+            height={25}
+          ></Image>
         ) : (
           <h3>{t("new_comment")}</h3>
         )}

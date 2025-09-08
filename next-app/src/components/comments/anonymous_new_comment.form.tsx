@@ -85,7 +85,7 @@ export default function AnonymousNewCommentForm(
           name="content"
           register={register}
           placeholder={t("New comment")}
-          className="w-[600px] h-[300px]"
+          className="lg:w-[600px] lg:h-[300px] h-48"
           required={t("Comment is required")}
           error={errors.content}
         ></TextAreaField>
