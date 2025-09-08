@@ -58,7 +58,7 @@ export default function InteractiveBadge() {
             font={
               currentLangState.language == "en"
                 ? "/fonts/Simpsonfont.ttf"
-                : "/fonts/Baloo2-SemiBold.ttf"
+                : "/fonts/ComicNeue-Bold.ttf"
             }
           >
             {t("desktop_required")}
@@ -95,6 +95,7 @@ function Band() {
         new THREE.Vector3(),
       ]),
   );
+
   const [dragged, drag] = useState<Vector | null>(null);
 
   useRopeJoint(
@@ -102,16 +103,19 @@ function Band() {
     j1 as React.RefObject<RapierRigidBody>,
     [[0, 0, 0], [0, 0, 0], 1],
   );
+
   useRopeJoint(
     j1! as React.RefObject<RapierRigidBody>,
     j2 as React.RefObject<RapierRigidBody>,
     [[0, 0, 0], [0, 0, 0], 1],
   );
+
   useRopeJoint(
     j2 as React.RefObject<RapierRigidBody>,
     j3 as React.RefObject<RapierRigidBody>,
     [[0, 0, 0], [0, 0, 0], 1],
   );
+
   useSphericalJoint(
     j3 as React.RefObject<RapierRigidBody>,
     card as React.RefObject<RapierRigidBody>,
@@ -120,6 +124,7 @@ function Band() {
       [0, 1, 0],
     ],
   );
+
   useFrame((state, delta) => {
     void delta;
     if (dragged) {
@@ -148,7 +153,8 @@ function Band() {
       curve.points[1].copy(j2.current.translation());
       curve.points[2].copy(j1.current.translation());
       curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(32));
+
+      band.current.geometry.setPoints(curve.getPoints(64));
       // Tilt it back towards the screen
       ang.copy(card.current.angvel());
       rot.copy(card.current.rotation());

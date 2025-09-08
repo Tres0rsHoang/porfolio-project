@@ -65,33 +65,35 @@ export default function Education() {
               </span>
               {t("highschool_achievement")}
             </p>
-            <ul className="list-disc ml-3 pr-10">
-              <li>
-                <p className="text-(--blue)">
-                  {t("A silver medal at the Southern Summer Camp")}
-                </p>
-              </li>
-              <li>
-                <p className="text-(--blue)">
-                  {t("First prize in the City-Level Innovation Contest")}
-                </p>
-              </li>
-              <li>
-                <p className="text-(--blue)">
-                  {t(
-                    "Third prize in provincial competition for excellent students in information technology (Specialized schools)",
-                  )}
-                </p>
-              </li>
-            </ul>
-            <div className="flex flex-row absolute -bottom-3 right-0">
-              <Image
-                height={100}
-                width={90}
-                src="/images/Medal.png"
-                alt="Medal"
-                className="rotate-[20deg]"
-              ></Image>
+            <div className="flex flex-row justify-between">
+              <ul className="list-disc ml-3 w-4/5">
+                <li>
+                  <p className="text-(--blue)">
+                    {t("A silver medal at the Southern Summer Camp")}
+                  </p>
+                </li>
+                <li>
+                  <p className="text-(--blue)">
+                    {t("First prize in the City-Level Innovation Contest")}
+                  </p>
+                </li>
+                <li>
+                  <p className="text-(--blue)">
+                    {t(
+                      "Third prize in provincial competition for excellent students in information technology (Specialized schools)",
+                    )}
+                  </p>
+                </li>
+              </ul>
+              <div className="flex w-1/5 justify-end items-center">
+                <Image
+                  height={100}
+                  width={90}
+                  src="/images/Medal.png"
+                  alt="Medal"
+                  className="rotate-[20deg]"
+                ></Image>
+              </div>
             </div>
           </div>
         </div>
@@ -125,42 +127,43 @@ export default function Education() {
                 className="rounded-lg border-2 border-solid border-(--foreground)"
               ></Image>
             </div>
-            <p className="w-2/3">
-              <span className="text-(--default-4) text-2xl">
-                {t("history")}:
-              </span>
-              {t("university_description_1")}
-              <br />
-              <Link
-                href="https://vi.wikipedia.org/wiki/Tr%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_Khoa_h%E1%BB%8Dc_T%E1%BB%B1_nhi%C3%AAn,_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_Qu%E1%BB%91c_gia_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ({t("source")}: Wikipedia)
-              </Link>
-              <br />
-              {t("university_description_2")}
-              <br />
-              <Link
-                href="https://edurank.org/uni/ho-chi-minh-city-university-of-science/rankings/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                ({t("source")}: EduRank)
-              </Link>
+            <div className="w-2/3">
+              <p>
+                <span className="text-(--default-4) text-2xl">
+                  {t("history")}:
+                </span>
+                {t("university_description_1")}
+                <br />
+                <Link
+                  href="https://vi.wikipedia.org/wiki/Tr%C6%B0%E1%BB%9Dng_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_Khoa_h%E1%BB%8Dc_T%E1%BB%B1_nhi%C3%AAn,_%C4%90%E1%BA%A1i_h%E1%BB%8Dc_Qu%E1%BB%91c_gia_Th%C3%A0nh_ph%E1%BB%91_H%E1%BB%93_Ch%C3%AD_Minh"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ({t("source")}: Wikipedia)
+                </Link>
+                <br />
+                {t("university_description_2")}
+                <br />
+                <Link
+                  href="https://edurank.org/uni/ho-chi-minh-city-university-of-science/rankings/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  ({t("source")}: EduRank)
+                </Link>
+              </p>
               <hr className="border-b-1 mt-2 border-solid border-(--foreground)" />
-            </p>
+            </div>
           </div>
-          <p className="relative my-2">
+          <div className="relative my-2">
             <span className="text-(--default-4) text-2xl">
               {t("achievements")}:
             </span>
-            {t("university_achievement_1")}
-            <br />
-            {t("university_achievement_2")}
-            <br />
-            {t("university_achievement_3")}
-            <br />
+            <span className="text-[1.2rem]">
+              {t("university_achievement_1")}
+            </span>
+            <p>{t("university_achievement_2")}</p>
+            <p>{t("university_achievement_3")}</p>
             <div className="flex flex-row justify-between">
               <p className="w-3/4">{t("university_achievement_4")}</p>
               <div className="relative w-1/4">
@@ -172,7 +175,7 @@ export default function Education() {
                 ></Image>
               </div>
             </div>
-          </p>
+          </div>
         </div>
       </SubItemFrame>
     </div>

@@ -1,12 +1,38 @@
 import { Paging } from "@/models/paging.model";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { Comment } from "@/models/comment.model";
-import { formatRawComment } from "@/components/comments/comments_section";
 
 export interface PageComment {
   comments: Comment[];
   nextPage: number | undefined;
 }
+
+export interface RawComment {
+  user: {
+    id: number;
+    name: string;
+    company: string;
+    gender: boolean;
+  };
+  id: number;
+  createAt: string;
+  content: string;
+}
+
+export const formatRawComment = (value: RawComment): Comment => {
+  const commentInfo: Comment = {
+    id: +value.id,
+    content: value.content,
+    createdDate: new Date(value.createAt),
+    user: {
+      id: value.user.id,
+      name: value.user.name,
+      company: value.user.company,
+      gender: value.user.gender,
+    },
+  };
+  return commentInfo;
+};
 
 async function fetchComments({ pageParam = 1 }): Promise<PageComment> {
   let nextPage: number | undefined = pageParam + 1;

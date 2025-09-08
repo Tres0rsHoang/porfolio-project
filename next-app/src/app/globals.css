@@ -54,10 +54,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
   overflow: hidden
-    /* background: var(--background); */
-    /* color: var(--foreground); */
 }
 
 h1 {
@@ -89,6 +86,7 @@ p {
   font-size: 1.2rem;
   line-height: 1.5;
 }
+
 
 button {
   cursor: pointer;
