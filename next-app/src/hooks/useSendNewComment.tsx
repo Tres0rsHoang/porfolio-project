@@ -82,7 +82,7 @@ const addComment = ({
         ...oldData.pages[0],
         comments: [formatedComment, ...oldData.pages[0].comments],
       },
-      ...oldData.pages.slice(0),
+      ...oldData.pages.slice(1),
     ],
   };
 };
