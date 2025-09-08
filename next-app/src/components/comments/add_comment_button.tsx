@@ -11,7 +11,6 @@ import { NewCommentForm } from "./new_comment.form";
 import { Role, User } from "@/models/user.model";
 import { useUserStore } from "@/store/user.store";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { ClipboardPenLine } from "lucide-react";
 import { NewComment, useSendNewComment } from "@/hooks/useSendNewComment";
 import Image from "next/image";
 
