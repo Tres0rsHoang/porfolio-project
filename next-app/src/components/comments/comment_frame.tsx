@@ -13,8 +13,11 @@ import { useForm } from "react-hook-form";
 import { TextAreaField } from "../form/text_area.field";
 import { NotificationType, useNotication } from "@/store/notification.store";
 import { Role } from "@/models/user.model";
+import { useQueryClient } from "@tanstack/react-query";
+import { PageComment } from "@/hooks/useFetchComments";
 
 type CommentFrameProps = {
+  pending?: boolean;
   comment: Comment;
   isRight?: boolean;
   isOwner?: boolean;
@@ -26,6 +29,7 @@ interface EditFormData {
 
 export const CommentFrame = ({
   comment,
+  pending = false,
   isRight = true,
   isOwner = false,
 }: CommentFrameProps) => {
@@ -43,16 +47,33 @@ export const CommentFrame = ({
   const [showEditComment, setShowEditComment] = useState<boolean>(false);
   const [showDeleteComment, setShowDeleteComment] = useState<boolean>(false);
   const { addNotification } = useNotication();
-
+  const queryClient = useQueryClient();
   const {
     register: editRegister,
     handleSubmit: editHandleSubmit,
+    setValue,
     formState: { errors: editErrors },
-  } = useForm<EditFormData>({
-    defaultValues: {
-      newContent: comment.content,
-    },
-  });
+  } = useForm<EditFormData>();
+
+  const pendingComment = (id: number, content?: string) => {
+    queryClient.setQueryData<{ pages: PageComment[] }>(
+      ["comments"],
+      (oldData) => {
+        if (!oldData) return oldData;
+        const newPages = oldData.pages.map((page) => {
+          const newComments = page.comments.map((c) => {
+            if (comment.id == c.id) {
+              c.pending = true;
+              if (content) c.content = content;
+            }
+            return c;
+          });
+          return { ...page, comments: newComments };
+        });
+        return { ...oldData, pages: newPages };
+      },
+    );
+  };
 
   const onEditComment = async (data: EditFormData) => {
     const res = await authFetch(`/comment/${comment.id}`, {
@@ -66,6 +87,7 @@ export const CommentFrame = ({
         "Comment refreshed — smoother than Marge’s blue hair.",
         NotificationType.SUCCESS,
       );
+      pendingComment(comment.id, data.newContent);
     }
   };
 
@@ -73,11 +95,13 @@ export const CommentFrame = ({
     const res = await authFetch(`/comment/${comment.id}`, {
       method: "DELETE",
     });
+
     if (res.status == 200) {
       addNotification(
         "Poof! Your comment disappeared like Bart’s homework.",
         NotificationType.SUCCESS,
       );
+      pendingComment(comment.id);
     }
     setShowDeleteComment(false);
   };
@@ -173,7 +197,7 @@ export const CommentFrame = ({
             y: 80,
           }}
           animate={{
-            opacity: 1,
+            opacity: pending ? 0.3 : 1,
             y: 0,
           }}
           exit={{
@@ -206,7 +230,10 @@ export const CommentFrame = ({
         {((isOwner && accessToken != null) || user?.role == Role.ADMIN) && (
           <div className="flex flex-row justify-center items-center">
             <motion.button
-              onClick={() => setShowEditComment(true)}
+              onClick={() => {
+                setValue("newContent", comment.content);
+                setShowEditComment(true);
+              }}
               className="flex flex-row ml-10 w-10"
               style={{
                 opacity: "40%",

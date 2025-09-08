@@ -1,45 +1,21 @@
 "use client";
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./comments_sections.module.css";
-import { Comment } from "@/models/comment.model";
 import { CommentFrame } from "./comment_frame";
 import EmptyComment from "./empty_comment";
 import { Role } from "@/models/user.model";
 import { LoadingDonuts } from "../loading/loading_more";
 import { useUserStore } from "@/store/user.store";
 import { useSocket } from "@/store/socket.store";
-import useFetchComments, { PageComment } from "@/hooks/useFetchComments";
+import useFetchComments, {
+  formatRawComment,
+  PageComment,
+  RawComment,
+} from "@/hooks/useFetchComments";
 import { useQueryClient } from "@tanstack/react-query";
 import { AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import AddCommentButton from "./add_comment_button";
-
-export interface RawComment {
-  user: {
-    id: number;
-    name: string;
-    company: string;
-    gender: boolean;
-  };
-  id: number;
-  createAt: string;
-  content: string;
-}
-
-export const formatRawComment = (value: RawComment) => {
-  const commentInfo: Comment = {
-    id: +value.id,
-    content: value.content,
-    createdDate: new Date(value.createAt),
-    user: {
-      id: value.user.id,
-      name: value.user.name,
-      company: value.user.company,
-      gender: value.user.gender,
-    },
-  };
-  return commentInfo;
-};
 
 export default function CommentSection() {
   const queryClient = useQueryClient();
@@ -55,87 +31,63 @@ export default function CommentSection() {
   const { connect, disconnect, socket } = useSocket();
   const { t } = useTranslation(["home", "common"]);
 
-  const addNewCommentToState = useCallback(
-    (newComment: Comment) => {
-      for (const page of comments?.pages ?? []) {
-        for (const comment of page.comments) {
-          if (comment.id == newComment.id) return;
-        }
-      }
+  const updateComment = useCallback(
+    (rawComments: RawComment[]) => {
       queryClient.setQueryData<{ pages: PageComment[] }>(
         ["comments"],
         (oldData) => {
-          if (!oldData) {
-            return { pages: [{ comments: [newComment], nextPage: 2 }] };
-          }
-          return {
-            ...oldData,
-            pages: [
-              {
-                ...oldData.pages[0],
-                comments: [newComment, ...oldData.pages[0].comments],
-              },
-              ...oldData.pages.slice(0),
-            ],
-          };
+          if (!oldData) return oldData;
+          const newPages = oldData.pages.map((page) => {
+            const newComments = page.comments.map((comment) => {
+              const raw = rawComments.find(
+                (rawComment) => rawComment.id == comment.id,
+              );
+              return raw ? formatRawComment(raw) : comment;
+            });
+            return { ...page, comments: newComments };
+          });
+          return { ...oldData, pages: newPages };
         },
       );
     },
-    [comments?.pages, queryClient],
+    [queryClient],
   );
 
   useEffect(() => {
     connect();
-    socket?.on("newComment", (value) => {
-      const comment: Comment = formatRawComment(value);
-      addNewCommentToState(comment);
+    socket?.on("newComment", (value: RawComment) => {
+      updateComment([value]);
     });
 
     socket?.on("updatedComment", (value) => {
       if (!value["updatedComment"]) return;
-
       const updatedComments: RawComment[] = value[
         "updatedComment"
       ] as RawComment[];
-
-      queryClient.setQueryData<{ pages: PageComment[] }>(
-        ["comments"],
-        (oldData) => {
-          const updateData = oldData;
-          for (const rawComment of updatedComments) {
-            for (const page of updateData?.pages ?? []) {
-              for (const index in page.comments) {
-                if (page.comments[index].id == rawComment.id) {
-                  page.comments[index] = formatRawComment(rawComment);
-                  break;
-                }
-              }
-            }
-          }
-          return updateData;
-        },
-      );
+      updateComment(updatedComments);
     });
 
     socket?.on("deletedComment", (commentId) => {
       if (!commentId) return;
+
       queryClient.setQueryData<{ pages: PageComment[] }>(
         ["comments"],
         (oldData) => {
-          const updateData = oldData;
-          for (const page of updateData?.pages ?? []) {
-            page.comments = page.comments.filter(
+          if (!oldData) return oldData;
+          const newPages = oldData.pages.map((page) => {
+            const newComments = page.comments.filter(
               (value) => value.id != commentId,
             );
-          }
-          return updateData;
+            return { ...page, comments: newComments };
+          });
+          return { ...oldData, pages: newPages };
         },
       );
     });
     return () => {
       disconnect();
     };
-  }, [connect, disconnect, socket, addNewCommentToState, queryClient]);
+  }, [connect, disconnect, socket, queryClient, updateComment]);
 
   useEffect(() => {
     if (!loadMoreRef.current || !hasNextPage) return;

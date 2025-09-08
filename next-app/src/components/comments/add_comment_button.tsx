@@ -8,25 +8,28 @@ import { DialogFrame } from "../dialog/dialog_frame";
 import AnonymousNewCommentForm from "./anonymous_new_comment.form";
 import RegisterForm, { RegisterFormData } from "../login_info/register.form";
 import { NewCommentForm } from "./new_comment.form";
-import useSendNewComment, { NewComment } from "@/hooks/useSendNewComment";
 import { Role, User } from "@/models/user.model";
 import { useUserStore } from "@/store/user.store";
 import { useWindowSize } from "@/hooks/useWindowSize";
 import { ClipboardPenLine } from "lucide-react";
+import { NewComment, useSendNewComment } from "@/hooks/useSendNewComment";
 
 export default function AddCommentButton() {
-  const newComment = useRef<NewComment | null>(null);
   const { t } = useTranslation("home");
+
   const { accessToken } = useAuthStore();
   const [showNewUserDialog, setShowNewUserDialog] = useState<boolean>(false);
   const [showRegisterDialog, setShowRegisterDialog] = useState<boolean>(false);
   const [showNewUserCommentDialog, setShowNewUserCommentDialog] =
     useState<boolean>(false);
+
   const [showNewCommentDialog, setShowNewCommentDialog] =
     useState<boolean>(false);
+
   const sendNewCommentQuery = useSendNewComment();
   const { user, setUser } = useUserStore();
   const { width } = useWindowSize();
+  const newComment = useRef<NewComment | null>(null);
 
   const handleNewComment = () => {
     if (accessToken == null) setShowNewUserCommentDialog(true);
@@ -50,19 +53,26 @@ export default function AddCommentButton() {
 
   const handleCreateAccountRequest = async (accept: boolean) => {
     if (!newComment.current) return;
+
     if (!accept) {
-      sendNewCommentQuery.mutate({
-        newComment: newComment.current,
-        onSuccess: () => {
-          scrollToTop();
+      sendNewCommentQuery.mutate(
+        {
+          newComment: newComment.current,
         },
-      });
+        {
+          onSuccess: () => {
+            scrollToTop();
+          },
+        },
+      );
       setShowNewUserCommentDialog(false);
     } else {
       setShowRegisterDialog(true);
     }
+
     setShowNewUserDialog(false);
   };
+
   return (
     <Fragment>
       <button
@@ -135,12 +145,16 @@ export default function AddCommentButton() {
               content: newComment.current?.content ?? "",
               user: currentUser,
             };
-            sendNewCommentQuery.mutate({
-              newComment: newComment.current,
-              onSuccess: () => {
-                scrollToTop();
+            sendNewCommentQuery.mutate(
+              {
+                newComment: newComment.current,
               },
-            });
+              {
+                onSuccess: () => {
+                  scrollToTop();
+                },
+              },
+            );
           }}
         />
       </DialogFrame>
@@ -150,12 +164,7 @@ export default function AddCommentButton() {
         onClose={() => setShowNewCommentDialog(false)}
       >
         <NewCommentForm
-          onSubmit={async (content: string) => {
-            if (!user) return;
-            newComment.current = {
-              user: user,
-              content: content,
-            };
+          onSubmit={() => {
             scrollToTop();
             setShowNewCommentDialog(false);
           }}
