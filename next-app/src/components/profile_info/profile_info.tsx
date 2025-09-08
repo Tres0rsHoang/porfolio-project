@@ -93,7 +93,7 @@ function ProfileInfo() {
         height={300}
         src="/images/donut.png"
         alt="donut"
-        className="absolute bottom-0 right-0 w-1/4 h-auto"
+        className="absolute bottom-0 right-0 w-1/4"
       />
     </div>
   );
