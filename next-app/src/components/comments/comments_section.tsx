@@ -80,6 +80,7 @@ export default function CommentSection() {
       const updatedComments: RawComment[] = value[
         "updatedComment"
       ] as RawComment[];
+
       updateComment(updatedComments);
     });
 
@@ -103,7 +104,14 @@ export default function CommentSection() {
     return () => {
       disconnect();
     };
-  }, [connect, disconnect, socket, queryClient, updateComment]);
+  }, [
+    connect,
+    disconnect,
+    socket,
+    queryClient,
+    updateComment,
+    comments?.pages,
+  ]);
 
   useEffect(() => {
     if (!loadMoreRef.current || !hasNextPage) return;
