@@ -67,7 +67,6 @@ export default function AddCommentButton() {
 
   const handleCreateAccountRequest = async (accept: boolean) => {
     if (!newComment.current) return;
-
     if (!accept) {
       sendNewCommentQuery.mutate(
         {
