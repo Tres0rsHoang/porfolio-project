@@ -43,54 +43,56 @@ export function InputField<T extends FieldValues>(props: InputFieldProps<T>) {
           {props.required && <span className="text-(--red)">*</span>}
         </h3>
       )}
-      <input
-        {...props.register(props.name, {
-          required: props.required,
-          pattern: props.pattern,
-          validate: props.validate,
-        })}
-        placeholder={`${props.placeholder}${props.required ? "*" : ""}`}
-        type={props.type == "password" && showPassword ? "text" : props.type}
-        className="w-full"
-        autoFocus={props.autoFocus}
-      />
-      {props.type == "password" && (
-        <button
-          tabIndex={-1}
-          style={{
-            position: "absolute",
-            paddingBlock: "13px",
-            border: "none",
-            right: "0",
-          }}
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {showPassword ? (
-              <motion.span
-                key="eye-off"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-              >
-                <EyeOff size={20} />
-              </motion.span>
-            ) : (
-              <motion.span
-                key="eye"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Eye size={20} />
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </button>
-      )}
+      <div className="flex justify-center items-center">
+        <input
+          {...props.register(props.name, {
+            required: props.required,
+            pattern: props.pattern,
+            validate: props.validate,
+          })}
+          placeholder={`${props.placeholder}${props.required ? "*" : ""}`}
+          type={props.type == "password" && showPassword ? "text" : props.type}
+          className="w-full"
+          autoFocus={props.autoFocus}
+        />
+        {props.type == "password" && (
+          <button
+            tabIndex={-1}
+            style={{
+              position: "absolute",
+              paddingBlock: "13px",
+              border: "none",
+              right: "0",
+            }}
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {showPassword ? (
+                <motion.span
+                  key="eye-off"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <EyeOff size={20} />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="eye"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Eye size={20} />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
+        )}
+      </div>
       {props.error && <ErrorNoti message={props.error.message} />}
     </div>
   );
