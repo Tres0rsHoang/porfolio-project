@@ -4,6 +4,7 @@ import { useUserStore } from "@/store/user.store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { formatRawComment, PageComment, RawComment } from "./useFetchComments";
 import { authFetch } from "@/helpers/api";
+import { Comment } from "@/models/comment.model";
 
 export interface NewComment {
   user: User;
@@ -70,12 +71,22 @@ export const addRawCommentToState = ({
 }): { pages: PageComment[] } => {
   const formatedComment = formatRawComment(data);
   formatedComment.pending = true;
+
   if (!oldData) {
     return {
-      pages: [{ comments: [formatedComment], nextPage: 2 }],
+      pages: [{ comments: [formatedComment], nextPage: 1 }],
     };
   }
-  return {
+
+  const allComments: Array<Comment> =
+    oldData?.pages.flatMap((page) => page.comments) ?? [];
+  const exist = allComments.find(
+    (comment: Comment) => comment.id == formatedComment.id,
+  );
+
+  if (exist) return oldData;
+
+  const newData = {
     ...oldData,
     pages: [
       {
@@ -85,6 +96,8 @@ export const addRawCommentToState = ({
       ...oldData.pages.slice(1),
     ],
   };
+
+  return newData;
 };
 
 export function useSendNewComment() {
