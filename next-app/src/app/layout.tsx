@@ -128,7 +128,6 @@ export default function RootLayout({
               <div className="homepage">
                 <main className="relative w-full h-dvh justify-center items-center flex flex-col">
                   <NavBar />
-                  <LoginInfo />
                   <div className="content-container">{children}</div>
                   <div className="w-full bg-(--blue) border-black border-t-2 px-2">
                     <footer className="flex flex-row justify-end items-center">
@@ -151,6 +150,7 @@ export default function RootLayout({
                 <AddCommentButton />
               </div>
             </div>
+            <LoginInfo />
             <LanguageSelection />
             <NotificaionProvider />
           </DataPreloadProvider>

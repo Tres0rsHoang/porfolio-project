@@ -14,6 +14,8 @@ import { Fragment, useState } from "react";
 import { LoadingButton } from "../loading/loading_button";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "react-i18next";
+import { useWindowSize } from "@/hooks/useWindowSize";
 
 interface LoginFormData {
   username: string;
@@ -28,6 +30,7 @@ interface LoginProps {
 export default function LoginForm(props: LoginProps) {
   const { setToken } = useAuthStore();
   const { user: currentUser, setUser } = useUserStore();
+  const { width } = useWindowSize();
   const {
     register: registerLogin,
     handleSubmit: handleLoginSubmit,
@@ -40,6 +43,7 @@ export default function LoginForm(props: LoginProps) {
   const { addNotification } = useNotication();
   const [isShowRegisterForm, setShowRegisterForm] = useState<boolean>(false);
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
+  const { t } = useTranslation("common");
 
   const router = useRouter();
 
@@ -64,14 +68,14 @@ export default function LoginForm(props: LoginProps) {
       if (message == "Invalid password") {
         setLoginError("password", {
           type: "manual",
-          message: "Incorrect password",
+          message: t("Incorrect password"),
         });
       }
 
       if (message == "Invalid username or email") {
         setLoginError("username", {
           type: "manual",
-          message: "Incorrect username",
+          message: t("Incorrect username"),
         });
       }
       return;
@@ -168,8 +172,8 @@ export default function LoginForm(props: LoginProps) {
       >
         <InputField<LoginFormData>
           name="username"
-          required="Username or Email is required"
-          placeholder="Username or Email"
+          required={t("Username or Email is required")}
+          placeholder={t("Username or Email")}
           className="mt-0"
           error={loginErrors.username}
           register={registerLogin}
@@ -177,8 +181,8 @@ export default function LoginForm(props: LoginProps) {
         ></InputField>
         <InputField<LoginFormData>
           name="password"
-          required="Password is required"
-          placeholder="Password"
+          required={t("Password is required")}
+          placeholder={t("Password")}
           type="password"
           register={registerLogin}
           error={loginErrors.password}
@@ -192,18 +196,18 @@ export default function LoginForm(props: LoginProps) {
               textDecoration: "underline",
             }}
           >
-            Forgot password?
+            {t("Forgot password?")}
           </Link>
         </div>
         <div className="w-full flex justify-center">
           <LoadingButton
             type="submit"
             isLoading={isSubmit}
-            label="Login"
+            label={t("Login")}
             className="mt-1 bg-(--highlight-button)"
           ></LoadingButton>
         </div>
-        <p className="flex justify-center">Or</p>
+        <p className="flex justify-center">{t("Or")}</p>
       </form>
       <div className="w-full flex justify-center flex-col items-center">
         <button
@@ -216,7 +220,7 @@ export default function LoginForm(props: LoginProps) {
             height={30}
             width={30}
           ></Image>
-          <p className="ml-2">Continue with google</p>
+          <p className="ml-2">{t("Continue with google")}</p>
         </button>
         <button
           className="mt-1"
@@ -224,19 +228,16 @@ export default function LoginForm(props: LoginProps) {
           style={{ border: "none" }}
         >
           <h4>
-            <span>Are you new here? </span>
-            <span className="text-(--blue)">Create an account</span>
+            <span>{t("Are you new here?")}</span>
+            <span className="text-(--blue)">{t("Create an account")}</span>
           </h4>
         </button>
       </div>
       <DialogFrame
-        title="Register"
+        title={t("Register")}
         isOpen={isShowRegisterForm}
         onClose={() => setShowRegisterForm(false)}
-        style={{
-          minWidth: "500px",
-          maxWidth: "500px",
-        }}
+        closeOnBackgroundClick={width && width < 1230 ? false : true}
       >
         <RegisterForm
           name={currentUser?.name}
