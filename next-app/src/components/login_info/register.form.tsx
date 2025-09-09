@@ -7,6 +7,7 @@ import styles from "./login_info.module.css";
 import { NotificationType, useNotication } from "@/store/notification.store";
 import { useState } from "react";
 import { LoadingButton } from "../loading/loading_button";
+import { useTranslation } from "react-i18next";
 
 export interface RegisterFormData {
   name: string;
@@ -44,6 +45,7 @@ export default function RegisterForm(props: RegisterFormProps) {
 
   const { addNotification } = useNotication();
   const [isSubmit, setIsSubmit] = useState<boolean>(false);
+  const { t } = useTranslation("common");
 
   const onRegisterFormSubmit: SubmitHandler<RegisterFormData> = async (
     data: RegisterFormData,
@@ -91,11 +93,11 @@ export default function RegisterForm(props: RegisterFormProps) {
 
   return (
     <form onSubmit={handleRegisterSubmit(onRegisterFormSubmit)}>
-      <h3>Your Information</h3>
+      <h3>{t("Your Information")}</h3>
       <InputField<RegisterFormData>
         name="name"
-        required="Name is required"
-        placeholder="Your name"
+        required={t("Name is required")}
+        placeholder={t("Your name")}
         className="mt-0"
         register={registerRegister}
         error={registerErrors.name}
@@ -103,96 +105,96 @@ export default function RegisterForm(props: RegisterFormProps) {
       ></InputField>
       <InputField<RegisterFormData>
         name="company"
-        placeholder="Your company (optional)"
+        placeholder={t("Your company (optional)")}
         register={registerRegister}
       ></InputField>
       <InputField<RegisterFormData>
         name="email"
         type="email"
-        placeholder="Your email"
+        placeholder={t("Your email")}
         register={registerRegister}
         error={registerErrors.email}
         pattern={{
           value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
           message: "Invalid email format",
         }}
-        required="Email is required"
+        required={t("Email is required")}
       ></InputField>
       <SelectionField<RegisterFormData>
         name="gender"
         className={`flex flex-row justify-between ${styles.genderField} mt-2`}
-        label="Gender"
-        required="Gender is required"
+        label={t("Gender")}
+        required={t("Gender is required")}
         options={[
           {
-            label: "Male",
+            label: t("Male"),
             value: "male",
           },
           {
-            label: "Female",
+            label: t("Female"),
             value: "female",
           },
         ]}
         register={registerRegister}
         error={registerErrors.gender}
       ></SelectionField>
-      <h3 className="mt-2">Authentication</h3>
+      <h3 className="mt-2">{t("Authentication")}</h3>
       <InputField<RegisterFormData>
         name="username"
         className="mt-0"
-        required="Username is required"
-        placeholder="Username"
+        required={t("Username is required")}
+        placeholder={t("Username")}
         register={registerRegister}
         error={registerErrors.username}
         validate={(value, formValues) => {
           void formValues;
           if (value.includes(" "))
-            return "Don't push whitespace in your username";
+            return t("Don't push whitespace in your username");
           return true;
         }}
       ></InputField>
       <InputField<RegisterFormData>
         name="password"
         type="password"
-        required="Password is required"
-        placeholder="Password"
+        required={t("Password is required")}
+        placeholder={t("Password")}
         register={registerRegister}
         error={registerErrors.password}
         validate={(value: string, formValues: RegisterFormData) => {
           void formValues;
           if (value.length < 8) {
-            return "Password is required minimum eight characters";
+            return t("Password is required minimum eight characters");
           }
           if (!/[a-z]/.test(value)) {
-            return "Password is required at least one lowercase letter";
+            return t("Password is required at least one lowercase letter");
           }
           if (!/[A-Z]/.test(value)) {
-            return "Password is required at least one uppercase letter";
+            return t("Password is required at least one uppercase letter");
           }
           if (!/[0-9]/.test(value)) {
-            return "Password is required at least one number";
+            return t("Password is required at least one number");
           }
           if (!/[!@#$%^&*(),.?":{}|<>_\-\\[\]]/.test(value)) {
-            return "Password is required at least one special character";
+            return t("Password is required at least one special character");
           }
           return true;
         }}
       ></InputField>
       <InputField<RegisterFormData>
         name="confirmPassword"
-        required="Confirm password is required"
-        placeholder="Confirm password"
+        required={t("Confirm password is required")}
+        placeholder={t("Confirm password")}
         register={registerRegister}
         type="password"
         error={registerErrors.confirmPassword}
         validate={(value: string, formValues: RegisterFormData) => {
-          return value == formValues.password || "Password do not match";
+          return value == formValues.password || t("Password do not match");
         }}
       ></InputField>
       <div className="w-full flex justify-center">
         <LoadingButton
           isLoading={isSubmit}
-          label="Register"
+          label={t("Register")}
           className="mt-3 bg-(--highlight)"
         />
       </div>
