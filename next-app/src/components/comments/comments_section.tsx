@@ -112,17 +112,18 @@ export default function CommentSection() {
     updateComment,
     comments?.pages,
   ]);
-
   useEffect(() => {
-    if (!loadMoreRef.current || !hasNextPage) return;
+    if (!loadMoreRef.current) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting && !isFetching) {
+        if (entries[0].isIntersecting && hasNextPage && !isFetching) {
           fetchNextPage();
         }
       },
       { threshold: 1 },
     );
+
     observer.observe(loadMoreRef.current);
     return () => observer.disconnect();
   }, [fetchNextPage, hasNextPage, isFetching]);
@@ -135,7 +136,9 @@ export default function CommentSection() {
           {user?.role !== Role.ADMIN && <AddCommentButton />}
         </div>
         <div id="comment-list" className="h-96 w-full overflow-y-auto">
-          {!comments || comments.pages[0].comments.length == 0 ? (
+          {!comments ||
+          (comments.pages.flatMap((page) => page.comments) ?? []).length ==
+            0 ? (
             <div className="mt-4">
               <EmptyComment />
             </div>

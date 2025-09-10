@@ -54,10 +54,23 @@ export class CommentController {
   @Post(':id')
   @UseGuards(RolesGuard, JwtAuthGuard)
   @Roles(Role.ADMIN)
-  reply(@Param('id', ParseIntPipe) id: number, @Request() req: exRequest) {
-    void id;
-    if (!req.user) return UnauthorizedException;
-    return 'This function is using to reply a comment';
+  reply(
+    @Param('id', ParseIntPipe) id: number,
+    @Body(ValidationPipe) body: AuthCreatecommentDto,
+    @Request() req: exRequest,
+  ) {
+    if (!req.user) throw new UnauthorizedException('Invalid access token');
+    const adminUser: PublicUser = (
+      req.user as {
+        sub: number;
+        user: PublicUser;
+      }
+    ).user;
+    return this.commentService.replyComment({
+      commentId: id,
+      adminUser: adminUser,
+      content: body.content,
+    });
   }
 
   @Patch(':id')
