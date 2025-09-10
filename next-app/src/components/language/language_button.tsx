@@ -23,7 +23,7 @@ export default function LanguageButton(props: ButtonProps) {
         src={props.imagePath}
         alt={props.alt}
         width={width && width < 1230 ? 50 : 80}
-        height={width && width < 1230 ? 50 : 80}
+        height={width && width < 1230 ? 32.81 : 52.5}
       ></Image>
     </button>
   );
