@@ -20,6 +20,20 @@ export class CommentService {
     private readonly eventsGateway: EventsGateway,
   ) {}
 
+  private CommentProps = {
+    id: true,
+    content: true,
+    createAt: true,
+    user: {
+      select: {
+        id: true,
+        name: true,
+        company: true,
+        gender: true,
+      },
+    },
+  };
+
   private async newComment(props: {
     userId: number;
     userName: string;
@@ -42,7 +56,6 @@ export class CommentService {
         },
       },
     });
-
     this.eventsGateway.emitMessage({
       event: 'newNotificaion',
       data: `${props.userName} have just drop a new comment`,
@@ -89,30 +102,10 @@ export class CommentService {
     const [comments, count] = await Promise.all([
       this.databaseService.comment.findMany({
         select: {
-          id: true,
-          content: true,
-          createAt: true,
-          user: {
-            select: {
-              id: true,
-              name: true,
-              company: true,
-              gender: true,
-            },
-          },
+          ...this.CommentProps,
           replies: {
             select: {
-              id: true,
-              content: true,
-              createAt: true,
-              user: {
-                select: {
-                  id: true,
-                  name: true,
-                  company: true,
-                  gender: true,
-                },
-              },
+              ...this.CommentProps,
             },
           },
         },
@@ -204,5 +197,52 @@ export class CommentService {
       data: commentId,
     });
     return result;
+  }
+
+  async replyComment(props: {
+    commentId: number;
+    adminUser: PublicUser;
+    content: string;
+  }) {
+    const newComment = await this.newComment({
+      userId: props.adminUser.id,
+      userName: props.adminUser.name,
+      content: props.content,
+    });
+
+    const updatedComment = await this.databaseService.comment.update({
+      where: {
+        id: newComment.id,
+      },
+      data: {
+        parrentCommentId: props.commentId,
+      },
+      select: {
+        ...this.CommentProps,
+      },
+    });
+
+    const parrentComment = await this.databaseService.comment.findFirst({
+      where: {
+        id: props.commentId,
+      },
+      select: {
+        ...this.CommentProps,
+        replies: {
+          select: {
+            ...this.CommentProps,
+          },
+        },
+      },
+    });
+
+    this.eventsGateway.emitMessage({
+      event: 'replyComment',
+      data: {
+        updatedComment: [parrentComment],
+      },
+    });
+
+    return updatedComment;
   }
 }
