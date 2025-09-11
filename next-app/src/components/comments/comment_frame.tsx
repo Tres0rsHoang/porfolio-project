@@ -189,10 +189,9 @@ export const CommentFrame = ({
           <div className="absolute -bottom-[28px] left-16">
             <Image
               alt="right-tail"
-              src="/images/RightCommentTail.png"
+              src="/images/LeftCommentTail.png"
               width={32}
               height={32}
-              className="scale-x-[-1]"
             />
           </div>
         </motion.div>
