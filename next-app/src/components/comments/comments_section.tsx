@@ -44,6 +44,12 @@ export default function CommentSection() {
               const raw = rawComments.find(
                 (rawComment) => rawComment.id == comment.id,
               );
+              comment.replies = comment.replies.map((repliedComment) => {
+                const raw = rawComments.find(
+                  (rawComment) => rawComment.id == repliedComment.id,
+                );
+                return raw ? formatRawComment(raw) : repliedComment;
+              });
               return raw ? formatRawComment(raw) : comment;
             });
             return { ...page, comments: newComments };
@@ -92,11 +98,17 @@ export default function CommentSection() {
         (oldData) => {
           if (!oldData) return oldData;
           const newPages = oldData.pages.map((page) => {
-            const newComments = page.comments.filter(
-              (value) => value.id != commentId,
-            );
+            const newComments = page.comments
+              .filter((value) => value.id != commentId)
+              .map((comment) => ({
+                ...comment,
+                replies: comment.replies.filter(
+                  (repliedComment) => repliedComment.id != commentId,
+                ),
+              }));
             return { ...page, comments: newComments };
           });
+
           return { ...oldData, pages: newPages };
         },
       );
@@ -112,6 +124,7 @@ export default function CommentSection() {
     updateComment,
     comments?.pages,
   ]);
+
   useEffect(() => {
     if (!loadMoreRef.current) return;
 
@@ -149,7 +162,6 @@ export default function CommentSection() {
                   <CommentFrame
                     comment={comment}
                     key={comment.id}
-                    isRight={comment.parentId != undefined}
                     isOwner={
                       user != null &&
                       comment.user.id != null &&

@@ -77,5 +77,11 @@
   "freelancer_1": "Nhận ra tầm quan trọng của một workspace cá nhân hóa để tối ưu hiệu suất.",
   "freelancer_2": "Tối ưu config cho Neovim, Tmux, Sketchybar, Homerow, bố cục bàn phím → loại bỏ hoàn toàn sử dụng chuột.",
   "freelancer_3": "Hoàn thiện website portfolio với hầu hết tính năng chỉ trong 1 tháng nhờ workflow được tối ưu.",
-  "freelancer_description": "Trong quá trình làm việc, mình nhận ra rằng một không gian làm việc ổn định và được cá nhân hóa cao đóng vai trò quan trọng trong việc tối ưu hiệu suất và tốc độ xử lý công việc. Vì vậy, mình quyết định tập trung vào việc xây dựng và tinh chỉnh môi trường làm việc cá nhân. Trong giai đoạn này, mình đã tối ưu cấu hình cho Neovim, Tmux, Sketchybar, Homerow và cả bố cục bàn phím, nhằm tạo ra một môi trường làm việc hoàn toàn không phụ thuộc vào chuột, giúp tiết kiệm thời gian và nâng cao hiệu quả. Song song đó, mình cũng hoàn thiện website portfolio này, và nhờ những cấu hình được tối ưu hóa, mình đã có thể hoàn thành phần lớn tính năng của trang chỉ trong vòng một tháng."
+  "freelancer_description": "Trong quá trình làm việc, mình nhận ra rằng một không gian làm việc ổn định và được cá nhân hóa cao đóng vai trò quan trọng trong việc tối ưu hiệu suất và tốc độ xử lý công việc. Vì vậy, mình quyết định tập trung vào việc xây dựng và tinh chỉnh môi trường làm việc cá nhân. Trong giai đoạn này, mình đã tối ưu cấu hình cho Neovim, Tmux, Sketchybar, Homerow và cả bố cục bàn phím, nhằm tạo ra một môi trường làm việc hoàn toàn không phụ thuộc vào chuột, giúp tiết kiệm thời gian và nâng cao hiệu quả. Song song đó, mình cũng hoàn thiện website portfolio này, và nhờ những cấu hình được tối ưu hóa, mình đã có thể hoàn thành phần lớn tính năng của trang chỉ trong vòng một tháng.",
+  "Comment Editing": "Chỉnh sửa bình luận",
+  "Comment Deleting": "Xóa bình luận",
+  "Input new content": "Nhập bình luận mới",
+  "New content is required": "Yêu cầu có nội dung",
+  "Do you realy want to delete your comment?": "Bạn có thật sự muốn xóa bình luận của mình?",
+  "Reply Comment": "Trả lời bình luận"
 }
