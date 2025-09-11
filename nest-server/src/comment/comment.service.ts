@@ -8,7 +8,7 @@ import { DatabaseService } from 'src/database/database.service';
 import { PagingDto } from 'src/dto/paging.dto';
 import { Paging } from 'src/entity/paging.entity';
 import { UserService } from 'src/user/user.service';
-import { User } from '@prisma/client';
+import { Prisma, User } from '@prisma/client';
 import EventsGateway from 'src/socket/events.gateway';
 import { PublicUser } from 'src/auth/entity/public-user.entity';
 
@@ -33,6 +33,9 @@ export class CommentService {
       },
     },
     replies: {
+      orderBy: {
+        createAt: 'asc',
+      },
       select: {
         id: true,
         content: true,
@@ -47,7 +50,7 @@ export class CommentService {
         },
       },
     },
-  };
+  } satisfies Prisma.CommentSelect;
 
   private async newComment({
     userId,
@@ -66,9 +69,7 @@ export class CommentService {
         userId: userId,
         content: formatedContent,
       },
-      select: {
-        ...this.CommentProps,
-      },
+      select: this.CommentProps,
     });
 
     if (haveNoti) {
@@ -118,9 +119,7 @@ export class CommentService {
     }
     const [comments, count] = await Promise.all([
       this.databaseService.comment.findMany({
-        select: {
-          ...this.CommentProps,
-        },
+        select: this.CommentProps,
         where: {
           parrentCommentId: {
             equals: null,
@@ -171,9 +170,7 @@ export class CommentService {
       data: {
         content: formatedContent,
       },
-      select: {
-        ...this.CommentProps,
-      },
+      select: this.CommentProps,
     });
 
     if (!newComment) {
@@ -195,9 +192,7 @@ export class CommentService {
       where: {
         id: commentId,
       },
-      select: {
-        ...this.CommentProps,
-      },
+      select: this.CommentProps,
     });
     if (!result) throw new UnauthorizedException('Invalid comment id');
     this.eventsGateway.emitMessage({
@@ -226,18 +221,14 @@ export class CommentService {
       data: {
         parrentCommentId: props.commentId,
       },
-      select: {
-        ...this.CommentProps,
-      },
+      select: this.CommentProps,
     });
 
     const parrentComment = await this.databaseService.comment.findFirst({
       where: {
         id: props.commentId,
       },
-      select: {
-        ...this.CommentProps,
-      },
+      select: this.CommentProps,
     });
 
     this.eventsGateway.emitMessage({
