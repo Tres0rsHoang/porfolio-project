@@ -129,6 +129,9 @@ export const RepliedComment = ({ comment }: RepliedCommentProps) => {
             duration: 1,
           }}
           className={`${styles.commentBox}`}
+          style={{
+            backgroundColor: "#90ee90",
+          }}
         >
           <div className="text-end whitespace-pre-line">
             <ContentSection content={comment.content} />
