@@ -9,28 +9,58 @@ import { useUserStore } from "@/store/user.store";
 import { useAuthStore } from "@/store/auth.store";
 import { authFetch } from "@/helpers/authFetch";
 import { DialogFrame } from "../dialog/dialog_frame";
-import { useForm } from "react-hook-form";
-import { TextAreaField } from "../form/text_area.field";
 import { NotificationType, useNotication } from "@/store/notification.store";
 import { Role } from "@/models/user.model";
 import { useQueryClient } from "@tanstack/react-query";
 import { PageComment } from "@/hooks/useFetchComments";
+import { useTranslation } from "react-i18next";
+import { ReplyCommentForm, ReplyCommentFormData } from "./reply_comment.form";
+import { RepliedComment } from "./replied_comment";
+import useEditComment from "@/hooks/useEditComment";
+import useDeleteComment from "@/hooks/useDeleteComment";
+import { EditCommentForm, EditCommentFormData } from "./edit_comment.form";
 
 type CommentFrameProps = {
   pending?: boolean;
   comment: Comment;
-  isRight?: boolean;
   isOwner?: boolean;
 };
 
-interface EditFormData {
-  newContent: string;
-}
+export const ContentSection = ({ content }: { content: string }) => {
+  const [expandContent, setExpandContent] = useState<boolean>(false);
+  return (
+    <p>
+      <span>
+        &quot;
+        {expandContent ? content : content.slice(0, 100)}
+        {content.length > 100 && (
+          <span>
+            {!expandContent ? <span>...</span> : <span> </span>}
+            <button
+              style={{
+                border: "none",
+                fontSize: "1.2rem",
+                padding: 0,
+                margin: 0,
+                color: "var(--red)",
+              }}
+              onClick={() => {
+                setExpandContent(!expandContent);
+              }}
+            >
+              {!expandContent ? "show more" : "hide"}
+            </button>
+          </span>
+        )}
+        &quot;
+      </span>
+    </p>
+  );
+};
 
 export const CommentFrame = ({
   comment,
   pending = false,
-  isRight = true,
   isOwner = false,
 }: CommentFrameProps) => {
   const formattedDate = comment.createdDate.toLocaleDateString("en-US", {
@@ -41,19 +71,18 @@ export const CommentFrame = ({
     hour: "2-digit",
     minute: "2-digit",
   });
-  const [expandContent, setExpandContent] = useState<boolean>(false);
   const { user } = useUserStore();
   const { accessToken } = useAuthStore();
   const [showEditComment, setShowEditComment] = useState<boolean>(false);
   const [showDeleteComment, setShowDeleteComment] = useState<boolean>(false);
+  const [showReplyComment, setShowReplyComment] = useState<boolean>(false);
+
+  const { t } = useTranslation(["home", "common"]);
   const { addNotification } = useNotication();
+  const editCommentQuery = useEditComment();
+  const deleteCommentQuery = useDeleteComment();
+
   const queryClient = useQueryClient();
-  const {
-    register: editRegister,
-    handleSubmit: editHandleSubmit,
-    setValue,
-    formState: { errors: editErrors },
-  } = useForm<EditFormData>();
 
   const pendingComment = (id: number, content?: string) => {
     queryClient.setQueryData<{ pages: PageComment[] }>(
@@ -62,7 +91,7 @@ export const CommentFrame = ({
         if (!oldData) return oldData;
         const newPages = oldData.pages.map((page) => {
           const newComments = page.comments.map((c) => {
-            if (comment.id == c.id) {
+            if (comment.id == id) {
               c.pending = true;
               if (content) c.content = content;
             }
@@ -75,117 +104,57 @@ export const CommentFrame = ({
     );
   };
 
-  const onEditComment = async (data: EditFormData) => {
-    const res = await authFetch(`/comment/${comment.id}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        content: data.newContent,
-      }),
-    });
-    if (res.status == 200) {
-      addNotification(
-        "Comment refreshed — smoother than Marge’s blue hair.",
-        NotificationType.SUCCESS,
-      );
-      pendingComment(comment.id, data.newContent);
-    }
+  const onEditComment = async (data: EditCommentFormData) => {
+    editCommentQuery.mutate(
+      {
+        commentId: comment.id,
+        newContent: data.newContent,
+      },
+      {
+        onSuccess: () => {
+          pendingComment(comment.id);
+          setShowEditComment(false);
+        },
+      },
+    );
   };
 
   const onDeleteComment = async () => {
-    const res = await authFetch(`/comment/${comment.id}`, {
-      method: "DELETE",
-    });
+    deleteCommentQuery.mutate(
+      { commentId: comment.id },
+      {
+        onSuccess: () => {
+          pendingComment(comment.id);
+          setShowDeleteComment(false);
+        },
+      },
+    );
+  };
 
-    if (res.status == 200) {
+  const onRelyComment = async (data: ReplyCommentFormData) => {
+    setShowReplyComment(false);
+    try {
+      const res = await authFetch(`/comment/${comment.id}`, {
+        method: "POST",
+        body: JSON.stringify({
+          content: data.content,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error(`Got error when reply comment`);
+      }
+
+      pendingComment(comment.id);
       addNotification(
-        "Poof! Your comment disappeared like Bart’s homework.",
+        `Replied ${comment.user.name}'s comment successfully`,
         NotificationType.SUCCESS,
       );
-      pendingComment(comment.id);
+    } catch (err) {
+      console.log(err);
+      addNotification(`Got error when reply comment`, NotificationType.ERROR);
     }
-    setShowDeleteComment(false);
   };
-
-  const ContentSection = () => {
-    return (
-      <p>
-        <span>
-          &quot;
-          {expandContent ? comment.content : comment.content.slice(0, 100)}
-          {comment.content.length > 100 && (
-            <span>
-              {!expandContent ? <span>...</span> : <span> </span>}
-              <button
-                style={{
-                  border: "none",
-                  fontSize: "1.2rem",
-                  padding: 0,
-                  margin: 0,
-                  color: "var(--red)",
-                }}
-                onClick={() => {
-                  setExpandContent(!expandContent);
-                }}
-              >
-                {!expandContent ? "show more" : "hide"}
-              </button>
-            </span>
-          )}
-          &quot;
-        </span>
-      </p>
-    );
-  };
-
-  if (isRight) {
-    return (
-      <div className="relative pb-5 pr-16 flex flex-row justify-end">
-        <motion.div
-          key="comment-box"
-          initial={{
-            opacity: 0,
-            y: 80,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          exit={{
-            opacity: 0,
-            y: 80,
-          }}
-          transition={{
-            duration: 1,
-          }}
-          className={`${styles.commentBox}`}
-        >
-          <div className="text-end whitespace-pre-line">
-            <ContentSection />
-          </div>
-          <h3>{comment.user.name}</h3>
-          {comment.user.company && (
-            <h4 className="text-start">{comment.user.company}</h4>
-          )}
-          <div className="text-start pr-7">{formattedDate}</div>
-          <div className="absolute -bottom-[28px] right-16">
-            <Image
-              alt="right-tail"
-              src="/images/RightCommentTail.png"
-              width={32}
-              height={32}
-            />
-          </div>
-        </motion.div>
-        <div className="absolute -bottom-10 right-0">
-          <Avatar
-            name={comment.user.name}
-            gender={comment.user.gender}
-            size={125}
-          />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <Fragment>
@@ -210,7 +179,7 @@ export const CommentFrame = ({
           className={`${styles.commentBox}`}
         >
           <div className="text-start whitespace-pre-line">
-            <ContentSection />
+            <ContentSection content={comment.content} />
           </div>
           <h3 className="text-end">{comment.user.name}</h3>
           {comment.user.company && (
@@ -227,36 +196,60 @@ export const CommentFrame = ({
             />
           </div>
         </motion.div>
-        {((isOwner && accessToken != null) || user?.role == Role.ADMIN) && (
-          <div className="flex flex-row justify-center items-center">
+        <div className="flex flex-row justify-center items-center">
+          {((isOwner && accessToken != null) || user?.role == Role.ADMIN) && (
+            <Fragment>
+              <motion.button
+                onClick={() => {
+                  setShowEditComment(true);
+                }}
+                className="flex flex-row ml-10 w-10"
+                style={{
+                  opacity: "40%",
+                  border: "none",
+                  padding: "0",
+                }}
+                whileHover={{
+                  opacity: "100%",
+                }}
+              >
+                <Image
+                  src="/images/PenIcon.png"
+                  alt="pen"
+                  width={30}
+                  height={30}
+                />
+              </motion.button>
+              <motion.button
+                onClick={() => setShowDeleteComment(true)}
+                className="flex flex-row ml-5 w-10"
+                style={{
+                  opacity: "40%",
+                  borderRadius: "100px",
+                  border: "none",
+                  padding: "0",
+                }}
+                whileHover={{
+                  opacity: "100%",
+                }}
+              >
+                <Image
+                  src="/images/TrashCanIcon.png"
+                  alt="pen"
+                  width={30}
+                  height={30}
+                />
+              </motion.button>
+            </Fragment>
+          )}
+          {user?.role == Role.ADMIN && (
             <motion.button
               onClick={() => {
-                setValue("newContent", comment.content);
-                setShowEditComment(true);
+                setShowReplyComment(true);
               }}
-              className="flex flex-row ml-10 w-10"
-              style={{
-                opacity: "40%",
-                border: "none",
-                padding: "0",
-              }}
-              whileHover={{
-                opacity: "100%",
-              }}
-            >
-              <Image
-                src="/images/PenIcon.png"
-                alt="pen"
-                width={30}
-                height={30}
-              />
-            </motion.button>
-            <motion.button
-              onClick={() => setShowDeleteComment(true)}
               className="flex flex-row ml-5 w-10"
               style={{
                 opacity: "40%",
-                borderRadius: "100px",
                 border: "none",
                 padding: "0",
               }}
@@ -265,14 +258,14 @@ export const CommentFrame = ({
               }}
             >
               <Image
-                src="/images/TrashCanIcon.png"
+                src="/images/ReplyIcon.png"
                 alt="pen"
                 width={30}
                 height={30}
               />
             </motion.button>
-          </div>
-        )}
+          )}
+        </div>
         <div className="absolute -bottom-10 left-0">
           <Avatar
             name={comment.user.name}
@@ -281,51 +274,43 @@ export const CommentFrame = ({
           />
         </div>
       </div>
+      {comment.replies.map((repliedComment) => (
+        <RepliedComment comment={repliedComment} key={repliedComment.id} />
+      ))}
       <DialogFrame
-        title="Comment Editing"
+        title={t("Comment Editing")}
         isOpen={showEditComment}
         onClose={() => setShowEditComment(false)}
       >
-        <form onSubmit={editHandleSubmit(onEditComment)}>
-          <TextAreaField<EditFormData>
-            register={editRegister}
-            name="newContent"
-            placeholder="Input new content"
-            error={editErrors.newContent}
-            required="New content is required"
-            className="w-[800px] h-[500px]"
-          ></TextAreaField>
-          <div className="flex flex-row justify-end">
-            <button
-              type="submit"
-              className="bg-(--highlight-button) mt-2"
-              onClick={() => setShowEditComment(false)}
-            >
-              Send
-            </button>
-          </div>
-        </form>
+        <EditCommentForm comment={comment} onEditComment={onEditComment} />
       </DialogFrame>
       <DialogFrame
-        title="Comment Deleting"
+        title={t("Comment Deleting")}
         isOpen={showDeleteComment}
         onClose={() => setShowDeleteComment(false)}
       >
-        <h3>Do you realy want to delete your comment?</h3>
+        <h3>{t("Do you realy want to delete your comment?")}</h3>
         <div className="flex flex-row justify-end mt-3">
           <button
             onClick={() => onDeleteComment()}
             className="bg-(--semi-highlight) mr-2 w-20"
           >
-            <p>Yes</p>
+            <p>{t("Yes", { ns: "common" })}</p>
           </button>
           <button
             onClick={() => setShowDeleteComment(false)}
-            className="bg-(--highlight) w-20"
+            className="bg-(--highlight) min-w-20"
           >
-            <p>No</p>
+            <p>{t("No", { ns: "common" })}</p>
           </button>
         </div>
+      </DialogFrame>
+      <DialogFrame
+        title={t("Reply Comment")}
+        isOpen={showReplyComment}
+        onClose={() => setShowReplyComment(false)}
+      >
+        <ReplyCommentForm onSubmit={onRelyComment} />
       </DialogFrame>
     </Fragment>
   );

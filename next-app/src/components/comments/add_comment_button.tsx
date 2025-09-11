@@ -15,7 +15,7 @@ import { NewComment, useSendNewComment } from "@/hooks/useSendNewComment";
 import Image from "next/image";
 
 export default function AddCommentButton() {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation(["home", "common"]);
 
   const { accessToken } = useAuthStore();
   const [showNewUserDialog, setShowNewUserDialog] = useState<boolean>(false);
@@ -125,13 +125,13 @@ export default function AddCommentButton() {
             onClick={() => handleCreateAccountRequest(true)}
             className="bg-(--highlight) mr-2 w-20"
           >
-            <p>{t("yes")}</p>
+            <p>{t("Yes", { ns: "common" })}</p>
           </button>
           <button
             onClick={() => handleCreateAccountRequest(false)}
-            className="bg-(--semi-highlight) w-20"
+            className="bg-(--semi-highlight) min-w-20"
           >
-            <p>{t("no")}</p>
+            <p>{t("No", { ns: "common" })}</p>
           </button>
         </div>
       </DialogFrame>

@@ -17,6 +17,7 @@ export interface RawComment {
   id: number;
   createAt: string;
   content: string;
+  replies: Array<RawComment>;
 }
 
 export const formatRawComment = (value: RawComment): Comment => {
@@ -30,7 +31,11 @@ export const formatRawComment = (value: RawComment): Comment => {
       company: value.user.company,
       gender: value.user.gender,
     },
+    replies: value.replies
+      ? value.replies.map((rawValue) => formatRawComment(rawValue))
+      : [],
   };
+
   return commentInfo;
 };
 
@@ -44,10 +49,12 @@ async function fetchComments(
 
   const resBody = await res.json();
   const data = resBody.data;
+
   if (!Array.isArray(data)) {
     throw new Error("Invalid /api/comment responsive");
   }
-  const formatedComments: Comment[] = data.map((value) => {
+
+  const formatedComments: Comment[] = data.map((value: RawComment) => {
     return formatRawComment(value);
   });
 
@@ -60,6 +67,7 @@ async function fetchComments(
   if (!paging || pageParam >= paging.totalPage) {
     nextPage = undefined;
   }
+
   return { comments: removedDuplicateComments, nextPage: nextPage };
 }
 
