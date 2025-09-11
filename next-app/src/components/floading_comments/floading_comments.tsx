@@ -20,11 +20,11 @@ export default function FloadingComments() {
   return (
     <AnimatePresence>
       <div className="absolute h-dvh w-dvw overflow-hidden">
-        {(comments?.pages.flatMap((page) => page.comments) ?? []).map(
-          (comment) => (
+        {(comments?.pages.flatMap((page) => page.comments) ?? [])
+          .splice(0, 5)
+          .map((comment) => (
             <FloadingCommentItem comment={comment} key={comment.id} />
-          ),
-        )}
+          ))}
       </div>
     </AnimatePresence>
   );

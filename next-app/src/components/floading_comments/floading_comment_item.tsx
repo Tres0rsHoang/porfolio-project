@@ -104,8 +104,8 @@ export const FloadingCommentItem = (props: ItemProps) => {
         >
           {props.comment.user.name}:{" "}
         </span>
-        <span>{props.comment.content.slice(0, 100)}</span>
-        {props.comment.content.length > 100 && <span>...</span>}
+        <span>{props.comment.content.slice(0, 50)}</span>
+        {props.comment.content.length > 50 && <span>...</span>}
       </motion.div>
     </motion.div>
   );
