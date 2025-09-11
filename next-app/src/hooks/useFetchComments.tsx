@@ -68,7 +68,13 @@ async function fetchComments(
     nextPage = undefined;
   }
 
-  return { comments: removedDuplicateComments, nextPage: nextPage };
+  return {
+    comments:
+      removedDuplicateComments.length == 0
+        ? formatedComments
+        : removedDuplicateComments,
+    nextPage: nextPage,
+  };
 }
 
 export default function useFetchComments() {
@@ -86,7 +92,6 @@ export default function useFetchComments() {
     queryKey: ["comments"],
     queryFn: ({ pageParam }) => fetchComments({ pageParam }, comments),
     getNextPageParam: (data) => data.nextPage,
-    refetchOnWindowFocus: false,
     initialPageParam: 1,
   });
 }
