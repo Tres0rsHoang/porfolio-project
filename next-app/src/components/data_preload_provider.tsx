@@ -4,7 +4,6 @@ import { Fragment, useEffect, useState } from "react";
 import { Loading } from "./loading/loading_full";
 import { useAuthStore } from "@/store/auth.store";
 import "@/helpers/i18n.ts";
-import i18n from "@/helpers/i18n";
 import useFetchComments from "@/hooks/useFetchComments";
 
 type Props = {
@@ -38,14 +37,14 @@ export default function DataPreloadProvider({
     ensureToken();
   }, [ensureToken]);
 
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      const interval = setInterval(() => {
-        i18n.reloadResources(i18n.language);
-      }, 2000);
-      return () => clearInterval(interval);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV === "development") {
+  //     const interval = setInterval(() => {
+  //       i18n.reloadResources(i18n.language);
+  //     }, 2000);
+  //     return () => clearInterval(interval);
+  //   }
+  // }, []);
 
   const preloadImage = (src: string, retries = 3): Promise<void> => {
     return new Promise((resolve, reject) => {

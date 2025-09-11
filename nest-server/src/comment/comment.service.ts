@@ -32,20 +32,11 @@ export class CommentService {
         gender: true,
       },
     },
-  };
-
-  private async newComment(props: {
-    userId: number;
-    userName: string;
-    content: string;
-  }) {
-    const formatedContent = props.content.trimEnd().trimStart();
-    const newComment = await this.databaseService.comment.create({
-      data: {
-        userId: props.userId,
-        content: formatedContent,
-      },
-      include: {
+    replies: {
+      select: {
+        id: true,
+        content: true,
+        createAt: true,
         user: {
           select: {
             id: true,
@@ -55,15 +46,41 @@ export class CommentService {
           },
         },
       },
+    },
+  };
+
+  private async newComment({
+    userId,
+    userName,
+    content,
+    haveNoti = true,
+  }: {
+    userId: number;
+    userName: string;
+    content: string;
+    haveNoti?: boolean;
+  }) {
+    const formatedContent = content.trimEnd().trimStart();
+    const newComment = await this.databaseService.comment.create({
+      data: {
+        userId: userId,
+        content: formatedContent,
+      },
+      select: {
+        ...this.CommentProps,
+      },
     });
-    this.eventsGateway.emitMessage({
-      event: 'newNotificaion',
-      data: `${props.userName} have just drop a new comment`,
-    });
-    this.eventsGateway.emitMessage({
-      event: 'newComment',
-      data: newComment,
-    });
+
+    if (haveNoti) {
+      this.eventsGateway.emitMessage({
+        event: 'newNotificaion',
+        data: `${userName} have just drop a new comment`,
+      });
+      this.eventsGateway.emitMessage({
+        event: 'newComment',
+        data: newComment,
+      });
+    }
     return newComment;
   }
 
@@ -103,11 +120,6 @@ export class CommentService {
       this.databaseService.comment.findMany({
         select: {
           ...this.CommentProps,
-          replies: {
-            select: {
-              ...this.CommentProps,
-            },
-          },
         },
         where: {
           parrentCommentId: {
@@ -159,15 +171,8 @@ export class CommentService {
       data: {
         content: formatedContent,
       },
-      include: {
-        user: {
-          select: {
-            id: true,
-            name: true,
-            company: true,
-            gender: true,
-          },
-        },
+      select: {
+        ...this.CommentProps,
       },
     });
 
@@ -190,6 +195,9 @@ export class CommentService {
       where: {
         id: commentId,
       },
+      select: {
+        ...this.CommentProps,
+      },
     });
     if (!result) throw new UnauthorizedException('Invalid comment id');
     this.eventsGateway.emitMessage({
@@ -208,6 +216,7 @@ export class CommentService {
       userId: props.adminUser.id,
       userName: props.adminUser.name,
       content: props.content,
+      haveNoti: false,
     });
 
     const updatedComment = await this.databaseService.comment.update({
@@ -228,21 +237,15 @@ export class CommentService {
       },
       select: {
         ...this.CommentProps,
-        replies: {
-          select: {
-            ...this.CommentProps,
-          },
-        },
       },
     });
 
     this.eventsGateway.emitMessage({
-      event: 'replyComment',
+      event: 'updatedComment',
       data: {
         updatedComment: [parrentComment],
       },
     });
-
     return updatedComment;
   }
 }

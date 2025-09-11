@@ -55,5 +55,6 @@
   "Password is required at least one special character": "Password is required at least one special character",
   "Confirm password is required": "Confirm password is required",
   "Confirm password": "Confirm password",
-  "Password do not match": "Password do not match"
+  "Password do not match": "Password do not match",
+  "Logout": "Logout"
 }

@@ -52,7 +52,7 @@ export class CommentController {
   }
 
   @Post(':id')
-  @UseGuards(RolesGuard, JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(Role.ADMIN)
   reply(
     @Param('id', ParseIntPipe) id: number,
@@ -66,6 +66,7 @@ export class CommentController {
         user: PublicUser;
       }
     ).user;
+
     return this.commentService.replyComment({
       commentId: id,
       adminUser: adminUser,

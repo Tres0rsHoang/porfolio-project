@@ -47,11 +47,18 @@ export default function LoginInfo() {
           </div>
         ) : (
           <div className="flex flex-row">
-            <LoadingButton
-              isLoading={isPending}
-              label={"Logout"}
-              onClick={() => logout()}
-            ></LoadingButton>
+            <LoadingButton isLoading={isPending} onClick={() => logout()}>
+              {width && width < 1230 ? (
+                <Image
+                  src="/images/LogoutIcon.png"
+                  alt="LogoutIcon"
+                  height={25}
+                  width={25}
+                ></Image>
+              ) : (
+                <h3>{t("Logout")}</h3>
+              )}
+            </LoadingButton>
           </div>
         )}
       </div>

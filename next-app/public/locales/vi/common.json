@@ -55,5 +55,6 @@
   "Password is required at least one special character": "Mật khẩu phải có ít nhất một kí tự đặt biệt",
   "Confirm password is required": "Yêu cầu nhập lại mật khẩu",
   "Confirm password": "Nhập lại mật khẩu",
-  "Password do not match": "Mật khẩu không khớp"
+  "Password do not match": "Mật khẩu không khớp",
+  "Logout": "Đăng xuất"
 }

@@ -7,4 +7,5 @@ export type Comment = {
   user: User;
   parentId?: number;
   pending?: boolean;
+  replies: Comment[];
 };
