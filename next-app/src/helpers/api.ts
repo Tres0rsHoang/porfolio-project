@@ -1,9 +1,12 @@
 import { useAuthStore } from "@/store/auth.store";
 import { NotificationType, useNotication } from "@/store/notification.store";
+import { useUserStore } from "@/store/user.store";
 
 export async function authFetch(uri: string, options: RequestInit = {}) {
-  const { accessToken, setToken } = useAuthStore.getState();
+  const { accessToken, setToken, clearTokens } = useAuthStore.getState();
   const { addNotification } = useNotication.getState();
+  const { clearUser } = useUserStore.getState();
+
   const url = process.env.NEXT_PUBLIC_SERVER_URL + "/api" + uri;
 
   const res = await fetch(url, {
@@ -31,6 +34,8 @@ export async function authFetch(uri: string, options: RequestInit = {}) {
       return await authFetch(uri, options);
     } else {
       addNotification("Session expired", NotificationType.ERROR);
+      clearTokens();
+      clearUser();
     }
   }
 

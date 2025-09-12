@@ -155,6 +155,7 @@ export const RepliedComment = ({ comment }: RepliedCommentProps) => {
             name={comment.user.name}
             gender={comment.user.gender}
             size={125}
+            imagePath="/images/ProfilePic2.png"
           />
         </div>
       </div>
