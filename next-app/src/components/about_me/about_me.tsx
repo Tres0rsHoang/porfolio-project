@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./about_me.module.css";
 import Education from "./education";
 import { scrollToSection } from "@/helpers/scroll_to_section";
@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import ExpandDetail from "./expand_detail";
 import Career from "./career";
+import { useSearchParams } from "next/navigation";
 
 type ExpandItems = {
   educationExpanded: boolean;
@@ -20,6 +21,10 @@ function AboutMe() {
     educationExpanded: false,
     workExperienceExpanded: false,
   });
+
+  const params = useSearchParams();
+  const section = params.get("section");
+
   const toggleEducationExpand = () => {
     setExpandItems((prev) => ({
       educationExpanded: !prev.educationExpanded,
@@ -32,6 +37,21 @@ function AboutMe() {
       educationExpanded: false,
     }));
   };
+
+  useEffect(() => {
+    if (section == "about") {
+      setExpandItems(() => ({
+        educationExpanded: true,
+        workExperienceExpanded: false,
+      }));
+    } else {
+      setExpandItems(() => ({
+        educationExpanded: false,
+        workExperienceExpanded: false,
+      }));
+    }
+  }, [section]);
+
   const { t } = useTranslation(["home", "common"]);
 
   return (

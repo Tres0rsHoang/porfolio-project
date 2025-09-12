@@ -4,6 +4,7 @@ type AvatarProps = {
   name: string;
   gender: boolean;
   size?: number;
+  imagePath?: string;
 };
 
 function nameHashingAvatarPath(name: string, gender: boolean): string {
@@ -30,7 +31,12 @@ function nameHashingAvatarPath(name: string, gender: boolean): string {
   }
 }
 
-export default function Avatar({ name, gender, size = 100 }: AvatarProps) {
+export default function Avatar({
+  name,
+  gender,
+  size = 100,
+  imagePath,
+}: AvatarProps) {
   return (
     <div
       style={{
@@ -41,7 +47,7 @@ export default function Avatar({ name, gender, size = 100 }: AvatarProps) {
       <div className={`relative w-full h-full`}>
         <Image
           fill={true}
-          src={nameHashingAvatarPath(name, gender)}
+          src={imagePath ?? nameHashingAvatarPath(name, gender)}
           alt="circle pic"
           className="rounded-full border-2 border-solid border-(--foreground)"
         ></Image>
