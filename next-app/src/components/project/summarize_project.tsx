@@ -2,14 +2,8 @@ import { getRandomColor } from "@/helpers/utils";
 import { ChartData, ChartProps, PercentProps } from "@/models/project.model";
 import { useTranslation } from "react-i18next";
 import { Cell, Legend, Pie, PieChart, Tooltip } from "recharts";
-import { PieSectorData } from "recharts/types/polar/Pie";
 
 const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
-  const renderLabel = ({ percent }: PieSectorData) => {
-    if (percent == null) return "";
-    return `${(percent * 100).toFixed(0)}%`;
-  };
-
   return (
     <div className="flex flex-col items-center">
       <h3>{title}</h3>
@@ -24,7 +18,7 @@ const DataPieChart: React.FC<ChartProps> = ({ data, title }) => {
           isAnimationActive={true}
           stroke="black"
           strokeWidth={2}
-          label={renderLabel}
+          label
         >
           {data.map((entry, index) => (
             <Cell key={index} fill={entry.color} />

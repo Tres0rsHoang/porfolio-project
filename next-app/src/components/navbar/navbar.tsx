@@ -48,7 +48,12 @@ function NavBar() {
         router.push("/code");
       },
     },
-    { label: "Resume" },
+    {
+      label: "Resume",
+      onClick: () => {
+        router.push("/resume");
+      },
+    },
   ]);
 
   return (

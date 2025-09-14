@@ -123,7 +123,10 @@ export default function RootLayout({
         }}
       >
         <QueryProvider>
-          <DataPreloadProvider images={[]} fonts={[]}>
+          <DataPreloadProvider
+            images={["/images/BackgroundImage.png"]}
+            fonts={["/fonts/Baloo2-SemiBold.ttf"]}
+          >
             <div className="relative w-dvw h-dvh overflow-hidden">
               <div className="homepage">
                 <main className="relative w-full h-dvh justify-center items-center flex flex-col">

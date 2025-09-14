@@ -25,5 +25,6 @@ FROM base AS production
 WORKDIR /server
 COPY --from=builder /server/node_modules ./node_modules
 COPY --from=builder /server/dist ./dist
+COPY --from=builder /server/public ./public
 COPY --from=builder /server/tsconfig.json ./
 CMD npx prisma migrate deploy && node dist/main.js
