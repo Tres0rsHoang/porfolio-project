@@ -66,7 +66,7 @@ function AboutMe() {
             transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-[-1.2rem] px-5 rounded-xl right-50 bg-(--highlight-button) border-solid border-[3px]"
           >
-            <div className="text-3xl">{t("go_to_comment_section")} →</div>
+            <h3>{t("go_to_comment_section")} →</h3>
           </motion.button>
         </AnimatePresence>
         <h2>{t("about_me")}</h2>

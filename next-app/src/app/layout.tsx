@@ -14,7 +14,33 @@ import WordpressFooterText from "@/components/footer/worldpress_footer_text";
 import AddCommentButton from "@/components/comments/add_comment_button";
 
 const baloo2 = localFont({
-  src: "../../public/fonts/Baloo2-SemiBold.ttf",
+  src: [
+    {
+      path: "../../public/fonts/Baloo2-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Baloo2-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Baloo2-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Baloo2-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/Baloo2-ExtraBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+  ],
 });
 
 const siteUrl = process.env.PUBLIC_APP_URL ?? "https://www.baohomeserver.uk";
@@ -125,7 +151,13 @@ export default function RootLayout({
         <QueryProvider>
           <DataPreloadProvider
             images={["/images/BackgroundImage.png"]}
-            fonts={["/fonts/Baloo2-SemiBold.ttf"]}
+            fonts={[
+              "/fonts/Baloo2-Regular.ttf",
+              "/fonts/Baloo2-Medium.ttf",
+              "/fonts/Baloo2-SemiBold.ttf",
+              "/fonts/Baloo2-Bold.ttf",
+              "/fonts/Baloo2-ExtraBold.ttf",
+            ]}
           >
             <div className="relative w-dvw h-dvh overflow-hidden">
               <div className="homepage">

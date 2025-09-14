@@ -95,7 +95,7 @@ export default function ContactSection() {
                 alt={`contact_icon_${contact.name}`}
                 src={`/images/${contact.name}.png`}
               ></Image>
-              <p>{contact.name}</p>
+              <h3>{contact.name}</h3>
             </button>
           );
         })}
