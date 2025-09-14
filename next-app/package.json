@@ -28,6 +28,7 @@
     "react-fast-marquee": "^1.6.5",
     "react-hook-form": "^7.62.0",
     "react-i18next": "^15.7.3",
+    "react-is": "^19.1.1",
     "recharts": "^3.0.2",
     "socket.io-client": "^4.8.1",
     "three": "^0.179.1",
