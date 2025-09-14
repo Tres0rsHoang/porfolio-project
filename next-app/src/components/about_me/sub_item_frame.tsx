@@ -35,14 +35,7 @@ export const SubItemFrame = (props: SubItemFrameProps) => {
           }}
         >
           <div className="flex items-center justify-between flex-row">
-            <p
-              className={styles.verticalTimeText}
-              style={{
-                fontSize: "2rem",
-              }}
-            >
-              {props.period}
-            </p>
+            <p className={`${styles.verticalTimeText}`}>{props.period}</p>
             <div
               className={`flex-row justify-between flex items-center ${props.background ?? "bg-(--highlight)"} p-2 pl-5 rounded-3xl rounded-l-none border-3 border-solid border-black`}
             >

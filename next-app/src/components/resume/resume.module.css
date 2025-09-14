@@ -1,0 +1,18 @@
+#CVItems {
+  list-style: none;
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  padding-inline: 10px;
+}
+
+.CVFolderIcon {
+  padding: 10px;
+  border: 0;
+}
+
+.CVFolderIcon:hover {
+  box-shadow: 0 0 0 2px black;
+  border-radius: 8px;
+}
