@@ -17,6 +17,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { UserModule } from './user/user.module';
 import { SeedModule } from './seed/seed.module';
 import EventsGateway from './socket/events.gateway';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -39,6 +41,10 @@ import EventsGateway from './socket/events.gateway';
     JwtModule,
     UserModule,
     SeedModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      serveRoot: '/files',
+    }),
   ],
   controllers: [AppController, AuthController],
   providers: [

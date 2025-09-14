@@ -27,12 +27,15 @@ export async function authFetch(uri: string, options: RequestInit = {}) {
         credentials: "include",
       },
     );
+
     if (refreshRes.ok) {
       const data = await refreshRes.json();
       const newToken = data.accessToken;
       setToken(newToken);
       return await authFetch(uri, options);
-    } else {
+    }
+
+    if (refreshRes.status == 401 || !refreshRes.ok) {
       addNotification("Session expired", NotificationType.ERROR);
       clearTokens();
       clearUser();

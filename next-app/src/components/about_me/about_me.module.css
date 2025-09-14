@@ -18,9 +18,9 @@
 .verticalTimeText {
   text-align: center;
   writing-mode: vertical-lr;
-  font-size: 3rem;
-  margin-right: 10px;
-  margin-left: -20px;
+  font-size: 2rem;
+  margin-left: -1.5rem;
+  max-lines: 1;
 }
 
 .toggleButtonContainer {

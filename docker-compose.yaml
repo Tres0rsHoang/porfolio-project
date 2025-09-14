@@ -57,6 +57,7 @@ services:
     volumes:
       - ./nest-server/src:/server/src
       - ./nest-server/package.json:/server/package.json
+      - ./nest-server/public:/server/public
       - .env:/server/.env
       - ./nest-server/prisma:/server/prisma
     env_file:

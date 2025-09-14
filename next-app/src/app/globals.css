@@ -5,6 +5,7 @@
   --foreground: black;
   --highlight: #fada00;
   --semi-highlight: #f9e3b2;
+  --semi-highlight-1: #FCF6EE;
   --highlight-background: #f4d358;
   --border-radius: 20px;
   --highlight-button: #e48521;
@@ -119,8 +120,6 @@ a {
   text-decoration: underline;
 }
 
-
-
 .content-container {
   position: relative;
   width: 950px;
@@ -154,7 +153,6 @@ a {
   padding-top: 30px;
   margin-left: 3%;
 }
-
 
 .loading-dots div {
   opacity: 0;
@@ -191,6 +189,10 @@ a {
   }
 }
 
+.page-tile {
+  color: var(--highlight);
+  -webkit-text-stroke: 2px black;
+}
 
 .homepage {
   position: relative;
@@ -201,7 +203,7 @@ a {
   display: none;
 }
 
-@media (max-width: 1230px) {
+@media (max-width: 1080px) {
   .homepage {
     display: none
   }
