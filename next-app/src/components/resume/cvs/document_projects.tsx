@@ -12,6 +12,7 @@ export interface DocProject {
 }
 
 export const DocumentProjects = (props: { projects: DocProject[] }) => {
+  void props;
   return (
     <View>
       <Text style={styles.h4}>Projects</Text>
