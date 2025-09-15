@@ -4,72 +4,61 @@ import { DocumentLayout } from "./document_layout";
 import { DocumentEducation } from "./document_education";
 import { DocumentExperience } from "./document_expericence";
 import { DocumentProjects } from "./document_projects";
+import { DocumentTechnicalSkill } from "./document_technical_skill";
+import { DocumentAchievements } from "./document_achievements";
+import { DocumentCertificates } from "./document_certificates";
 
 export default function WebFullstackDoc() {
   return (
-    <DocumentLayout title="Hoang Quoc Bao - Fullstack web developer">
+    <DocumentLayout
+      job="Full-stack Web Developer"
+      title="Hoang Quoc Bao - Full-stack web developer"
+    >
       <DocumentSummary>
-        I have{" "}
+        Fullstack Web Developer with{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          8 years of experience
-        </Text>{" "}
-        in learning and working with code, building a strong programming
-        foundation, and 2 years of hands-on professional experience. I use
-        frameworks and technologies such as{" "}
+          2 years of professional experience and 8 years of coding background
+        </Text>
+        , building a solid programming foundation. Skilled in developing
+        scalable web applications using{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          Node.js, React.js, Next.js, NestJS, PHP, Flutter, Python, Docker, AWS,
-          DigitalOcean, Google, Facebook, Zalo services, and Nginx,
-        </Text>{" "}
-        along with databases like{" "}
+          Node.js, NestJS, React.js, Next.js and PHP
+        </Text>
+        . Proficient with{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          MySQL, PostgreSQL, MongoDB and NoSQL,
-        </Text>{" "}
-        to perform web and mobile development, database design, system
-        architecture, and deployment, ensuring scalable and efficient solutions.
+          MySQL, PostgreSQL, MongoDB, and Redis
+        </Text>
+        . Experienced in{" "}
+        <Text
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          Docker, CI/CD, and cloud deployment
+        </Text>
+        , delivering efficient and reliable solutions.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentExperience
         companies={[
           {
-            company: "Freelancer",
-            location: "Ho Chi Minh City",
-            jobs: [
-              {
-                title: "Software Engineer",
-                time: "Jul 2025 - Present",
-                description: [
-                  "Designed, implemented, and deployed a personal portfolio website, including: Database schema design and API development, built services, controllers, WebSocket for realtime features, and JWT authorization, wrote test cases, configured GitHub Actions, Dockerfile, and Docker Compose, set up an Ubuntu server for deployment, configured SSL certificates for domain, and implemented dynamic DDNS for a self-hosted server, designed UX/UI and coded frontend using Next.js.",
-                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
-                ],
-              },
-              {
-                title: "Softskill Learner",
-                time: "Jan 2025 - May 2025",
-                description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, and custom web-developer keyboard layouts - fully mouse-free workflow",
-                  "Prepared for and took the IELTS exam to obtain certification and strengthen professional English proficiency.",
-                ],
-              },
-            ],
-          },
-          {
             company: "CloudGo",
             location: "Ho Chi Minh City",
             jobs: [
               {
-                title: "Fullstack Software Engineer - Intern",
+                title: "Full-stack Developer - Intern",
                 time: "Jul 2023 - Aug 2023",
                 description: [
                   <Text key={0}>
@@ -91,7 +80,6 @@ export default function WebFullstackDoc() {
                     iOS.
                   </Text>,
                   "Independently implemented API integrations in PHP with the company’s CRM, ensuring seamless communication between app and backend.",
-                  "Successfully completed the project with positive feedback, earning a perfect 4.0/4.0 internship evaluation.",
                   <Text key={3}>
                     <Link
                       src="https://cloudgo.vn/cloudmessage-giai-phap-tin-nhan-thuong-hieu-da-kenh"
@@ -108,10 +96,9 @@ export default function WebFullstackDoc() {
                 ],
               },
               {
-                title: "Fullstack Software Engineer - Part Time",
+                title: "Full-stack Developer - Part Time",
                 time: "Aug 2023 - Dec 2024",
                 description: [
-                  "Contributed to most of the company’s key projects, covering front-end development, UI/UX optimization, API integration, and app performance improvements.",
                   <Text key={0}>
                     <Link
                       src="https://cloudgo.vn/cloudmessage-giai-phap-tin-nhan-thuong-hieu-da-kenh"
@@ -169,9 +156,175 @@ export default function WebFullstackDoc() {
               },
             ],
           },
+          {
+            company: "Freelancer",
+            location: "Ho Chi Minh City",
+            jobs: [
+              {
+                title: "Full-stack Developer",
+                time: "Jul 2025 - Present",
+                description: [
+                  <Text key={0}>
+                    Designed, implemented, and deployed{" "}
+                    <Link
+                      src="https://www.baohomeserver.uk/"
+                      style={{ textDecoration: "none" }}
+                    >
+                      a personal portfolio
+                    </Link>{" "}
+                    website, including: Database schema design and API
+                    development, built services, controllers, WebSocket for
+                    realtime features, and JWT authorization, wrote test cases,
+                    configured GitHub Actions, Dockerfile, and Docker Compose,
+                    set up an Ubuntu server for deployment, configured SSL
+                    certificates for domain, and implemented dynamic DDNS for a
+                    self-hosted server, designed UX/UI and coded frontend using
+                    Next.js.
+                  </Text>,
+                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
+                ],
+              },
+              {
+                title: "Softskill Learner",
+                time: "Jan 2025 - May 2025",
+                description: [
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, and custom web-developer keyboard layouts - fully mouse-free workflow.",
+                  <Text key={1}>
+                    Prepared for and took the IELTS exam to obtain certification
+                    and strengthen professional English proficiency.
+                  </Text>,
+                ],
+              },
+            ],
+          },
         ]}
       />
-      <DocumentProjects projects={[]} />
+      <DocumentProjects
+        projects={[
+          {
+            title: "Portfolio Project",
+            time: "Aug 2025 - Present",
+            description:
+              "This portfolio website highlights my skills through an interactive platform, featuring real-time comments, user authentication, and role-based resume management. I designed the UI/UX and built the site with Next.js, NestJS, Prisma, and PostgreSQL, enabling seamless access to projects, education, and work experience.",
+            teamSize: 1,
+            role: <Text>Full-stack Developer. </Text>,
+            responsiblities: [
+              "Designed the UI and developed UX concepts for a polished and intuitive portfolio website.",
+              "Implemented a real-time comment system using WebSocket.io and user authentication with Google/email login.",
+              "Secured API access using JWT cookies and configured proper CORS policies.",
+              "Built front-end with Next.js and back-end with NestJS, integrating Prisma ORM with PostgreSQL.",
+              "Managed full DevOps pipeline including domain setup, dynamic DDNS, Cloudflare, self-hosted Ubuntu server, and Nginx reverse proxy.",
+              "Automated CI/CD workflow with GitHub Actions, covering testing, staging, and production deployment with zero downtime.",
+            ],
+            technologies: [
+              "Next.js / Three.js / React.js",
+              "Tailwindcss",
+              "NestJS",
+              "JWT Authentication",
+              "Prisma ORM",
+              "PostgreSQL",
+              "Docker",
+              "WebSocket.io",
+              "Nginx",
+              "Cloudflare",
+              "GitHub Actions",
+              "Google OAuth",
+              "Ubuntu Server",
+              "CI/CD",
+            ],
+            links: [
+              {
+                label: "www.baohomeserver.uk",
+                url: "https://www.baohomeserver.uk",
+              },
+            ],
+          },
+          {
+            title: "Social Integration Hub",
+            time: "Apr 2024 - Jul 2024",
+            description:
+              "The Social Integration Hub is a service that routes messages from multiple Facebook Fanpages and Zalo OA accounts to client-registered CRM systems. Built with Express.js, MySQL, Redis, and BullMQ, it supports real-time delivery via WebSocket and runs reliably in production, handling 100–200 messages per minute with low latency.",
+            teamSize: 1,
+            role: <Text>Full-stack Developer. </Text>,
+            responsiblities: [
+              "Designed and implemented the entire Social Integration Hub service using Express.js, ensuring reliable message routing between CRMs.",
+              "Built message storage with MySQL, optimized queries with indexes for fast retrieval, and maintained scalable database performance.",
+              "Implemented reliable message forwarding through BullMQ and Redis queues, handling up to 200 messages per minute.",
+              "Developed real-time message delivery with WebSocket, ensuring seamless integration with client CRM systems.",
+              "Designed and built an administration dashboard for monitoring and managing queues across multiple CRM systems.",
+              "Registered and configured extended Facebook App API permissions to enable advanced message integration features.",
+              "Deployed service on Azure VPS with Docker and Docker Hub, enabling automated, scalable, and consistent deployments.",
+              "Achieved stable production performance with low latency (1–2s delivery) and sub-second query response times.",
+            ],
+            technologies: [
+              "Express.js",
+              "Session / Passport Authentication",
+              "Ejs Render / JQuery",
+              "Multer",
+              "Swagger",
+              "MySQL",
+              "Redis",
+              "BullMQ",
+              "WebSocket",
+              "Docker",
+              "Docker Hub",
+              "Azure VPS",
+              "Facebook Graph API",
+            ],
+            links: [
+              {
+                url: "https://chathub.cloudgo.vn/",
+                label: "chathub.cloudgo.vn",
+              },
+            ],
+          },
+          {
+            title: "Social Module",
+            time: "Jul 2024 - Aug 2024",
+            description:
+              "The Social module in CloudGO’s CRM unifies Facebook Fanpages and Zalo OA, enabling seamless campaign management and customer messaging. Built with PHP, Smarty, JQuery, Bootstrap, and WebSocket, it streamlines social interactions and improves communication efficiency within the CRM ecosystem.",
+            teamSize: 2,
+            role: <Text>Full-stack Developer. </Text>,
+            responsiblities: [
+              "Developed the chatbox interface within the CRM, enabling users to send, receive, and display messages seamlessly across social accounts.",
+              "Integrated socket client with the Social Hub, ensuring reliable real-time synchronization of incoming and outgoing messages.",
+              "Implemented dynamic UI for message queries retrieved from the Social Hub, improving readability and user interaction efficiency.",
+              "Designed reporting dashboards to visualize key message statistics, supporting CRM users in tracking and analyzing communication performance.",
+            ],
+            technologies: ["Smarty", "JQuery", "PHP", "WebSocket", "Bootstrap"],
+            links: [
+              {
+                url: "https://cloudgo.vn/cloudmessage-giai-phap-tin-nhan-thuong-hieu-da-kenh",
+                label:
+                  "cloudgo.vn/cloudmessage-giai-phap-tin-nhan-thuong-hieu-da-kenh",
+              },
+            ],
+          },
+          {
+            title: "Zalo Ticket Mini App - My CloudGO",
+            time: "Jan 2024 - Apr 2024",
+            description:
+              "Zalo Ticket Mini App – My CloudGo is a Zalo mini app built with the ZMP framework based on ReactJS. It enables CRM customers to submit feedback, report issues, and share evaluations for specific projects, streamlining communication between clients and the company while enhancing service quality and customer satisfaction.",
+            teamSize: 3,
+            role: <Text>Front-end Developer. </Text>,
+            responsiblities: [
+              "Developed user interface based on provided mockups using ZMP (ReactJS), ensuring accurate implementation and responsive design across devices.",
+              "Optimized application workflows to improve usability, streamline customer feedback submission, and enhance overall user experience within the mini app.",
+              "Implemented data storage handling on the mini app, ensuring smooth integration with CRM systems and reliable access to submitted customer tickets.",
+            ],
+            technologies: ["React.js", "Zalo Api", "ZMP"],
+            links: [
+              {
+                url: "https://zalo.me/s/3077214972070612317/",
+                label: "Zalo Mini App - My CloudGo",
+              },
+            ],
+          },
+        ]}
+      />
+      <DocumentTechnicalSkill />
+      <DocumentAchievements />
+      <DocumentCertificates />
     </DocumentLayout>
   );
 }

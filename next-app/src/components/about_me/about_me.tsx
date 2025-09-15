@@ -82,9 +82,13 @@ function AboutMe() {
           <div className="w-4/5 pl-5">
             <p>
               {t("about_me_description_1")}
-              <span className="text-(--red) text-2xl">{t("8_years")}</span>
+              <span className="text-(--red) text-2xl font-medium">
+                {t("8_years")}
+              </span>
               {t("about_me_description_2")}
-              <span className="text-(--blue) text-2xl">{t("2_years")}</span>
+              <span className="text-(--blue) text-2xl font-medium">
+                {t("2_years")}
+              </span>
               {t("about_me_description_3")}
               {t("about_me_description_4")}
             </p>
