@@ -24,6 +24,7 @@ const JobSection = (props: { job: Job }) => {
       >
         <Text
           style={{
+            fontSize: 10,
             fontStyle: "italic",
             fontWeight: "light",
           }}
@@ -54,7 +55,7 @@ export const DocumentExperience = (props: { companies: Company[] }) => {
       <View style={styles.hr}></View>
       <View style={styles.content}>
         {props.companies.map((company, index) => (
-          <View key={index}>
+          <View key={index} wrap={false}>
             <View
               style={{
                 display: "flex",
@@ -62,7 +63,7 @@ export const DocumentExperience = (props: { companies: Company[] }) => {
                 justifyContent: "space-between",
               }}
             >
-              <Text style={styles.h3}>{company.company}</Text>
+              <Text style={styles.h5}>{company.company}</Text>
               <Text>{company.location}</Text>
             </View>
             {company.jobs.map((job, jobIndex) => (
