@@ -55,15 +55,14 @@ export function DocumentShow() {
               className="border-x-5 bg-[#FCC41B] overflow-hidden"
             >
               <div className="relative w-[695px] h-[570px] bg-[#FFF] mx-6 border-x-5 flex flex-col items-center justify-center">
-                <BlobProvider document={<WebFullstackDoc />}>
+                <BlobProvider document={<WebFullstackDoc />} key={Date.now()}>
                   {({ url, loading, error }) => {
                     if (loading) return <Loading />;
                     if (error) return <div>Error: {error.message}</div>;
                     if (!url) return null;
                     return (
-                      <embed
-                        src={`${url}#zoom=50`}
-                        type="application/pdf"
+                      <iframe
+                        src={`${url}`}
                         height="100%"
                         width="100%"
                         style={{
