@@ -8,7 +8,7 @@ export interface DocProject {
   teamSize: number;
   time: string;
   role: React.ReactNode;
-  responsiblities: string[];
+  responsibilities: string[];
   technologies: string[];
   links: Array<{
     label: string;
@@ -57,7 +57,7 @@ const ProjectItem = ({ project }: { project: DocProject }) => {
             <Text style={{ fontWeight: "bold" }}>Responsibilities</Text>
             {": "}
           </Text>
-          {project.responsiblities.map((responsibility, index) => (
+          {project.responsibilities.map((responsibility, index) => (
             <LI bullet="-" key={index}>
               {responsibility}
             </LI>
