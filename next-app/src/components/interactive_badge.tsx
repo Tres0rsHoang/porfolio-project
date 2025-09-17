@@ -44,21 +44,21 @@ export default function InteractiveBadge() {
             <Band />
           </Physics>
           <Text
-            maxWidth={2}
-            lineHeight={1.2}
+            maxWidth={3.1}
+            lineHeight={1.1}
             letterSpacing={0.05}
             textAlign="center"
             anchorX="center"
             anchorY="middle"
             color="white"
             strokeColor="black"
-            strokeWidth={0.01}
-            position={[0, 0, 0.1]}
-            fontSize={0.5}
+            strokeWidth={currentLangState.language == "en" ? 0.01 : 0}
+            position={[0, 1.6, 0.1]}
+            fontSize={0.3}
             font={
               currentLangState.language == "en"
                 ? "/fonts/Simpsonfont.ttf"
-                : "/fonts/ComicNeue-Bold.ttf"
+                : "/fonts/Baloo2-Regular.ttf"
             }
           >
             {t("desktop_required")}

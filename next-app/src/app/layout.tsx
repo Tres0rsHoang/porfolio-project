@@ -107,8 +107,10 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
-  viewportFit: "cover",
+  maximumScale: 1,
+  minimumScale: 1,
+  userScalable: false,
+  viewportFit: "auto",
 };
 
 export default function RootLayout({
@@ -178,7 +180,7 @@ export default function RootLayout({
                 </main>
               </div>
             </div>
-            <div className="namecard absolute h-full w-full top-0 left-0">
+            <div className="namecard absolute h-full w-full top-0 left-0 overflow-hidden">
               <LazyFloadingComments />
               <InteractiveBadge />
               <div className="absolute bottom-5 right-5">
