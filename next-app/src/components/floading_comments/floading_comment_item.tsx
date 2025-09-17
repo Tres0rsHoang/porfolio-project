@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 interface ItemProps {
   comment: Comment;
+  animate?: boolean;
 }
 
 export const FloadingCommentItem = (props: ItemProps) => {
@@ -69,6 +70,24 @@ export const FloadingCommentItem = (props: ItemProps) => {
       clearInterval(interval);
     };
   }, [height, setNextPosition, width]);
+
+  if (!props.animate) {
+    return (
+      <div
+        className={`${props.comment.user.id == user?.id ? "opacity-100" : "opacity-30"} text-3xl border-black border-2 w-xs rounded-lg px-2 bg-(--semi-highlight)`}
+      >
+        <span
+          style={{
+            color: stringToColor(props.comment.user.name),
+          }}
+        >
+          {props.comment.user.name}:{" "}
+        </span>
+        <span>{props.comment.content.slice(0, 50)}</span>
+        {props.comment.content.length > 50 && <span>...</span>}
+      </div>
+    );
+  }
 
   if (!width || !height) return <></>;
 
