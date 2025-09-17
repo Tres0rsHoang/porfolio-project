@@ -9,6 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import WebFullstackDoc from "./cvs/web_fullstack_doc";
 import { Loading } from "../loading/loading_full";
 import WebFullstackPythonDoc from "./cvs/web_fullstack_python_doc";
+import MobileFullstackDoc from "./cvs/mobile_fullstack_doc";
 
 interface CVItem {
   title: string;
@@ -31,6 +32,11 @@ export function DocumentShow() {
       imagePath: "/images/WebJobTitleIcon.png",
       title: "Fullstack Web Developer (Python)",
       document: <WebFullstackPythonDoc />,
+    },
+    {
+      imagePath: "/images/WebJobTitleIcon.png",
+      title: "Fullstack Mobile Developer",
+      document: <MobileFullstackDoc />,
     },
   ];
 

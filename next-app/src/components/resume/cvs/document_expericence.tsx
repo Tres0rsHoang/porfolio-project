@@ -48,14 +48,17 @@ export interface Company {
   jobs: Job[];
 }
 
-export const DocumentExperience = (props: { companies: Company[] }) => {
+export const DocumentExperience = (props: {
+  companies: Company[];
+  wrap?: boolean;
+}) => {
   return (
     <View>
       <Text style={styles.h4}>Experience</Text>
       <View style={styles.hr}></View>
       <View style={styles.content}>
         {props.companies.map((company, index) => (
-          <View key={index} wrap={false}>
+          <View key={index} wrap={props.wrap}>
             <View
               style={{
                 display: "flex",
