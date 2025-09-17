@@ -88,6 +88,7 @@ const ProjectItem = ({ project }: { project: DocProject }) => {
                   }}
                 >
                   {link.label}
+                  {index == project.links.length - 1 ? "." : ", "}
                 </Link>
               ))}
             </Text>
