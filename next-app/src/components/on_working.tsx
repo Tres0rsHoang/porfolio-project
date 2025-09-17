@@ -7,8 +7,8 @@ type Props = {
 
 const OnWorking: React.FC<Props> = ({ message = "Working in process" }) => {
   return (
-    <div className="flex flex-col justify-center items-center">
-      <div className="relative w-56 h-56">
+    <div className="flex flex-col justify-center items-center pb-20">
+      <div className="relative w-56 h-56 mb-5">
         <Image fill={true} alt="on_working" src="/images/OnWorking.jpg"></Image>
       </div>
       <h3>{message}</h3>
