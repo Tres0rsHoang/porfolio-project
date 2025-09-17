@@ -27,8 +27,8 @@ export const DocumentTechnicalSkill = () => {
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>DevOps</Text>
           {": "}
-          Ngrok, Docker, Docker Compose, Azure, Cloudflare, GitHub Actions
-          (CI/CD), Nginx, VPS.
+          Docker, Docker Compose, Azure, Digital Ocean, Google Cloud,
+          Cloudflare, GitHub Actions (CI/CD), Nginx, Ngrok, Unix/Linux VPS.
         </Text>
         <Text>
           <Text style={{ fontWeight: "bold" }}>Tools/Others</Text>

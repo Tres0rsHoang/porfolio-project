@@ -54,7 +54,7 @@ export const DocumentEducation = () => {
       <View style={styles.content}>
         <School
           name="VNU-HCM, University of Science"
-          time="Aug 2020 - Aug 2025"
+          time="Aug 2020 - Nov 2024"
           major="B.Sc. in Software Engineering; High Quality Program. "
           result="GPA: 7.79/10"
         />
@@ -67,7 +67,7 @@ export const DocumentEducation = () => {
           name="Tien Giang High School For Gifted"
           time="Aug 2017 - Jun 2020"
           major="Information Technology Major"
-          result="Excellent Student: 12/12"
+          result="Excellent Student: 12/12 (Scholarship in 3 years)"
         />
       </View>
     </View>

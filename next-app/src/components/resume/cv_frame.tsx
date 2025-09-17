@@ -31,7 +31,7 @@ export const CVFrame = (props: CVFrameProps) => {
             className="absolute top-[60%] left-[50%] -translate-6/12"
           />
         </button>
-        <h3 className="mt-2 text-center">{props.title}</h3>
+        <h4 className="mt-2 text-center">{props.title}</h4>
       </motion.div>
     </AnimatePresence>
   );

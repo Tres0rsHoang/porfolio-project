@@ -9,15 +9,21 @@ export const DocumentAchievements = () => {
       <View style={styles.content}>
         <Text>
           <Text style={{ fontWeight: "bold" }}>
-            Third Prize in Information Technology (Gifted schools)
+            Silver Medal in Information Technology
           </Text>{" "}
-          at The 2019 Provincial Competition for Excellent Students.
+          at The 2019 Vietnam Southern Summer Camp.
         </Text>
         <Text>
           <Text style={{ fontWeight: "bold" }}>
-            Silver Medal in Information Technology
+            Third Prize in Information Technology for Gifted schools
           </Text>{" "}
-          at The 2019 Southern Summer Camp.
+          at The 2019 Vietnam Excellent Students Competition (Province-Level).
+        </Text>
+        <Text>
+          <Text style={{ fontWeight: "bold" }}>
+            Encouragement prize with IOT Device
+          </Text>{" "}
+          at The 2018 Vietnam Science and Engineering Fair (Province-Level).
         </Text>
       </View>
     </View>

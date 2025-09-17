@@ -8,29 +8,31 @@ import { DocumentTechnicalSkill } from "./document_technical_skill";
 import { DocumentAchievements } from "./document_achievements";
 import { DocumentCertificates } from "./document_certificates";
 
-export default function WebFullstackDoc() {
+export default function WebFullstackPythonDoc() {
   return (
     <DocumentLayout
       job="Full-stack Web Developer"
       title="Hoang Quoc Bao - Full-stack web developer"
     >
       <DocumentSummary>
-        Fullstack Web Developer with{" "}
+        Full-stack Web Developer with{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          2 years of professional experience and 8 years of coding background
-        </Text>
-        , building a solid programming foundation. Skilled in developing
-        scalable web applications using{" "}
+          2+ years of professional experience and 8+ years
+        </Text>{" "}
+        of coding background through academic, freelance, and project-based
+        work, building a strong programming foundation equivalent to 4+ years of
+        hands-on development. Skilled in developing scalable web applications
+        using{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          Node.js, NestJS, React.js, Next.js and PHP
+          Node.js, NestJS, React.js, Next.js, PHP, and Python
         </Text>
         . Proficient with{" "}
         <Text
@@ -38,17 +40,19 @@ export default function WebFullstackDoc() {
             fontWeight: "bold",
           }}
         >
-          MySQL, PostgreSQL and MongoDB
-        </Text>
-        . Experienced in{" "}
+          MySQL, PostgreSQL, and MongoDB.
+        </Text>{" "}
+        Experienced in{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          Docker, CI/CD, and Cloud Deployment
-        </Text>
-        , delivering efficient and reliable solutions.
+          Docker, CI/CD, and Cloud Deployment,
+        </Text>{" "}
+        delivering efficient and reliable solutions. Strong foundation in
+        algorithms and data structures, applied in building scalable systems and
+        proven through competitive programming contests.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentExperience
@@ -252,6 +256,7 @@ export default function WebFullstackDoc() {
               "Developed real-time message delivery with WebSocket, ensuring seamless integration with client CRM systems.",
               "Designed and built an administration dashboard for monitoring and managing queues across multiple CRM systems.",
               "Registered and configured extended Facebook App API permissions to enable advanced message integration features.",
+              "Wrote API docs with Swagger collections",
               "Deployed service on Azure VPS with Docker and Docker Hub, enabling automated, scalable, and consistent deployments.",
               "Achieved stable production performance with low latency (1–2s delivery) and sub-second query response times.",
             ],
@@ -289,6 +294,8 @@ export default function WebFullstackDoc() {
               "Integrated socket client with the Social Hub, ensuring reliable real-time synchronization of incoming and outgoing messages.",
               "Implemented dynamic UI for message queries retrieved from the Social Hub, improving readability and user interaction efficiency.",
               "Designed reporting dashboards to visualize key message statistics, supporting CRM users in tracking and analyzing communication performance.",
+              "Wrote API docs with Postman collections",
+              "Maintained project documentation on Trello",
             ],
             technologies: ["Smarty", "JQuery", "PHP", "WebSocket", "Bootstrap"],
             links: [
@@ -300,22 +307,46 @@ export default function WebFullstackDoc() {
             ],
           },
           {
-            title: "Zalo Ticket Mini App - My CloudGO",
-            time: "Jan 2024 - Apr 2024",
+            title: "Gold Price Lookup Software",
+            time: "Jul 2021 - Aug 2021",
             description:
-              "Zalo Ticket Mini App – My CloudGo is a Zalo mini app built with the ZMP framework based on ReactJS. It enables CRM customers to submit feedback, report issues, and share evaluations for specific projects, streamlining communication between clients and the company while enhancing service quality and customer satisfaction.",
-            teamSize: 3,
-            role: <Text>Front-end Developer. </Text>,
+              "This academic project, developed from July to August 2021 for a Computer Networks course, was a Python-based application for gold price lookup. It featured a Tkinter GUI, user authentication (account creation, login, registration), and data crawling from websites. The system communicated via Python socket programming and received a final grade of 9/10.",
+            teamSize: 2,
+            role: <Text>Team Leader - Full-stack Developer.</Text>,
             responsibilities: [
-              "Developed user interface based on provided mockups using ZMP (ReactJS), ensuring accurate implementation and responsive design across devices.",
-              "Optimized application workflows to improve usability, streamline customer feedback submission, and enhance overall user experience within the mini app.",
-              "Implemented data storage handling on the mini app, ensuring smooth integration with CRM systems and reliable access to submitted customer tickets.",
+              "Designed the UI and implemented user workflows, including registration and login functionality, connecting client app with the server.",
+              "Processed crawled gold price data using the BeautifulSoup library for reliable extraction and presentation.",
+              "Managed project progress and task allocation using Trello for team collaboration and tracking.",
             ],
-            technologies: ["React.js", "Zalo Api", "ZMP"],
+            technologies: [
+              "Python",
+              "Tkinter",
+              "BeautifulSoup",
+              "Python Socket",
+            ],
             links: [
               {
-                url: "https://zalo.me/s/3077214972070612317/",
-                label: "Zalo Mini App - My CloudGo",
+                url: "https://github.com/Tres0rsHoang/DAMMT_CK",
+                label: "Github.com/Tres0rsHoang/DAMMT_CK",
+              },
+            ],
+          },
+          {
+            title: "Remote Computer Control Solfware",
+            time: "Jun 2021 - Jul 2021",
+            description:
+              "A Python-based remote administration tool enabling remote control, screenshot capture, keystroke logging, and registry modification, built with a client–server architecture for secure systems management.",
+            teamSize: 10,
+            role: <Text>Team Leader - Full-stack Developer.</Text>,
+            responsibilities: [
+              "Planned and coordinated project execution as team leader, managing timelines and task allocation for a 10-member team via Trello.",
+              "Implemented key features such as screenshot capture and Windows registry modification on both client and server sides.",
+            ],
+            technologies: ["Python", "Tkinter", "Python Socket"],
+            links: [
+              {
+                url: "https://github.com/Tres0rsHoang/DoAnMMT",
+                label: "Github.com/Tres0rsHoang/DoAnMMT",
               },
             ],
           },
