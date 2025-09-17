@@ -28,7 +28,7 @@ export const CVFrame = (props: CVFrameProps) => {
             alt="FolderIcon"
             width={35}
             height={35}
-            className="absolute top-[60%] left-[50%] -translate-6/12"
+            className="absolute top-[60%] left-[50%] -translate-6/12 max-h-9 w-auto"
           />
         </button>
         <h4 className="mt-2 text-center">{props.title}</h4>
