@@ -8,6 +8,7 @@ import { BlobProvider, DocumentProps } from "@react-pdf/renderer";
 import { AnimatePresence, motion } from "framer-motion";
 import WebFullstackDoc from "./cvs/web_fullstack_doc";
 import { Loading } from "../loading/loading_full";
+import WebFullstackPythonDoc from "./cvs/web_fullstack_python_doc";
 
 interface CVItem {
   title: string;
@@ -25,6 +26,11 @@ export function DocumentShow() {
       imagePath: "/images/WebJobTitleIcon.png",
       title: "Fullstack Web Developer",
       document: <WebFullstackDoc />,
+    },
+    {
+      imagePath: "/images/WebJobTitleIcon.png",
+      title: "Fullstack Web Developer (Python)",
+      document: <WebFullstackPythonDoc />,
     },
   ];
 
@@ -55,7 +61,7 @@ export function DocumentShow() {
               className="border-x-5 bg-[#FCC41B] overflow-hidden"
             >
               <div className="relative w-[695px] h-[570px] bg-[#FFF] mx-6 border-x-5 flex flex-col items-center justify-center">
-                <BlobProvider document={<WebFullstackDoc />} key={Date.now()}>
+                <BlobProvider document={contentChildren} key={Date.now()}>
                   {({ url, loading, error }) => {
                     if (loading) return <Loading />;
                     if (error) return <div>Error: {error.message}</div>;
