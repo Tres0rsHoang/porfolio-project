@@ -9,8 +9,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import WebFullstackDoc from "./cvs/web_fullstack_doc";
 import { Loading } from "../loading/loading_full";
 import WebFullstackPythonDoc from "./cvs/web_fullstack_python_doc";
-import WebFullstackJavaDoc from "./cvs/web_fullstack_java_doc";
-import MobileFullstackDoc from "./cvs/web_fullstack_java_doc";
+import MobileFullstackDoc from "./cvs/mobile_fullstack_doc";
 
 interface CVItem {
   title: string;
