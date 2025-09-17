@@ -34,7 +34,7 @@ export function DocumentShow() {
       document: <WebFullstackPythonDoc />,
     },
     {
-      imagePath: "/images/WebJobTitleIcon.png",
+      imagePath: "/images/PhoneCVIcon.png",
       title: "Fullstack Mobile Developer",
       document: <MobileFullstackDoc />,
     },

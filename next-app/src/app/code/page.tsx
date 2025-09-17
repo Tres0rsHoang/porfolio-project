@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 export default function Code() {
   const { t } = useTranslation("common");
   return (
-    <div>
+    <div className="flex items-center justify-center h-full w-full">
       <OnWorking message={t("working")} />
     </div>
   );
