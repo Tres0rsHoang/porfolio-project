@@ -11,6 +11,7 @@ import { Loading } from "../loading/loading_full";
 import WebFullstackPythonDoc from "./cvs/web_fullstack_python_doc";
 import MobileFullstackDoc from "./cvs/mobile_fullstack_doc";
 import FullstackDoc from "./cvs/fullstack_dev_doc";
+import FullstackCSharpDoc from "./cvs/fullstack_dev_csharp_doc";
 
 interface CVItem {
   title: string;
@@ -43,6 +44,11 @@ export function DocumentShow() {
       imagePath: "/images/System.png",
       title: "Fullstack Developer",
       document: <FullstackDoc />,
+    },
+    {
+      imagePath: "/images/System.png",
+      title: "Fullstack Developer (C# bonus)",
+      document: <FullstackCSharpDoc />,
     },
   ];
 
