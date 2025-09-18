@@ -187,7 +187,7 @@ export default function WebFullstackDoc() {
                 title: "Softskill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, and custom web-developer keyboard layouts - fully mouse-free workflow.",
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom web-developer keyboard layouts - fully mouse-free workflow.",
                   <Text key={1}>
                     Prepared for and took the IELTS exam to obtain certification
                     and strengthen professional English proficiency.
