@@ -220,7 +220,7 @@ export default function MobileFullstackDoc() {
                 title: "Softskill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, and custom keyboard layouts - fully mouse-free workflow.",
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts - fully mouse-free workflow.",
                   <Text key={1}>
                     Prepared for and took the IELTS exam to obtain certification
                     and strengthen professional English proficiency.
@@ -267,49 +267,10 @@ export default function MobileFullstackDoc() {
             ],
           },
           {
-            title: "Social Integration Hub",
-            time: "Apr 2024 - Jul 2024",
-            description:
-              "The Social Integration Hub is a service that routes messages from multiple Facebook Fanpages and Zalo OA accounts to client-registered CRM systems. Built with Express.js, MySQL, Redis, and BullMQ, it supports real-time delivery via WebSocket and runs reliably in production, handling 100–200 messages per minute with low latency.",
-            teamSize: 1,
-            role: <Text>Full-stack Developer. </Text>,
-            responsibilities: [
-              "Designed and implemented the entire Social Integration Hub service using Express.js, ensuring reliable message routing between CRMs.",
-              "Built message storage with MySQL, optimized queries with indexes for fast retrieval, and maintained scalable database performance.",
-              "Implemented reliable message forwarding through BullMQ and Redis queues, handling up to 200 messages per minute.",
-              "Developed real-time message delivery with WebSocket, ensuring seamless integration with client CRM systems.",
-              "Designed and built an administration dashboard for monitoring and managing queues across multiple CRM systems.",
-              "Registered and configured extended Facebook App API permissions to enable advanced message integration features.",
-              "Deployed service on Azure VPS with Docker and Docker Hub, enabling automated, scalable, and consistent deployments.",
-              "Achieved stable production performance with low latency (1–2s delivery) and sub-second query response times.",
-            ],
-            technologies: [
-              "Express.js",
-              "Session / Passport Authentication",
-              "Ejs Render / JQuery",
-              "Multer",
-              "Swagger",
-              "MySQL",
-              "Redis",
-              "BullMQ",
-              "WebSocket",
-              "Docker",
-              "Docker Hub",
-              "Azure VPS",
-              "Facebook Graph API",
-            ],
-            links: [
-              {
-                url: "https://chathub.cloudgo.vn/",
-                label: "chathub.cloudgo.vn",
-              },
-            ],
-          },
-          {
             title: "CloudWork",
-            time: "Apr 2024 - Jul 2024",
+            time: "Jul 2024 - Aug 2024",
             description:
-              "The CloudWork app, a sub-application of the CloudGo ecosystem, enables businesses to create, assign, and manage tasks, set reminders, track progress, and evaluate work completion. It streamlines project execution and enhances team productivity for companies using CloudGo’s CRM services.",
+              "The CloudWork app, a Flutter-based sub-app of the CloudGo ecosystem, enables businesses to create, assign, and manage tasks, set reminders, track progress, and evaluate work completion. It streamlines project execution and enhances team productivity for companies using CloudGo’s CRM services.",
             teamSize: 3,
             role: <Text>Front-end Developer. </Text>,
             responsibilities: [
@@ -321,8 +282,65 @@ export default function MobileFullstackDoc() {
             technologies: ["Flutter", "PHP", "Vtiger CRM"],
             links: [
               {
-                url: "https://chathub.cloudgo.vn/",
-                label: "chathub.cloudgo.vn",
+                url: "https://cloudgo.vn/cloudwork-giai-phap-quan-ly-cong-viec-tinh-gon",
+                label:
+                  "Cloudgo.vn/cloudwork-giai-phap-quan-ly-cong-viec-tinh-gon",
+              },
+            ],
+          },
+          {
+            title: "CloudSales",
+            time: "Aug 2024 - Oct 2024",
+            description:
+              "CloudSales is a Flutter-based sub-app of CloudGo designed for multi-channel order management. It enables businesses and individuals to track orders from platforms like Shopee and TikTok, manage inventory, and generate invoices. Integrated with the Social Integration Hub, it supports low-latency (<1s) real-time multi-channel chat via Facebook Fanpages and Zalo OA.",
+            teamSize: 3,
+            role: <Text>Full-stack Developer. </Text>,
+            responsibilities: [
+              "Converted UI mockups into production-ready app interfaces, ensuring seamless design implementation and user-friendly workflows.",
+              "Integrated Social Integration Hub to enable real-time multi-channel messaging with Facebook Fanpages and Zalo OA.",
+              "Developed core order management features, including creating, displaying, and updating orders with dynamic product selection.",
+              "Implemented product management functions for inventory tracking, stock updates, and order creation workflows.",
+            ],
+            technologies: ["Flutter", "WebSocket", "PHP", "Vtiger CRM"],
+            links: [
+              {
+                url: "https://cloudgo.vn/cloudsales-giai-phap-crm-quan-ly-ban-hang-da-kenh",
+                label:
+                  "Cloudgo.vn/cloudsales-giai-phap-crm-quan-ly-ban-hang-da-kenh",
+              },
+            ],
+          },
+          {
+            title: "Grab Clone Project",
+            time: "May 2023 - Aug 2023",
+            description:
+              "Grab-Clone is an academic project simulating Grab’s ride-hailing features, built with React Native (client app), React.js (web), Flutter (driver app), and .NET backend. Orders are processed via RabbitMQ queues and matched to the nearest driver. The system was deployed on DigitalOcean with GitHub Actions CI/CD and achieved a 9.0/10 course grade.",
+            teamSize: 5,
+            role: <Text>Team Leader - Full-stack Developer. </Text>,
+            responsibilities: [
+              "Led a team of developers, assigned tasks, and tracked progress using Jira to ensure timely project delivery.",
+              "Designed and implemented the database schema in PostgreSQL, ensuring efficient data storage and query performance.",
+              "Built ride-booking flows with RabbitMQ queues and .NET backend for reliable driver-client matching.",
+              "Developed client UI in React Native and contributed to Flutter driver app features and workflows.",
+              "Managed CI/CD pipelines with GitHub Actions for automated deployment of the backend to DigitalOcean.",
+            ],
+            technologies: [
+              "React Native",
+              "Flutter",
+              "React.js",
+              ".NET",
+              "RabbitMQ",
+              "Redis",
+              "PostgreSQL",
+              "DigitalOcean",
+              "GitHub Actions",
+              "Jira",
+            ],
+            links: [
+              {
+                url: "https://github.com/Tres0rsHoang/Grab-Clone-Project",
+                label:
+                  "Github.com/Tres0rsHoang/Grab-Clone-Project (Fork from hieucckha/intro-to-software-architecture)",
               },
             ],
           },
