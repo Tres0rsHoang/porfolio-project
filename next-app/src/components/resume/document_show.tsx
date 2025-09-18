@@ -10,6 +10,7 @@ import WebFullstackDoc from "./cvs/web_fullstack_doc";
 import { Loading } from "../loading/loading_full";
 import WebFullstackPythonDoc from "./cvs/web_fullstack_python_doc";
 import MobileFullstackDoc from "./cvs/mobile_fullstack_doc";
+import FullstackDoc from "./cvs/fullstack_dev_doc";
 
 interface CVItem {
   title: string;
@@ -37,6 +38,11 @@ export function DocumentShow() {
       imagePath: "/images/PhoneCVIcon.png",
       title: "Fullstack Mobile Developer",
       document: <MobileFullstackDoc />,
+    },
+    {
+      imagePath: "/images/System.png",
+      title: "Fullstack Developer",
+      document: <FullstackDoc />,
     },
   ];
 
