@@ -23,6 +23,7 @@ interface InputFieldProps<T extends FieldValues> {
   placeholder?: string;
   error?: FieldError;
   className?: string;
+  icon?: React.ReactNode;
   pattern?: ValidationRule<RegExp>;
   validate?: Validate<FieldPathValue<T, Path<T>>, T>;
 }
@@ -92,6 +93,15 @@ export function InputField<T extends FieldValues>(props: InputFieldProps<T>) {
             </AnimatePresence>
           </button>
         )}
+        <div
+          style={{
+            position: "absolute",
+            right: "0",
+            marginRight: "15px",
+          }}
+        >
+          {props.icon}
+        </div>
       </div>
       {props.error && <ErrorNoti message={props.error.message} />}
     </div>

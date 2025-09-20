@@ -15,65 +15,47 @@ export default function MobileFullstackDoc() {
       title="Hoang Quoc Bao - Full-stack mobile developer"
     >
       <DocumentSummary>
-        Mobile App Fullstack Developer with{" "}
+        Fullstack Mobile App Developer with{" "}
         <Text
           style={{
             fontWeight: "bold",
           }}
         >
-          2+ years of professional experience and 8 years of coding background.
+          2+ years of professional experience and 8 years of coding background
+        </Text>
+        . Skilled in building and deploying{" "}
+        <Text
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          Flutter{" "}
+        </Text>
+        applications for{" "}
+        <Text
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          Android and iOS (App Store & Google Play)
+        </Text>
+        . Strong expertise in{" "}
+        <Text
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          REST APIs, Git/GitHub, CI/CD, and scalable architectures
+        </Text>
+        .{" "}
+        <Text
+          style={{
+            fontWeight: "bold",
+          }}
+        >
+          IELTS 5.5 (Academic)
         </Text>{" "}
-        Skilled in building cross-platform apps with{" "}
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          Flutter and React Native
-        </Text>
-        , publishing to both{" "}
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          App Store and Google Play
-        </Text>
-        . Experienced with{" "}
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          Google services (Firebase, Firestore, Google Maps, Google Translate),
-          Facebook and Zalo services (GraphAPI, Advanced API permission)
-        </Text>{" "}
-        and backend frameworks{" "}
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          (Node.js, Express.js, NestJS, .NET, PHP)
-        </Text>{" "}
-        with{" "}
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          MySQL, PostgreSQL, MongoDB and SQLite.
-        </Text>
-        . Proficient in DevOps tools and platforms including{" "}
-        <Text
-          style={{
-            fontWeight: "bold",
-          }}
-        >
-          Git, Docker, GitHub Actions (CI/CD), Nginx, Cloudflare, Azure,
-          DigitalOcean, and Google Cloud
-        </Text>
-        , delivering scalable, production-ready applications.
+        ensures effective English communication in international teams.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentExperience
@@ -253,6 +235,8 @@ export default function MobileFullstackDoc() {
               "Dynamic Links",
               "Shorebird",
               "PHP",
+              "Rest APIs",
+              "Gitlab",
               "Vtiger CRM",
             ],
             links: [
@@ -279,7 +263,13 @@ export default function MobileFullstackDoc() {
               "Implemented lazy loading for individual components, reducing perceived waiting time and improving overall user experience.",
               "Optimized in-app search by managing filters with BloC, minimizing redundant reloads when retrieving related lists.",
             ],
-            technologies: ["Flutter", "PHP", "Vtiger CRM"],
+            technologies: [
+              "Flutter",
+              "Rest APIs",
+              "Gitlab",
+              "PHP",
+              "Vtiger CRM",
+            ],
             links: [
               {
                 url: "https://cloudgo.vn/cloudwork-giai-phap-quan-ly-cong-viec-tinh-gon",
@@ -301,7 +291,14 @@ export default function MobileFullstackDoc() {
               "Developed core order management features, including creating, displaying, and updating orders with dynamic product selection.",
               "Implemented product management functions for inventory tracking, stock updates, and order creation workflows.",
             ],
-            technologies: ["Flutter", "WebSocket", "PHP", "Vtiger CRM"],
+            technologies: [
+              "Flutter",
+              "WebSocket",
+              "PHP",
+              "Vtiger CRM",
+              "Rest APIs",
+              "Gitlab",
+            ],
             links: [
               {
                 url: "https://cloudgo.vn/cloudsales-giai-phap-crm-quan-ly-ban-hang-da-kenh",
@@ -356,7 +353,13 @@ export default function MobileFullstackDoc() {
               "Optimized application workflows to improve usability, streamline customer feedback submission, and enhance overall user experience within the mini app.",
               "Implemented data storage handling on the mini app, ensuring smooth integration with CRM systems and reliable access to submitted customer tickets.",
             ],
-            technologies: ["React.js", "Zalo Api", "ZMP"],
+            technologies: [
+              "React.js",
+              "Zalo Api",
+              "ZMP",
+              "Rest APIs",
+              "Gitlab",
+            ],
             links: [
               {
                 url: "https://zalo.me/s/3077214972070612317/",

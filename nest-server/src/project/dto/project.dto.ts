@@ -6,6 +6,7 @@ import {
   IsBoolean,
   IsDate,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
 } from 'class-validator';
@@ -25,6 +26,19 @@ export class CreateProjectDto {
   @IsOptional()
   @IsBoolean()
   feature?: boolean;
+
+  @IsString()
+  description: string;
+
+  @IsNumber()
+  teamSize: number;
+
+  @IsString()
+  role: string;
+
+  @IsArray()
+  @IsString({ each: true })
+  responsibilities: string[];
 
   @IsArray()
   @IsString({ each: true })

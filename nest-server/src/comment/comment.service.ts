@@ -96,6 +96,7 @@ export class CommentService {
     } else {
       user = await this.userService.getUserById(createCommentDto.userId);
     }
+
     if (!user) throw new BadRequestException('Invalid user id');
     return await this.newComment({
       userId: user.id,
@@ -115,8 +116,9 @@ export class CommentService {
   async findAll(paging: PagingDto) {
     const { page, limit } = paging;
     if (!page || !limit) {
-      return BadRequestException;
+      return new BadRequestException();
     }
+
     const [comments, count] = await Promise.all([
       this.databaseService.comment.findMany({
         select: this.CommentProps,

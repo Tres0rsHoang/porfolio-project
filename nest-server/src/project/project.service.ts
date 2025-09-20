@@ -2,10 +2,114 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { Framework, Prisma, Project } from '@prisma/client';
 import { CreateProjectDto, UpdateProjectDto } from './dto/project.dto';
 import { DatabaseService } from 'src/database/database.service';
+import { PagingDto } from 'src/dto/paging.dto';
+import { Paging } from 'src/entity/paging.entity';
+import { ProjectData, SimplifyProjectData } from './entity/project_data.entity';
 
 @Injectable()
 export class ProjectService {
   constructor(private readonly databaseService: DatabaseService) {}
+
+  private ProjectProps = {
+    id: true,
+    name: true,
+    title: true,
+    description: true,
+    teamSize: true,
+    role: true,
+    startAt: true,
+    endAt: true,
+    ResponsibilityOnProject: {
+      select: {
+        responsibility: true,
+      },
+    },
+    FrameworkOnProject: {
+      select: {
+        framework: {
+          select: {
+            id: true,
+            name: true,
+            LanguageOnFramework: {
+              select: {
+                Language: {
+                  select: {
+                    id: true,
+                    displayString: true,
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+    TypeOnProject: {
+      select: {
+        type: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    },
+  } satisfies Prisma.ProjectSelect;
+
+  private simplyfyProjectData(data: ProjectData): SimplifyProjectData {
+    let frameworks: Array<{
+      id: number;
+      name: string;
+    }> = [];
+    let languages: Array<{
+      id: number;
+      name: string;
+    }> = [];
+    let types: Array<{
+      id: number;
+      name: string;
+    }> = [];
+
+    frameworks = data.FrameworkOnProject.map((data) => {
+      return {
+        id: data.framework.id,
+        name: data.framework.name,
+      };
+    });
+
+    languages = data.FrameworkOnProject.flatMap((data) => {
+      return data.framework.LanguageOnFramework.map((dataFramework) => {
+        return {
+          id: dataFramework.Language.id,
+          name: dataFramework.Language.displayString,
+        };
+      });
+    });
+
+    types = data.TypeOnProject.map((data) => {
+      return {
+        id: data.type.id,
+        name: data.type.name,
+      };
+    });
+
+    return {
+      id: data.id,
+      title: data.title,
+      name: data.name,
+      description: data.description,
+      teamSize: data.teamSize,
+      role: data.role,
+      startAt: data.startAt,
+      endAt: data.endAt,
+      responsibilities: data.ResponsibilityOnProject.map(
+        (data) => data.responsibility,
+      ),
+      frameworks: frameworks,
+      languages: languages,
+      types: types,
+    };
+  }
 
   async importNewProject(project: CreateProjectDto) {
     const isProjectExist: Project | null =
@@ -57,6 +161,14 @@ export class ProjectService {
         startAt: project.startAt,
         endAt: project.endAt,
         feature: project.feature,
+        description: project.description,
+        teamSize: project.teamSize,
+        role: project.role,
+        ResponsibilityOnProject: {
+          create: project.responsibilities.map((data) => ({
+            responsibility: data,
+          })),
+        },
         FrameworkOnProject: {
           create: frameworkEntity.map((entity) => ({
             framework: { connect: { id: entity.id } },
@@ -66,14 +178,7 @@ export class ProjectService {
           create: [{ type: { connect: { id: isExistProjectType.id } } }],
         },
       },
-      include: {
-        FrameworkOnProject: {
-          include: { framework: true },
-        },
-        TypeOnProject: {
-          include: { type: true },
-        },
-      },
+      select: this.ProjectProps,
     });
   }
 
@@ -131,14 +236,7 @@ export class ProjectService {
         id,
       },
       data: formattedData,
-      include: {
-        FrameworkOnProject: {
-          include: { framework: true },
-        },
-        TypeOnProject: {
-          include: { type: true },
-        },
-      },
+      select: this.ProjectProps,
     });
   }
 
@@ -147,38 +245,7 @@ export class ProjectService {
       where: {
         feature: true,
       },
-      select: {
-        id: true,
-        name: true,
-        title: true,
-        FrameworkOnProject: {
-          select: {
-            framework: {
-              select: {
-                name: true,
-                LanguageOnFramework: {
-                  select: {
-                    Language: {
-                      select: {
-                        displayString: true,
-                      },
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-        TypeOnProject: {
-          select: {
-            type: {
-              select: {
-                name: true,
-              },
-            },
-          },
-        },
-      },
+      select: this.ProjectProps,
     });
 
     const removeAttr = <T, K extends keyof T>(obj: T, key: K): Omit<T, K> => {
@@ -191,7 +258,6 @@ export class ProjectService {
       const frameworks = value.FrameworkOnProject.map(
         (fop) => fop.framework.name,
       );
-
       const languages: string[] = [];
 
       value.FrameworkOnProject.map((fop) => {
@@ -218,7 +284,37 @@ export class ProjectService {
     return result;
   }
 
-  async findAll() {
-    return this.databaseService.project.findMany();
+  async findAll(paging: PagingDto) {
+    const { page, limit } = paging;
+    if (!page || !limit) {
+      return new BadRequestException();
+    }
+
+    const [projects, count] = await Promise.all([
+      this.databaseService.project.findMany({
+        select: this.ProjectProps,
+        skip: (page - 1) * limit,
+        take: limit,
+        orderBy: {
+          createAt: 'desc',
+        },
+      }),
+      this.databaseService.project.count(),
+    ]);
+
+    const resPaging: Paging = {
+      nextPage: page >= Math.ceil(count / limit) ? undefined : page + 1,
+      page: page,
+      limit: limit,
+      total: count,
+      totalPage: Math.ceil(count / limit),
+    };
+
+    return {
+      data: (projects as Array<ProjectData>).map((data) =>
+        this.simplyfyProjectData(data),
+      ),
+      paging: resPaging,
+    };
   }
 }
