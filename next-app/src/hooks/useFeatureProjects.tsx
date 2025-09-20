@@ -1,6 +1,6 @@
 import {
   mapStringToProjectType,
-  ProjectInfo,
+  Project,
   ProjectType,
 } from "@/models/project.model";
 import { useQuery } from "@tanstack/react-query";
@@ -14,20 +14,23 @@ async function fetchFeatureProject() {
     throw new Error("Invalid project/feature responsive");
   }
 
-  const formatedProject: ProjectInfo[] = resBody.map(
+  const formatedProject: Project[] = resBody.map(
     (value: {
+      id: number;
       name: string;
       title: string;
       frameworks: string[];
       languages: string[];
       projectType: string;
     }) => {
-      const projectInfo: ProjectInfo = {
-        projectName: value.name,
-        techstack: value.frameworks,
-        language: value.languages,
-        projectType:
+      const projectInfo: Project = {
+        id: value.id,
+        name: value.name,
+        frameworks: value.frameworks,
+        languages: value.languages,
+        types: [
           mapStringToProjectType(value.projectType) ?? ProjectType.Default,
+        ],
       };
       return projectInfo;
     },
@@ -46,7 +49,7 @@ export default function useFeatureProject() {
     queryKey: ["featureProject"],
     queryFn: fetchFeatureProject,
   });
-  let data: ProjectInfo[] = [];
+  let data: Project[] = [];
   if (result) data = result;
   return { data, isLoading, error, refetch };
 }

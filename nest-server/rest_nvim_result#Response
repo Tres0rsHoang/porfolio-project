@@ -1,0 +1,96 @@
+### server-api#2
+GET http://localhost:7110/api/project HTTP/1.1
+HTTP/1.1 200 OK
+
+# @_RES
+{
+  "data": [
+    {
+      "id": 27,
+      "name": "Social Chat Hub",
+      "title": "Social Chat Hub - Storage, transfer, format messages thourgh CRM's systems",
+      "feature": true,
+      "startAt": "2024-06-01T00:00:00.000Z",
+      "endAt": "2024-09-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.714Z",
+      "updateAt": "2025-09-01T15:44:38.714Z"
+    },
+    {
+      "id": 26,
+      "name": "CloudGo App",
+      "title": "Super app as the foundation for all other mini apps",
+      "feature": true,
+      "startAt": "2023-11-01T00:00:00.000Z",
+      "endAt": "2024-08-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.710Z",
+      "updateAt": "2025-09-01T15:44:38.710Z"
+    },
+    {
+      "id": 25,
+      "name": "CloudGo CRM - Module Request",
+      "title": "Module request for CRM",
+      "feature": true,
+      "startAt": "2024-07-01T00:00:00.000Z",
+      "endAt": "2024-12-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.707Z",
+      "updateAt": "2025-09-01T15:44:38.707Z"
+    },
+    {
+      "id": 24,
+      "name": "TheraCPP Game",
+      "title": "TheraCPP - C/C++ Learning Game",
+      "feature": true,
+      "startAt": "2024-01-01T00:00:00.000Z",
+      "endAt": "2024-08-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.704Z",
+      "updateAt": "2025-09-01T15:44:38.704Z"
+    },
+    {
+      "id": 23,
+      "name": "CloudSales App",
+      "title": "CloudSales - Sales Management App, Omnichannel chatting",
+      "feature": true,
+      "startAt": "2024-04-01T00:00:00.000Z",
+      "endAt": "2024-08-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.700Z",
+      "updateAt": "2025-09-01T15:44:38.700Z"
+    },
+    {
+      "id": 22,
+      "name": "CloudWork App",
+      "title": "CloudWork - Work Management App",
+      "feature": true,
+      "startAt": "2023-11-01T00:00:00.000Z",
+      "endAt": "2024-04-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.696Z",
+      "updateAt": "2025-09-01T15:44:38.696Z"
+    },
+    {
+      "id": 21,
+      "name": "Zalo Ticket App",
+      "title": "CloudGo Zalo Mini App",
+      "feature": true,
+      "startAt": "2023-08-01T00:00:00.000Z",
+      "endAt": "2023-12-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.692Z",
+      "updateAt": "2025-09-01T15:44:38.692Z"
+    },
+    {
+      "id": 20,
+      "name": "CloudOCS App",
+      "title": "CloudOCS - Omnichannel Cloud Sales",
+      "feature": true,
+      "startAt": "2023-06-01T00:00:00.000Z",
+      "endAt": "2023-08-01T00:00:00.000Z",
+      "createAt": "2025-09-01T15:44:38.686Z",
+      "updateAt": "2025-09-01T15:44:38.686Z"
+    }
+  ],
+  "paging": {
+    "page": 1,
+    "limit": 10,
+    "total": 8,
+    "totalPage": 1
+  }
+}
+# @_END

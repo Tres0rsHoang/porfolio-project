@@ -5,7 +5,7 @@ import ProjectFrame from "./project_frame";
 import { DialogFrame } from "../dialog/dialog_frame";
 import EmptyComment from "../comments/empty_comment";
 import { PercentFramework, PercentLanguage } from "./summarize_project";
-import useFeatureProject from "@/hooks/useFeatureProject";
+import useFeatureProject from "@/hooks/useFeatureProjects";
 import { useTranslation } from "react-i18next";
 
 export default function FeatureProject() {
@@ -37,15 +37,7 @@ export default function FeatureProject() {
       ) : (
         <Marquee speed={50} gradient={false} pauseOnHover>
           {projects.map((project, i) => {
-            return (
-              <ProjectFrame
-                key={i}
-                projectName={project.projectName}
-                techstack={project.techstack}
-                language={project.language}
-                projectType={project.projectType}
-              />
-            );
+            return <ProjectFrame key={i} project={project} />;
           })}
         </Marquee>
       )}

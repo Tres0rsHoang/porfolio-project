@@ -12,7 +12,7 @@ import { DialogFrame } from "../dialog/dialog_frame";
 import { NotificationType, useNotication } from "@/store/notification.store";
 import { Role } from "@/models/user.model";
 import { useQueryClient } from "@tanstack/react-query";
-import { PageComment } from "@/hooks/useFetchComments";
+import { CommentPage } from "@/hooks/useFetchComments";
 import { useTranslation } from "react-i18next";
 import { ReplyCommentForm, ReplyCommentFormData } from "./reply_comment.form";
 import { RepliedComment } from "./replied_comment";
@@ -85,7 +85,7 @@ export const CommentFrame = ({
   const queryClient = useQueryClient();
 
   const pendingComment = (id: number, content?: string) => {
-    queryClient.setQueryData<{ pages: PageComment[] }>(
+    queryClient.setQueryData<{ pages: CommentPage[] }>(
       ["comments"],
       (oldData) => {
         if (!oldData) return oldData;
