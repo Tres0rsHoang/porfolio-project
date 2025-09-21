@@ -153,13 +153,15 @@ export default function RootLayout({
         <QueryProvider>
           <DataPreloadProvider
             images={["/images/BackgroundImage.png"]}
-            fonts={[
-              "/fonts/Baloo2-Regular.ttf",
-              "/fonts/Baloo2-Medium.ttf",
-              "/fonts/Baloo2-SemiBold.ttf",
-              "/fonts/Baloo2-Bold.ttf",
-              "/fonts/Baloo2-ExtraBold.ttf",
-            ]}
+            fonts={
+              [
+                // "/fonts/Baloo2-Regular.ttf",
+                // "/fonts/Baloo2-Medium.ttf",
+                // "/fonts/Baloo2-SemiBold.ttf",
+                // "/fonts/Baloo2-Bold.ttf",
+                // "/fonts/Baloo2-ExtraBold.ttf",
+              ]
+            }
           >
             <div className="relative w-dvw h-dvh overflow-hidden">
               <div className="homepage">
