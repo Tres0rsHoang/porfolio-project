@@ -137,6 +137,16 @@ export class SeedService {
         name: 'CloudOCS App',
         title: 'CloudOCS - Omnichannel Cloud Sales',
         projectType: ProjectType.Mobile,
+        description:
+          'CloudOCS was the predecessor of CloudSales, designed to centralize multi-channel sales management by integrating platforms like Shopee and TikTok Shop into one app. As team leader and fullstack developer, I led the project through UX/UI design, API integration, and cross-platform development. The project was successfully delivered and awarded a 9/10 graduation internship score.',
+        teamSize: 3,
+        role: 'Team Leader - Full-stack developer',
+        responsibilities: [
+          'Led a 3-member team, managing task allocation, progress tracking, and code reviews throughout the project lifecycle.',
+          'Contributed to CloudOCS, a multi-channel sales app integrated with Shopee and TikTok Shop APIs, conducting UX/UI design and market research.',
+          'Developed responsive web interfaces for sales reports and built a cross-platform Flutter mobile app for Android and iOS.',
+          'Implemented PHP-based API integrations with the company’s CRM to ensure reliable communication between app and backend systems.',
+        ],
         framework: [
           Framework.Flutter,
           Framework.Vtiger,
@@ -151,6 +161,15 @@ export class SeedService {
       await this.projectService.importNewProject({
         name: 'Zalo Ticket App',
         title: 'CloudGo Zalo Mini App',
+        description:
+          'Zalo Ticket Mini App – My CloudGo is a Zalo mini app built with the ZMP framework based on ReactJS. It enables CRM customers to submit feedback, report issues, and share evaluations for specific projects, streamlining communication between clients and the company while enhancing service quality and customer satisfaction.',
+        teamSize: 3,
+        role: 'Front-end Developer',
+        responsibilities: [
+          'Developed user interface based on provided mockups using ZMP (ReactJS), ensuring accurate implementation and responsive design across devices',
+          'Optimized application workflows to improve usability, streamline customer feedback submission, and enhance overall user experience within the mini app.',
+          'Implemented data storage handling on the mini app, ensuring smooth integration with CRM systems and reliable access to submitted customer tickets.',
+        ],
         projectType: ProjectType.Mobile,
         framework: [Framework.React, Framework.ZaloMiniApp, Framework.Vtiger],
         startAt: new Date('2023-08-01'),
@@ -160,6 +179,16 @@ export class SeedService {
       await this.projectService.importNewProject({
         name: 'CloudWork App',
         title: 'CloudWork - Work Management App',
+        description:
+          'The CloudWork app, a Flutter-based sub-app of the CloudGo ecosystem, enables businesses to create, assign, and manage tasks, set reminders, track progress, and evaluate work completion. It streamlines project execution and enhances team productivity for companies using CloudGo’s CRM services',
+        teamSize: 3,
+        role: 'Front-end Developer',
+        responsibilities: [
+          'Converted UI mockups into a production-ready app, ensuring accurate implementation and responsive design across devices.',
+          'Integrated APIs for attendance reporting and developed a dynamic dashboard interface customizable by user preferences.',
+          'Implemented lazy loading for individual components, reducing perceived waiting time and improving overall user experience.',
+          'Optimized in-app search by managing filters with BloC, minimizing redundant reloads when retrieving related lists.',
+        ],
         projectType: ProjectType.Mobile,
         framework: [Framework.Vtiger, Framework.Flutter],
         startAt: new Date('2023-11-01'),
@@ -169,6 +198,16 @@ export class SeedService {
       await this.projectService.importNewProject({
         name: 'CloudSales App',
         title: 'CloudSales - Sales Management App, Omnichannel chatting',
+        description:
+          'CloudSales is a Flutter-based sub-app of CloudGo designed for multi-channel order management. It enables businesses and individuals to track orders from platforms like Shopee and TikTok, manage inventory, and generate invoices. Integrated with the Social Integration Hub, it supports low-latency (<1s) real-time multi-channel chat via Facebook Fanpages and Zalo OA',
+        teamSize: 3,
+        role: 'Full-stack Developer',
+        responsibilities: [
+          'Converted UI mockups into production-ready app interfaces, ensuring seamless design implementation and user-friendly workflows.',
+          'Integrated Social Integration Hub to enable real-time multi-channel messaging with Facebook Fanpages and Zalo OA.',
+          'Developed core order management features, including creating, displaying, and updating orders with dynamic product selection.',
+          'Implemented product management functions for inventory tracking, stock updates, and order creation workflows.',
+        ],
         projectType: ProjectType.Mobile,
         framework: [
           Framework.FacebookApi,
@@ -186,14 +225,33 @@ export class SeedService {
         name: 'TheraCPP Game',
         title: 'TheraCPP - C/C++ Learning Game',
         projectType: ProjectType.Game,
+        description:
+          'TheraCPP is my graduation project game built with Unity to teach C++ programming through gamified levels. Featuring drag-and-drop (Scratch-like), C++ syntax assembly, and full coding modes, it engages learners of all ages, especially students and beginners. The backend, powered by NestJS and PlayFab, executes code and manages users. Officially published on both Google Play and App Store, it achieved the highest graduation score (9.4/10) and is currently hosted on DigitalOcean for continued development.',
+        teamSize: 5,
+        role: 'Team Leader - Full-stack Developer.',
+        responsibilities: [
+          'Led the team as project manager, assigning tasks, planning milestones, and tracking progress throughout development.',
+          'Designed several game levels and gameplay flows, especially for the Normal difficulty coding challenges.',
+          'Implemented backend logic in NestJS for executing user-submitted C++ programs and handling gameplay workflows.',
+        ],
         framework: [Framework.Unity, Framework.NestJs],
         startAt: new Date('2024-01-01'),
         endAt: new Date('2024-08-01'),
         feature: true,
       });
       await this.projectService.importNewProject({
-        name: 'CloudGo CRM - Module Request',
-        title: 'Module request for CRM',
+        name: 'Module Request - CloudGo CRM',
+        title: 'Module request for CloudGo CRM',
+        description:
+          'The Request Module in CloudGo CRM was designed to streamline employee requests and proposals within predefined workflows set by managers and administrators. It enables structured approval processes, revision requests, and workflow management, ensuring compliance with organizational policies. As a fullstack developer, I contributed to both database design and implementation of core features that enhanced efficiency in request handling.',
+        teamSize: 3,
+        role: 'Full-stack developer',
+        responsibilities: [
+          'Designed relational database schema for request creation, workflow management, and approval processes.',
+          'Implemented frontend interfaces for submitting, tracking, and managing employee requests within the CRM system.',
+          'Developed backend APIs to support approval workflows, including escalation, rejection, and re-submission logic.',
+          'Ensured seamless integration with existing CRM modules, maintaining consistent user experience and data integrity.',
+        ],
         projectType: ProjectType.Web,
         framework: [Framework.Vtiger, Framework.Smarty],
         startAt: new Date('2024-07-01'),
@@ -201,8 +259,17 @@ export class SeedService {
         feature: true,
       });
       await this.projectService.importNewProject({
-        name: 'CloudGo App',
+        name: 'CloudGo Super App',
         title: 'Super app as the foundation for all other mini apps',
+        description:
+          'Ensured seamless integration with existing CRM modules, maintaining consistent user experience and data integrity.',
+        teamSize: 0,
+        role: 'Front-end Developer',
+        responsibilities: [
+          'Optimized local storage and API call flows, reducing login time from 10–20s to 2–3s, significantly improving app performance.',
+          'Implemented reusable design patterns to accelerate development and ensure consistency across multiple CRM sub-apps.',
+          'Integrated Firebase Cloud Messaging (FCM) to enable real-time notifications from the company’s CRM system.',
+        ],
         projectType: ProjectType.Mobile,
         framework: [Framework.Vtiger, Framework.Flutter, Framework.Firebase],
         startAt: new Date('2023-11-01'),
@@ -210,9 +277,23 @@ export class SeedService {
         feature: true,
       });
       await this.projectService.importNewProject({
-        name: 'Social Chat Hub',
+        name: 'Social Integration Hub',
         title:
-          "Social Chat Hub - Storage, transfer, format messages thourgh CRM's systems",
+          "Social Integration Hub - Storage, transfer, format messages thourgh CRM's systems",
+        description:
+          'The Social Integration Hub is a service that routes messages from multiple Facebook Fanpages and Zalo OA accounts to client-registered CRM systems. Built with Express.js, MySQL, Redis, and BullMQ, it supports real-time delivery via WebSocket and runs reliably in production, handling 100–200 messages per minute with low latency.',
+        teamSize: 1,
+        role: 'Full-stack Developer',
+        responsibilities: [
+          'Designed and implemented the entire Social Integration Hub service using Express.js, ensuring reliable message routing between CRMs.',
+          'Built message storage with MySQL, optimized queries with indexes for fast retrieval, and maintained scalable database performance.',
+          'Implemented reliable message forwarding through BullMQ and Redis queues, handling up to 200 messages per minute.',
+          'Developed real-time message delivery with WebSocket, ensuring seamless integration with client CRM systems.',
+          'Designed and built an administration dashboard for monitoring and managing queues across multiple CRM systems.',
+          'Registered and configured extended Facebook App API permissions to enable advanced message integration features.',
+          'Deployed service on Azure VPS with Docker and Docker Hub, enabling automated, scalable, and consistent deployments.',
+          'Achieved stable production performance with low latency (1–2s delivery) and sub-second query response times',
+        ],
         projectType: ProjectType.System,
         framework: [
           Framework.ExpressJs,
@@ -237,6 +318,7 @@ export class SeedService {
     await this.addingRole();
     this.logger.log('Adding Admin Account...');
     await this.addingAdmin();
+
     this.logger.log('Adding Language...');
     await this.addingLanguage(reset);
     this.logger.log('Adding Framework...');

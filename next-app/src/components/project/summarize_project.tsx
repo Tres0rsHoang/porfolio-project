@@ -46,7 +46,7 @@ export function PercentFramework({ projects }: PercentProps) {
   const { t } = useTranslation("home");
 
   for (const project of projects) {
-    for (const framework of project.techstack) {
+    for (const framework of project.frameworks) {
       let exist = false;
       for (const index in chartData) {
         const name = chartData[index].name;
@@ -73,7 +73,7 @@ export function PercentLanguage({ projects }: PercentProps) {
   const { t } = useTranslation("home");
 
   for (const project of projects) {
-    for (const language of project.language) {
+    for (const language of project.languages) {
       let exist = false;
       for (const index in chartData) {
         const name = chartData[index].name;

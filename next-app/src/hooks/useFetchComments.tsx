@@ -2,7 +2,7 @@ import { Paging } from "@/models/paging.model";
 import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import { Comment } from "@/models/comment.model";
 
-export interface PageComment {
+export interface CommentPage {
   comments: Comment[];
   nextPage: number | undefined;
 }
@@ -42,7 +42,7 @@ export const formatRawComment = (value: RawComment): Comment => {
 async function fetchComments(
   { pageParam = 1 }: { pageParam?: number },
   comments: Array<Comment>,
-): Promise<PageComment> {
+): Promise<CommentPage> {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVER_URL}/api/comment?page=${pageParam}`,
   );
@@ -79,7 +79,7 @@ async function fetchComments(
 
 export default function useFetchComments() {
   const queryClient = useQueryClient();
-  const commentPages = queryClient.getQueryData<{ pages: PageComment[] }>([
+  const commentPages = queryClient.getQueryData<{ pages: CommentPage[] }>([
     "comments",
   ]);
   let comments: Array<Comment> = [];

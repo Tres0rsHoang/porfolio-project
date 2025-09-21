@@ -9,7 +9,7 @@ import { useUserStore } from "@/store/user.store";
 import { useSocket } from "@/store/socket.store";
 import useFetchComments, {
   formatRawComment,
-  PageComment,
+  CommentPage,
   RawComment,
 } from "@/hooks/useFetchComments";
 import { useQueryClient } from "@tanstack/react-query";
@@ -35,7 +35,7 @@ export default function CommentSection() {
 
   const updateComment = useCallback(
     (rawComments: RawComment[]) => {
-      queryClient.setQueryData<{ pages: PageComment[] }>(
+      queryClient.setQueryData<{ pages: CommentPage[] }>(
         ["comments"],
         (oldData) => {
           if (!oldData) return oldData;
@@ -72,7 +72,7 @@ export default function CommentSection() {
       if (exist) {
         updateComment([value]);
       } else {
-        queryClient.setQueryData<{ pages: PageComment[] }>(
+        queryClient.setQueryData<{ pages: CommentPage[] }>(
           ["comments"],
           (oldData) => {
             return addRawCommentToState({ oldData: oldData, data: value });
@@ -93,7 +93,7 @@ export default function CommentSection() {
     socket?.on("deletedComment", (commentId) => {
       if (!commentId) return;
 
-      queryClient.setQueryData<{ pages: PageComment[] }>(
+      queryClient.setQueryData<{ pages: CommentPage[] }>(
         ["comments"],
         (oldData) => {
           if (!oldData) return oldData;

@@ -15,16 +15,30 @@ datasource db {
 }
 
 model Project {
-  id                 Int                  @id @default(autoincrement())
-  name               String               @unique
-  title              String
-  feature            Boolean              @default(false)
-  startAt            DateTime
-  endAt              DateTime?
-  createAt           DateTime             @default(now())
-  updateAt           DateTime             @updatedAt
-  FrameworkOnProject FrameworkOnProject[]
-  TypeOnProject      TypeOnProject[]
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  title       String  @default("")
+  feature     Boolean @default(false)
+  description String  @default("")
+  teamSize    Int     @default(0)
+  role        String  @default("")
+
+  startAt  DateTime
+  endAt    DateTime?
+  createAt DateTime  @default(now())
+  updateAt DateTime  @updatedAt
+
+  FrameworkOnProject      FrameworkOnProject[]
+  TypeOnProject           TypeOnProject[]
+  ResponsibilityOnProject ResponsibilityOnProject[]
+  LinkOnProject           LinkOnProject[]
+}
+
+model Link {
+  id            Int             @id @default(autoincrement())
+  url           String
+  label         String
+  LinkOnProject LinkOnProject[]
 }
 
 model Framework {
@@ -72,6 +86,24 @@ model ProjectType {
   createAt      DateTime        @default(now())
   updateAt      DateTime        @updatedAt
   TypeOnProject TypeOnProject[]
+}
+
+model ResponsibilityOnProject {
+  responsibility String
+  project        Project @relation(fields: [projectId], references: [id])
+  projectId      Int
+
+  @@id([projectId, responsibility])
+}
+
+model LinkOnProject {
+  link   Link @relation(fields: [linkId], references: [id])
+  linkId Int
+
+  project   Project @relation(fields: [projectId], references: [id])
+  projectId Int
+
+  @@id([projectId, linkId])
 }
 
 model TypeOnProject {

@@ -2,7 +2,7 @@ import { Role, User } from "@/models/user.model";
 import { NotificationType, useNotication } from "@/store/notification.store";
 import { useUserStore } from "@/store/user.store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { formatRawComment, PageComment, RawComment } from "./useFetchComments";
+import { formatRawComment, CommentPage, RawComment } from "./useFetchComments";
 import { authFetch } from "@/helpers/api";
 import { Comment } from "@/models/comment.model";
 
@@ -66,9 +66,9 @@ export const addRawCommentToState = ({
   oldData,
   data,
 }: {
-  oldData: { pages: PageComment[] } | undefined;
+  oldData: { pages: CommentPage[] } | undefined;
   data: RawComment;
-}): { pages: PageComment[] } => {
+}): { pages: CommentPage[] } => {
   const formatedComment = formatRawComment(data);
   formatedComment.pending = true;
 
@@ -105,7 +105,7 @@ export function useSendNewComment() {
   const { addNotification } = useNotication();
   const onSuccess = (data: RawComment) => {
     addNotification("Thank for a new comment. <3 <3", NotificationType.SUCCESS);
-    queryClient.setQueryData<{ pages: PageComment[] }>(
+    queryClient.setQueryData<{ pages: CommentPage[] }>(
       ["comments"],
       (oldData) => {
         return addRawCommentToState({ oldData: oldData, data: data });
@@ -129,7 +129,7 @@ export function useSendAuthNewComment() {
   const { addNotification } = useNotication();
   const onSuccess = (data: RawComment) => {
     addNotification("Thank for a new comment. <3 <3", NotificationType.SUCCESS);
-    queryClient.setQueryData<{ pages: PageComment[] }>(
+    queryClient.setQueryData<{ pages: CommentPage[] }>(
       ["comments"],
       (oldData) => {
         return addRawCommentToState({ oldData: oldData, data: data });

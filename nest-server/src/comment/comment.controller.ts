@@ -47,7 +47,7 @@ export class CommentController {
   }
 
   @Get()
-  findAll(@Query() pagingDto: PagingDto) {
+  findAll(@Query(ValidationPipe) pagingDto: PagingDto) {
     return this.commentService.findAll(pagingDto);
   }
 
