@@ -2,6 +2,7 @@ import {
   mapStringToProjectType,
   Project,
   ProjectType,
+  RawProject,
 } from "@/models/project.model";
 import { useQuery } from "@tanstack/react-query";
 
@@ -14,27 +15,23 @@ async function fetchFeatureProject() {
     throw new Error("Invalid project/feature responsive");
   }
 
-  const formatedProject: Project[] = resBody.map(
-    (value: {
-      id: number;
-      name: string;
-      title: string;
-      frameworks: string[];
-      languages: string[];
-      projectType: string;
-    }) => {
-      const projectInfo: Project = {
-        id: value.id,
-        name: value.name,
-        frameworks: value.frameworks,
-        languages: value.languages,
-        types: [
-          mapStringToProjectType(value.projectType) ?? ProjectType.Default,
-        ],
-      };
-      return projectInfo;
-    },
-  );
+  const formatedProject: Project[] = resBody.map((value: RawProject) => {
+    const projectInfo: Project = {
+      id: value.id,
+      name: value.name,
+      description: value.description,
+      role: value.role,
+      responsibilities: value.responsibilities.map((value) => value),
+      startAt: new Date(value.startAt),
+      endAt: new Date(value.endAt),
+      frameworks: value.frameworks.map((value) => value.name),
+      languages: value.languages.map((value) => value.name),
+      types: value.types.map(
+        (value) => mapStringToProjectType(value.name) ?? ProjectType.Default,
+      ),
+    };
+    return projectInfo;
+  });
 
   return formatedProject;
 }
