@@ -41,3 +41,27 @@ export type Project = {
   languages: Array<string>;
   types: Array<ProjectType>;
 };
+
+export interface RawProject {
+  id: number;
+  title: string;
+  name: string;
+  teamSize: number;
+  description: string;
+  role: string;
+  startAt: string;
+  endAt: string;
+  responsibilities: Array<string>;
+  frameworks: Array<{
+    id: number;
+    name: string;
+  }>;
+  languages: Array<{
+    id: number;
+    name: string;
+  }>;
+  types: Array<{
+    id: number;
+    name: string;
+  }>;
+}
