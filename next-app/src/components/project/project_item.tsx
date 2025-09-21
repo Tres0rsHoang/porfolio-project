@@ -16,26 +16,30 @@ export const ProjectItem = ({ project }: { project: Project }) => {
     <div
       className="relative 
       w-full
-      bg-(--semi-highlight) 
+      bg-[#3C3E44]
       rounded-bl-lg rounded-tl-3xl 
       p-5 pt-0
       border-s-black border-5 border-r-0"
     >
-      <div className="flex flex-row justify-center">
+      <div className="mb-5 flex flex-row justify-center">
         <div
-          className="w-44 h-12 
+          className="w-44 h-12 relative
           border-3 border-s-black border-t-0 
-          rounded-t-none rounded-xl
-          flex flex-row"
+          rounded-t-none rounded-xl"
         >
           <div
-            className="h-full w-32 relative
-            border-b-3 border-r-3 border-s-black
+            className="h-[48px] w-40 bg-[#C1C6CD] absolute
+            -left-[3px]
+            border-3 border-t-0 border-s-black
+            flex justify-end flex-row
+            p-1
+            pr-2
             rounded-t-none rounded-xl"
-          ></div>
+          >
+            <div className="bg-[#3C3E44] h-full w-5 border-s-black border-3 rounded-md"></div>
+          </div>
         </div>
       </div>
-
       <div className="flex flex-row flex-1 h-full">
         <div
           className="relative 
@@ -55,7 +59,10 @@ export const ProjectItem = ({ project }: { project: Project }) => {
             className={`${styles.floating} h-16 w-auto`}
           />
         </div>
-        <div className="ml-5 flex flex-col w-3/5">
+        <div
+          className="ml-5 px-5 flex flex-col w-3/5 bg-(--semi-highlight) 
+          border-3 border-s-black rounded-3xl"
+        >
           <div>
             <h3 className="text-xl">{project.name}</h3>
             <p>
@@ -103,6 +110,12 @@ export const ProjectItem = ({ project }: { project: Project }) => {
           />
         </div>
       </div>
+      <div
+        className="w-4 h-4
+        bg-[#26272C]
+        rounded-md absolute bottom-6 left-[2px]
+        border-3 border-s-black"
+      ></div>
     </div>
   );
 };
