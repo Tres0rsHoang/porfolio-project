@@ -1,7 +1,7 @@
 "use client";
 import { useFetchProjects } from "@/hooks/useFetchProject";
 import { ProjectItem } from "../../components/project/project_item";
-import { useUserStore } from "@/store/user.store";
+// import { useUserStore } from "@/store/user.store";
 import { useForm } from "react-hook-form";
 import { InputField } from "@/components/form/input.field";
 import { useTranslation } from "react-i18next";
@@ -13,7 +13,7 @@ interface SearchFormData {
 
 export default function Project() {
   const { data: projectPages } = useFetchProjects();
-  const { user } = useUserStore();
+  // const { user } = useUserStore();
   const { t } = useTranslation("project");
 
   const {
