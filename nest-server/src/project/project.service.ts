@@ -248,40 +248,11 @@ export class ProjectService {
       select: this.ProjectProps,
     });
 
-    const removeAttr = <T, K extends keyof T>(obj: T, key: K): Omit<T, K> => {
-      const { [key]: _, ...rest } = obj;
-      void _;
-      return rest;
+    return {
+      data: (rawValues as Array<ProjectData>).map((data) =>
+        this.simplyfyProjectData(data),
+      ),
     };
-
-    const result = rawValues.map((value) => {
-      const frameworks = value.FrameworkOnProject.map(
-        (fop) => fop.framework.name,
-      );
-      const languages: string[] = [];
-
-      value.FrameworkOnProject.map((fop) => {
-        fop.framework.LanguageOnFramework.map((language) => {
-          const languageString: string | undefined =
-            language.Language?.displayString;
-          if (languageString == undefined || languages.includes(languageString))
-            return;
-          languages.push(languageString);
-        });
-      });
-
-      const projectType = value.TypeOnProject[0].type.name;
-      const newValue = removeAttr(value, 'TypeOnProject');
-
-      return {
-        ...removeAttr(newValue, 'FrameworkOnProject'),
-        projectType,
-        frameworks,
-        languages,
-      };
-    });
-
-    return result;
   }
 
   async findAll(paging: PagingDto) {
