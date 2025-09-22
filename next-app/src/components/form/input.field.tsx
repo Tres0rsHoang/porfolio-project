@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import {
   FieldError,
   FieldPathValue,

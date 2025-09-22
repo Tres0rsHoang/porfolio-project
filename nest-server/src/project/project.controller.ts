@@ -15,7 +15,7 @@ import { CreateProjectDto, UpdateProjectDto } from './dto/project.dto';
 import { Roles, RolesGuard } from 'src/auth/roles.guard';
 import { JwtAuthGuard } from 'src/auth/jwt.guard';
 import { Role } from 'src/auth/entity/role.entity';
-import { PagingDto } from 'src/dto/paging.dto';
+import { ProjectPagingDto } from 'src/dto/paging.dto';
 
 @Controller('project')
 export class ProjectController {
@@ -27,7 +27,7 @@ export class ProjectController {
   }
 
   @Get()
-  findAll(@Query(ValidationPipe) pagingDto: PagingDto) {
+  findAll(@Query(ValidationPipe) pagingDto: ProjectPagingDto) {
     return this.projectService.findAll(pagingDto);
   }
 
