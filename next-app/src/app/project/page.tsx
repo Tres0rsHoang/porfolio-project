@@ -19,6 +19,7 @@ export default function Project() {
   const {
     watch,
     register,
+    setFocus,
     formState: { errors },
   } = useForm<ProjectSearchFormData>();
   const projectName = watch("projectName");
@@ -54,6 +55,26 @@ export default function Project() {
     }, 500);
     return () => clearTimeout(timer);
   }, [projectName]);
+
+  const unfocusall = () => {
+    const inputs = document.querySelectorAll("input, textarea, select");
+    inputs.forEach((el) => (el as HTMLElement).blur());
+  };
+
+  useEffect(() => {
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (event.key === "/") {
+        setFocus("projectName");
+      }
+      if (event.key === "Escape") {
+        unfocusall();
+      }
+    };
+    window.addEventListener("keyup", handleKeyUp);
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  });
 
   return (
     <div>
