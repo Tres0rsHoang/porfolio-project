@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer';
-import { IsInt, IsOptional, Min } from 'class-validator';
+import { IsInt, IsOptional, IsString, Min } from 'class-validator';
 
 export class PagingDto {
   @IsOptional()
@@ -13,4 +13,10 @@ export class PagingDto {
   @IsInt()
   @Min(10)
   limit?: number = 10;
+}
+
+export class ProjectPagingDto extends PagingDto {
+  @IsOptional()
+  @IsString()
+  projectName?: string;
 }

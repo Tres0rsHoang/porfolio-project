@@ -131,6 +131,7 @@ export class SeedService {
   private async addingFeatureProject(reset: boolean) {
     try {
       if (reset) {
+        await this.prisma.responsibilityOnProject.deleteMany({});
         await this.prisma.project.deleteMany({});
       }
       await this.projectService.importNewProject({
@@ -262,10 +263,11 @@ export class SeedService {
         name: 'CloudGo Super App',
         title: 'Super app as the foundation for all other mini apps',
         description:
-          'Ensured seamless integration with existing CRM modules, maintaining consistent user experience and data integrity.',
+          'The CloudGo Super App is the company’s core mobile platform built with Flutter, serving as a gateway to all sub-apps and CRM services. It leverages Firebase (Cloud Firestore) for account and data management, Firebase Cloud Messaging (FCM) for push notifications, and Dynamic Links for seamless deeplink navigation from the CRM web interface. Using Shorebird, the app supports quick updates without App Store or Google Play review delays, ensuring faster delivery and an improved user experience.',
         teamSize: 0,
         role: 'Front-end Developer',
         responsibilities: [
+          'Ensured seamless integration with existing CRM modules, maintaining consistent user experience and data integrity.',
           'Optimized local storage and API call flows, reducing login time from 10–20s to 2–3s, significantly improving app performance.',
           'Implemented reusable design patterns to accelerate development and ensure consistency across multiple CRM sub-apps.',
           'Integrated Firebase Cloud Messaging (FCM) to enable real-time notifications from the company’s CRM system.',
