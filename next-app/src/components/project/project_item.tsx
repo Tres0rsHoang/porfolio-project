@@ -2,6 +2,7 @@ import { getProjectTypeImagePath } from "@/helpers/utils";
 import styles from "../project/project.module.css";
 import { Project, ProjectType } from "@/models/project.model";
 import Image from "next/image";
+import AnimateSection from "../animate_section";
 
 export const ProjectItem = ({ project }: { project: Project }) => {
   const formatedStartAt = project.startAt.toLocaleDateString("en-US", {
@@ -12,8 +13,9 @@ export const ProjectItem = ({ project }: { project: Project }) => {
     month: "short",
     year: "numeric",
   });
+
   return (
-    <div
+    <AnimateSection
       className="relative 
       w-full
       bg-[#3C3E44]
@@ -43,7 +45,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
       <div className="flex flex-row flex-1 h-full">
         <div
           className="relative 
-          w-1/5 h-auto
+          h-auto w-64
           overflow-hidden bg-(--background)/80 
           border-s-black border-2 rounded-xl 
           flex justify-center items-center"
@@ -60,8 +62,8 @@ export const ProjectItem = ({ project }: { project: Project }) => {
           />
         </div>
         <div
-          className="ml-5 px-5 flex flex-col w-3/5 bg-(--semi-highlight) 
-          border-3 border-s-black rounded-3xl"
+          className="ml-5 px-5 flex flex-col w-full bg-(--semi-highlight) 
+          border-2 border-s-black rounded-xl"
         >
           <div>
             <h3 className="text-xl">{project.name}</h3>
@@ -100,7 +102,10 @@ export const ProjectItem = ({ project }: { project: Project }) => {
             <span>{project.description.length > 200 ? "..." : ""}</span>
           </p>
         </div>
-        <div className="ml-auto flex flex-col justify-center">
+        <button
+          className="ml-auto flex flex-col justify-center"
+          style={{ border: 0, padding: 0 }}
+        >
           <Image
             src="/images/LeftRedArrow.png"
             alt="Arrow"
@@ -108,14 +113,14 @@ export const ProjectItem = ({ project }: { project: Project }) => {
             height={80}
             className="rotate-180"
           />
-        </div>
+        </button>
       </div>
       <div
         className="w-4 h-4
         bg-[#26272C]
         rounded-md absolute bottom-6 left-[2px]
-        border-3 border-s-black"
+        border-2 border-s-black"
       ></div>
-    </div>
+    </AnimateSection>
   );
 };

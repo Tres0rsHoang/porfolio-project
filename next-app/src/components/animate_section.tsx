@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 interface AnimateSectionProps {
   id?: string;
   root?: Element;
+  className?: string;
   children?: ReactNode;
 }
 export default function AnimateSection(props: AnimateSectionProps) {
@@ -21,11 +22,13 @@ export default function AnimateSection(props: AnimateSectionProps) {
       variants={sectionMotion}
       initial="hidden"
       whileInView="show"
+      exit="hidden"
       transition={{ duration: 0.3 }}
       viewport={{
         root: { current: props.root ? props.root : null },
         once: true,
       }}
+      className={props.className}
       id={props.id}
     >
       {props.children}

@@ -2,7 +2,7 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { Framework, Prisma, Project } from '@prisma/client';
 import { CreateProjectDto, UpdateProjectDto } from './dto/project.dto';
 import { DatabaseService } from 'src/database/database.service';
-import { PagingDto } from 'src/dto/paging.dto';
+import { ProjectPagingDto } from 'src/dto/paging.dto';
 import { Paging } from 'src/entity/paging.entity';
 import { ProjectData, SimplifyProjectData } from './entity/project_data.entity';
 
@@ -255,7 +255,7 @@ export class ProjectService {
     };
   }
 
-  async findAll(paging: PagingDto) {
+  async findAll(paging: ProjectPagingDto) {
     const { page, limit } = paging;
     if (!page || !limit) {
       return new BadRequestException();
@@ -263,6 +263,12 @@ export class ProjectService {
 
     const [projects, count] = await Promise.all([
       this.databaseService.project.findMany({
+        where: {
+          name: {
+            contains: paging.projectName,
+            mode: 'insensitive',
+          },
+        },
         select: this.ProjectProps,
         skip: (page - 1) * limit,
         take: limit,
