@@ -1,7 +1,9 @@
-import { PageProps } from "../../../../.next/types/app/project/[id]/page";
-
-export default async function ProjectDetailPage(pageProps: PageProps) {
-  const { id } = await pageProps.params;
+export default async function ProjectDetailPage({
+  params,
+}: {
+  params: Promise<{ id: number }>;
+}) {
+  const { id } = await params;
 
   return (
     <div className="p-6">

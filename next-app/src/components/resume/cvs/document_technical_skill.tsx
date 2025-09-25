@@ -10,8 +10,7 @@ export const DocumentTechnicalSkill = () => {
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Languages</Text>
           {": "}
-          TypeScript/JavaScript, Python, Java, PHP, C#, C/C++, Dart, Lua,
-          Shellscript.
+          C#, C/C++, TypeScript/JavaScript, Python, Java, PHP, Dart, Lua.
         </Text>
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Frontend</Text>
@@ -33,9 +32,10 @@ export const DocumentTechnicalSkill = () => {
         <Text>
           <Text style={{ fontWeight: "bold" }}>Tools/Others</Text>
           {": "}
-          Git, Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design
-          Patterns, SOLID Principles, RESTful API, GraphQL, Microservices,
-          WebSocket, RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.
+          Unity, 2D/3D programming, Game Physics, Algorithms, Optimizatio, Git,
+          Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design Patterns,
+          SOLID Principles, RESTful API, GraphQL, Microservices, WebSocket,
+          RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.
         </Text>
       </View>
     </View>

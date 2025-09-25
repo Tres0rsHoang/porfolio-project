@@ -54,11 +54,11 @@ export const DocumentExperience = (props: {
 }) => {
   return (
     <View>
-      <Text style={styles.h4}>Experience</Text>
+      <Text style={styles.h4}>Experiences</Text>
       <View style={styles.hr}></View>
-      <View style={styles.content}>
-        {props.companies.map((company, index) => (
-          <View key={index} wrap={props.wrap}>
+      {props.companies.map((company, index) => (
+        <View key={index}>
+          <View style={styles.content}>
             <View
               style={{
                 display: "flex",
@@ -69,12 +69,53 @@ export const DocumentExperience = (props: {
               <Text style={styles.h5}>{company.company}</Text>
               <Text>{company.location}</Text>
             </View>
-            {company.jobs.map((job, jobIndex) => (
-              <JobSection job={job} key={jobIndex} />
-            ))}
+            <View>
+              {company.jobs.map((job, jobIndex) => (
+                <JobSection job={job} key={jobIndex} />
+              ))}
+            </View>
           </View>
-        ))}
-      </View>
+          {index != props.companies.length - 1 && (
+            <View style={styles.subHr}></View>
+          )}
+        </View>
+      ))}
+    </View>
+  );
+};
+
+export const DocumentActivity = (props: {
+  companies: Company[];
+  wrap?: boolean;
+}) => {
+  return (
+    <View>
+      <Text style={styles.h4}>Activities</Text>
+      <View style={styles.hr}></View>
+      {props.companies.map((company, index) => (
+        <View key={index}>
+          <View style={styles.content}>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+              }}
+            >
+              <Text style={styles.h5}>{company.company}</Text>
+              <Text>{company.location}</Text>
+            </View>
+            <View>
+              {company.jobs.map((job, jobIndex) => (
+                <JobSection job={job} key={jobIndex} />
+              ))}
+            </View>
+          </View>
+          {index != props.companies.length - 1 && (
+            <View style={styles.subHr}></View>
+          )}
+        </View>
+      ))}
     </View>
   );
 };
