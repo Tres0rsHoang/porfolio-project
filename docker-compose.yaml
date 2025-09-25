@@ -1,5 +1,6 @@
 services:
   nextjs-app:
+    platform: linux/amd64
     image: hoanquocbao/portforlio-nextjs-app
     container_name: nextjs-app
     restart: always
@@ -43,6 +44,7 @@ services:
       timeout: 5s
       retries: 5
   nestjs-server:
+    platform: linux/amd64
     image: hoanquocbao/portforlio-nestjs-server
     container_name: nestjs-server
     restart: always

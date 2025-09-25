@@ -12,6 +12,7 @@ import WebFullstackPythonDoc from "./cvs/web_fullstack_python_doc";
 import MobileFullstackDoc from "./cvs/mobile_fullstack_doc";
 import FullstackDoc from "./cvs/fullstack_dev_doc";
 import FullstackCSharpDoc from "./cvs/fullstack_dev_csharp_doc";
+import GameFullstackDoc from "./cvs/game_fullstack_doc";
 
 interface CVItem {
   title: string;
@@ -27,18 +28,23 @@ export function DocumentShow() {
   const CVItems: Array<CVItem> = [
     {
       imagePath: "/images/WebJobTitleIcon.png",
-      title: "Fullstack Web Developer",
+      title: "Web Developer",
       document: <WebFullstackDoc />,
     },
     {
       imagePath: "/images/WebJobTitleIcon.png",
-      title: "Fullstack Web Developer (Python)",
+      title: "Web Developer (Python)",
       document: <WebFullstackPythonDoc />,
     },
     {
       imagePath: "/images/PhoneCVIcon.png",
-      title: "Fullstack Mobile Developer",
+      title: "Mobile Developer",
       document: <MobileFullstackDoc />,
+    },
+    {
+      imagePath: "/images/Default.png",
+      title: "Game Developer",
+      document: <GameFullstackDoc />,
     },
     {
       imagePath: "/images/System.png",

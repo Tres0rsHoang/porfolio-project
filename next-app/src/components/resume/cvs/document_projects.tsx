@@ -104,11 +104,16 @@ export const DocumentProjects = (props: { projects: DocProject[] }) => {
     <View>
       <Text style={styles.h4}>Feature Projects</Text>
       <View style={styles.hr}></View>
-      <View style={styles.content}>
-        {props.projects.map((project, index) => (
-          <ProjectItem project={project} key={index} />
-        ))}
-      </View>
+      {props.projects.map((project, index) => (
+        <View key={index}>
+          <View style={styles.content}>
+            <ProjectItem project={project} />
+          </View>
+          {index != props.projects.length - 1 && (
+            <View style={styles.subHr}></View>
+          )}
+        </View>
+      ))}
     </View>
   );
 };

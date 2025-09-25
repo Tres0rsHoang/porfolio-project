@@ -58,16 +58,14 @@ export const DocumentEducation = () => {
           major="B.Sc. in Software Engineering; High Quality Program. "
           result="GPA: 7.79/10"
         />
-        <View
-          style={{
-            marginTop: 5,
-          }}
-        />
+      </View>
+      <View style={styles.subHr}></View>
+      <View style={styles.content}>
         <School
           name="Tien Giang High School For Gifted"
           time="Aug 2017 - Jun 2020"
           major="Information Technology Major"
-          result="Excellent Student: 12/12 (Scholarship in 3 years)"
+          result="Excellent Student: 12/12"
         />
       </View>
     </View>

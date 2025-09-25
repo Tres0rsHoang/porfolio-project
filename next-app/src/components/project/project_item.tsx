@@ -74,7 +74,7 @@ export const ProjectItem = ({ project }: { project: Project }) => {
             </p>
           </div>
           <p className="text-xl">
-            <span className="font-medium">Framework</span>
+            <span className="font-medium">Technologies</span>
             <span>: </span>
             <span>
               {project.frameworks.map((data, index) =>
