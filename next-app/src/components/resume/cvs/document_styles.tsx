@@ -3,7 +3,7 @@ import { StyleSheet } from "@react-pdf/renderer";
 export const documentStyle = StyleSheet.create({
   page: {
     fontFamily: "VolkolakSerif",
-    padding: "1.5cm 1cm",
+    padding: "1cm 1cm",
     fontSize: 10,
   },
   h1: {
@@ -36,13 +36,21 @@ export const documentStyle = StyleSheet.create({
     marginVertical: 2,
     width: "100%",
   },
+  subHr: {
+    borderBottom: "1pt solid #EEE",
+    marginVertical: 2,
+    width: "100%",
+  },
   content: {
     marginTop: 5,
     marginLeft: 10,
-    marginBottom: 10,
+    marginBottom: 5,
   },
   time: {
     fontSize: 9,
     fontStyle: "italic",
+  },
+  bold: {
+    fontWeight: "bold",
   },
 });
