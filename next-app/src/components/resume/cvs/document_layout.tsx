@@ -64,7 +64,11 @@ export const UL = (props: { children?: React.ReactNode }) => (
   </View>
 );
 
-export const LI = (props: { children?: React.ReactNode; bullet?: string }) => (
+export const LI = (props: {
+  children?: React.ReactNode;
+  bullet?: string;
+  wrap?: boolean;
+}) => (
   <View
     style={{
       display: "flex",
@@ -72,7 +76,7 @@ export const LI = (props: { children?: React.ReactNode; bullet?: string }) => (
       justifyContent: "flex-start",
       marginLeft: 4,
     }}
-    wrap={false}
+    wrap={props.wrap}
   >
     <Text style={{ width: 10 }}>{props.bullet ?? "•"}</Text>
     {typeof props.children == "string" ? (

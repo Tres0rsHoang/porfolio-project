@@ -10,13 +10,13 @@ export const DocumentTechnicalSkill = () => {
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Languages</Text>
           {": "}
-          C#, C/C++, TypeScript/JavaScript, Python, Java, PHP, Dart, Lua.
+          TypeScript/JavaScript, Python, C#, C/C++, Java, PHP, Dart, Lua.
         </Text>
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Frontend</Text>
           {": "}
-          React, Next.js, Three.js, Tailwind CSS, Bootstrap, ShadCN, MUI, ZMP,
-          Smarty (PHP), Jquery, Flutter, React Native.
+          Node.js, React, Next.js, Three.js, Tailwind CSS, Bootstrap, ShadCN,
+          MUI, ZMP, Smarty (PHP), Jquery, Flutter, React Native.
         </Text>
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Backend</Text>
@@ -32,10 +32,9 @@ export const DocumentTechnicalSkill = () => {
         <Text>
           <Text style={{ fontWeight: "bold" }}>Tools/Others</Text>
           {": "}
-          Unity, 2D/3D programming, Game Physics, Algorithms, Optimizatio, Git,
-          Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design Patterns,
-          SOLID Principles, RESTful API, GraphQL, Microservices, WebSocket,
-          RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.
+          Git, Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design
+          Patterns, SOLID Principles, RESTful API, GraphQL, Microservices,
+          WebSocket, RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.
         </Text>
       </View>
     </View>
