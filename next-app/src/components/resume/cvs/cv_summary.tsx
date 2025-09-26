@@ -10,7 +10,9 @@ export const DocumentSummary = ({
     <View>
       <Text style={styles.h4}>Summary</Text>
       <View style={styles.hr}></View>
-      <Text style={styles.content}>{children}</Text>
+      <View style={styles.content}>
+        <Text wrap={false}>{children}</Text>
+      </View>
     </View>
   );
 };

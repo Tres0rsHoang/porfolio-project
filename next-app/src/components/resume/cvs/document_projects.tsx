@@ -30,14 +30,14 @@ const ProjectItem = ({ project }: { project: DocProject }) => {
         <Text style={styles.time}>{project.time}</Text>
       </View>
       <UL>
-        <LI>
+        <LI wrap={true}>
           <Text>
             <Text style={{ fontWeight: "bold" }}>Description</Text>
             {": "}
             {project.description}
           </Text>
         </LI>
-        <LI>
+        <LI wrap={true}>
           <Text>
             <Text style={{ fontWeight: "bold" }}>Team size</Text>
             {": "}
@@ -45,14 +45,14 @@ const ProjectItem = ({ project }: { project: DocProject }) => {
             {project.teamSize <= 1 ? " member." : " members."}
           </Text>
         </LI>
-        <LI>
+        <LI wrap={true}>
           <Text>
             <Text style={{ fontWeight: "bold" }}>Role</Text>
             {": "}
             {project.role}
           </Text>
         </LI>
-        <LI>
+        <LI wrap={true}>
           <Text>
             <Text style={{ fontWeight: "bold" }}>Responsibilities</Text>
             {": "}

@@ -2,7 +2,7 @@ import { Link, Text } from "@react-pdf/renderer";
 import { DocumentSummary } from "./cv_summary";
 import { DocumentLayout } from "./document_layout";
 import { DocumentEducation } from "./document_education";
-import { DocumentExperience } from "./document_expericence";
+import { DocumentActivity, DocumentExperience } from "./document_expericence";
 import { DocumentProjects } from "./document_projects";
 import { DocumentTechnicalSkill } from "./document_technical_skill";
 import { DocumentAchievements } from "./document_achievements";
@@ -29,7 +29,7 @@ export default function FullstackDoc() {
             fontWeight: "bold",
           }}
         >
-          ReactJS, React Native, NextJS, Flutter, TypeScript, styled-components,
+          Node.js, ReactJS, React Native, NextJS, Flutter, styled-components,
           and deploying apps to App Store and Google Play
         </Text>
         . Experienced with{" "}
@@ -38,9 +38,9 @@ export default function FullstackDoc() {
             fontWeight: "bold",
           }}
         >
-          Node.js, Express.js, NestJS, .NET, PHP, databases (MySQL, PostgreSQL,
-          MongoDB, SQLite), REST APIs, and integrating Google, Facebook, Zalo
-          services
+          TypeScript, Express.js, NestJS, .NET, PHP, databases (MySQL,
+          PostgreSQL, MongoDB, SQLite), REST APIs, and integrating Google,
+          Facebook, Zalo services
         </Text>
         . Proficient in DevOps tools including{" "}
         <Text
@@ -55,6 +55,52 @@ export default function FullstackDoc() {
         clear technical documentation.
       </DocumentSummary>
       <DocumentEducation />
+      <DocumentAchievements />
+      <DocumentActivity
+        companies={[
+          {
+            company: "Freelancer",
+            location: "Ho Chi Minh City",
+            jobs: [
+              {
+                title: "Full-stack Developer",
+                time: "Jul 2025 - Present",
+                description: [
+                  <Text key={0}>
+                    <Link
+                      src="https://www.baohomeserver.uk/"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Bao Hoang Portfolio
+                    </Link>
+                    : Designed, implemented, and deployed a website using
+                    Node.js frameworks, including: Database schema design and
+                    API development, built services, controllers, WebSocket for
+                    realtime features, and JWT authorization, wrote test cases,
+                    configured GitHub Actions, Dockerfile, and Docker Compose,
+                    set up an Ubuntu server for deployment, configured SSL
+                    certificates for domain, and implemented dynamic DDNS for a
+                    self-hosted server, designed UX/UI and coded frontend using
+                    Next.js.
+                  </Text>,
+                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
+                ],
+              },
+              {
+                title: "Softskill Learner",
+                time: "Jan 2025 - May 2025",
+                description: [
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts - fully mouse-free workflow.",
+                  <Text key={1}>
+                    Prepared for and took the IELTS exam to obtain certification
+                    and strengthen professional English proficiency.
+                  </Text>,
+                ],
+              },
+            ],
+          },
+        ]}
+      />
       <DocumentExperience
         companies={[
           {
@@ -154,46 +200,6 @@ export default function FullstackDoc() {
                     : Developed a mini app using ZMP (ReactJS-based) for
                     reporting issues and feedback, handling front-end, API
                     integration with CRM, and managing the company’s Zalo app.
-                  </Text>,
-                ],
-              },
-            ],
-          },
-          {
-            company: "Freelancer",
-            location: "Ho Chi Minh City",
-            jobs: [
-              {
-                title: "Full-stack Developer",
-                time: "Jul 2025 - Present",
-                description: [
-                  <Text key={0}>
-                    <Link
-                      src="https://www.baohomeserver.uk/"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Bao Hoang Portfolio
-                    </Link>
-                    : Designed, implemented, and deployed a website, including:
-                    Database schema design and API development, built services,
-                    controllers, WebSocket for realtime features, and JWT
-                    authorization, wrote test cases, configured GitHub Actions,
-                    Dockerfile, and Docker Compose, set up an Ubuntu server for
-                    deployment, configured SSL certificates for domain, and
-                    implemented dynamic DDNS for a self-hosted server, designed
-                    UX/UI and coded frontend using Next.js.
-                  </Text>,
-                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
-                ],
-              },
-              {
-                title: "Softskill Learner",
-                time: "Jan 2025 - May 2025",
-                description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts - fully mouse-free workflow.",
-                  <Text key={1}>
-                    Prepared for and took the IELTS exam to obtain certification
-                    and strengthen professional English proficiency.
                   </Text>,
                 ],
               },
@@ -331,7 +337,6 @@ export default function FullstackDoc() {
         ]}
       />
       <DocumentTechnicalSkill />
-      <DocumentAchievements />
       <DocumentCertificates />
     </DocumentLayout>
   );
