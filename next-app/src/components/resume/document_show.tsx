@@ -13,6 +13,8 @@ import MobileFullstackDoc from "./cvs/mobile_fullstack_doc";
 import FullstackDoc from "./cvs/fullstack_dev_doc";
 import FullstackCSharpDoc from "./cvs/fullstack_dev_csharp_doc";
 import GameFullstackDoc from "./cvs/game_fullstack_doc";
+import BackendDoc from "./cvs/backend_doc";
+import FullstackNodeJsDoc from "./cvs/fullstack_dev_nodejs";
 
 interface CVItem {
   title: string;
@@ -45,6 +47,16 @@ export function DocumentShow() {
       imagePath: "/images/Default.png",
       title: "Game Developer",
       document: <GameFullstackDoc />,
+    },
+    {
+      imagePath: "/images/System.png",
+      title: "Backend Developer",
+      document: <BackendDoc />,
+    },
+    {
+      imagePath: "/images/System.png",
+      title: "Fullstack Developer (Node.js)",
+      document: <FullstackNodeJsDoc />,
     },
     {
       imagePath: "/images/System.png",
