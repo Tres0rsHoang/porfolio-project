@@ -2,7 +2,7 @@ import { Link, Text } from "@react-pdf/renderer";
 import { DocumentSummary } from "./cv_summary";
 import { DocumentLayout } from "./document_layout";
 import { DocumentEducation } from "./document_education";
-import { DocumentExperience } from "./document_expericence";
+import { DocumentActivity, DocumentExperience } from "./document_expericence";
 import { DocumentProjects } from "./document_projects";
 import { DocumentTechnicalSkill } from "./document_technical_skill";
 import { DocumentAchievements } from "./document_achievements";
@@ -11,7 +11,7 @@ import { DocumentCertificates } from "./document_certificates";
 export default function MobileFullstackDoc() {
   return (
     <DocumentLayout
-      job="Full-stack Mobile Developer"
+      job="Full-stack Mobile App Developer"
       title="Hoang Quoc Bao - Full-stack mobile developer"
     >
       <DocumentSummary>
@@ -21,7 +21,7 @@ export default function MobileFullstackDoc() {
             fontWeight: "bold",
           }}
         >
-          2+ years of professional experience and 8 years of coding background
+          2 years of professional experience and 8 years of coding background
         </Text>
         . Skilled in building and deploying{" "}
         <Text
@@ -58,6 +58,7 @@ export default function MobileFullstackDoc() {
         ensures effective English communication in international teams.
       </DocumentSummary>
       <DocumentEducation />
+      <DocumentAchievements />
       <DocumentExperience
         companies={[
           {
@@ -171,6 +172,10 @@ export default function MobileFullstackDoc() {
               },
             ],
           },
+        ]}
+      />
+      <DocumentActivity
+        companies={[
           {
             company: "Freelancer",
             location: "Ho Chi Minh City",
@@ -186,14 +191,15 @@ export default function MobileFullstackDoc() {
                     >
                       Bao Hoang Portfolio
                     </Link>
-                    : Designed, implemented, and deployed a website, including:
-                    Database schema design and API development, built services,
-                    controllers, WebSocket for realtime features, and JWT
-                    authorization, wrote test cases, configured GitHub Actions,
-                    Dockerfile, and Docker Compose, set up an Ubuntu server for
-                    deployment, configured SSL certificates for domain, and
-                    implemented dynamic DDNS for a self-hosted server, designed
-                    UX/UI and coded frontend using Next.js.
+                    : Designed, implemented, and deployed a website using
+                    Node.js frameworks, including: Database schema design and
+                    API development, built services, controllers, WebSocket for
+                    realtime features, and JWT authorization, wrote test cases,
+                    configured GitHub Actions, Dockerfile, and Docker Compose,
+                    set up an Ubuntu server for deployment, configured SSL
+                    certificates for domain, and implemented dynamic DDNS for a
+                    self-hosted server, designed UX/UI and coded frontend using
+                    Next.js.
                   </Text>,
                   "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
                 ],
@@ -229,6 +235,7 @@ export default function MobileFullstackDoc() {
             ],
             technologies: [
               "Flutter",
+              "GraphQL",
               "Firebase",
               "Firestore",
               "Cloud Messaging",
@@ -263,13 +270,7 @@ export default function MobileFullstackDoc() {
               "Implemented lazy loading for individual components, reducing perceived waiting time and improving overall user experience.",
               "Optimized in-app search by managing filters with BloC, minimizing redundant reloads when retrieving related lists.",
             ],
-            technologies: [
-              "Flutter",
-              "Rest APIs",
-              "Gitlab",
-              "PHP",
-              "Vtiger CRM",
-            ],
+            technologies: ["Flutter", "GraphQL", "Gitlab", "PHP", "Vtiger CRM"],
             links: [
               {
                 url: "https://cloudgo.vn/cloudwork-giai-phap-quan-ly-cong-viec-tinh-gon",
@@ -293,10 +294,10 @@ export default function MobileFullstackDoc() {
             ],
             technologies: [
               "Flutter",
+              "GraphQL",
               "WebSocket",
               "PHP",
               "Vtiger CRM",
-              "Rest APIs",
               "Gitlab",
             ],
             links: [
@@ -324,6 +325,7 @@ export default function MobileFullstackDoc() {
             technologies: [
               "React Native",
               "Flutter",
+              "RESTful Api",
               "React.js",
               ".NET",
               "RabbitMQ",
@@ -357,7 +359,7 @@ export default function MobileFullstackDoc() {
               "React.js",
               "Zalo Api",
               "ZMP",
-              "Rest APIs",
+              "RESTful Api",
               "Gitlab",
             ],
             links: [
@@ -370,7 +372,6 @@ export default function MobileFullstackDoc() {
         ]}
       />
       <DocumentTechnicalSkill />
-      <DocumentAchievements />
       <DocumentCertificates />
     </DocumentLayout>
   );
