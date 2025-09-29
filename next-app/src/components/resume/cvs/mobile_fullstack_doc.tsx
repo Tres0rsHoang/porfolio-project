@@ -37,7 +37,7 @@ export default function MobileFullstackDoc() {
             fontWeight: "bold",
           }}
         >
-          Android and iOS (App Store & Google Play)
+          Android and iOS (publishing to App Store & Google Play)
         </Text>
         . Strong expertise in{" "}
         <Text
@@ -87,7 +87,7 @@ export default function MobileFullstackDoc() {
                 ],
               },
               {
-                title: "Full-stack Developer - Part Time",
+                title: "Full-stack Developer",
                 time: "Aug 2023 - Dec 2024",
                 description: [
                   <Text key={3}>
@@ -280,6 +280,40 @@ export default function MobileFullstackDoc() {
             ],
           },
           {
+            title: "CloudOCS",
+            time: "Jul 2023 - Aug 2023",
+            teamSize: 4,
+            description:
+              "CloudOCS was the predecessor of CloudSales, designed to centralize multi-channel sales management by integrating platforms like Shopee's and TikTok Shop's orders into one app. As team leader and fullstack developer, I led the project through UX/UI design, API integration, and cross-platform development. The project was successfully delivered and awarded a 9/10 graduation internship score.",
+            role: <Text>Team Leader - Full-stack Developer</Text>,
+            responsibilities: [
+              "Led a 4-member team, managing task allocation, progress tracking, and code reviews throughout the project lifecycle.",
+              "Contributed to CloudOCS, a multi-channel sales app integrated with Shopee and TikTok Shop APIs, conducting UX/UI design and market research.",
+              "Developed responsive web interfaces for sales reports and built a cross-platform Flutter mobile app for Android and iOS.",
+              "Implemented PHP-based API integrations with the company’s CRM to ensure reliable communication between app and backend systems.",
+              "Integrated Firebase Cloud Messaging (FCM) into the app to enable real-time push notifications for order updates and user interactions.",
+            ],
+            technologies: [
+              "Flutter",
+              "GraphQL",
+              "WebSocket",
+              "Firebase",
+              "Flutterfire",
+              "PHP",
+              "Vtiger CRM",
+              "MySQL",
+              "Shopee/Tiktok Shop API",
+              "Gitlab",
+            ],
+            links: [
+              {
+                url: "https://cloudgo.vn/cloudsales-giai-phap-crm-quan-ly-ban-hang-da-kenh",
+                label:
+                  "Cloudgo.vn/cloudsales-giai-phap-crm-quan-ly-ban-hang-da-kenh",
+              },
+            ],
+          },
+          {
             title: "CloudSales",
             time: "Aug 2024 - Oct 2024",
             description:
@@ -323,8 +357,8 @@ export default function MobileFullstackDoc() {
               "Managed CI/CD pipelines with GitHub Actions for automated deployment of the backend to DigitalOcean.",
             ],
             technologies: [
-              "React Native",
               "Flutter",
+              "React Native",
               "RESTful Api",
               "React.js",
               ".NET",
@@ -340,32 +374,6 @@ export default function MobileFullstackDoc() {
                 url: "https://github.com/Tres0rsHoang/Grab-Clone-Project",
                 label:
                   "Github.com/Tres0rsHoang/Grab-Clone-Project (Fork from hieucckha/intro-to-software-architecture)",
-              },
-            ],
-          },
-          {
-            title: "Zalo Ticket Mini App - My CloudGO",
-            time: "Jan 2024 - Apr 2024",
-            description:
-              "Zalo Ticket Mini App – My CloudGo is a Zalo mini app built with the ZMP framework based on ReactJS. It enables CRM customers to submit feedback, report issues, and share evaluations for specific projects, streamlining communication between clients and the company while enhancing service quality and customer satisfaction.",
-            teamSize: 3,
-            role: <Text>Front-end Developer. </Text>,
-            responsibilities: [
-              "Developed user interface based on provided mockups using ZMP (ReactJS), ensuring accurate implementation and responsive design across devices.",
-              "Optimized application workflows to improve usability, streamline customer feedback submission, and enhance overall user experience within the mini app.",
-              "Implemented data storage handling on the mini app, ensuring smooth integration with CRM systems and reliable access to submitted customer tickets.",
-            ],
-            technologies: [
-              "React.js",
-              "Zalo Api",
-              "ZMP",
-              "RESTful Api",
-              "Gitlab",
-            ],
-            links: [
-              {
-                url: "https://zalo.me/s/3077214972070612317/",
-                label: "Zalo Mini App - My CloudGo",
               },
             ],
           },

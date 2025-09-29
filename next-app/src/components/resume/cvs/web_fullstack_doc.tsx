@@ -96,7 +96,7 @@ export default function WebFullstackDoc() {
                 ],
               },
               {
-                title: "Full-stack Developer - Part Time",
+                title: "Full-stack Developer",
                 time: "Aug 2023 - Dec 2024",
                 description: [
                   <Text key={0}>

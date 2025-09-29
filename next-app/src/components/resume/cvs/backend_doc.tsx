@@ -82,7 +82,7 @@ export default function BackendDoc() {
                 ],
               },
               {
-                title: "Full-stack Developer - Part-time",
+                title: "Full-stack Developer",
                 time: "Aug 2023 - Dec 2024",
                 description: [
                   <Text key={0}>
