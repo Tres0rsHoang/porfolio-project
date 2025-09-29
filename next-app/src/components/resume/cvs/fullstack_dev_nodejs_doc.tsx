@@ -46,7 +46,7 @@ export default function FullstackNodeJsDoc() {
             location: "Ho Chi Minh City",
             jobs: [
               {
-                title: "Full-stack Developer - Part Time",
+                title: "Full-stack Developer",
                 time: "Jul 2023 - Dec 2024",
                 description: [
                   <Text key={0}>
