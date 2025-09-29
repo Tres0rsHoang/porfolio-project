@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProjectModule } from './project/project.module';
@@ -19,6 +19,7 @@ import { SeedModule } from './seed/seed.module';
 import EventsGateway from './socket/events.gateway';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { Request, Response, NextFunction } from 'express';
 
 @Module({
   imports: [
@@ -57,4 +58,14 @@ import { join } from 'path';
     EventsGateway,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply((req: Request, res: Response, next: NextFunction) => {
+        void res;
+        req.url = req.url.toLowerCase();
+        next();
+      })
+      .forRoutes('*');
+  }
+}
