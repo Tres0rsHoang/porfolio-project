@@ -16,6 +16,7 @@ import GameFullstackDoc from "./cvs/game_fullstack_doc";
 import BackendDoc from "./cvs/backend_doc";
 import FullstackNodeJsDoc from "./cvs/fullstack_dev_nodejs_doc";
 import FullstackJavaDoc from "./cvs/fullstack_dev_java_doc";
+import FrontendDoc from "./cvs/frontend_doc";
 
 interface CVItem {
   title: string;
@@ -53,6 +54,11 @@ export function DocumentShow() {
       imagePath: "/images/System.png",
       title: "Backend Developer",
       document: <BackendDoc />,
+    },
+    {
+      imagePath: "/images/System.png",
+      title: "Frontend Developer",
+      document: <FrontendDoc />,
     },
     {
       imagePath: "/images/System.png",

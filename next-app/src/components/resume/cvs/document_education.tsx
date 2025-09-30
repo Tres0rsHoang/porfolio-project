@@ -53,7 +53,7 @@ export const DocumentEducation = () => {
       <View style={styles.hr}></View>
       <View style={styles.content}>
         <School
-          name="VNU-HCM, University of Science"
+          name="University of Science, VNU-HCM"
           time="Aug 2020 - Nov 2024"
           major="B.Sc. in Software Engineering; High Quality Program. "
           result="GPA: 7.79/10"
