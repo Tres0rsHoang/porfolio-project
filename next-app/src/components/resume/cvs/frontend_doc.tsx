@@ -8,7 +8,7 @@ import { DocumentTechnicalSkill } from "./document_technical_skill";
 import { DocumentAchievements } from "./document_achievements";
 import { DocumentCertificates } from "./document_certificates";
 
-export default function WebFullstackDoc() {
+export default function FrontendDoc() {
   return (
     <DocumentLayout
       job="Full-stack Web Developer"
@@ -222,7 +222,7 @@ export default function WebFullstackDoc() {
               "Automated CI/CD workflow with GitHub Actions, covering testing, staging, and production deployment with zero downtime.",
             ],
             technologies: [
-              "Next.js / Three.js / React.js",
+              "Next.js / React.js",
               "Tailwindcss",
               "NestJS",
               "JWT Authentication",

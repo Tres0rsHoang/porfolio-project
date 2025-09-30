@@ -1,6 +1,8 @@
 import { Text, View } from "@react-pdf/renderer";
 import { documentStyle as styles } from "./document_styles";
 
+interface TechnicalDocumentProp {}
+
 export const DocumentTechnicalSkill = () => {
   return (
     <View>

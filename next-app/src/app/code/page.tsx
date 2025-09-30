@@ -1,12 +1,9 @@
-"use client";
-import OnWorking from "@/components/on_working";
-import { useTranslation } from "react-i18next";
+import { GitHubContributions } from "@/components/code/github_contributions";
 
 export default function Code() {
-  const { t } = useTranslation("common");
   return (
-    <div className="flex items-center justify-center h-full w-full">
-      <OnWorking message={t("working")} />
+    <div className="">
+      <GitHubContributions />
     </div>
   );
 }
