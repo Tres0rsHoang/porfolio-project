@@ -18,5 +18,5 @@ export class PagingDto {
 export class ProjectPagingDto extends PagingDto {
   @IsOptional()
   @IsString()
-  projectName?: string;
+  projectname?: string;
 }

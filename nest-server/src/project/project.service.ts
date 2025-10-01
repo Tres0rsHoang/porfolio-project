@@ -260,12 +260,11 @@ export class ProjectService {
     if (!page || !limit) {
       return new BadRequestException();
     }
-
     const [projects, count] = await Promise.all([
       this.databaseService.project.findMany({
         where: {
           name: {
-            contains: paging.projectName,
+            contains: paging.projectname,
             mode: 'insensitive',
           },
         },
