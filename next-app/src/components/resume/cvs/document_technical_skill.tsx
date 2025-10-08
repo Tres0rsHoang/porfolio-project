@@ -1,7 +1,21 @@
 import { Text, View } from "@react-pdf/renderer";
 import { documentStyle as styles } from "./document_styles";
 
-export const DocumentTechnicalSkill = () => {
+interface DocumentTechnicalSkillProps {
+  languages?: string;
+  frontend?: string;
+  backend?: string;
+  devops?: string;
+  other?: string;
+}
+
+export const DocumentTechnicalSkill = ({
+  languages = "TypeScript/JavaScript, Python, C#, C/C++, Java, PHP, Dart, Lua.",
+  frontend = "Node.js, React, Next.js, Three.js, Tailwind CSS, Bootstrap, ShadCN,MUI, ZMP, Smarty (PHP), Jquery, Flutter, React Native.",
+  backend = "Node.js, NestJS, Express.js, Prisma, MySQL, PostgreSQL, MongoDB.",
+  devops = "Docker, Docker Compose, Azure, Digital Ocean, Google Cloud,Cloudflare, GitHub Actions (CI/CD), Nginx, Ngrok, Unix/Linux OS.",
+  other = "Git, Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design Patterns, SOLID Principles, RESTful API, GraphQL, Microservices, WebSocket, RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.",
+}: DocumentTechnicalSkillProps) => {
   return (
     <View>
       <Text style={styles.h4}>Technical Skills</Text>
@@ -10,31 +24,27 @@ export const DocumentTechnicalSkill = () => {
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Languages</Text>
           {": "}
-          TypeScript/JavaScript, Python, C#, C/C++, Java, PHP, Dart, Lua.
+          {languages}
         </Text>
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Frontend</Text>
           {": "}
-          Node.js, React, Next.js, Three.js, Tailwind CSS, Bootstrap, ShadCN,
-          MUI, ZMP, Smarty (PHP), Jquery, Flutter, React Native.
+          {frontend}
         </Text>
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>Backend</Text>
           {": "}
-          Node.js, NestJS, Express.js, Prisma, MySQL, PostgreSQL, MongoDB.
+          {backend}
         </Text>
         <Text style={{ marginBottom: 5 }}>
           <Text style={{ fontWeight: "bold" }}>DevOps</Text>
           {": "}
-          Docker, Docker Compose, Azure, Digital Ocean, Google Cloud,
-          Cloudflare, GitHub Actions (CI/CD), Nginx, Ngrok, Unix/Linux VPS.
+          {devops}
         </Text>
         <Text>
           <Text style={{ fontWeight: "bold" }}>Tools/Others</Text>
           {": "}
-          Git, Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design
-          Patterns, SOLID Principles, RESTful API, GraphQL, Microservices,
-          WebSocket, RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.
+          {other}
         </Text>
       </View>
     </View>

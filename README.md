@@ -33,7 +33,7 @@ A modern portfolio website built with Next.js frontend and NestJS backend, featu
 
 ## Project Structure
 
-```
+```text
 ├── next-app/                 # Next.js frontend application
 │   ├── src/                 # Source code
 │   ├── public/             # Static assets
@@ -263,7 +263,8 @@ Key environment variables needed for proper operation:
 
 ### Common Issues
 
-1. **Database connection errors**: Ensure PostgreSQL is running and credentials are correct
+1. **Database connection errors**: Ensure PostgreSQL is running and credentials
+are correct
 2. **Port conflicts**: Change ports in `.env` file if default ports are occupied
 3. **Docker build failures**: Clear Docker cache with `docker system prune`
 4. **Prisma migration issues**: Run `npx prisma migrate reset` to reset database
@@ -298,7 +299,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-For support and questions, please open an issue in the GitHub repository or contact the development team.
+For support and questions, please open an issue in the GitHub repository or
+contact the development team.
 
 ---
 
