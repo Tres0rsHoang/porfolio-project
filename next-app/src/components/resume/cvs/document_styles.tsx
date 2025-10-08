@@ -27,6 +27,10 @@ export const documentStyle = StyleSheet.create({
     fontSize: 11,
     fontWeight: "bold",
   },
+  small: {
+    fontSize: 9,
+    fontStyle: "italic",
+  },
   icon: {
     width: 14,
     height: 14,

@@ -44,6 +44,7 @@ const JobSection = (props: { job: Job }) => {
 
 export interface Company {
   company: string;
+  period?: string;
   location: string;
   jobs: Job[];
 }
@@ -66,7 +67,19 @@ export const DocumentExperience = (props: {
                 justifyContent: "space-between",
               }}
             >
-              <Text style={styles.h5}>{company.company}</Text>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: 5,
+                  alignItems: "flex-end",
+                }}
+              >
+                <Text style={styles.h5}>{company.company}</Text>
+                {company.period && (
+                  <Text style={styles.small}>({company.period})</Text>
+                )}
+              </View>
               <Text>{company.location}</Text>
             </View>
             <View>
@@ -102,7 +115,19 @@ export const DocumentActivity = (props: {
                 justifyContent: "space-between",
               }}
             >
-              <Text style={styles.h5}>{company.company}</Text>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  gap: 5,
+                  alignItems: "flex-end",
+                }}
+              >
+                <Text style={styles.h5}>{company.company}</Text>
+                {company.period && (
+                  <Text style={styles.small}>({company.period})</Text>
+                )}
+              </View>
               <Text>{company.location}</Text>
             </View>
             <View>

@@ -17,6 +17,7 @@ import BackendDoc from "./cvs/backend_doc";
 import FullstackNodeJsDoc from "./cvs/fullstack_dev_nodejs_doc";
 import FullstackJavaDoc from "./cvs/fullstack_dev_java_doc";
 import FrontendDoc from "./cvs/frontend_doc";
+import MobileFullStackFlutterDoc from "./cvs/mobile_fullstack_flutter_doc";
 
 interface CVItem {
   title: string;
@@ -44,6 +45,11 @@ export function DocumentShow() {
       imagePath: "/images/PhoneCVIcon.png",
       title: "Mobile Developer",
       document: <MobileFullstackDoc />,
+    },
+    {
+      imagePath: "/images/PhoneCVIcon.png",
+      title: "Mobile Developer (Flutter)",
+      document: <MobileFullStackFlutterDoc />,
     },
     {
       imagePath: "/images/Default.png",
