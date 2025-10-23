@@ -23,7 +23,7 @@ export const DocumentCertificates = () => {
           <Text style={styles.time}>Apr 2025</Text>
         </View>
         <Text style={{ fontStyle: "italic" }}>
-          Overal Band Score: 5.5 (Listening: 5.5, Reading: 6.0, Writing: 6.0,
+          Overall Band Score: 5.5 (Listening: 5.5, Reading: 6.0, Writing: 6.0,
           Speaking: 4.5)
         </Text>
       </View>
