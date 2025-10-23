@@ -12,39 +12,27 @@ import { DocumentCertificates } from "./document_certificates";
 export default function BackendDoc() {
   return (
     <DocumentLayout
-      job="Fresher Backend Developer"
+      job="Backend Developer"
       title="Hoang Quoc Bao - Backend developer"
     >
       <DocumentSummary>
         Backend Developer with{" "}
-        <Text style={styles.bold}>8 years of coding experience</Text> and{" "}
+        <Text style={styles.bold}>8 years of coding experience </Text>and{" "}
         <Text style={styles.bold}>over 2 years of professional experience</Text>{" "}
-        in web and mobile development. Skilled in{" "}
-        <Text style={styles.bold}>Node.js </Text>and{" "}
-        <Text style={styles.bold}>RESTful API design,</Text> with hands-on
-        experience building{" "}
-        <Text style={styles.bold}>
-          data processing systems, account management services, and platform
-          integration tools.
-        </Text>{" "}
-        Proficient in{" "}
-        <Text style={styles.bold}>
-          SQL/NoSQL databases (MySQL, PostgreSQL, MongoDB), Linux environments,
-        </Text>{" "}
-        and <Text style={styles.bold}>distributed message queues</Text>.
-        Experienced with{" "}
-        <Text style={styles.bold}>
-          CI/CD, Docker, Git, and cloud platforms (Azure, GCP, DigitalOcean)
-        </Text>
-        . Strong foundation in{" "}
-        <Text style={styles.bold}>
-          algorithms, data structures, and system design,
-        </Text>{" "}
-        backed by a{" "}
-        <Text style={styles.bold}>B.Sc. in Software Engineering</Text> from
-        <Text style={styles.bold}>VNU-HCM University of Science</Text>.
-        Passionate about scalable backend systems and eager to contribute to
-        <Text style={styles.bold}> game publishing platforms</Text>.
+        in web and mobile application development. Skilled in building and
+        optimizing <Text style={styles.bold}>RESTful</Text> and{" "}
+        <Text style={styles.bold}>Graph APIs </Text>using{" "}
+        <Text style={styles.bold}>Node.js</Text> and
+        <Text style={styles.bold}> PHP</Text>, with strong knowledge of
+        relational databases such as <Text style={styles.bold}>MySQL </Text>and{" "}
+        <Text style={styles.bold}>PostgreSQL</Text>. Experienced in designing
+        efficient data structures, implementing caching strategies, and
+        improving system reliability. Proficient with{" "}
+        <Text style={styles.bold}>Docker, Git, and modern CI/CD workflows</Text>
+        , and familiar with cloud environments like{" "}
+        <Text style={styles.bold}>GCP and Azure</Text>. Passionate about
+        building scalable, secure backend systems that power social and
+        content-driven platforms.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentAchievements />
@@ -141,20 +129,17 @@ export default function BackendDoc() {
             jobs: [
               {
                 title: "Full-stack Developer",
-                time: "Jun 2025 - Present",
+                time: "Jul 2025 - Present",
                 description: [
                   <Text key={0}>
-                    <Link
-                      src="https://www.baohomeserver.uk/"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Bao Hoang Portfolio
-                    </Link>
-                    : Developed and deployed a full-stack website with database
-                    schema, APIs, WebSocket real-time features, and JWT auth;
-                    built frontend in Next.js, implemented CI/CD with Docker and
-                    GitHub Actions, and deployed on a secure self-hosted Linux
-                    server.
+                    Designed, implemented, and deployed a website, including:
+                    Database schema design and API development, built services,
+                    controllers, WebSocket for realtime features, and JWT
+                    authorization, wrote test cases, configured GitHub Actions,
+                    Dockerfile, and Docker Compose, set up an Ubuntu server for
+                    deployment, configured SSL certificates for domain, and
+                    implemented dynamic DDNS for a self-hosted server, designed
+                    UX/UI and coded frontend using Next.js.
                   </Text>,
                   "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
                 ],
@@ -163,19 +148,11 @@ export default function BackendDoc() {
                 title: "Softskill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Aerospace and custom keyboard layouts - fully mouse-free workflow.",
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom web-developer keyboard layouts - fully mouse-free workflow.",
                   <Text key={1}>
                     Prepared for and took the IELTS exam to obtain certification
                     and strengthen professional English proficiency.
                   </Text>,
-                ],
-              },
-              {
-                title: "Game Plugin Developer",
-                time: "Jan 2023 - May 2023",
-                description: [
-                  "Developed custom Minecraft server plugins and Project Zomboid mods to enhance gameplay.",
-                  "Deployed and managed Minecraft servers on Linux using AWS and Docker, ensuring stable performance and scalability.",
                 ],
               },
             ],
@@ -185,81 +162,113 @@ export default function BackendDoc() {
       <DocumentProjects
         projects={[
           {
-            title: "TheraCPP",
-            time: "Jan 2024 - Aug 2024",
+            title: "Portfolio Project",
+            time: "Aug 2025 - Present",
             description:
-              "TheraCPP is my graduation project game built with Unity to teach C++ programming through gamified levels. Featuring drag-and-drop (Scratch-like), C++ syntax assembly, and full coding modes, it engages learners of all ages, especially students and beginners. The backend, powered by NestJS and PlayFab, executes code and manages users. Officially published on both Google Play and App Store, it achieved the highest graduation score (9.4/10) and is currently hosted on DigitalOcean for continued development.",
-            teamSize: 5,
-            role: <Text>Team Leader - Full-stack Developer. </Text>,
-            responsibilities: [
-              "Led the team as project manager, assigning tasks, planning milestones, and tracking progress throughout development.",
-              "Designed several game levels and gameplay flows, especially for the Normal difficulty coding challenges.",
-              "Implemented backend logic in NestJS for executing user-submitted C++ programs and handling gameplay workflows.",
-            ],
-            technologies: [
-              "Unity",
-              "PlayFab",
-              "DigitalOcean",
-              "GitHub Actions",
-              "NestJs",
-              "PostgreSQL",
-              "Jira",
-            ],
-            links: [
-              {
-                url: "https://play.google.com/store/apps/details?id=com.datn.theracpp&hl=vi",
-                label: "TheraCPP (CH Play)",
-              },
-              {
-                url: "https://apps.apple.com/vn/app/theracpp-learn-c-coding/id6575351503",
-                label: "TheraCPP (iOS)",
-              },
-            ],
-          },
-          {
-            title: "Lucky Money Mod – Project Zomboid (SeederVN Community)",
-            time: "Jan 2023 - Mar 2023",
-            description:
-              "Developed a mod adding lì xì (lucky money envelopes) into Project Zomboid, where players receive random amounts of in-game currency configured by admins. Envelopes spawn across game areas. Written in Lua with 3D models designed in Blender. Published on Steam Workshop with 400+ downloads.",
-            teamSize: 2,
-            role: <Text>Team Leader - Full-stack Developer. </Text>,
-            responsibilities: [
-              "Implemented the lucky money item and random reward system, designed server-side database for currency storage and transaction history, and integrated player interactions.",
-            ],
-            technologies: [
-              "Lua",
-              "Blender (3D modeling)",
-              "PostgreSQL",
-              "Steam Workshop",
-            ],
-            links: [
-              {
-                url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2919687915",
-                label: "Steam Workshop (LuckyMoney - Project Zomboid)",
-              },
-            ],
-          },
-          {
-            title: "Little Fox Adventure – 2D Top-down Game",
-            time: "Jun 2023 - Aug 2023",
-            description:
-              "A pixel-art 2D top-down adventure game built with Unity, telling the story of a small fox on a journey to rescue his mother. Achieved 8.0/10 in practical grading.",
+              "This portfolio website highlights my skills through an interactive platform, featuring real-time comments, user authentication, and role-based resume management. I designed the UI/UX and built the site with Next.js, NestJS, Prisma, and PostgreSQL, enabling seamless access to projects, education, and work experience.",
             teamSize: 1,
             role: <Text>Full-stack Developer. </Text>,
             responsibilities: [
-              "Solo project — designed levels, created pixel-art assets for characters and monsters, implemented gameplay mechanics, and developed complete stages.",
+              "Designed the UI and developed UX concepts for a polished and intuitive portfolio website.",
+              "Implemented a real-time comment system using WebSocket.io and user authentication with Google/email login.",
+              "Secured API access using JWT cookies and configured proper CORS policies.",
+              "Built front-end with Next.js and back-end with NestJS, integrating Prisma ORM with PostgreSQL.",
+              "Managed full DevOps pipeline including domain setup, dynamic DDNS, Cloudflare, self-hosted Ubuntu server, and Nginx reverse proxy.",
+              "Automated CI/CD workflow with GitHub Actions, covering testing, staging, and production deployment with zero downtime.",
             ],
-            technologies: ["Unity", "Asesprite", "Jira"],
+            technologies: [
+              "Next.js / Three.js / React.js",
+              "Tailwindcss",
+              "NestJS",
+              "JWT Authentication",
+              "Prisma ORM",
+              "PostgreSQL",
+              "Docker",
+              "WebSocket.io",
+              "Nginx",
+              "Cloudflare",
+              "GitHub Actions",
+              "Google OAuth",
+              "Ubuntu Server",
+              "CI/CD",
+            ],
             links: [
               {
-                url: "https://github.com/Tres0rsHoang/Unity-Learning.git",
-                label: "Github.com/Tres0rsHoang/Unity-Learning",
+                label: "www.baohomeserver.uk",
+                url: "https://www.baohomeserver.uk",
+              },
+            ],
+          },
+          {
+            title: "Social Integration Hub",
+            time: "Apr 2024 - Jul 2024",
+            description:
+              "The Social Integration Hub is a service that routes messages from multiple Facebook Fanpages and Zalo OA accounts to client-registered CRM systems. Built with Express.js, MySQL, Redis, and BullMQ, it supports real-time delivery via WebSocket and runs reliably in production, handling 100–200 messages per minute with low latency.",
+            teamSize: 2,
+            role: <Text>Full-stack Developer.</Text>,
+            responsibilities: [
+              "Designed and implemented the entire Social Integration Hub service using Express.js, ensuring reliable message routing between CRMs.",
+              "Built message storage with MySQL, optimized queries with indexes for fast retrieval, and maintained scalable database performance.",
+              "Implemented reliable message forwarding through BullMQ and Redis queues, handling up to 200 messages per minute.",
+              "Developed real-time message delivery with WebSocket, ensuring seamless integration with client CRM systems.",
+              "Designed and built an administration dashboard for monitoring and managing queues across multiple CRM systems.",
+              "Registered and configured extended Facebook App API permissions to enable advanced message integration features.",
+              "Deployed service on Azure VPS with Docker and Docker Hub, enabling automated, scalable, and consistent deployments.",
+              "Achieved stable production performance with low latency (1–2s delivery) and sub-second query response times.",
+            ],
+            technologies: [
+              "Express.js",
+              "Session / Passport Authentication",
+              "Ejs Render / JQuery",
+              "Multer",
+              "Swagger",
+              "MySQL",
+              "Redis",
+              "BullMQ",
+              "WebSocket",
+              "Docker",
+              "Docker Hub",
+              "Azure VPS",
+              "Facebook Graph API",
+            ],
+            links: [
+              {
+                url: "https://chathub.cloudgo.vn/",
+                label: "chathub.cloudgo.vn",
+              },
+            ],
+          },
+          {
+            title: "Request CRM Module",
+            time: "Aug 2024 – Oct 2024",
+            description:
+              "The Request CRM Module is part of CloudGO’s CloudWork platform, designed to manage internal workflow proposals and approval processes. It allows users to create workflow templates, execute multi-step processes, assign responsible members, request document revisions, and send automated reminders. The module integrates tightly with the CloudWork app through Graph APIs for smooth, real-time operation across platforms.",
+            teamSize: 3,
+            role: <Text>Backend Developer</Text>,
+            responsibilities: [
+              "Designed the database schema and relationships for the Request CRM Module to support complex workflow and approval logic.",
+              "Implemented key backend features including workflow template creation, process execution, user assignment, document revision requests, and automated reminders.",
+              "Developed Graph APIs to enable seamless integration between the module and the CloudWork web and mobile applications.",
+              "Ensured process reliability and data integrity across multiple workflow stages through transaction-safe logic and consistent validation.",
+              "Collaborated with frontend and product teams to refine API requirements and improve user experience in workflow execution.",
+              "Deployed and tested the module within the CloudGO CRM ecosystem, ensuring high availability and consistent performance.",
+              "Built and implemented the web interface for visualizing ongoing workflow steps within the CloudGO CRM system, improving transparency and user experience.",
+            ],
+            technologies: ["PHP", "MySQL", "GraphAPI", "Git", "Docker"],
+            links: [
+              {
+                url: "https://cloudgo.vn/cloudwork-giai-phap-quan-ly-cong-viec-tinh-gon",
+                label:
+                  "Cloudgo.vn/cloudwork-giai-phap-quan-ly-cong-viec-tinh-gon",
               },
             ],
           },
         ]}
       />
-      <DocumentTechnicalSkill />
+      <DocumentTechnicalSkill
+        frontend="Node.js, React, Next.js, Tailwind CSS, Bootstrap, ShadCN, MUI, Smarty (PHP), Jquery, Flutter, React Native."
+        backend="Node.js, NestJS, Express.js, Prisma, MySQL, PostgreSQL, MongoDB."
+      />
       <DocumentCertificates />
     </DocumentLayout>
   );

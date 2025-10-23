@@ -37,15 +37,6 @@ export default function DataPreloadProvider({
     ensureToken();
   }, [ensureToken]);
 
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV === "development") {
-  //     const interval = setInterval(() => {
-  //       i18n.reloadResources(i18n.language);
-  //     }, 2000);
-  //     return () => clearInterval(interval);
-  //   }
-  // }, []);
-
   const preloadImage = (src: string, retries = 3): Promise<void> => {
     return new Promise((resolve, reject) => {
       const img = new Image();
