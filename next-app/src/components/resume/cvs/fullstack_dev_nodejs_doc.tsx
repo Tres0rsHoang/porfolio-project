@@ -32,7 +32,7 @@ export default function FullstackNodeJsDoc() {
         <Text style={styles.bold}>JWT, OAuth, SSO concepts</Text>). Proficient
         in containerization and DevOps practices including{" "}
         <Text style={styles.bold}>Docker, CI/CD, Linux servers</Text>, and
-        familiar with <Text style={styles.bold}>Kubernetes/OpenShift </Text>and
+        familiar with <Text style={styles.bold}>Kubernetes/OpenShift </Text>and{" "}
         <Text style={styles.bold}>Kafka/Solace</Text>. Hands-on experience
         integrating <Text style={styles.bold}>Flutter/Dart </Text>for mobile
         apps, delivering scalable, production-ready applications.

@@ -44,7 +44,7 @@ export default function GameFullstackDoc() {
             jobs: [
               {
                 title: "Full-stack Developer",
-                time: "Jul 2023 - Dec 2024",
+                time: "Jul 2023 - Dec 2024 (1 year 7 months)",
                 description: [
                   "Developed and optimized web and mobile apps in the CloudGo ecosystem, including CloudOCS, CloudSales, and CloudWork, by converting mockups to production-ready UI, integrating APIs, and enhancing performance with lazy loading and real-time chat.",
                   "Improved CloudGo Super App by optimizing API calls and storage, reducing login time from 10–20s to 2–3s; published to App Store and Google Play, and managed TestFlight releases.",
@@ -66,20 +66,11 @@ export default function GameFullstackDoc() {
                 title: "Full-stack Developer",
                 time: "Jun 2025 - Present",
                 description: [
-                  <Text key={0}>
-                    <Link
-                      src="https://www.baohomeserver.uk/"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Bao Hoang Portfolio
-                    </Link>
-                    : Developed and deployed a full-stack website with database
-                    schema, APIs, WebSocket real-time features, and JWT auth;
-                    built frontend in Next.js, implemented CI/CD with Docker and
-                    GitHub Actions, and deployed on a secure self-hosted Linux
-                    server.
-                  </Text>,
-                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
+                  "Designed and implemented backend services with Node.js, including RESTful APIs, controllers, and database schemas for scalable web applications.",
+                  "Integrated WebSocket for real-time features and applied JWT authentication for secure access.",
+                  "Built and deployed applications using Docker, GitHub Actions (CI/CD), and Linux servers, configuring SSL certificates and domain management.",
+                  "Developed and tested frontend components with Next.js, demonstrating ability to integrate with HTML/CSS and modern frameworks.",
+                  "Initiated a classroom and tuition management system, preparing UI layouts and backend concepts for future development.",
                 ],
               },
               {
@@ -116,7 +107,8 @@ export default function GameFullstackDoc() {
             role: <Text>Team Leader - Full-stack Developer. </Text>,
             responsibilities: [
               "Led the team as project manager, assigning tasks, planning milestones, and tracking progress throughout development.",
-              "Designed several game levels and gameplay flows, especially for the Normal difficulty coding challenges.",
+              "Designed and implemented multiple game levels and gameplay flows across Beginner, Intermediate, and Normal difficulties on Unity.",
+              "Developed interactive coding mechanics, including drag-and-drop and syntax assembly systems, to enhance learning engagement.",
               "Implemented backend logic in NestJS for executing user-submitted C++ programs and handling gameplay workflows.",
             ],
             technologies: [
