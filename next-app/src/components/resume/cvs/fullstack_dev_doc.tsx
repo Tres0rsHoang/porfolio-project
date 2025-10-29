@@ -66,24 +66,11 @@ export default function FullstackDoc() {
                 title: "Full-stack Developer",
                 time: "Jul 2025 - Present",
                 description: [
-                  <Text key={0}>
-                    <Link
-                      src="https://www.baohomeserver.uk/"
-                      style={{ textDecoration: "none" }}
-                    >
-                      Bao Hoang Portfolio
-                    </Link>
-                    : Designed, implemented, and deployed a website using
-                    Node.js frameworks, including: Database schema design and
-                    API development, built services, controllers, WebSocket for
-                    realtime features, and JWT authorization, wrote test cases,
-                    configured GitHub Actions, Dockerfile, and Docker Compose,
-                    set up an Ubuntu server for deployment, configured SSL
-                    certificates for domain, and implemented dynamic DDNS for a
-                    self-hosted server, designed UX/UI and coded frontend using
-                    Next.js.
-                  </Text>,
-                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
+                  "Designed and implemented backend services with Node.js, including RESTful APIs, controllers, and database schemas for scalable web applications.",
+                  "Integrated WebSocket for real-time features and applied JWT authentication for secure access.",
+                  "Built and deployed applications using Docker, GitHub Actions (CI/CD), and Linux servers, configuring SSL certificates and domain management.",
+                  "Developed and tested frontend components with Next.js, demonstrating ability to integrate with HTML/CSS and modern frameworks.",
+                  "Initiated a classroom and tuition management system, preparing UI layouts and backend concepts for future development.",
                 ],
               },
               {
@@ -105,6 +92,7 @@ export default function FullstackDoc() {
         companies={[
           {
             company: "CloudGo",
+            period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -207,8 +195,86 @@ export default function FullstackDoc() {
           },
         ]}
       />
+      <DocumentActivity
+        companies={[
+          {
+            company: "Freelancer",
+            period: "5 months",
+            location: "Ho Chi Minh City",
+            jobs: [
+              {
+                title: "Full-stack Developer",
+                time: "Jul 2025 - Present",
+                description: [
+                  <Text key={0}>
+                    <Link
+                      src="https://www.baohomeserver.uk/"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Bao Hoang Portfolio
+                    </Link>
+                    : Designed, implemented, and deployed a website, including:
+                    Database schema design and API development, built services,
+                    controllers, WebSocket for realtime features, and JWT
+                    authorization, wrote test cases, configured GitHub Actions,
+                    Dockerfile, and Docker Compose, set up an Ubuntu server for
+                    deployment, configured SSL certificates for domain, and
+                    implemented dynamic DDNS for a self-hosted server, designed
+                    UX/UI and coded frontend using Next.js.
+                  </Text>,
+                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
+                ],
+              },
+              {
+                title: "Softskill Learner",
+                time: "Jan 2025 - May 2025",
+                description: [
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom web-developer keyboard layouts - fully mouse-free workflow.",
+                  <Text key={1}>
+                    Prepared for and took the IELTS exam to obtain certification
+                    and strengthen professional English proficiency.
+                  </Text>,
+                ],
+              },
+            ],
+          },
+        ]}
+      />
       <DocumentProjects
         projects={[
+          {
+            title: "CloudGo Super App",
+            time: "Jan 2024 - Apr 2024",
+            description:
+              "The CloudGo Super App is the company’s core mobile platform built with Flutter, serving as a gateway to all sub-apps and CRM services. It leverages Firebase (Cloud Firestore) for account and data management, Firebase Cloud Messaging (FCM) for push notifications, and Dynamic Links for seamless deeplink navigation from the CRM web interface. Using Shorebird, the app supports quick updates without App Store or Google Play review delays, ensuring faster delivery and an improved user experience.",
+            teamSize: 4,
+            role: <Text>Front-end Developer. </Text>,
+            responsibilities: [
+              "Optimized local storage and API call flows, reducing login time from 10–20s to 2–3s, significantly improving app performance.",
+              "Implemented reusable design patterns to accelerate development and ensure consistency across multiple CRM sub-apps.",
+              "Integrated Firebase Cloud Messaging (FCM) to enable real-time notifications from the company’s CRM system.",
+            ],
+            technologies: [
+              "Flutter",
+              "Firebase",
+              "Firestore",
+              "Cloud Messaging",
+              "Dynamic Links",
+              "Shorebird",
+              "PHP",
+              "Vtiger CRM",
+            ],
+            links: [
+              {
+                url: "https://play.google.com/store/apps/details?id=com.app.cloudgo",
+                label: "CloudGo(CH Play)",
+              },
+              {
+                url: "https://apps.apple.com/vn/app/cloudgo/id6474986122?l=vi",
+                label: "CloudGo(iOS)",
+              },
+            ],
+          },
           {
             title: "Portfolio Project",
             time: "Aug 2025 - Present",
@@ -244,39 +310,6 @@ export default function FullstackDoc() {
               {
                 label: "www.baohomeserver.uk",
                 url: "https://www.baohomeserver.uk",
-              },
-            ],
-          },
-          {
-            title: "CloudGo Super App",
-            time: "Jan 2024 - Apr 2024",
-            description:
-              "The CloudGo Super App is the company’s core mobile platform built with Flutter, serving as a gateway to all sub-apps and CRM services. It leverages Firebase (Cloud Firestore) for account and data management, Firebase Cloud Messaging (FCM) for push notifications, and Dynamic Links for seamless deeplink navigation from the CRM web interface. Using Shorebird, the app supports quick updates without App Store or Google Play review delays, ensuring faster delivery and an improved user experience.",
-            teamSize: 4,
-            role: <Text>Front-end Developer. </Text>,
-            responsibilities: [
-              "Optimized local storage and API call flows, reducing login time from 10–20s to 2–3s, significantly improving app performance.",
-              "Implemented reusable design patterns to accelerate development and ensure consistency across multiple CRM sub-apps.",
-              "Integrated Firebase Cloud Messaging (FCM) to enable real-time notifications from the company’s CRM system.",
-            ],
-            technologies: [
-              "Flutter",
-              "Firebase",
-              "Firestore",
-              "Cloud Messaging",
-              "Dynamic Links",
-              "Shorebird",
-              "PHP",
-              "Vtiger CRM",
-            ],
-            links: [
-              {
-                url: "https://play.google.com/store/apps/details?id=com.app.cloudgo",
-                label: "CloudGo(CH Play)",
-              },
-              {
-                url: "https://apps.apple.com/vn/app/cloudgo/id6474986122?l=vi",
-                label: "CloudGo(iOS)",
               },
             ],
           },

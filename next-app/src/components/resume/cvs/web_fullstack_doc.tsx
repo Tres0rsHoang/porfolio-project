@@ -56,6 +56,7 @@ export default function WebFullstackDoc() {
         companies={[
           {
             company: "CloudGo",
+            period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -164,6 +165,7 @@ export default function WebFullstackDoc() {
         companies={[
           {
             company: "Freelancer",
+            period: "5 months",
             location: "Ho Chi Minh City",
             jobs: [
               {

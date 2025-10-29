@@ -2,7 +2,7 @@ import { Link, Text } from "@react-pdf/renderer";
 import { DocumentSummary } from "./cv_summary";
 import { DocumentLayout } from "./document_layout";
 import { DocumentEducation } from "./document_education";
-import { DocumentExperience } from "./document_expericence";
+import { DocumentActivity, DocumentExperience } from "./document_expericence";
 import { DocumentProjects } from "./document_projects";
 import { DocumentTechnicalSkill } from "./document_technical_skill";
 import { DocumentAchievements } from "./document_achievements";
@@ -60,6 +60,7 @@ export default function FullstackCSharpDoc() {
           {
             company: "CloudGo",
             location: "Ho Chi Minh City",
+            period: "1 year 7 months",
             jobs: [
               {
                 title: "Full-stack Developer - Intern",
@@ -159,8 +160,13 @@ export default function FullstackCSharpDoc() {
               },
             ],
           },
+        ]}
+      />
+      <DocumentActivity
+        companies={[
           {
             company: "Freelancer",
+            period: "5 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -190,7 +196,7 @@ export default function FullstackCSharpDoc() {
                 title: "Softskill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts - fully mouse-free workflow.",
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom web-developer keyboard layouts - fully mouse-free workflow.",
                   <Text key={1}>
                     Prepared for and took the IELTS exam to obtain certification
                     and strengthen professional English proficiency.

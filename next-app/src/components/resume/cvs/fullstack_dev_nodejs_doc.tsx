@@ -32,7 +32,7 @@ export default function FullstackNodeJsDoc() {
         <Text style={styles.bold}>JWT, OAuth, SSO concepts</Text>). Proficient
         in containerization and DevOps practices including{" "}
         <Text style={styles.bold}>Docker, CI/CD, Linux servers</Text>, and
-        familiar with <Text style={styles.bold}>Kubernetes/OpenShift </Text>and
+        familiar with <Text style={styles.bold}>Kubernetes/OpenShift </Text>and{" "}
         <Text style={styles.bold}>Kafka/Solace</Text>. Hands-on experience
         integrating <Text style={styles.bold}>Flutter/Dart </Text>for mobile
         apps, delivering scalable, production-ready applications.
@@ -43,6 +43,7 @@ export default function FullstackNodeJsDoc() {
         companies={[
           {
             company: "CloudGo",
+            period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -96,6 +97,7 @@ export default function FullstackNodeJsDoc() {
         companies={[
           {
             company: "Freelancer",
+            period: "5 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
