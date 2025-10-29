@@ -1,4 +1,4 @@
-import { Link, Text } from "@react-pdf/renderer";
+import { Text } from "@react-pdf/renderer";
 import { documentStyle as styles } from "./document_styles";
 import { DocumentSummary } from "./cv_summary";
 import { DocumentLayout } from "./document_layout";

@@ -30,7 +30,7 @@ export const GitHubContributions = () => {
       }
     }, 300);
     return () => clearTimeout(timeout);
-  }, [tempDataRef.current]);
+  }, []);
 
   return (
     <div
