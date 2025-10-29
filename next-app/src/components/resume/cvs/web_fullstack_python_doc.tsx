@@ -2,7 +2,7 @@ import { Link, Text } from "@react-pdf/renderer";
 import { DocumentSummary } from "./cv_summary";
 import { DocumentLayout } from "./document_layout";
 import { DocumentEducation } from "./document_education";
-import { DocumentExperience } from "./document_expericence";
+import { DocumentActivity, DocumentExperience } from "./document_expericence";
 import { DocumentProjects } from "./document_projects";
 import { DocumentTechnicalSkill } from "./document_technical_skill";
 import { DocumentAchievements } from "./document_achievements";
@@ -59,6 +59,7 @@ export default function WebFullstackPythonDoc() {
         companies={[
           {
             company: "CloudGo",
+            period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -160,8 +161,13 @@ export default function WebFullstackPythonDoc() {
               },
             ],
           },
+        ]}
+      />
+      <DocumentActivity
+        companies={[
           {
             company: "Freelancer",
+            period: "5 months",
             location: "Ho Chi Minh City",
             jobs: [
               {

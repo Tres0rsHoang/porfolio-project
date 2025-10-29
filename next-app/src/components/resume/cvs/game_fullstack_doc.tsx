@@ -41,10 +41,11 @@ export default function GameFullstackDoc() {
           {
             company: "CloudGo",
             location: "Ho Chi Minh City",
+            period: "1 year 7 months",
             jobs: [
               {
                 title: "Full-stack Developer",
-                time: "Jul 2023 - Dec 2024 (1 year 7 months)",
+                time: "Jul 2023 - Dec 2024",
                 description: [
                   "Developed and optimized web and mobile apps in the CloudGo ecosystem, including CloudOCS, CloudSales, and CloudWork, by converting mockups to production-ready UI, integrating APIs, and enhancing performance with lazy loading and real-time chat.",
                   "Improved CloudGo Super App by optimizing API calls and storage, reducing login time from 10–20s to 2–3s; published to App Store and Google Play, and managed TestFlight releases.",
@@ -60,6 +61,7 @@ export default function GameFullstackDoc() {
         companies={[
           {
             company: "Freelancer",
+            period: "5 months",
             location: "Ho Chi Minh City",
             jobs: [
               {

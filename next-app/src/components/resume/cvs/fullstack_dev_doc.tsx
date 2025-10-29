@@ -92,6 +92,7 @@ export default function FullstackDoc() {
         companies={[
           {
             company: "CloudGo",
+            period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -187,6 +188,51 @@ export default function FullstackDoc() {
                     : Developed a mini app using ZMP (ReactJS-based) for
                     reporting issues and feedback, handling front-end, API
                     integration with CRM, and managing the company’s Zalo app.
+                  </Text>,
+                ],
+              },
+            ],
+          },
+        ]}
+      />
+      <DocumentActivity
+        companies={[
+          {
+            company: "Freelancer",
+            period: "5 months",
+            location: "Ho Chi Minh City",
+            jobs: [
+              {
+                title: "Full-stack Developer",
+                time: "Jul 2025 - Present",
+                description: [
+                  <Text key={0}>
+                    <Link
+                      src="https://www.baohomeserver.uk/"
+                      style={{ textDecoration: "none" }}
+                    >
+                      Bao Hoang Portfolio
+                    </Link>
+                    : Designed, implemented, and deployed a website, including:
+                    Database schema design and API development, built services,
+                    controllers, WebSocket for realtime features, and JWT
+                    authorization, wrote test cases, configured GitHub Actions,
+                    Dockerfile, and Docker Compose, set up an Ubuntu server for
+                    deployment, configured SSL certificates for domain, and
+                    implemented dynamic DDNS for a self-hosted server, designed
+                    UX/UI and coded frontend using Next.js.
+                  </Text>,
+                  "Initiated a classroom and tuition management system, including: designed user interface layouts and prepared project concepts.",
+                ],
+              },
+              {
+                title: "Softskill Learner",
+                time: "Jan 2025 - May 2025",
+                description: [
+                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom web-developer keyboard layouts - fully mouse-free workflow.",
+                  <Text key={1}>
+                    Prepared for and took the IELTS exam to obtain certification
+                    and strengthen professional English proficiency.
                   </Text>,
                 ],
               },

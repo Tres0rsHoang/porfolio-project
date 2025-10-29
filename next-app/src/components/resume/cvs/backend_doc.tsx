@@ -40,6 +40,7 @@ export default function BackendDoc() {
         companies={[
           {
             company: "CloudGo",
+            period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
@@ -125,6 +126,7 @@ export default function BackendDoc() {
         companies={[
           {
             company: "Freelancer",
+            period: "5 months",
             location: "Ho Chi Minh City",
             jobs: [
               {
