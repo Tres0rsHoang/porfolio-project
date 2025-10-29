@@ -1,11 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import GitHubCalendar, { Activity } from "react-github-calendar";
+import { useEffect, useState } from "react";
+import GitHubCalendar from "react-github-calendar";
 import { Loading } from "../loading/loading_full";
 
 export const GitHubContributions = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const tempDataRef = useRef<Activity[]>([]);
 
   const simpsonsTheme = {
     light: [
@@ -25,10 +24,8 @@ export const GitHubContributions = () => {
   };
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (tempDataRef.current.length > 0) {
-        setLoading(false);
-      }
-    }, 300);
+      setLoading(false);
+    }, 1000);
     return () => clearTimeout(timeout);
   }, []);
 
@@ -44,7 +41,6 @@ export const GitHubContributions = () => {
         username="Tres0rsHoang"
         colorScheme="light"
         transformData={(data) => {
-          tempDataRef.current = data;
           return data;
         }}
         theme={simpsonsTheme}
