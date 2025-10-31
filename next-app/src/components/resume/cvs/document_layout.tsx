@@ -111,7 +111,7 @@ export const DocumentLayout = (props: {
             alignItems: "center",
           }}
         >
-          <Text style={styles.h1}>Quoc Bao Hoang</Text>
+          <Text style={styles.h1}>Hoang Quoc Bao</Text>
           <Text style={styles.h3}>{props.job}</Text>
           <View
             style={{
