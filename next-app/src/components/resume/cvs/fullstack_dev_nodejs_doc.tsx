@@ -16,26 +16,30 @@ export default function FullstackNodeJsDoc() {
       title="Hoang Quoc Bao - Full-stack developer (Node.js)"
     >
       <DocumentSummary>
-        Fullstack Developer with{" "}
-        <Text style={styles.bold}>8 years of coding experience</Text> and{" "}
-        <Text style={styles.bold}>2+ years of professional experience</Text> in
-        <Text style={styles.bold}> backend and mobile </Text>development.
-        Skilled in{" "}
-        <Text style={styles.bold}>Node.js, Express.js, and NestJS</Text>, with
-        strong expertise in building{" "}
-        <Text style={styles.bold}>RESTful APIs, WebSocket</Text>-based real-time
-        features, and distributed systems. Experienced with databases (
-        <Text style={styles.bold}>MySQL, PostgreSQL, MongoDB</Text>), caching
-        and messaging systems (
-        <Text style={styles.bold}>Redis, RabitMQ, BullMQ</Text>), and
-        authentication (
-        <Text style={styles.bold}>JWT, OAuth, SSO concepts</Text>). Proficient
-        in containerization and DevOps practices including{" "}
-        <Text style={styles.bold}>Docker, CI/CD, Linux servers</Text>, and
-        familiar with <Text style={styles.bold}>Kubernetes/OpenShift </Text>and{" "}
-        <Text style={styles.bold}>Kafka/Solace</Text>. Hands-on experience
-        integrating <Text style={styles.bold}>Flutter/Dart </Text>for mobile
-        apps, delivering scalable, production-ready applications.
+        Fullstack JavaScript Developer with{" "}
+        <Text style={styles.bold}>2 years of professional experience</Text> in
+        web development using{" "}
+        <Text style={styles.bold}>
+          Node.js, React.js/Next.js and Express.js/NestJS
+        </Text>
+        . Skilled in building scalable{" "}
+        <Text style={styles.bold}>
+          RESTful APIs, real-time WebSocket features
+        </Text>
+        , and interactive, high-performance UIs. Experienced with databases{" "}
+        <Text style={styles.bold}>(MySQL, PostgreSQL, MongoDB)</Text>, caching
+        and messaging systems{" "}
+        <Text style={styles.bold}>(Redis, RabbitMQ, BullMQ),</Text> and
+        authentication mechanisms{" "}
+        <Text style={styles.bold}>(JWT, OAuth2, SSO).</Text> Proficient in
+        DevOps practices including{" "}
+        <Text style={styles.bold}>
+          Docker, CI/CD, and Linux server management
+        </Text>
+        . Also experienced integrating{" "}
+        <Text style={styles.bold}>Flutter/Dart </Text>for mobile platforms,
+        delivering end-to-end, production-ready applications across web and
+        mobile.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentAchievements />
@@ -234,41 +238,6 @@ export default function FullstackNodeJsDoc() {
               {
                 url: "https://apps.apple.com/vn/app/cloudgo/id6474986122?l=vi",
                 label: "CloudGo(iOS)",
-              },
-            ],
-          },
-          {
-            title: "Grab Clone Project",
-            time: "May 2023 - Aug 2023",
-            description:
-              "Grab-Clone is an academic project simulating Grab’s ride-hailing features, built with React Native (client app), React.js (web), Flutter (driver app), and .NET backend. Orders are processed via RabbitMQ queues and matched to the nearest driver. The system was deployed on DigitalOcean with GitHub Actions CI/CD and achieved a 9.0/10 course grade.",
-            teamSize: 5,
-            role: <Text>Team Leader - Full-stack Developer. </Text>,
-            responsibilities: [
-              "Designed and implemented backend services with .NET and RabbitMQ queues, simulating ride-booking and driver-client matching workflows, with Redis caching for performance.",
-              "Built and integrated frontend apps using React.js (web), React Native (client), and Flutter (driver), ensuring seamless API integration.",
-              "Developed real-time ride updates and data synchronization, applying concepts similar to WebSocket and distributed messaging.",
-              "Deployed the system on DigitalOcean with GitHub Actions CI/CD, and gained hands-on experience with containerization and cloud deployment workflows.",
-              "Managed team collaboration with Jira, assigned tasks, and ensured on-time delivery; project scored 9.0/10.",
-            ],
-            technologies: [
-              "Node.js",
-              "React Native",
-              "Flutter",
-              "React.js",
-              ".NET",
-              "RabbitMQ",
-              "Redis",
-              "PostgreSQL",
-              "DigitalOcean",
-              "GitHub Actions",
-              "Jira",
-            ],
-            links: [
-              {
-                url: "https://github.com/Tres0rsHoang/Grab-Clone-Project",
-                label:
-                  "Github.com/Tres0rsHoang/Grab-Clone-Project (Fork from hieucckha/intro-to-software-architecture)",
               },
             ],
           },

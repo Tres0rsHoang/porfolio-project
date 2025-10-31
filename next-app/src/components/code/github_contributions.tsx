@@ -41,6 +41,7 @@ export const GitHubContributions = () => {
         username="Tres0rsHoang"
         colorScheme="light"
         transformData={(data) => {
+          setLoading(false);
           return data;
         }}
         theme={simpsonsTheme}
