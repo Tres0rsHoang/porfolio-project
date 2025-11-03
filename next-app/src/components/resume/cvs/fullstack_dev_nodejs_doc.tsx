@@ -16,28 +16,30 @@ export default function FullstackNodeJsDoc() {
       title="Hoang Quoc Bao - Full-stack developer (Node.js)"
     >
       <DocumentSummary>
-        Fullstack JavaScript Developer with{" "}
-        <Text style={styles.bold}>2 years of professional experience</Text> in
-        web development using{" "}
+        Fullstack Developer with{" "}
+        <Text style={styles.bold}>
+          2 years of professional experience in web development
+        </Text>{" "}
+        using{" "}
         <Text style={styles.bold}>
           Node.js, React.js/Next.js and Express.js/NestJS
         </Text>
         . Skilled in building scalable{" "}
         <Text style={styles.bold}>
-          RESTful APIs, real-time WebSocket features
+          RESTful APIs, real-time WebSocket features, and interactive,
+          high-performance UIs
         </Text>
-        , and interactive, high-performance UIs. Experienced with databases{" "}
+        . Experienced with databases
         <Text style={styles.bold}>(MySQL, PostgreSQL, MongoDB)</Text>, caching
-        and messaging systems{" "}
-        <Text style={styles.bold}>(Redis, RabbitMQ, BullMQ),</Text> and
-        authentication mechanisms{" "}
-        <Text style={styles.bold}>(JWT, OAuth2, SSO).</Text> Proficient in
-        DevOps practices including{" "}
-        <Text style={styles.bold}>
-          Docker, CI/CD, and Linux server management
-        </Text>
-        . Also experienced integrating{" "}
-        <Text style={styles.bold}>Flutter/Dart </Text>for mobile platforms,
+        and messaging systems
+        <Text style={styles.bold}>(Redis, RabbitMQ, BullMQ)</Text>, and
+        authentication mechanisms
+        <Text style={styles.bold}>(JWT, OAuth2, SSO)</Text>. Implemented and
+        managed <Text style={styles.bold}>Docker-based containerization</Text>,
+        developed robust CI/CD pipelines, and oversaw Linux server
+        administration to streamline development workflows. Demonstrated
+        expertise integrating{" "}
+        <Text style={styles.bold}>Flutter/Dart for mobile platforms</Text>,
         delivering end-to-end, production-ready applications across web and
         mobile.
       </DocumentSummary>
@@ -56,8 +58,8 @@ export default function FullstackNodeJsDoc() {
                 description: [
                   <Text key={0}>
                     Built and optimized backend services using Node.js,
-                    improving API performance and applying design patterns for
-                    scalability across CRM sub-apps.
+                    improving API performance and implementing design patterns
+                    to achieve 100% increase in scalability across CRM sub-apps.
                   </Text>,
                   <Text key={1}>
                     Designed and implemented the Social Integration Hub, a
@@ -112,14 +114,13 @@ export default function FullstackNodeJsDoc() {
                   "Integrated WebSocket for real-time features and applied JWT authentication for secure access.",
                   "Built and deployed applications using Docker, GitHub Actions (CI/CD), and Linux servers, configuring SSL certificates and domain management.",
                   "Developed and tested frontend components with Next.js, demonstrating ability to integrate with HTML/CSS and modern frameworks.",
-                  "Initiated a classroom and tuition management system, preparing UI layouts and backend concepts for future development.",
                 ],
               },
               {
                 title: "Softskill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts - fully mouse-free workflow.",
+                  "Engineered a streamlined, keyboard-centric personal development environment using Neovim, Tmux, Sketchybar, Homerow, Yabai, and custom keyboard layouts to maximize efficiency and eliminate reliance on mouse input.",
                   <Text key={1}>
                     Prepared for and took the IELTS exam to obtain certification
                     and strengthen professional English proficiency.
@@ -132,44 +133,6 @@ export default function FullstackNodeJsDoc() {
       />
       <DocumentProjects
         projects={[
-          {
-            title: "Social Integration Hub",
-            time: "Apr 2024 - Jul 2024",
-            description:
-              "The Social Integration Hub is a service that routes messages from multiple Facebook Fanpages and Zalo OA accounts to client-registered CRM systems. Built with Express.js, MySQL, Redis, and BullMQ, it supports real-time delivery via WebSocket and runs reliably in production, handling 100–200 messages per minute with low latency.",
-            teamSize: 1,
-            role: <Text>Full-stack Developer. </Text>,
-            responsibilities: [
-              "Developed and maintained backend services with Express.js/Node.js, routing messages from multiple social platforms (Facebook, Zalo) to client CRMs.",
-              "Implemented real-time delivery using WebSocket and reliable message forwarding with Redis queues (BullMQ), processing 100–200 messages per minute with low latency.",
-              "Designed RDBMS schema in MySQL, optimized queries, and ensured scalable data storage and retrieval.",
-              "Built an administration dashboard for monitoring and managing distributed queues.",
-              "Configured authentication and API permissions for Facebook integrations, ensuring secure and seamless platform connectivity.",
-              "Containerized and deployed the system on Azure VPS with Docker, enabling automated, consistent, and scalable deployments.",
-            ],
-            technologies: [
-              "Node.js",
-              "Express.js",
-              "Session / Passport Authentication",
-              "Ejs Render / JQuery",
-              "Multer",
-              "Swagger",
-              "MySQL",
-              "Redis",
-              "BullMQ",
-              "WebSocket",
-              "Docker",
-              "Docker Hub",
-              "Azure VPS",
-              "Facebook Graph API",
-            ],
-            links: [
-              {
-                url: "https://chathub.cloudgo.vn/",
-                label: "chathub.cloudgo.vn",
-              },
-            ],
-          },
           {
             title: "Portfolio Project",
             time: "Aug 2025 - Present",
@@ -205,6 +168,44 @@ export default function FullstackNodeJsDoc() {
               {
                 label: "www.baohomeserver.uk",
                 url: "https://www.baohomeserver.uk",
+              },
+            ],
+          },
+          {
+            title: "Social Integration Hub",
+            time: "Apr 2024 - Jul 2024",
+            description:
+              "The Social Integration Hub is a service that routes messages from multiple Facebook Fanpages and Zalo OA accounts to client-registered CRM systems. Built with Express.js, MySQL, Redis, and BullMQ, it supports real-time delivery via WebSocket and runs reliably in production, handling 100–200 messages per minute with low latency.",
+            teamSize: 1,
+            role: <Text>Full-stack Developer. </Text>,
+            responsibilities: [
+              "Developed and maintained backend services with Express.js/Node.js, routing messages from multiple social platforms (Facebook, Zalo) to client CRMs.",
+              "Implemented real-time delivery using WebSocket and reliable message forwarding with Redis queues (BullMQ), processing 100–200 messages per minute with low latency.",
+              "Designed RDBMS schema in MySQL, optimized queries, and ensured scalable data storage and retrieval.",
+              "Built an administration dashboard for monitoring and managing distributed queues.",
+              "Configured authentication and API permissions for Facebook integrations, ensuring secure and seamless platform connectivity.",
+              "Containerized and deployed the system on Azure VPS with Docker, enabling automated, consistent, and scalable deployments.",
+            ],
+            technologies: [
+              "Node.js",
+              "Express.js",
+              "Session / Passport Authentication",
+              "Ejs Render / JQuery",
+              "Multer",
+              "Swagger",
+              "MySQL",
+              "Redis",
+              "BullMQ",
+              "WebSocket",
+              "Docker",
+              "Docker Hub",
+              "Azure VPS",
+              "Facebook Graph API",
+            ],
+            links: [
+              {
+                url: "https://chathub.cloudgo.vn/",
+                label: "chathub.cloudgo.vn",
               },
             ],
           },
