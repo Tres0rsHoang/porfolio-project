@@ -16,22 +16,22 @@ export default function MobileFullStackFlutterDoc() {
       title="Hoang Quoc Bao - Full-stack mobile developer"
     >
       <DocumentSummary>
-        Flutter Developer with{" "}
-        <Text style={styles.bold}>
-          2+ years of hands-on experience (8 years of coding background)
-        </Text>{" "}
-        in developing and deploying cross-platform mobile applications using
-        <Text style={styles.bold}> Flutter, BLoC, and Firebase.</Text> Strong
+        Flutter Developer with nearly{" "}
+        <Text style={styles.bold}>2 years of hands-on experience</Text> (8 years
+        of coding background) in developing and deploying cross-platform mobile
+        applications using{" "}
+        <Text style={styles.bold}>Flutter, BLoC, and Firebase.</Text> Strong
         understanding of{" "}
         <Text style={styles.bold}>
           RESTful APIs, app lifecycle, and performance optimization
         </Text>
         . Experienced in{" "}
         <Text style={styles.bold}>
-          CI/CD, Git workflow, and Scrum processes.
-        </Text>{" "}
-        Quick learner with a proactive mindset and proven ability to deliver
-        high-quality, scalable mobile apps
+          CI/CD, Git workflow, and Scrum processes
+        </Text>
+        . Demonstrated rapid mastery of new mobile frameworks and proactive
+        adoption of best practices to architect and deliver high-quality,
+        scalable mobile applications.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentAchievements />
@@ -59,7 +59,6 @@ export default function MobileFullStackFlutterDoc() {
                     multi-channel sales app, integrated with Shopee API, Tiktok
                     Shop API, handling UX/UI design and market research.
                   </Text>,
-                  ,
                   "Independently implemented API integrations in PHP with the company’s CRM, ensuring seamless communication between app and backend.",
                 ],
               },
@@ -156,7 +155,7 @@ export default function MobileFullStackFlutterDoc() {
           {
             company: "Freelancer",
             location: "Ho Chi Minh City",
-            period: "4 months",
+            period: "5 months",
             jobs: [
               {
                 title: "Full-stack Developer",
@@ -166,14 +165,13 @@ export default function MobileFullStackFlutterDoc() {
                   "Integrated WebSocket for real-time features and applied JWT authentication for secure access.",
                   "Built and deployed applications using Docker, GitHub Actions (CI/CD), and Linux servers, configuring SSL certificates and domain management.",
                   "Developed and tested frontend components with Next.js, demonstrating ability to integrate with HTML/CSS and modern frameworks.",
-                  "Initiated a classroom and tuition management system, preparing UI layouts and backend concepts for future development.",
                 ],
               },
               {
                 title: "Softskill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Optimized personal development workspace with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts - fully mouse-free workflow.",
+                  "Optimized personal development workspace utilizing Neovim, Tmux, Sketchybar, Homerow, Yabai, and custom keyboard layouts to establish a comprehensive keyboard-driven workflow.",
                   <Text key={1}>
                     Prepared for and took the IELTS exam to obtain certification
                     and strengthen professional English proficiency.
@@ -345,8 +343,8 @@ export default function MobileFullStackFlutterDoc() {
         ]}
       />
       <DocumentTechnicalSkill
-        languages="Dart, Typescript/Javascript, Python, C#, C/C++, Java, PHP, Lua."
-        frontend="Flutter, React Native, Node.js, React, Next.js, Three.js, Tailwind CSS, Bootstrap, ShadCN,MUI, ZMP, Smarty (PHP), Jquery."
+        languages="Dart, Typescript/Javascript, Python, C#, C/C++, Lua."
+        frontend="Flutter, React Native, Node.js, React, Next.js, Tailwind CSS, Bootstrap, ShadCN, MUI, ZMP, Smarty (PHP), Jquery."
         backend="Node.js, NestJS, Express.js, Prisma, MySQL, PostgreSQL, MongoDB."
         devops="Docker, Docker Compose, Azure, Digital Ocean, Google Cloud,Cloudflare, GitHub Actions (CI/CD), Nginx, Ngrok, Unix/Linux OS."
         other="Git, Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design Patterns, SOLID Principles, RESTful API, GraphQL, Microservices, WebSocket, RabitMQ, BullMQ, Jest, Redis, Scrum Methodology."

@@ -5,10 +5,10 @@ import { LI, UL } from "./document_layout";
 export interface DocProject {
   title: string;
   description: React.ReactNode;
-  teamSize: number;
+  teamSize?: number;
   time: string;
-  role: React.ReactNode;
-  responsibilities: string[];
+  role?: React.ReactNode;
+  responsibilities?: string[];
   technologies: string[];
   links: Array<{
     label: string;
@@ -37,32 +37,38 @@ const ProjectItem = ({ project }: { project: DocProject }) => {
             {project.description}
           </Text>
         </LI>
-        <LI wrap={true}>
-          <Text>
-            <Text style={{ fontWeight: "bold" }}>Team size</Text>
-            {": "}
-            {project.teamSize}
-            {project.teamSize <= 1 ? " member." : " members."}
-          </Text>
-        </LI>
-        <LI wrap={true}>
-          <Text>
-            <Text style={{ fontWeight: "bold" }}>Role</Text>
-            {": "}
-            {project.role}
-          </Text>
-        </LI>
-        <LI wrap={true}>
-          <Text>
-            <Text style={{ fontWeight: "bold" }}>Responsibilities</Text>
-            {": "}
-          </Text>
-          {project.responsibilities.map((responsibility, index) => (
-            <LI bullet="-" key={index}>
-              {responsibility}
-            </LI>
-          ))}
-        </LI>
+        {project.teamSize && (
+          <LI wrap={true}>
+            <Text>
+              <Text style={{ fontWeight: "bold" }}>Team size</Text>
+              {": "}
+              {project.teamSize}
+              {project.teamSize <= 1 ? " member." : " members."}
+            </Text>
+          </LI>
+        )}
+        {project.role && (
+          <LI wrap={true}>
+            <Text>
+              <Text style={{ fontWeight: "bold" }}>Role</Text>
+              {": "}
+              {project.role}
+            </Text>
+          </LI>
+        )}
+        {project.responsibilities && (
+          <LI wrap={true}>
+            <Text>
+              <Text style={{ fontWeight: "bold" }}>Responsibilities</Text>
+              {": "}
+            </Text>
+            {project.responsibilities.map((responsibility, index) => (
+              <LI bullet="-" key={index}>
+                {responsibility}
+              </LI>
+            ))}
+          </LI>
+        )}
         <LI>
           <Text>
             <Text style={{ fontWeight: "bold" }}>Technologies</Text>
@@ -102,7 +108,7 @@ const ProjectItem = ({ project }: { project: DocProject }) => {
 export const DocumentProjects = (props: { projects: DocProject[] }) => {
   return (
     <View>
-      <Text style={styles.h4}>Feature Projects</Text>
+      <Text style={styles.h4}>Highlight Projects</Text>
       <View style={styles.hr}></View>
       {props.projects.map((project, index) => (
         <View key={index}>
