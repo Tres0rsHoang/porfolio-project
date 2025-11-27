@@ -12,36 +12,27 @@ import { documentStyle as styles } from "./document_styles";
 export default function FullstackNodeJsDoc() {
   return (
     <DocumentLayout
-      job="Full-stack Developer"
+      job="Full-stack Developer (Node.js)"
       title="Hoang Quoc Bao - Full-stack developer (Node.js)"
     >
       <DocumentSummary>
-        Fullstack Developer with{" "}
-        <Text style={styles.bold}>
-          2 years of professional experience in web development
-        </Text>{" "}
-        using{" "}
+        Full-stack Developer with{" "}
+        <Text style={styles.bold}>2 years of professional experience </Text>in
+        web development using{" "}
         <Text style={styles.bold}>
           Node.js, React.js/Next.js and Express.js/NestJS
         </Text>
-        . Skilled in building scalable{" "}
-        <Text style={styles.bold}>
-          RESTful APIs, real-time WebSocket features, and interactive,
-          high-performance UIs
-        </Text>
-        . Experienced with databases
-        <Text style={styles.bold}>(MySQL, PostgreSQL, MongoDB)</Text>, caching
-        and messaging systems
-        <Text style={styles.bold}>(Redis, RabbitMQ, BullMQ)</Text>, and
-        authentication mechanisms
-        <Text style={styles.bold}>(JWT, OAuth2, SSO)</Text>. Implemented and
-        managed <Text style={styles.bold}>Docker-based containerization</Text>,
-        developed robust CI/CD pipelines, and oversaw Linux server
-        administration to streamline development workflows. Demonstrated
-        expertise integrating{" "}
-        <Text style={styles.bold}>Flutter/Dart for mobile platforms</Text>,
-        delivering end-to-end, production-ready applications across web and
-        mobile.
+        . Developed scalable RESTful APIs, implemented real-time WebSocket
+        features, and designed interactive, high-performance UIs for production
+        applications. Experienced with databases (
+        <Text style={styles.bold}>MySQL, PostgreSQL, MongoDB</Text>), caching
+        and messaging systems (
+        <Text style={styles.bold}>Redis, RabbitMQ, BullMQ</Text>), and
+        authentication mechanisms (
+        <Text style={styles.bold}>JWT, OAuth2, SSO</Text>). Implemented and
+        managed Docker-based containerization, developed CI/CD pipelines to
+        automate build and deployment processes, and administered Linux servers,
+        resulting in faster release cycles and enhanced workflow efficiency.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentAchievements />
@@ -57,41 +48,30 @@ export default function FullstackNodeJsDoc() {
                 time: "Jul 2023 - Dec 2024",
                 description: [
                   <Text key={0}>
-                    Built and optimized backend services using Node.js,
-                    improving API performance and implementing design patterns
-                    to achieve 100% increase in scalability across CRM sub-apps.
+                    Developed and optimized backend services with
+                    <Text style={styles.bold}>
+                      Node.js/Express.js and PHP frameworks,
+                    </Text>{" "}
+                    enhancing API performance and applying design patterns to
+                    significantly improve the scalability of CRM systems.
                   </Text>,
                   <Text key={1}>
                     Designed and implemented the Social Integration Hub, a
-                    distributed messaging service with Redis for queue
+                    distributed messaging service with{" "}
+                    <Text style={styles.bold}>Redis/BullMQ</Text> for queue
                     management and WebSocket.io for real-time features,
                     including monitoring and debugging tools.
                   </Text>,
                   <Text key={2}>
                     Developed server-side logic and database schemas for the CRM
-                    Request Module, enabling efficient information and workflow
-                    management.
+                    Request Module (VtigerCRM/PHP), enabling efficient
+                    information and workflow management for 3 CRM systems.
                   </Text>,
                   <Text key={3}>
-                    Integrated external APIs (Zalo, Facebook) and implemented
-                    secure communication flows, supporting authentication and
-                    data exchange.
-                  </Text>,
-                  <Text key={4}>
-                    Contributed to mobile integration by improving API calls and
-                    publishing the CloudGo Super App (Flutter/Dart) to both App
-                    Store and Google Play, managing TestFlight releases and
-                    deployment cycles.
-                  </Text>,
-                  <Text key={5}>
-                    Contributed to CloudSales, a multi-channel sales app,
-                    integrated with Shopee, Tiktok Shop, Facebook, Zalo API
-                    handling UX/UI design and market research.
-                  </Text>,
-                  <Text key={6}>
-                    Developed web interfaces for sales reports and built
-                    cross-platform mobile app using Flutter for both Android and
-                    iOS.
+                    Integrated third-party APIs (Zalo, Facebook) to implement
+                    secure authentication and data exchange, enhancing user
+                    connectivity for over 20 clients (Facebook Fanpages, Zalo
+                    OAs) using CRM systems.
                   </Text>,
                 ],
               },
@@ -110,21 +90,28 @@ export default function FullstackNodeJsDoc() {
                 title: "Full-stack Developer",
                 time: "Jul 2025 - Present",
                 description: [
-                  "Designed and implemented backend services with Node.js, including RESTful APIs, controllers, and database schemas for scalable web applications.",
+                  <Text key={0}>
+                    Led the design and implementation of backend services using{" "}
+                    <Text style={styles.bold}>Node.js/NestJS</Text>, delivering
+                    RESTful APIs, controllers, and database schemas for scalable
+                    web applications, resulting in a 100% improvement in
+                    deployment efficiency and enabling 2 successful project
+                    launches.
+                  </Text>,
                   "Integrated WebSocket for real-time features and applied JWT authentication for secure access.",
                   "Built and deployed applications using Docker, GitHub Actions (CI/CD), and Linux servers, configuring SSL certificates and domain management.",
-                  "Developed and tested frontend components with Next.js, demonstrating ability to integrate with HTML/CSS and modern frameworks.",
+                  <Text key={1}>
+                    Developed and tested frontend components with{" "}
+                    <Text style={styles.bold}>Next.js</Text>, demonstrating
+                    ability to integrate with HTML/CSS and modern frameworks.
+                  </Text>,
                 ],
               },
               {
-                title: "Softskill Learner",
+                title: "Soft-skill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Engineered a streamlined, keyboard-centric personal development environment using Neovim, Tmux, Sketchybar, Homerow, Yabai, and custom keyboard layouts to maximize efficiency and eliminate reliance on mouse input.",
-                  <Text key={1}>
-                    Prepared for and took the IELTS exam to obtain certification
-                    and strengthen professional English proficiency.
-                  </Text>,
+                  "Actively obtained IELTS certification by preparing for and successfully completing the exam, showcasing dedication to continuous improvement in professional English proficiency.",
                 ],
               },
             ],
@@ -137,32 +124,20 @@ export default function FullstackNodeJsDoc() {
             title: "Portfolio Project",
             time: "Aug 2025 - Present",
             description:
-              "This portfolio website highlights my skills through an interactive platform, featuring real-time comments, user authentication, and role-based resume management. I designed the UI/UX and built the site with Node.js frameworks, including: Next.js, NestJS, Prisma, and PostgreSQL, enabling seamless access to projects, education, and work experience.",
-            teamSize: 1,
-            role: <Text>Full-stack Developer. </Text>,
-            responsibilities: [
-              "Developed backend services using NestJS/Node.js, with RESTful APIs, Prisma ORM, and PostgreSQL for data management.",
-              "Implemented a real-time comment system with WebSocket.io and secured authentication using JWT and Google OAuth.",
-              "Built the frontend with Next.js, HTML/CSS, and TailwindCSS, ensuring seamless integration with backend APIs.",
-              "Containerized the application with Docker, automated CI/CD using GitHub Actions, and deployed on a self-hosted Linux server with Nginx and Cloudflare, covering testing, staging, and production deployment with zero downtime.",
-              "Designed and managed DevOps pipelines, SSL certificates, and domain configuration, gaining familiarity with distributed systems, caching concepts, and deployment practices.",
-            ],
+              "This portfolio website highlights my skills through an interactive platform, featuring real-time comments, user authentication, and role-based resume management. I developed this dynamic portfolio website as a Full-stack Developer, independently designing the UI/UX and implementing features such as real-time comments, user authentication, and role-based resume management using Node.js frameworks (Next.js, NestJS, Prisma, PostgreSQL), while ensuring seamless access to projects, education, and work experience.",
             technologies: [
               "Node.js",
-              "Next.js / Three.js / React.js",
+              "Next.js/React.js",
               "Tailwindcss",
               "NestJS",
-              "JWT Authentication",
-              "Prisma ORM",
+              "PrismaORM",
               "PostgreSQL",
-              "Docker",
+              "Docker/Docker compose",
               "WebSocket.io",
               "Nginx",
               "Cloudflare",
               "GitHub Actions",
-              "Google OAuth",
-              "Ubuntu Server",
-              "CI/CD",
+              "Linux Server",
             ],
             links: [
               {
@@ -189,18 +164,17 @@ export default function FullstackNodeJsDoc() {
             technologies: [
               "Node.js",
               "Express.js",
-              "Session / Passport Authentication",
-              "Ejs Render / JQuery",
+              "Session/Passport Authentication",
+              "Ejs Render/jQuery",
               "Multer",
               "Swagger",
               "MySQL",
               "Redis",
               "BullMQ",
               "WebSocket",
-              "Docker",
-              "Docker Hub",
+              "Docker/Docker Hub",
               "Azure VPS",
-              "Facebook Graph API",
+              "Facebook/Zalo Graph API",
             ],
             links: [
               {
@@ -210,51 +184,18 @@ export default function FullstackNodeJsDoc() {
             ],
           },
           {
-            title: "CloudGo Super App",
-            time: "Jan 2024 - Apr 2024",
-            description:
-              "The CloudGo Super App is the company’s core mobile platform built with Flutter, serving as a gateway to all sub-apps and CRM services. It leverages Firebase (Cloud Firestore) for account and data management, Firebase Cloud Messaging (FCM) for push notifications, and Dynamic Links for seamless deeplink navigation from the CRM web interface. Using Shorebird, the app supports quick updates without App Store or Google Play review delays, ensuring faster delivery and an improved user experience.",
-            teamSize: 4,
-            role: <Text>Front-end Developer. </Text>,
-            responsibilities: [
-              "Optimized local storage and API call flows, reducing login time from 10–20s to 2–3s, significantly improving app performance.",
-              "Implemented reusable design patterns to accelerate development and ensure consistency across multiple CRM sub-apps.",
-              "Integrated Firebase Cloud Messaging (FCM) to enable real-time notifications from the company’s CRM system.",
-            ],
-            technologies: [
-              "Flutter",
-              "Firebase",
-              "Firestore",
-              "Cloud Messaging",
-              "Dynamic Links",
-              "Shorebird",
-              "PHP",
-              "Vtiger CRM",
-            ],
-            links: [
-              {
-                url: "https://play.google.com/store/apps/details?id=com.app.cloudgo",
-                label: "CloudGo(CH Play)",
-              },
-              {
-                url: "https://apps.apple.com/vn/app/cloudgo/id6474986122?l=vi",
-                label: "CloudGo(iOS)",
-              },
-            ],
-          },
-          {
             title: "Zalo Ticket Mini App - My CloudGO",
             time: "Jan 2024 - Apr 2024",
             description:
-              "Zalo Ticket Mini App – My CloudGo is a Zalo mini app built with the ZMP framework based on ReactJS. It enables CRM customers to submit feedback, report issues, and share evaluations for specific projects, streamlining communication between clients and the company while enhancing service quality and customer satisfaction.",
+              "Zalo Ticket Mini App – My CloudGo is a Zalo mini app built with the ZMP framework based on React Native. It enables CRM customers to submit feedback, report issues, and share evaluations for specific projects, streamlining communication between clients and the company while enhancing service quality and customer satisfaction.",
             teamSize: 3,
             role: <Text>Front-end Developer. </Text>,
             responsibilities: [
-              "Developed user interface based on provided mockups using ZMP (ReactJS), ensuring accurate implementation and responsive design across devices.",
+              "Developed user interface based on provided mockups using ZMP (React Native based-framework), ensuring accurate implementation and responsive design across devices.",
               "Optimized application workflows to improve usability, streamline customer feedback submission, and enhance overall user experience within the mini app.",
               "Implemented data storage handling on the mini app, ensuring smooth integration with CRM systems and reliable access to submitted customer tickets.",
             ],
-            technologies: ["Node.js", "React.js", "Zalo Api", "ZMP"],
+            technologies: ["Node.js", "React Native", "Zalo Api", "ZMP"],
             links: [
               {
                 url: "https://zalo.me/s/3077214972070612317/",
@@ -264,7 +205,7 @@ export default function FullstackNodeJsDoc() {
           },
         ]}
       />
-      <DocumentTechnicalSkill />
+      <DocumentTechnicalSkill other="" />
       <DocumentCertificates />
     </DocumentLayout>
   );

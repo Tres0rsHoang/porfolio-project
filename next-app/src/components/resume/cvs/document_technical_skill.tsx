@@ -10,10 +10,10 @@ interface DocumentTechnicalSkillProps {
 }
 
 export const DocumentTechnicalSkill = ({
-  languages = "TypeScript/JavaScript, Python, C#, C/C++, Java, PHP, Dart, Lua.",
-  frontend = "Node.js, React, Next.js, Three.js, Tailwind CSS, Bootstrap, ShadCN,MUI, ZMP, Smarty (PHP), Jquery, Flutter, React Native.",
+  languages = "TypeScript/JavaScript, Python, C#, C/C++, PHP, Dart, Lua.",
+  frontend = "Node.js, React, Next.js, React Native, Tailwind CSS, Bootstrap, MUI, ZMP, Smarty (PHP), jQuery, Flutter, React Native.",
   backend = "Node.js, NestJS, Express.js, Prisma, MySQL, PostgreSQL, MongoDB.",
-  devops = "Docker, Docker Compose, Azure, Digital Ocean, Google Cloud,Cloudflare, GitHub Actions (CI/CD), Nginx, Ngrok, Unix/Linux OS.",
+  devops = "Docker, Docker Compose, Azure, Digital Ocean, Google Cloud, Cloudflare, GitHub Actions (CI/CD), Nginx, Ngrok, Unix/Linux OS.",
   other = "Git, Postman, Jira, Trello, Neovim, Navicat, VSCode, OOP, Design Patterns, SOLID Principles, RESTful API, GraphQL, Microservices, WebSocket, RabitMQ, BullMQ, Jest, Redis, Scrum Methodology.",
 }: DocumentTechnicalSkillProps) => {
   return (
@@ -41,11 +41,13 @@ export const DocumentTechnicalSkill = ({
           {": "}
           {devops}
         </Text>
-        <Text>
-          <Text style={{ fontWeight: "bold" }}>Tools/Others</Text>
-          {": "}
-          {other}
-        </Text>
+        {other != "" && (
+          <Text>
+            <Text style={{ fontWeight: "bold" }}>Tools/Others</Text>
+            {": "}
+            {other}
+          </Text>
+        )}
       </View>
     </View>
   );
