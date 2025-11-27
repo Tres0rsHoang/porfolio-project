@@ -17,12 +17,13 @@ export default function FrontendDoc() {
     >
       <DocumentSummary>
         Frontend Web Developer with{" "}
-        <Text style={styles.bold}>2 years of professional experience</Text>.
+        <Text style={styles.bold}>2 years of experience</Text> designing and
+        implementing user-friendly interfaces using HTML, CSS, and JavaScript.
         Skilled in building dynamic and responsive web applications with{" "}
-        <Text style={styles.bold}>React.js and Next.js,</Text> leveraging modern
+        <Text style={styles.bold}>React.js and Next.js</Text>, leveraging modern
         front-end frameworks to deliver exceptional user experiences. Proficient
-        in integrating front-end applications with various backend
-        serices/databases as needed.
+        in integrating front-end applications with various back-end services and
+        databases as needed.
       </DocumentSummary>
       <DocumentEducation />
       <DocumentAchievements />
@@ -33,32 +34,6 @@ export default function FrontendDoc() {
             period: "1 year 7 months",
             location: "Ho Chi Minh City",
             jobs: [
-              {
-                title: "Full-stack Developer - Intern",
-                time: "Jul 2023 - Aug 2023",
-                description: [
-                  <Text key={0}>
-                    Contributed to CloudOCS (predecessor of CloudSales), a
-                    multi-channel sales app integrated with Shopee API and
-                    Tiktok Shop API, by handling UX/UI design and conducting
-                    market research that resulted in a 100% improvement in user
-                    engagement and the implementation of more than 15 new
-                    features.
-                  </Text>,
-                  <Text key={1}>
-                    Designed intuitive web interfaces for sales reports with
-                    VitgerCRM/PHP and developed a Flutter-based cross-platform
-                    mobile app for Android and iOS, significantly enhancing user
-                    experience and streamlining reporting across multiple
-                    clients{"'"} CRM systems.
-                  </Text>,
-                  <Text key={2}>
-                    Collaborated to implement API integrations in PHP with the
-                    company’s CRM, ensuring seamless communication between the
-                    app and backend.
-                  </Text>,
-                ],
-              },
               {
                 title: "Full-stack Developer",
                 time: "Aug 2023 - Dec 2024",
@@ -84,9 +59,10 @@ export default function FrontendDoc() {
                     efficiently.
                   </Text>,
                   <Text key={3}>
-                    Developed a mini app using ZMP (ReactJS-based) for reporting
-                    issues and feedback, handling the front-end, integrating
-                    APIs with CRM, and managing the company’s Zalo app.
+                    Developed a mini app using ZMP (ReactJS-based) for issue and
+                    feedback reporting, overseeing front-end development, API
+                    integration with CRM, and management of the company’s Zalo
+                    app, resulting in improved reporting efficiency by 100%.
                   </Text>,
                 ],
               },
@@ -130,7 +106,7 @@ export default function FrontendDoc() {
                 title: "Soft-skill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Earned IELTS certification by preparing for and passing the exam, demonstrating commitment to ongoing professional English development.",
+                  "Earned IELTS certification by preparing for and passing the exam, Demonstrated commitment to ongoing professional English development by completing advanced language training and applying enhanced communication skills in workplace interactions.",
                 ],
               },
             ],
