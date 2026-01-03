@@ -142,6 +142,10 @@ export default function RootLayout({
             }),
           }}
         />
+        <meta
+          name="google-site-verification"
+          content="GCwXk3xDcBsoLSq4k5mCCZ1_I3jsIv980lsdvqMDVYg"
+        />
       </head>
       <body
         className={`${baloo2.className} antialiased`}
