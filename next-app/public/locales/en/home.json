@@ -78,10 +78,15 @@
   "freelancer_2": "Optimized configs for Neovim, Tmux, Sketchybar, Homerow, and keyboard layouts → fully mouse-free workflow.",
   "freelancer_3": "Built and completed most features of this portfolio website within 1 month thanks to the optimized setup.",
   "freelancer_description": "Throughout my work, I realized that having a stable and highly personalized workspace plays a crucial role in optimizing both productivity and speed. With this in mind, I decided to focus on tailoring and refining my own work environment. During this period, I optimized my setup with Neovim, Tmux, Sketchybar, Homerow, Yabai and custom keyboard layouts to build a workflow entirely free from mouse dependency, saving time and maximizing efficiency. At the same time, I completed this portfolio website, and thanks to the optimized configurations, I was able to implement most of its features within just one month.",
+  "nexon_1": "Contributed to the development of a long-standing, highly successful MMORPG title using Unity and C++ server technologies",
+  "nexon_2": "Developed and maintained core game systems, gameplay features, and UI within the Unity Engine",
+  "nexon_3": "Built and extended internal tools and pipelines to improve development workflows and production efficiency",
+  "nexon_description": "Game developer contributing to the development and live operation of a long-running, highly successful MMORPG. Worked with the Unity Engine and C++ server technologies to build and maintain core game systems, gameplay features, UI, and internal tools, while optimizing performance, improving pipelines, and supporting stable live services.",
   "Comment Editing": "Comment Editing",
   "Comment Deleting": "Comment Deleting",
   "Input new content": "Input new content",
   "New content is required": "New content is required",
   "Do you realy want to delete your comment?": "Do you realy want to delete your comment?",
-  "Reply Comment": "Reply Comment"
+  "Reply Comment": "Reply Comment",
+  "Comming Soon": "Comming Soon"
 }

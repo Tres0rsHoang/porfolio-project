@@ -36,7 +36,7 @@ export default function FrontendDoc() {
             jobs: [
               {
                 title: "Full-stack Developer",
-                time: "Aug 2023 - Dec 2024",
+                time: "Jun 2023 - Dec 2024",
                 description: [
                   <Text key={0}>
                     Collaborated with cross-functional teams to upgrade the
@@ -53,10 +53,11 @@ export default function FrontendDoc() {
                     months.
                   </Text>,
                   <Text key={2}>
-                    Designed database, developed UI using React.js, and
-                    implemented workflows for request module, enabling employees
-                    to submit proposals, feedback, and work-related documents
-                    efficiently.
+                    Designed the database, developed the user interface using
+                    React.js, and implemented workflows for the request module,
+                    enabling employees to efficiently submit proposals,
+                    feedback, and work-related documents, resulting in a 20%
+                    improvement in process efficiency.
                   </Text>,
                   <Text key={3}>
                     Developed a mini app using ZMP (ReactJS-based) for issue and
@@ -83,10 +84,10 @@ export default function FrontendDoc() {
                 description: [
                   <Text key={0}>
                     Led the collaborative design and implementation of backend
-                    services with Node.js/NestJS, developing RESTful APIs,
+                    services using Node.js/NestJS, developing RESTful APIs,
                     controllers, and database schemas for scalable web
                     applications, which streamlined deployment processes and
-                    supported two successful project launches.
+                    enabled the production release of two major applications.
                   </Text>,
                   <Text key={1}>
                     Integrated WebSocket to deliver real-time features and
@@ -106,7 +107,7 @@ export default function FrontendDoc() {
                 title: "Soft-skill Learner",
                 time: "Jan 2025 - May 2025",
                 description: [
-                  "Earned IELTS certification by preparing for and passing the exam, Demonstrated commitment to ongoing professional English development by completing advanced language training and applying enhanced communication skills in workplace interactions.",
+                  "Earned IELTS certification through dedicated self-study and exam success, completed advanced English language training, and applied refined communication skills to enhance workplace collaboration.",
                 ],
               },
             ],
@@ -158,7 +159,14 @@ export default function FrontendDoc() {
               "Implemented dynamic UI for message queries retrieved from the Social Hub, improving readability and user interaction efficiency.",
               "Designed reporting dashboards to visualize key message statistics, supporting CRM users in tracking and analyzing communication performance.",
             ],
-            technologies: ["Smarty", "jQuery", "PHP", "WebSocket", "Bootstrap"],
+            technologies: [
+              "Smarty",
+              "jQuery",
+              "PHP",
+              "WebSocket",
+              "Bootstrap",
+              "HTML5/CSS3",
+            ],
             links: [
               {
                 url: "https://cloudgo.vn/cloudmessage-giai-phap-tin-nhan-thuong-hieu-da-kenh",

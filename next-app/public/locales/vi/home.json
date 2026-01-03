@@ -78,10 +78,15 @@
   "freelancer_2": "Tối ưu config cho Neovim, Tmux, Sketchybar, Homerow, Yabai, bố cục bàn phím → loại bỏ hoàn toàn sử dụng chuột.",
   "freelancer_3": "Hoàn thiện website portfolio với hầu hết tính năng chỉ trong 1 tháng nhờ workflow được tối ưu.",
   "freelancer_description": "Trong quá trình làm việc, mình nhận ra rằng một không gian làm việc ổn định và được cá nhân hóa cao đóng vai trò quan trọng trong việc tối ưu hiệu suất và tốc độ xử lý công việc. Vì vậy, mình quyết định tập trung vào việc xây dựng và tinh chỉnh môi trường làm việc cá nhân. Trong giai đoạn này, mình đã tối ưu cấu hình cho Neovim, Tmux, Sketchybar, Homerow, Yabai và cả bố cục bàn phím, nhằm tạo ra một môi trường làm việc hoàn toàn không phụ thuộc vào chuột, giúp tiết kiệm thời gian và nâng cao hiệu quả. Song song đó, mình cũng hoàn thiện website portfolio này, và nhờ những cấu hình được tối ưu hóa, mình đã có thể hoàn thành phần lớn tính năng của trang chỉ trong vòng một tháng.",
+  "nexon_1": "Tham gia phát triển một tựa game MMORPG có lịch sử lâu đời và đạt được thành công lớn, sử dụng Unity và các công nghệ server C++",
+  "nexon_2": "Phát triển và bảo trì các hệ thống cốt lõi của game, tính năng gameplay và giao diện người dùng trong Unity Engine",
+  "nexon_3": "Xây dựng và mở rộng các công cụ nội bộ cùng pipeline nhằm cải thiện quy trình phát triển và nâng cao hiệu suất sản xuất",
+  "nexon_description": "Là lập trình viên game tham gia phát triển và vận hành live service cho một tựa MMORPG có lịch sử lâu đời và rất thành công. Làm việc với Unity Engine và công nghệ server C++ để xây dựng và duy trì các hệ thống cốt lõi, tính năng gameplay, UI và công cụ nội bộ, đồng thời tối ưu hiệu năng, cải thiện pipeline và đảm bảo sự ổn định cho dịch vụ vận hành.",
   "Comment Editing": "Chỉnh sửa bình luận",
   "Comment Deleting": "Xóa bình luận",
   "Input new content": "Nhập bình luận mới",
   "New content is required": "Yêu cầu có nội dung",
   "Do you realy want to delete your comment?": "Bạn có thật sự muốn xóa bình luận của mình?",
-  "Reply Comment": "Trả lời bình luận"
+  "Reply Comment": "Trả lời bình luận",
+  "Comming Soon": "Comming Soon"
 }

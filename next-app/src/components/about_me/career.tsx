@@ -85,11 +85,35 @@ export default function Career() {
           t("freelancer_3"),
         ]}
         imageBackground="bg-(--highlight-4)"
-        period="Jan 2025 - Present"
+        period="Jan 2025 - Dec 2025"
+        className="mb-5"
       >
         <div className="my-5">
           <h3>{t("description")}:</h3>
           <p>{t("freelancer_description")}</p>
+        </div>
+      </SubItemFrame>
+      <SubItemFrame
+        title="Unity Game Developer"
+        titleImagePath="/images/nexon_logo.png"
+        shortDescription={[t("nexon_1"), t("nexon_2"), t("nexon_3")]}
+        imageBackground="bg-(--highlight-4)"
+        period="Dec 2025 - Present"
+        subtitle={
+          <Link
+            href="https://www.linkedin.com/company/nexon-dev-vina/"
+            className="flex flex-row items-center"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="mr-2">NEXON Dev Vina</span>
+            <LinkIcon size={20} />
+          </Link>
+        }
+      >
+        <div className="my-5">
+          <h3>{t("description")}:</h3>
+          <p>{t("nexon_description")}</p>
         </div>
       </SubItemFrame>
     </div>

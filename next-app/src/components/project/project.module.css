@@ -75,7 +75,7 @@
 }
 
 .detailButton {
-  background-color: var(--default-button);
+  background-color: var(--disable-button);
   border: var(--foreground) solid 2px;
 }
 
