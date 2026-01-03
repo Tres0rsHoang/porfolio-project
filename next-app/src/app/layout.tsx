@@ -46,9 +46,9 @@ const baloo2 = localFont({
 const siteUrl = process.env.PUBLIC_APP_URL ?? "https://www.baohomeserver.uk";
 
 export const metadata: Metadata = {
-  title: "Bao Hoang Profile",
+  title: "Hoang Quoc Bao | Software Engineer",
   description:
-    "I build apps, not donuts 🍩. Peek into my portfolio and leave a cute comment—I’d love to hear from you!",
+    "Hoang Quoc Bao – Software Engineer, Unity & Backend Developer. I build apps, not donuts 🍩. Peek into my portfolio and leave a cute comment—I’d love to hear from you!",
   keywords: [
     "Hoang Quoc Bao",
     "Software Engineer",
@@ -175,7 +175,7 @@ export default function RootLayout({
                         alt="wordpress"
                         width={25}
                         height={25}
-                      ></Image>
+                      />
                       <WordpressFooterText />
                     </footer>
                   </div>

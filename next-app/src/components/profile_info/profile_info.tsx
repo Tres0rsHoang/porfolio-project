@@ -75,13 +75,25 @@ function ProfileInfo() {
 
   return (
     <div className="relative flex flex-row">
-      <div className={styles.profilePicContainer}>
-        <Image
-          fill={true}
-          src="/images/ProfilePic.jpg"
-          alt="ProfilePicture"
-          className={styles.profilePic}
-        />
+      <div className="flex relative flex-row">
+        <div className="relative w-[300px] h-[300px]">
+          <Image
+            fill={true}
+            src="/images/ProfilePic.jpg"
+            alt="ProfilePicture"
+            className={styles.profilePic}
+          />
+        </div>
+        {/* <div className="absolute top-[10px] right-[10px]"> */}
+        {/*   <div className="relative w-[80px] h-[80px]"> */}
+        {/*     <Image */}
+        {/*       fill={true} */}
+        {/*       src="/images/nexon_logo.png" */}
+        {/*       alt="nexon_logo" */}
+        {/*       className={styles.profilePic} */}
+        {/*     /> */}
+        {/*   </div> */}
+        {/* </div> */}
       </div>
       <div className={styles.profileInfo}>
         <h1 className="">{t("welcoming")}</h1>
