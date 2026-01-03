@@ -44,12 +44,13 @@ const ProjectFrame = ({ project }: { project: Project }) => {
           <p className={`${styles.techstackLine}`}>{techstackLine}</p>
         </div>
       </div>
-      <div className="absolute bottom-4 left-[23px]">
+      <div className="absolute bottom-4 left-[10px]">
         <button
           onClick={() => router.push(`/project/${project.id}`)}
+          disabled
           className={`rounded-lg px-2 ${styles.detailButton}`}
         >
-          <p>{t("more_detail")}</p>
+          <p>{t("Comming Soon")}</p>
         </button>
       </div>
     </div>
